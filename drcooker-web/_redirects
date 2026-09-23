@@ -1,0 +1,27 @@
+# Preusmerenja sa starog sajta keteringservis.rs.
+# Generisano: node tools/build-seo-files.mjs — ne menjati ručno.
+
+/sample-page    /    301
+/sample-page/    /    301
+/ponuda    /pages/snabdevanje.html    301
+/ponuda/    /pages/snabdevanje.html    301
+/ponuda-hrane    /pages/snabdevanje.html    301
+/ponuda-hrane/    /pages/snabdevanje.html    301
+/ponuda-hrane/transport-hrane    /pages/dostava.html    301
+/ponuda-hrane/transport-hrane/    /pages/dostava.html    301
+/ponuda-hrane/strucna-podrska-nutricioniste    /pages/nutricionista.html    301
+/ponuda-hrane/strucna-podrska-nutricioniste/    /pages/nutricionista.html    301
+/o-nama/nasa-misija    /pages/o-nama.html#misija    301
+/o-nama/nasa-misija/    /pages/o-nama.html#misija    301
+/o-nama    /pages/o-nama.html    301
+/o-nama/    /pages/o-nama.html    301
+/jelovnik/kvalitet-hrane    /pages/kako-radimo.html#kvalitet-sirovina    301
+/jelovnik/kvalitet-hrane/    /pages/kako-radimo.html#kvalitet-sirovina    301
+/jelovnik/nedeljni-meni    /pages/nedeljni-meni.html    301
+/jelovnik/nedeljni-meni/    /pages/nedeljni-meni.html    301
+/jelovnik    /pages/jelovnik.html    301
+/jelovnik/    /pages/jelovnik.html    301
+/haccp    /pages/bezbednost-hrane.html    301
+/haccp/    /pages/bezbednost-hrane.html    301
+/kontakt    /pages/kontakt.html    301
+/kontakt/    /pages/kontakt.html    301

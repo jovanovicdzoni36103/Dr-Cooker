@@ -1,0 +1,391 @@
+{
+ "obrazlozenje": "## Osnovna logika\n\nPostojeća IA je organizovana po tome kako firma interno vidi sebe („Ponuda\", „Jelovnik\", „HACCP\"), a ne po tome kako kupac donosi odluku. Kupac je direktor vrtića, office manager ili HR — osoba koja u prva tri sekunda pita „da li je ovo za mene\", pa „da li smem ovo da potpišem\", pa „šta tačno dobijam\". Nova IA prati taj redosled.\n\nCilj sajta je više upita. Postojeći sajt nema NIJEDNU formu, nijedan CTA i telefone bez `tel:` linkova (nalaz audita 11.1–11.2). Zato je konverzija ugrađena u strukturu: posebna `/zatrazi-ponudu/` stranica kao jedina meta glavnog dugmeta, a `/kontakt/` ostaje nisko-frikcioni izlaz za onoga ko hoće odmah telefon.\n\n## Tenzija 1 — tri (zapravo četiri) ponude\n\nIzvor navodi četiri delatnosti, ali one nisu četiri proizvoda. **Nutricionista i transport se ne kupuju odvojeno** — niko ne poručuje „uslugu nutricioniste\"; oni su unutrašnjost proizvoda „kuvani obroci\" i njegov glavni diferencijator. Komercijalno postoje **dva** proizvoda:\n\n1. **Kuvani obroci** — prodaju se dvema publikama, pa se i predstavljaju kroz dve publikacijske stranice.\n2. **Snabdevanje (7000 artikala)** — kupuje se samostalno ili uz obroke, identično za obe publike, pa dobija jednu top-level stranicu.\n\nNutricionista, bezbednost/HACCP i dostava idu u pilar **„Kako radimo\"** — to je dokazni sloj, a ne prodajni katalog. Time se rešava nalaz 11.12 (stara „Ponuda\" meša tri stvari) bez pravljenja tri tanke „uslužne\" stranice koje bi se međusobno kanibalizovale.\n\n## Tenzija 2 — dve publike, odvojene stranice?\n\n**Za razdvajanje:** različit kupac sa različitim strahom (direktor vrtića = zakonska odgovornost i Pravilnik; office manager = zadovoljstvo zaposlenih i logistika). Sadržaj se objektivno razlikuje — gramature postoje SAMO za jasle/vrtiće/škole, Pravilnik važi samo za decu, pravila dečjeg jelovnika (bez suhomesnatog, bez konditorskih) ne važe za odrasle. Pretrage su različite („hrana za vrtiće Beograd\" vs „ketering za firme Beograd\"), a postojeći title tagovi već ciljaju samo prvu. Plaćene kampanje traže zasebne landing stranice.\n\n**Protiv razdvajanja:** korporativni sadržaj je u izvoru izuzetno tanak — jedan pasus i „prilagođavamo se\". Rizik od near-duplicate sadržaja jer obe publike dele istu kuhinju, isti HACCP, isti transport.\n\n**Odluka: razdvojiti, ali asimetrično.** `/za-vrtice-i-skole/` je duboka stranica (gramature, Pravilnik, jasle vs vrtići, referenca). `/za-kompanije/` je namerno kraća i poštena — govori šta je prenosivo (isti proces, ista kontrola, isti transport), otvoreno kaže da gramature za korporativne sisteme nisu objavljene i da se definišu po dogovoru, i koristi jedini korporativni dokaz koji u izvoru postoji: zaposleni u predškolskoj ustanovi koju snabdevaju sami su izabrali Dr Cooker za svoje obroke. Duplikacija se izbegava pravilom: **publikacijske stranice ne objašnjavaju HACCP/nutricionistu/transport, one ih sažimaju u tri reda i linkuju na „Kako radimo\".**\n\nJasle i produženi boravci NE dobijaju svoje stranice — jasle su kolona u tabeli gramatura, produženi boravak je isti kupac kao škola.\n\n## Tenzija 3 — Galerija\n\n**Ne pravi se u v1.** Prazna ili stock-om popunjena galerija kod keteringa je aktivno štetna: ketering koji nema nijednu fotografiju sopstvene hrane šalje signal da nešto krije. Stock fotografije tuđe hrane predstavljene kao svoje su i oblik izmišljanja, što brief zabranjuje. Uz to, galerija nema konverzionu funkciju u B2B odluci — direktor traži gramature i kontrolu, ne lightbox.\n\nUmesto toga: ruta `/galerija/` se rezerviše ali se ne objavljuje (nije u navigaciji ni u sitemapu) dok klijent ne isporuči definisan minimum. Dizajn se radi tipografski i editorijalno, sa **dizajniranim** foto-slotovima (elegantni, ne polomljeni) na Početnoj, O nama (tim), Bezbednost (kuhinja) i Dostava (vozilo, termo posude), koji rade i bez slika. `ketering-servis.jpg` (čist flat-lay, bez overlay-a) sme se koristiti kao apstraktna atmosferska tekstura, ali NIKADA sa potpisom koji implicira da je to njihova hrana.\n\n## Tenzija 4 — FAQ\n\nBez izvora pitanja od klijenta, sme se objaviti **samo pitanje čiji odgovor već doslovno postoji u izvoru**. Dozvoljeno: ko pravi jelovnike i koliko često; da li su usklađeni sa Pravilnikom; da li se sirovine zamrzavaju ili lageruju; ko vrši spoljašnju kontrolu i šta uzorkuje; u čemu se hrana dostavlja i kako funkcionišu termo posude; da li dečji jelovnik sadrži suhomesnato; koje su gramature za jasle a koje za vrtiće i škole; kolika je minimalna količina kod snabdevanja; da li se izlazi u susret posebnim režimima ishrane.\n\nZabranjeno bez klijenta: cena, rok odgovora na upit, područje dostave, minimalni broj korisnika, radno vreme, otkazni rok, posedovanje HACCP sertifikata.\n\n**Odluka: nema zasebne FAQ stranice u v1.** FAQ blokovi idu kontekstualno, na dno stranice kojoj pitanje pripada (publikacijske stranice, snabdevanje, bezbednost), svaki sa `FAQPage` schema markupom. Razlog: samostalna FAQ sastavljena isključivo od odgovora koji već stoje drugde je duplikat bez sopstvene pretraživačke namere, dok kontekstualni FAQ ruši prigovor tačno iznad CTA dugmeta. `/pitanja-i-odgovori/` se uvodi tek kada klijent dostavi prava pitanja koja komercijalista dobija telefonom — to je jedini pošten izvor.\n\n## Tenzija 5 — Nedeljni meni i gramature\n\nDa, i to je najveća pojedinačna dobit celog redizajna. To je jedini sadržaj na sajtu sa tvrdim, strukturiranim, jedinstvenim podacima — dva puna nedeljna jelovnika, dve tabele nutritivnih vrednosti, kompletne gramature. Trenutno su to **slike skenova** (nalaz 11.8): nevidljive Google-u, nečitljive na mobilnom, nedostupne screen readerima. Prepis u prave HTML tabele je ogroman SEO i pristupačnosti dobitak po ceni nule, jer su podaci već prepisani u briefu.\n\nRazdvajaju se u dve stranice jer imaju različitu nameru: `/jelovnik/nedeljni-meni/` (dokaz raznovrsnosti i nutritivne adekvatnosti — zadržava postojeći URL) i `/jelovnik/gramature/` (dokaz usklađenosti porcija, sopstvena pretraga tipa „gramature obroka vrtić\", i de facto ponudbeni dokument za obrazovne ustanove, pa se duboko linkuje i sa `/za-vrtice-i-skole/`). Oba jelovnika se moraju označiti kao **primeri**, ne kao aktuelni meni te nedelje.\n\n## Tenzija 6 — HACCP\n\nHACCP je najjači signal poverenja, ali je „HACCP\" kao labela u navigaciji žargon, a izvor eksplicitno kaže da se **poštuju principi**, ne da se poseduje sertifikat. Labela ne sme da zvuči kao tvrdnja o sertifikaciji.\n\nOdluka: ne sakriva se nego se **proširuje** u `/kako-radimo/bezbednost-hrane/` pod labelom „Bezbednost hrane\", sa HACCP-om kao prvom sekcijom. U nju se uvlači i `kvalitet-hrane` kontrolni deo (atesti, deklaracije), unutrašnja i spoljašnja kontrola, VMA izveštaj i Gradski zavod za javno zdravlje. Reč „HACCP\" ostaje u `<title>`, u H1 i u prvom podnaslovu, pa se ključna reč zadržava i bez nje u slug-u, uz 301 sa `/haccp/`. Dodatno, HACCP ne živi samo tamo: kompaktna traka poverenja sa tri činjenice iz izvora ide na Početnu i iznad CTA na obe publikacijske stranice — signal poverenja mora da putuje do mesta gde se donosi odluka.\n\n## SEO i URL-ovi\n\nČetiri URL-a se zadržavaju 1:1 jer im se tema ne menja i nose najviše equity-ja: `/`, `/o-nama/`, `/jelovnik/`, `/jelovnik/nedeljni-meni/`, `/kontakt/`. Postojeći lanac `/ponuda/` → `/ponuda-hrane/` se ne nasleđuje nego se skraćuje direktno na odredište — lanci redirekcija se nikada ne ostavljaju. `/ponuda-hrane/` ide na `/snabdevanje/` zato što jedinstveni deo njegovog teksta (7000 artikala, minimalna količina, cene, „spoj keteringa i snabdevanja\") u celini seli tamo, dok je deo o obrocima bio generički i nadomešten je publikacijskim stranicama; na `/snabdevanje/` se stavlja istaknuta prečica ka obrocima.\n\n## Napomena o jednoj tvrdnji iz izvora\n\n„Cene niže od cena u redovnim prodavnicama\" je doslovno sa postojećeg sajta i po pravilima je dozvoljena, ali je to uporedna cenovna tvrdnja koja je pravno osetljiva. Preporuka: potvrditi sa klijentom pre objave, ili je preformulisati u „veleprodajni uslovi\".",
+ "navigacija": [
+  {
+   "labela": "Vrtići i škole",
+   "putanja": "/za-vrtice-i-skole/"
+  },
+  {
+   "labela": "Kompanije",
+   "putanja": "/za-kompanije/"
+  },
+  {
+   "labela": "Jelovnik",
+   "putanja": "/jelovnik/",
+   "podstavke": [
+    "Nedeljni meni (primeri)",
+    "Gramature obroka"
+   ]
+  },
+  {
+   "labela": "Snabdevanje",
+   "putanja": "/snabdevanje/"
+  },
+  {
+   "labela": "Kako radimo",
+   "putanja": "/kako-radimo/",
+   "podstavke": [
+    "Nutricionista",
+    "Bezbednost hrane i HACCP",
+    "Dostava"
+   ]
+  },
+  {
+   "labela": "O nama",
+   "putanja": "/o-nama/"
+  },
+  {
+   "labela": "Kontakt",
+   "putanja": "/kontakt/"
+  },
+  {
+   "labela": "Zatraži ponudu (dugme)",
+   "putanja": "/zatrazi-ponudu/"
+  }
+ ],
+ "stranice": [
+  {
+   "putanja": "/",
+   "naslov": "Dr Cooker — kuvani obroci za vrtiće, škole i kompanije u Beogradu",
+   "svrha": "Za tri sekunde reći šta firma radi i kome, razdvojiti dve publike, dati tri dokaza poverenja i odvesti na formu. Zamenjuje naslovnu koja trenutno nosi WordPress slug sample-page i nema nijedan CTA.",
+   "sekcije": [
+    "Hero — šta radimo, za koga, gde (Beograd); dva CTA: Zatraži ponudu / Pogledaj jelovnik",
+    "Izbor publike — dve velike kartice: Vrtići, jasle, škole i produženi boravci | Kompanije",
+    "Traka poverenja — 4 činjenice iz izvora: nutricionista pravi jelovnik na nedeljnom nivou; poštuju se principi HACCP standarda; sirovine se poručuju dnevno, bez lagerovanja i dubokog zamrzavanja; spoljašnju kontrolu vrši Gradski zavod za javno zdravlje",
+    "Dve usluge — kartice: Kuvani obroci (doručak, ručak, užine) | Snabdevanje, preko 7000 artikala",
+    "Referenca — 10 objekata najveće privatne predškolske ustanove u Srbiji, skoro 1000 mališana (ustanova se NE imenuje)",
+    "Isečak jelovnika — jedan pravi dan iz tabele nedeljnog menija, tipografski, bez fotografije; link na nedeljni meni",
+    "Kako radimo — lanac u 5 koraka: nabavka → nedeljni jelovnik → kuhinja → kontrola → dostava",
+    "Misija u dva reda — dečje čulo ukusa se pretežno formira do šeste godine",
+    "CTA blok — Zatraži ponudu",
+    "Kontakt sažetak + Google mapa (44.78942, 20.47467)",
+    "PLACEHOLDER slot: hero/atmosferska fotografija kuhinje ili obroka — pitati klijenta za prave fotografije"
+   ],
+   "izvor_sadrzaja": "/ (Naslovna, slug sample-page) + O nama (referenca) + Naša misija (teza o čulu ukusa) + Ponuda (7000 artikala) + Nedeljni meni (podaci iz tabele)",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/za-vrtice-i-skole/",
+   "naslov": "Hrana za vrtiće, jasle, škole i produžene boravke — Dr Cooker, Beograd",
+   "svrha": "Glavna prodajna stranica za obrazovne ustanove. Rešava strah direktora: usklađenost sa Pravilnikom, gramature, kontrola. Nosi najjaču referencu. Nova stranica — stari sajt nije razdvajao publike (nalaz 11.11).",
+   "sekcije": [
+    "Hero za ustanove — jasle, vrtići, škole, produženi boravci; CTA",
+    "Šta dobijate — doručak, ručak i tri užine, svakodnevno, dostavljeno u dogovoreno vreme",
+    "Usklađenost sa Pravilnikom o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi",
+    "Pravila dečjeg jelovnika — u potpunosti isključene suhomesnate prerađevine, bez konditorskih proizvoda, bez previše soli, masti, šećera i začina, polubeli/crni/integralni hleb",
+    "Gramature za jasle i za vrtiće i škole — izvod iz tabele (ručak, meso, užine) + link na punu tabelu",
+    "Nutricionista uz vašu ustanovu — nedeljni jelovnici i normativni proračuni, obilazak objekata za vreme obroka, pisani set pravila za čuvanje i serviranje, obuke vašeg osoblja",
+    "Bezbednost u tri reda — HACCP principi, unutrašnja i spoljašnja kontrola, sanitarni nadzor osoblja; link na Bezbednost hrane",
+    "Dostava — specijalizovano vozilo sa termo izolacijom, termo posude na zaduženje, dnevnik isporuke kao veza sa vašim internim higijenskim pravilima",
+    "Referenca — 10 objekata, skoro 1000 mališana, najveća privatna predškolska ustanova u Srbiji (bez imena)",
+    "Uz obroke i snabdevanje — sredstva za čišćenje, školski pribor, kancelarijski materijal; link",
+    "Česta pitanja (samo odgovori koji postoje u izvoru): Ko pravi jelovnik i koliko često? Da li su jelovnici usklađeni sa Pravilnikom? Da li se sirovine zamrzavaju? Da li dečji jelovnik sadrži suhomesnato? Koja je razlika u gramaturama za jasle? Ko vrši spoljašnju kontrolu? Izlazite li u susret posebnim režimima ishrane?",
+    "CTA — Zatraži ponudu za ustanovu",
+    "PLACEHOLDER: fotografija serviranog obroka u objektu i fotografija termo posuda — pitati klijenta",
+    "PLACEHOLDER: područje dostave (samo Beograd? koje opštine?) i minimalni broj korisnika — pitati klijenta"
+   ],
+   "izvor_sadrzaja": "O nama + Stručna podrška nutricioniste + Jelovnik + Nedeljni meni (gramature) + HACCP + Transport",
+   "primarni_cta": "Zatraži ponudu za ustanovu"
+  },
+  {
+   "putanja": "/za-kompanije/",
+   "naslov": "Ketering i dostava obroka za kompanije u Beogradu — Dr Cooker",
+   "svrha": "Prodajna stranica za office managera i HR. Namerno kraća od publikacijske stranice za ustanove jer izvor ima malo korporativnog sadržaja — poštenije je priznati da se sve kroji po dogovoru nego izmišljati gramature i pakete.",
+   "sekcije": [
+    "Hero za kompanije — manji i veći korporativni sistemi; CTA",
+    "Kako izgleda saradnja — svi obroci se planiraju u skladu sa vašim zahtevima; doručak, ručak i užine dostavljeni u dogovoreno vreme",
+    "Jelovnici za odrasle — ista kvalitativna vrednost kao dečji, razlika u sastavu i pripremi: aromatični i pikantni začini i so u nutritivno propisanim količinama",
+    "Posebni nutritivni zahtevi i režimi ishrane — izlazi se u susret",
+    "Gramature za korporativne sisteme — otvoreno: nisu objavljene, definišu se po dogovoru uz nutricionistu (NE izmišljati tabelu)",
+    "Dostava — specijalizovano vozilo sa termo izolacijom, termo posude, kratko vreme dostave",
+    "Ista kuhinja, isti proces, ista kontrola kao za ustanove — HACCP principi i spoljašnja kontrola; link na Kako radimo",
+    "Snabdevanje kancelarije uz obroke — kancelarijski materijal, papir za štampu, kućna hemija, toalet papir i salvete; minimalna količina jedan komad; link",
+    "Dokaz — zaposleni u predškolskoj ustanovi koju snabdevamo opredelili su se da i svoju ishranu prepuste Dr Cooker timu",
+    "Kako počinjemo — predložite termin sastanka, izlazimo kod vas i pravimo ponudu po meri",
+    "Česta pitanja (samo iz izvora): Po čemu se jelovnik za odrasle razlikuje? Možemo li samo ručak? Kako se hrana drži toplom? Možemo li poručiti samo robu bez obroka?",
+    "CTA — Zatraži ponudu za kompaniju",
+    "PLACEHOLDER: fotografija korporativne dostave / postavljenog obroka — pitati klijenta",
+    "PLACEHOLDER: minimalan broj obroka dnevno i područje dostave — pitati klijenta"
+   ],
+   "izvor_sadrzaja": "Ponuda + Stručna podrška nutricioniste (jelovnici za odrasle) + Kvalitet hrane (posebni režimi) + Transport + Nedeljni meni (tekst o korporativnim sistemima) + O nama (referenca o zaposlenima)",
+   "primarni_cta": "Zatraži ponudu za kompaniju"
+  },
+  {
+   "putanja": "/jelovnik/",
+   "naslov": "Jelovnik — domaća i inostrana kuhinja, doručak, ručak i užine | Dr Cooker",
+   "svrha": "Pilar stranica o tome šta se kuva i po kojoj logici. Zadržava postojeći URL. Rasterećena je od gramatura i tabela — one idu u podstranice.",
+   "sekcije": [
+    "Uvod — domaća jela i kombinacije stranih recepata, originalna receptura; kuvari su i sami roditelji",
+    "Doručak, jednom nedeljno — jaja, pite i proje od različitih vrsta brašna, sladak doručak, suhomesnati proizvodi (za odrasle)",
+    "Ručak, svakog dana — supe, čorbe i salate; pečena i kuvana jela uz povrće, meso i ribu",
+    "Užine — sezonsko voće, slatke poslastice, slani namazi, sezonske salate, orašasti plodovi, suvo voće, integralne pahuljice, šejkovi od voća i povrća",
+    "Piramida ishrane — sedam grupa namirnica u dnevnom obroku (I žitarice, II meso/riba/jaja, III mleko i mlečni, IV masti i maslac, V povrće, VI voće, VII ostale namirnice)",
+    "Dečji jelovnik vs. jelovnik za odrasle — šta se menja i zašto",
+    "Posebni nutritivni zahtevi i režimi ishrane",
+    "Prečice — Nedeljni meni (primeri) | Gramature obroka",
+    "CTA — Zatraži ponudu",
+    "PLACEHOLDER: dijagram piramide ishrane treba nacrtati iznova kao vektor (postojeći piramida-zdrave-ishrane.png je nisko-rezolucijski stock kolaž)"
+   ],
+   "izvor_sadrzaja": "/jelovnik/ (Jelovnik) + Stručna podrška nutricioniste (pravila dečjeg i odraslog jelovnika) + Kvalitet hrane (posebni režimi)",
+   "primarni_cta": "Pogledaj nedeljni meni"
+  },
+  {
+   "putanja": "/jelovnik/nedeljni-meni/",
+   "naslov": "Nedeljni meni — primeri jelovnika i nutritivne vrednosti | Dr Cooker",
+   "svrha": "Najvredniji sadržaj na sajtu. Skenovi tabela se zamenjuju pravim HTML tabelama — čitljivo na mobilnom, dostupno screen readerima, indeksabilno. Zadržava postojeći URL.",
+   "sekcije": [
+    "Uvod + jasna napomena: ovo su PRIMERI nedeljnog jelovnika, ne meni tekuće nedelje",
+    "Primer 1 — nedeljni jelovnik (HTML tabela: Dan | Doručak | Užina I | Ručak | Užina II | Užina III), responsive, na mobilnom kao kartica po danu",
+    "Energetska i nutritivna vrednost uz primer 1 (kJ, proteini, masti, ugljeni hidrati, Ca, Fe, A, B1, B2, C, PP + red proseka)",
+    "Primer 2 — nedeljni jelovnik (ista struktura)",
+    "Energetska i nutritivna vrednost uz primer 2",
+    "Kako čitati tabelu — kratko objašnjenje kolona i zašto se prati prosek nedelje",
+    "Ko pravi jelovnik — nutricionista–dijetetičar na nedeljnom nivou, sa normativnim proračunima i sastavnicama; link",
+    "Link na gramature obroka",
+    "CTA — Zatraži ponudu",
+    "PLACEHOLDER: da li klijent želi da se objavljuje AKTUELNI nedeljni jelovnik (i ko bi ga ažurirao) — pitati klijenta",
+    "PLACEHOLDER: da li postoje primeri korporativnog nedeljnog jelovnika — pitati klijenta"
+   ],
+   "izvor_sadrzaja": "/jelovnik/nedeljni-meni/ — podaci prepisani iz skenova 1a.jpg, 2.jpg, 3.jpg, 4.jpg",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/jelovnik/gramature/",
+   "naslov": "Gramature obroka za jasle, vrtiće i škole | Dr Cooker",
+   "svrha": "Referentna tabela porcija — de facto ponudbeni dokument za obrazovne ustanove i jedini sadržaj koji direktno odgovara na pitanje 'koliko dete dobije'. Nova stranica; podaci su bili zarobljeni u dva skena na stranici Nedeljni meni.",
+   "sekcije": [
+    "Uvod — dve kolone: JASLE i VRTIĆI I ŠKOLE; zašto se razlikuju",
+    "Doručak — slane pite i kiflice, namazi",
+    "Voćna užina — sezonsko voće",
+    "Ručak — sezonsko voće, varivo sa mesom, musake od povrća sa mesom, zapečena testenina, sosevi sa mesom i prilozima, prilozi",
+    "Meso — komadno meso, meso u varivu, faširano meso, piletina, panirana riba",
+    "Salate — sveže i konzervisane",
+    "Užine — tople užine, kolači i peciva",
+    "Korporativni sistemi — gramature nisu objavljene, definišu se po dogovoru (izričito, bez izmišljene tabele)",
+    "Veza sa Pravilnikom i nutritivnim obračunima — link na nutricionistu i nedeljni meni",
+    "CTA — Zatraži ponudu za ustanovu"
+   ],
+   "izvor_sadrzaja": "/jelovnik/nedeljni-meni/ — podaci prepisani iz skenova JELOVNIK-1.jpg i JELOVNIK-2-1.jpg + tekst 'Ponuda obroka za korporativne sisteme'",
+   "primarni_cta": "Zatraži ponudu za ustanovu"
+  },
+  {
+   "putanja": "/snabdevanje/",
+   "naslov": "Snabdevanje ustanova i kompanija — preko 7000 artikala | Dr Cooker",
+   "svrha": "Druga usluga izvučena iz stare 'Ponude' u koju je bila zakopana. Kupuje se uz obroke ili samostalno. Nasleđuje URL equity sa /ponuda-hrane/.",
+   "sekcije": [
+    "Uvod — uz obroke ili samostalno; spoj keteringa i snabdevanja na jednoj adresi",
+    "Prehrambeni proizvodi — hleb i peciva, mleko i mlečni proizvodi, suhomesnati proizvodi, voće, konzervisano povrće, salate, namazi, keks",
+    "Higijena i održavanje prostora — proizvodi za čišćenje prostora, sredstva za pranje sudova, deterdženti za pranje veša, sredstva kućne hemije, toalet papir i salvete",
+    "Kancelarija i školski pribor — kancelarijski materijal, papir za štampu, bojice, olovke, školski pribor",
+    "Uslovi saradnje — asortiman preko 7000 artikala; minimalna količina je jedan komad svakog proizvoda; cene niže od cena u redovnim prodavnicama (tvrdnja sa postojećeg sajta — potvrditi sa klijentom pre objave)",
+    "Isporuka — u dogovoreno vreme, sa pripadajućim dokumentom, istim vozilom i rutom kao obroci",
+    "Prečica — tražite i kuvane obroke? Vrtići i škole | Kompanije",
+    "Česta pitanja (iz izvora): Mogu li da poručim samo robu bez obroka? Koja je minimalna količina? Kada stiže isporuka?",
+    "CTA — Zatraži ponudu za snabdevanje",
+    "PLACEHOLDER: kompletan katalog artikala u PDF-u ili pretraživoj listi — pitati klijenta da li postoji i sme li se objaviti"
+   ],
+   "izvor_sadrzaja": "/ponuda-hrane/ (Ponuda) + O nama (pomen kućne hemije i školskog pribora) + Transport (isporuka robe uz dokument)",
+   "primarni_cta": "Zatraži ponudu za snabdevanje"
+  },
+  {
+   "putanja": "/kako-radimo/",
+   "naslov": "Kako radimo — od nabavke do dostave | Dr Cooker",
+   "svrha": "Pilar dokaznog sloja. Nova stranica koja prvi put spaja ceo lanac u jednu priču i iznosi najjači, trenutno zakopan diferencijator: dnevna nabavka bez lagerovanja i dubokog zamrzavanja.",
+   "sekcije": [
+    "Lanac u 5 koraka — pregled sa skok-linkovima",
+    "Korak 1 · Nabavka i kvalitet sirovina (#kvalitet-sirovina) — najkvalitetnije sirovine regionalnog i sezonskog karaktera; sertifikati, deklaracije i atesti o bezbednosti; sastojci se poručuju na dnevnom nivou, nema lagerovanja i dubokog zamrzavanja",
+    "Korak 2 · Nedeljni jelovnik i normativi — nutricionista–dijetetičar, normativni proračuni, sastavnice, nutritivni obračuni; link",
+    "Korak 3 · Priprema u centralnoj kuhinji — nova, moderna, profesionalno opremljena kuhinja na Voždovcu; najsavremenije metode i profesionalna oprema; recepture spajaju nutritivne normative i čulo ukusa korisnika",
+    "Korak 4 · Kontrola — HACCP principi, unutrašnja i spoljašnja kontrola; link na Bezbednost hrane",
+    "Korak 5 · Transport i preuzimanje — termo posude, dnevnik isporuke; link na Dostavu",
+    "Ko čini tim — nutricionista–dijetetičar, sanitarni inženjer, kuvari, pomoćni radnici, vozači; link na O nama",
+    "CTA — Zatraži ponudu",
+    "PLACEHOLDER: fotografije kuhinje po koracima (prijem robe, priprema, pakovanje, utovar) — najkorisniji set fotografija koji klijent može da napravi, tražiti prioritetno"
+   ],
+   "izvor_sadrzaja": "/jelovnik/kvalitet-hrane/ (Kvalitet hrane) + O nama (kuhinja i tim) + Stručna podrška nutricioniste + HACCP + Transport",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/kako-radimo/nutricionista/",
+   "naslov": "Stručna podrška nutricioniste — jelovnici, normativi i obuke | Dr Cooker",
+   "svrha": "Najveći sadržajni diferencijator firme. Nasleđuje URL equity sa /ponuda-hrane/strucna-podrska-nutricioniste/ i premešta se iz 'Ponude' u dokazni sloj, jer se ne kupuje odvojeno.",
+   "sekcije": [
+    "Uvod — nutricionista–dijetetičar je deo stalnog tima, ne spoljni konsultant",
+    "Nedeljni jelovnici — normativni proračuni, sastavnice i nutritivni obračuni, svake nedelje",
+    "Usklađenost sa Pravilnikom o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi",
+    "Jelovnici za decu i za odrasle — kvalitativno isti, razlika u sastavu, začinima i načinu pripreme",
+    "Kontrola celog lanca — kvalitet dostavljenih namirnica, prateća dokumentacija (atesti, deklaracije), priprema, distribucija, sanitarno-higijenski uslovi",
+    "U kuhinji tokom pripreme — lično proverava ukuse i recepture, nadgleda način slanja hrane",
+    "Na terenu — obilazi objekte za vreme obroka, razmenjuje informacije sa zaposlenima i decom",
+    "Pisani set pravila za svaku ustanovu i kompaniju — čuvanje, skladištenje i serviranje obroka nakon dostave",
+    "Obuke vašeg osoblja o higijenskim standardima čuvanja i serviranja hrane",
+    "Posebni nutritivni zahtevi i režimi ishrane",
+    "CTA — Zatraži ponudu",
+    "PLACEHOLDER: fotografija nutricioniste u kuhinji ili u objektu — pitati klijenta"
+   ],
+   "izvor_sadrzaja": "/ponuda-hrane/strucna-podrska-nutricioniste/ + O nama (obuke) + Kvalitet hrane (posebni režimi)",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/kako-radimo/bezbednost-hrane/",
+   "naslov": "Bezbednost hrane — HACCP principi i kontrola kvaliteta | Dr Cooker",
+   "svrha": "Nasleđuje /haccp/. Preimenovana labela jer izvor tvrdi poštovanje PRINCIPA, ne posedovanje sertifikata — navigacija ne sme da zvuči kao tvrdnja o sertifikaciji. Ključna reč HACCP ostaje u title-u, H1 i prvoj sekciji.",
+   "sekcije": [
+    "HACCP principi u proizvodnom procesu — od nabavke sirovina do serviranja; eksplicitno: poštuju se principi HACCP standarda",
+    "Kuhinja građena prema HACCP sistemu — omogućeno nesmetano čišćenje i dezinfekcija svih površina",
+    "Nema ukrštanja čistog i nečistog puta",
+    "Osnovne mere kontrole — provera temperature na minusnim i rashladnim komorama, provera datuma na pakovanju, sprečavanje unakrsne kontaminacije",
+    "Sredstva za dezinfekciju — nisu štetna, u skladu sa propisima; izveštaj o biološkoj ispravnosti izradila laboratorija VMA",
+    "Unutrašnja kontrola — provera namirnica pri prijemu, atesti o zdravstvenoj bezbednosti, deklaracije, kontrola pripreme i distribucije",
+    "Spoljašnja kontrola — Gradski zavod za javno zdravlje: brisevi radnih površina, ruku zaposlenih i termos boca, nasumični uzorci obroka, hemijsko-bromatološka analiza (energetska vrednost, belančevine, ugljeni hidrati, masti) radi provere usklađenosti sa Pravilnikom",
+    "Osoblje — sva lica zadužena za pripremu i distribuciju prošla su neophodne obuke i pod redovnim su sanitarnim nadzorom; sanitarnu kontrolu obavlja specijalista sanitarno-ekološki inženjer",
+    "Česta pitanja (iz izvora): Ko vrši spoljašnju kontrolu i šta uzorkuje? Da li se sirovine zamrzavaju? Ko kontroliše higijenu u kuhinji?",
+    "CTA — Zatraži ponudu",
+    "PLACEHOLDER: da li firma POSEDUJE HACCP sertifikat ili samo primenjuje principe — ključno pitanje za klijenta; ako postoji sertifikat, dodati broj, izdavaoca i datum i preformulisati celu stranicu",
+    "PLACEHOLDER: fotografije kuhinje, komora i oznaka čistog/nečistog puta — pitati klijenta"
+   ],
+   "izvor_sadrzaja": "/haccp/ (HACCP) + /jelovnik/kvalitet-hrane/ (atesti i deklaracije) + O nama (obuke i sanitarni nadzor)",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/kako-radimo/dostava/",
+   "naslov": "Dostava hrane — specijalizovano vozilo i termo posude | Dr Cooker",
+   "svrha": "Nasleđuje /ponuda-hrane/transport-hrane/. Odgovara na operativnu brigu klijenta: kako hrana stiže topla i ko je zadužen za posude i evidenciju.",
+   "sekcije": [
+    "Uvod — sveži obroci u dogovoreno vreme, na adresu vašeg objekta",
+    "Vozači — obučeni, pod stalnim sanitarnim nadzorom",
+    "Vozilo — specijalizovano samo za transport hrane, sa termo izolacijom",
+    "Termo posude — korisnici ih zadužuju pri dostavi, razdužuju pri predaji praznih",
+    "Dnevnik isporuke — vozači pomažu vašem osoblju u popunjavanju; veza između našeg HACCP-a i vaših internih higijenskih pravila",
+    "Isporuka robe iz asortimana — u dogovoreno vreme, sa pripadajućim dokumentom; link na Snabdevanje",
+    "CTA — Zatraži ponudu",
+    "PLACEHOLDER: područje dostave (koje opštine Beograda, ide li se van grada), termini isporuke i radno vreme — pitati klijenta",
+    "PLACEHOLDER: fotografije vozila, termo posuda i predaje obroka — pitati klijenta"
+   ],
+   "izvor_sadrzaja": "/ponuda-hrane/transport-hrane/ (Transport)",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/o-nama/",
+   "naslov": "O nama — Dr Cooker ketering servis, Beograd",
+   "svrha": "Jedna jaka stranica o identitetu umesto dve tanke. Spaja O nama i Našu misiju, jer misija sama nema ni saobraćaj ni konverziju, a kao sekcija je najemotivniji sadržaj na sajtu. Zadržava postojeći URL.",
+   "sekcije": [
+    "Ko smo — uska specijalnost: snabdevanje vrtića, škola, produženih boravaka i kompanija kuvanim jelima; nova, moderna, profesionalno opremljena kuhinja na Voždovcu",
+    "Misija (#misija) — nutritivne navike se stiču u ranom odrastanju; dečje čulo ukusa se pretežno formira do šeste godine; uravnotežena ishrana jača imunitet i smanjuje rizike; kultura ishrane je deo kulture življenja; zdrava ishrana nije privilegija nego životna potreba",
+    "Tim — nutricionista–dijetetičar, sanitarni inženjer (specijalista sanitarno-ekološki inženjer), kuvari, pomoćni radnici i vozači; kuvari su i sami roditelji",
+    "Kuhinja — kako izgleda i po čemu je građena; link na Kako radimo",
+    "Referenca — već dugi niz godina isporučujemo hranu za najveću privatnu predškolsku ustanovu u Srbiji: 10 objekata, skoro 1000 mališana; i zaposleni u toj ustanovi jedu naše obroke (ustanova se NE imenuje)",
+    "CTA — Zatraži ponudu",
+    "PLACEHOLDER: godina osnivanja (sajt kaže samo 'dugi niz godina') — pitati klijenta",
+    "PLACEHOLDER: pun pravni naziv, PIB i matični broj — potrebni i za footer i za politiku privatnosti",
+    "PLACEHOLDER: grupna fotografija tima i fotografija kuhinje — pitati klijenta",
+    "PLACEHOLDER: da li se ime predškolske ustanove sme objaviti (moguć NDA) — pitati klijenta"
+   ],
+   "izvor_sadrzaja": "/o-nama/ (O nama) + /o-nama/nasa-misija/ (Naša misija)",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/kontakt/",
+   "naslov": "Kontakt — Dr Cooker, Vojvode Prijezde 17, Beograd",
+   "svrha": "Nisko-frikcioni izlaz za onoga ko hoće odmah telefon. Zadržava postojeći URL. Rešava nalaz 11.1: telefoni i mejl postaju pravi tel: i mailto: linkovi.",
+   "sekcije": [
+    "Kome se javljate — direktor +381 64 1101521 i komercijalista +381 60 0440458, oba kao tel: linkovi (na mobilnom kao dugmad)",
+    "Email — office@drcooker.rs kao mailto: link",
+    "Adresa — Beograd, Vojvode Prijezde 17",
+    "Mapa — Google Maps, 44.78942, 20.47467",
+    "Prečica na formu — ako želite ponudu po meri, popunite upit",
+    "PLACEHOLDER: radno vreme — pitati klijenta",
+    "PLACEHOLDER: društvene mreže — pitati klijenta da li postoje",
+    "PLACEHOLDER: pun pravni naziv, PIB i matični broj za footer"
+   ],
+   "izvor_sadrzaja": "/kontakt/ (Kontakt) + blok kontakt podataka ponovljen na dnu 7 postojećih stranica",
+   "primarni_cta": "Zatraži ponudu"
+  },
+  {
+   "putanja": "/zatrazi-ponudu/",
+   "naslov": "Zatraži ponudu — Dr Cooker ketering servis",
+   "svrha": "Jedina konverziona stranica i meta glavnog dugmeta na celom sajtu. Postojeći sajt nema NIJEDNU formu (nalaz 11.1) — ovo je najveća pojedinačna izmena u odnosu na staro stanje. Forma je ujedno kvalifikacija leada.",
+   "sekcije": [
+    "Uvod — šta se dešava posle slanja: javljamo se, predlažemo termin sastanka, izlazimo kod vas i pravimo ponudu po meri",
+    "Forma · korak 1 — tip korisnika: jasle / vrtić / škola / produženi boravak / kompanija",
+    "Forma · korak 2 — šta vam treba: doručak, ručak, užine, snabdevanje robom (višestruki izbor)",
+    "Forma · korak 3 — okvirni broj korisnika, broj objekata, lokacija, željeni početak saradnje",
+    "Forma · korak 4 — posebni nutritivni zahtevi i režimi ishrane (slobodno polje)",
+    "Forma · korak 5 — kontakt: ime, funkcija, ustanova/firma, telefon, email + saglasnost za obradu podataka sa linkom na politiku privatnosti",
+    "Alternativa — ne želite formu? Pozovite direktora ili komercijalistu (tel: linkovi)",
+    "Poruka nakon slanja — potvrda prijema",
+    "PLACEHOLDER: rok za odgovor na upit — NE pisati '24h' dok klijent ne potvrdi",
+    "PLACEHOLDER: adresa na koju forma šalje mejl i da li postoji CRM — pitati klijenta",
+    "PLACEHOLDER: minimalni broj korisnika za ugovor — ako postoji, treba ga navesti da se ne troši vreme na nekvalifikovane upite"
+   ],
+   "izvor_sadrzaja": "Nova stranica. Tekst o načinu saradnje preuzet iz Ponude ('predložite termin sastanka, mi ćemo Vas rado posetiti i napraviti ponudu samo za Vas'); kontakt podaci iz Kontakta.",
+   "primarni_cta": "Pošalji upit"
+  },
+  {
+   "putanja": "/politika-privatnosti/",
+   "naslov": "Politika privatnosti — Dr Cooker",
+   "svrha": "Pravna obaveza koja nastaje uvođenjem forme (Zakon o zaštiti podataka o ličnosti / GDPR). Nije u glavnoj navigaciji, samo u footeru. Sadržaj se ne piše bez podataka od klijenta.",
+   "sekcije": [
+    "PLACEHOLDER: rukovalac podacima — pun pravni naziv, sedište, PIB, matični broj",
+    "Koje podatke prikupljamo — podaci uneti u formu za upit",
+    "Svrha i pravni osnov obrade — odgovor na upit i priprema ponude",
+    "PLACEHOLDER: rok čuvanja podataka",
+    "Prava lica na koje se podaci odnose — pristup, ispravka, brisanje, prigovor",
+    "PLACEHOLDER: kontakt za pitanja o zaštiti podataka",
+    "Kolačići — PLACEHOLDER dok se ne odluči o analitici"
+   ],
+   "izvor_sadrzaja": "Nova stranica. Ne postoji na starom sajtu; nijedan podatak nije dostupan u izvoru — cela stranica je otvoreno pitanje za klijenta i po potrebi za pravnika.",
+   "primarni_cta": "Nazad na Zatraži ponudu"
+  }
+ ],
+ "redirekti": [
+  {
+   "staro": "/sample-page/",
+   "novo": "/"
+  },
+  {
+   "staro": "/ponuda/",
+   "novo": "/snabdevanje/"
+  },
+  {
+   "staro": "/ponuda-hrane/",
+   "novo": "/snabdevanje/"
+  },
+  {
+   "staro": "/ponuda-hrane/transport-hrane/",
+   "novo": "/kako-radimo/dostava/"
+  },
+  {
+   "staro": "/ponuda-hrane/strucna-podrska-nutricioniste/",
+   "novo": "/kako-radimo/nutricionista/"
+  },
+  {
+   "staro": "/o-nama/nasa-misija/",
+   "novo": "/o-nama/#misija"
+  },
+  {
+   "staro": "/jelovnik/kvalitet-hrane/",
+   "novo": "/kako-radimo/#kvalitet-sirovina"
+  },
+  {
+   "staro": "/haccp/",
+   "novo": "/kako-radimo/bezbednost-hrane/"
+  }
+ ],
+ "odbaceno": [
+  "KLIJENTOV OKVIR 1:1 (Pocetna, O nama, Usluge, Ponuda/meni, Za koga radimo, Galerija, FAQ, Kontakt, Upit). Odbaceno jer tri stavke — Usluge, Ponuda/meni i Za koga radimo — pokrivaju isti sadrzaj iz tri ugla i kupac ne zna koju da klikne. Direktor vrtica koji trazi gramature moze da ih ocekuje na sve tri. Zadrzana je sustina okvira (Pocetna, O nama, jelovnik, publike, Kontakt, Upit), uklonjeno preklapanje: publike su primarne, 'Usluge' su svedene na dva stvarna proizvoda (obroci kroz publike, snabdevanje kao svoja stranica), a dokazni sloj je izdvojen u 'Kako radimo'.",
+  "GALERIJA KAO STRANICA U v1. Odbaceno jer ne postoji nijedna prava fotografija Dr Cooker hrane, kuhinje, tima ili dostave. Prazna galerija je gore od nepostojece — kod keteringa signalizira da se nesto krije. Popunjavanje stokom je tiho izmisljanje i krsi zabranu iz briefa. Galerija uz to nema konverzionu funkciju u B2B odluci: direktor trazi gramature i dokaz kontrole, ne lightbox. Ruta /galerija/ se rezervise, ne objavljuje i ne ulazi u sitemap dok klijent ne isporuci definisan minimum. Prioritetna lista snimanja koju treba traziti od klijenta: (1) kuhinja u radu — prijem robe, priprema, pakovanje u termo posude, utovar; (2) vozilo spolja i iznutra; (3) termo posude, pune i prazne; (4) servirani obrok u objektu; (5) tim, grupno i nutricionista pojedinacno; (6) dnevnik isporuke. Minimum za objavu galerije: 12 upotrebljivih fotografija iz bar tri od sest kategorija.",
+  "FAQ KAO ZASEBNA TOP-LEVEL STRANICA. Odbaceno jer ne postoji izvor pitanja od klijenta. Jedina pitanja koja bismo smeli da napisemo su ona ciji odgovori vec stoje na drugim stranicama, pa bi samostalna FAQ bila duplikat bez sopstvene pretrazivacke namere i bez saobracaja. Umesto toga FAQ blokovi idu kontekstualno, na dno stranice kojoj pitanje pripada, svaki sa FAQPage schema markupom — tamo rusi prigovor tacno iznad CTA dugmeta. Ruta /pitanja-i-odgovori/ se uvodi tek kada klijent dostavi prava pitanja koja komercijalista dobija telefonom; to je jedini posten izvor. Pitanja koja se NE smeju napisati bez klijenta: cena i cenovnik, rok odgovora na upit, podrucje dostave, minimalni broj korisnika, radno vreme, otkazni rok, posedovanje HACCP sertifikata.",
+  "JEDNA ZAJEDNICKA STRANICA ZA OBE PUBLIKE ('Za koga radimo' sa nabrajanjem). Odbaceno jer se sadrzaj objektivno razlikuje: gramature postoje samo za jasle, vrtice i skole; Pravilnik o blizim uslovima i nacinu ostvarivanja ishrane dece vazi samo za decu; decji jelovnik iskljucuje suhomesnato i konditorske proizvode, a jelovnik za odrasle ne. Zajednicka stranica bi svakoj publici servirala pola sadrzaja koji joj ne treba i ne bi mogla da nosi razlicit CTA ni razlicitu naslovnu obecanu vrednost. Dodatno, pretrage 'hrana za vrtice Beograd' i 'ketering za firme Beograd' su razdvojene i traze dve landing stranice; postojeci title tagovi ciljaju samo prvu.",
+  "CETIRI ODVOJENE STRANICE PO PUBLICI (jasle, vrtici, skole, produzeni boravci, kompanije). Odbaceno jer bi nastale cetiri skoro identicne tanke stranice koje se medjusobno kanibalizuju u pretrazi. Jasle nisu publika nego kolona u tabeli gramatura; produzeni boravak je isti kupac kao skola. Razlika se resava unutar jedne stranice, na mestu gde je stvarna — u tabeli gramatura.",
+  "TRI ODVOJENE 'USLUZNE' STRANICE (kuvani obroci / distribucija 7000 artikala / nutricionista + transport). Odbaceno jer nutricionista i transport nisu proizvodi koji se kupuju odvojeno — niko ne porucuje 'uslugu nutricioniste'. Oni su unutrasnjost proizvoda 'kuvani obroci' i njegov glavni diferencijator. Predstavljanje dokaza kao trece usluge slabi i dokaz i ponudu: kupac pomisli da je nutricionista doplata. Zato idu u pilar 'Kako radimo', gde funkcionisu kao razlog za poverenje, a u navigaciji ostaju dva stvarna proizvoda.",
+  "HACCP KAO IZOLOVANA TOP-LEVEL STRANICA POD TIM IMENOM. Odbaceno iz dva razloga. Prvo, 'HACCP' je zargon u navigaciji — office manager ga ne prepoznaje kao obecanje. Drugo i vaznije: izvor kaze da se postuju PRINCIPI HACCP standarda i nigde ne tvrdi posedovanje sertifikata, pa samostalna stavka menija 'HACCP' de facto cita kao tvrdnja o sertifikaciji koju nemamo pravo da napravimo. Reseno preimenovanjem u 'Bezbednost hrane', zadrzavanjem reci HACCP u title-u, H1 i prvom podnaslovu (ciljna rec ostaje), 301 redirekcijom sa /haccp/ i — kljucno — prenosenjem tri najjaca signala na Pocetnu i na obe publikacijske stranice. Signal poverenja mora da putuje do mesta gde se donosi odluka, a ne da ceka da neko klikne na njega.",
+  "ZASEBNA STRANICA 'NASA MISIJA'. Odbaceno jer je to najemotivniji tekst na sajtu (decje culo ukusa se pretezno formira do seste godine) zakopan dva klika duboko, gde nema ni saobracaja ni konverzije. Spojena je u /o-nama/#misija kao sekcija, a njena centralna teza je podignuta i na Pocetnu. 301 sa /o-nama/nasa-misija/.",
+  "OBJEDINJAVANJE 'KONTAKT' I 'ZATRAZI PONUDU' U JEDNU STRANICU. Odbaceno jer sluze razlicitim namerama. Kontakt je 'hocu coveka odmah, gde ste' — telefon, mejl, mapa, nula frikcije. Zatrazi ponudu je kvalifikovani intake sa formom od pet koraka. Spajanjem bi glavno dugme u zaglavlju vodilo na stranicu punu distrakcija, a forma bi se takmicila sa brojem telefona. Razdvojeno, dugme ima jednu jasnu metu, a Kontakt ostaje izlaz za one koji ne popunjavaju forme.",
+  "CENOVNIK ILI STRANICA SA CENAMA. Odbaceno jer u izvoru ne postoji nijedna cena, a brief izricito zabranjuje izmisljanje. Uz to, kod B2B keteringa cena zavisi od broja korisnika, broja objekata i sastava obroka, pa je ponuda po meri ionako ispravan model — sto izvor i potvrdjuje ('napravicemo ponudu samo za Vas'). Jedina cenovna tvrdnja koja se prenosi je postojeca 'cene nize od cena u redovnim prodavnicama' na stranici Snabdevanje, i nju treba potvrditi sa klijentom jer je to uporedna cenovna tvrdnja koja je pravno osetljiva.",
+  "BLOG ILI 'NOVOSTI' U v1. Odbaceno jer ne postoji nijedan clanak, nijedan autor i nijedna obaveza azuriranja. Prazan blog ili blog sa tri objave od pre dve godine aktivno steti utisku ozbiljnosti. Postoji legitiman kasniji potencijal (nutricionista kao autor tekstova o ishrani dece), ali tek kada klijent potvrdi da moze da isporucuje sadrzaj.",
+  "ZADRZAVANJE MENIJA I GRAMATURA KAO SLIKA SKENIRANIH TABELA. Odbaceno bezuslovno. To je trenutno najvredniji sadrzaj na sajtu zarobljen u sest JPEG fajlova — neindeksabilan, necitljiv na mobilnom i nedostupan screen readerima. Prepisuje se u prave HTML tabele (podaci su vec prepisani u SOURCE-BRIEF), responsive, na mobilnom kao kartica po danu. Skenovi se ne koriste ni kao ilustracija.",
+  "OZNACAVANJE NEDELJNIH MENIJA KAO 'AKTUELNI MENI OVE NEDELJE'. Odbaceno jer su oba menija iz izvora nedatirani primeri. Objavljivanje kao aktuelnog bi bila tvrdnja koju ne mozemo da potkrepimo i obaveza azuriranja koju niko nije preuzeo. Objavljuju se kao 'Primer nedeljnog jelovnika 1' i 'Primer nedeljnog jelovnika 2'; pitanje da li klijent zeli i moze da odrzava zivi nedeljni jelovnik ostaje otvoreno.",
+  "KORISCENJE MASKOTE (crtani plavi lonac sa licem) I CRTANIH VOCA SA OCIMA U NOVOM DIZAJNU. Odbaceno jer rusi B2B ozbiljnost pred kupcem koji je direktor ustanove ili HR i koji snosi zakonsku odgovornost za ishranu dece. Maskota se zadrzava samo tamo gde je neizbezna — unutar postojeceg logotipa — i nigde se ne ponavlja kao samostalni grafcki element. PLACEHOLDER: da li klijent zeli redizajn logotipa bez maskote je zasebno pitanje izvan opsega IA."
+ ]
+}

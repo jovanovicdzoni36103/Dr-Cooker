@@ -1,0 +1,664 @@
+/* ==========================================================================
+   OSNOVA
+   Dr Cooker — dizajn tokeni, fontovi, reset, tipografija, layout
+   ========================================================================== */
+
+/* ==========================================================================
+   DIZAJN TOKENI — jedini izvor boja, tipografije, razmaka i kretanja
+   ==========================================================================
+
+   DVA REGISTRA BOJE. Ovo je centralno pravilo sistema:
+
+     TOPLI  --color-accent  #A32A2E   glas firme
+            Isključivo: primarni CTA, inline linkovi, mono eyebrow labele,
+            redni brojevi, istaknuta reč u H1.
+
+     HLADNI --color-proof   #124A3F   dokaz
+            Isključivo: dijagram lanca kontrole, zaglavlja tabela sa podacima,
+            blokovi o bezbednosti hrane, fokus prsten, tick na .normativ-row
+            kada red nosi merljiv podatak.
+
+   Provera pri QA: ako sa stranice nestane hladni registar — postala je
+   marketing. Ako se topli registar pojavi na podatku — podatak je postao
+   reklama. Oboje su greške.
+
+   AKCENT I PROOF SE NIKADA NE DODIRUJU. Izmereno #A32A2E na #124A3F = 1.41:1
+   — skoro ista svetlina, vibriraju, i klasičan su crveno-zeleni problem za
+   daltoniste. Nikad crveni tekst na zelenoj površini ni obrnuto.
+
+   DARK MODE SE NAMERNO NE PRAVI. Cela paleta je građena oko tona papira;
+   inverzija bi je obesmislila. `prefers-color-scheme` se ignoriše.
+   ========================================================================== */
+
+:root {
+  /* --- Boje: površine ---------------------------------------------------- */
+
+  /** Osnovna pozadina. Topao off-white, referentna podloga za sve kontraste. */
+  --color-paper: #faf7f2;
+
+  /** Alternirajuća sekcija i zebra u tabeli gramatura.
+      Korak prema papiru je 1.11:1 — namerno jedva vidljiv; sekcije razdvaja
+      hairline, ne boja. NIKADA direktno uz --color-proof-tint (skoro ista
+      svetlina, različit ton — čita se kao greška u renderu). */
+  --color-paper-alt: #f1ebe0;
+
+  /** Podloga podatkovnih panela i polja forme. */
+  --color-surface: #ffffff;
+
+  /* --- Boje: tekst ------------------------------------------------------- */
+
+  /** Primarni tekst i svi display naslovi. 17.19:1 na papiru. */
+  --color-ink: #17140f;
+
+  /** Sekundarni tekst: lead, marginalije, caption, fusnote.
+      9.24:1 na paper, 8.32:1 na paper-alt. */
+  --color-ink-soft: #4a4238;
+
+  /* --- Boje: linije ------------------------------------------------------ */
+
+  /** ISKLJUČIVO dekorativna hairline između sekcija. 1.49:1 — pada namerno,
+      izuzeto iz WCAG 1.4.11 jer ne nosi informaciju.
+      Svaka linija koja razdvaja PODATKE mora biti --color-rule-strong.
+      Ovo je najlakše mesto za grešku u implementaciji. */
+  --color-rule: #d5ccbe;
+
+  /** Strukturna linija: redovi tabela, ivice polja, okvir placeholder slota.
+      3.71:1 na paper, 3.34:1 na paper-alt, 3.33:1 na proof-tint. */
+  --color-rule-strong: #8c7e69;
+
+  /* --- Boje: topli registar (glas) --------------------------------------- */
+
+  /** 6.71:1 na paper, 6.05:1 na paper-alt. Tekst na njemu je --color-paper. */
+  --color-accent: #a32a2e;
+
+  /** Hover i active. 8.36:1 na paper. */
+  --color-accent-deep: #85292b;
+
+  /* --- Boje: hladni registar (dokaz) ------------------------------------- */
+
+  /** 9.46:1 na paper. Takođe boja fokus prstena na svetlim podlogama. */
+  --color-proof: #124a3f;
+
+  /** Tamne pune trake i podnožje. Najviše DVE po stranici plus podnožje. */
+  --color-proof-deep: #08221d;
+
+  /** Zbirni red tabele, zebra nutritivne tabele, ispuna placeholder slota.
+      ink 15.43:1, proof 8.49:1, accent 6.03:1. */
+  --color-proof-tint: #e6ede8;
+
+  /* --- Boje: na tamnoj podlozi ------------------------------------------- */
+
+  /** Primarni tekst na proof-deep (13.83:1) i na proof (8.37:1).
+      Takođe boja fokus prstena na tamnim površinama. */
+  --color-paper-on-dark: #efe9de;
+
+  /** Prigušen tekst i mono labele na tamnom: 8.52:1 na proof-deep.
+      Na --color-proof je 5.16:1 — AA, dakle SAMO od 16px naviše. */
+  --color-mist: #a8beb7;
+
+  /** Granice redova i polja na proof-deep. 3.31:1 — prelazi 1.4.11.
+      NE koristiti na --color-proof (2.4:1, pada) — tamo idu linije u mist. */
+  --color-rule-on-dark: #64726a;
+
+  /* --- Sveži registar ------------------------------------------------------ */
+
+  /**
+   * Treća boja, uvedena da sajt deluje živo a ne samo ozbiljno.
+   * Firma prodaje hranu za decu — strogost sama po sebi ne prodaje.
+   *
+   * Koristi se STEDLJIVO i samo na pokretnim, akcentnim mestima:
+   * tačka u tickeru, linija koja se iscrtava pri ulasku, hover na karticama
+   * publika, jedinica ispod brojeva, traka napretka.
+   *
+   * NIKADA kao površina ispod teksta i nikada uz --color-accent na dodiru —
+   * važi isto pravilo kao za accent/proof par.
+   *
+   * 4.97:1 na papiru — prolazi AA za tekst normalne veličine.
+   */
+  --color-fresh: #1e7a4d;
+
+  /** Tamnija varijanta za hover i za tekst kada treba rezerva. */
+  --color-fresh-deep: #15603c;
+
+  /* --- Boja: zaključana ---------------------------------------------------- */
+
+  /** Izmereno iz originalnog logo fajla. Koristi se u kolornom wordmark-u
+      TAČNO JEDNOM na celom sajtu, na /o-nama.
+      3.87:1 na papiru — prolazi kao grafika, NIKADA kao boja teksta,
+      dugmeta ili linije. U zaglavlju i podnožju ide mono wordmark. */
+  --color-logo-red: #ec3237;
+
+  /* --- Semantički aliasi -------------------------------------------------- */
+  /* Komponente koriste ove, ne sirove nazive boja. Tako se tema menja na
+     jednom mestu. */
+
+  --c-bg: var(--color-paper);
+  --c-bg-alt: var(--color-paper-alt);
+  --c-surface: var(--color-surface);
+  --c-ink: var(--color-ink-soft);
+  --c-ink-strong: var(--color-ink);
+  --c-ink-muted: var(--color-ink-soft);
+  --c-rule: var(--color-rule);
+  --c-rule-strong: var(--color-rule-strong);
+  --c-accent: var(--color-accent);
+  --c-accent-ink: var(--color-accent);
+  --c-link: var(--color-accent);
+  --c-forest: var(--color-proof);
+  --c-forest-deep: var(--color-proof-deep);
+  --c-tint: var(--color-proof-tint);
+  --c-on-ink: var(--color-paper-on-dark);
+  --c-on-ink-muted: var(--color-mist);
+  --c-focus: var(--color-proof);
+  --c-paper-alt: var(--color-paper-alt);
+  --c-brand-red: var(--color-ink);
+  --c-brand-red-light: var(--color-paper-on-dark);
+
+  /* --- Tipografija: familije ---------------------------------------------- */
+
+  --font-display: 'Fraunces', 'Fraunces-fallback', Georgia, 'Times New Roman', serif;
+  --font-text: 'Archivo', 'Archivo-fallback', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* --- Tipografija: skala -------------------------------------------------- */
+  /* Fluidna, referentni raspon 320px → 1440px pri root 16px. */
+
+  --fs-display-xl: clamp(2.5rem, 1.357rem + 5.714vw, 6.5rem); /* 40 → 104 */
+  --fs-display-l: clamp(2rem, 1.429rem + 2.857vw, 4rem); /* 32 → 64 */
+  /* Glas sekcijskog naslova.
+     Izmedju -l (64px) i -m (36px) nije postojao nijedan korak, pa je svaki
+     naslov sekcije isao na 64px — devedeset puta kroz sajt, do deset puta na
+     jednoj stranici. Kada je svaki naslov najglasniji, nijedan nije. */
+  --fs-section-head: clamp(1.75rem, 1.464rem + 1.429vw, 2.75rem);
+  --fs-display-m: clamp(1.5rem, 1.286rem + 1.071vw, 2.25rem); /* 24 → 36 */
+  --fs-display-s: clamp(1.25rem, 1.143rem + 0.536vw, 1.625rem); /* 20 → 26 */
+  --fs-lead: clamp(1.1875rem, 1.098rem + 0.446vw, 1.5rem); /* 19 → 24 */
+  --fs-body: clamp(1.0625rem, 1.027rem + 0.179vw, 1.1875rem); /* 17 → 19 */
+  --fs-small: clamp(0.875rem, 0.857rem + 0.089vw, 0.9375rem); /* 14 → 15 */
+  --fs-label: clamp(0.75rem, 0.732rem + 0.089vw, 0.8125rem); /* 12 → 13 */
+
+  /* Aliasi koje koristi base.css */
+  --text-display: var(--fs-display-xl);
+  --text-3xl: var(--fs-display-l);
+  --text-2xl: var(--fs-display-m);
+  --text-xl: var(--fs-display-s);
+  --text-lg: var(--fs-lead);
+  --text-base: var(--fs-body);
+  --text-sm: var(--fs-small);
+  --text-xs: var(--fs-label);
+
+  /* --- Tipografija: metrika ------------------------------------------------ */
+
+  /* 1.04 umesto 0.98: Č, Ć, Š, Ž nose kvačice IZNAD verzala i na 0.98 dodiruju
+     ascendere reda ispod. Provereno na srpskom QA stringu. */
+  --leading-display: 1.04;
+  --leading-tight: 1.08;
+  --leading-snug: 1.3;
+  --leading-normal: 1.62;
+  --leading-relaxed: 1.45;
+
+  --tracking-tighter: -0.03em;
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.14em;
+
+  --weight-display: 700;
+
+  /* --- Mere ---------------------------------------------------------------- */
+
+  --w-measure: 66ch;
+  --w-measure-wide: 76ch;
+  --w-narrow: 46rem;
+  --w-shell: 72rem;
+  --w-wide: 84rem;
+
+  /* --- Razmak: skala 4–192, bez međuvrednosti ------------------------------ */
+
+  --space-1: 0.25rem; /*   4 */
+  --space-2: 0.5rem; /*    8 */
+  --space-3: 0.75rem; /*  12 */
+  --space-4: 1rem; /*     16 */
+  --space-5: 1.5rem; /*   24 */
+  --space-6: 2rem; /*     32 */
+  --space-7: 3rem; /*     48 */
+  --space-8: 4rem; /*     64 */
+  --space-9: 6rem; /*     96 */
+  --space-10: 8rem; /*   128 */
+  --space-11: 12rem; /*  192 */
+
+  --space-section: clamp(var(--space-8), 4vw + 2rem, var(--space-10));
+  --space-section-tight: clamp(var(--space-7), 3vw + 1rem, var(--space-8));
+
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* --- Oblik ---------------------------------------------------------------- */
+  /* radius 0 svuda. Jedini izuzetak su polja forme, gde 2px sprečava da input
+     izgleda kao neaktivna površina. Bez box-shadow igde na sajtu — dubina se
+     pravi linijom i tonom, ne senkom. */
+
+  --radius-none: 0;
+  --radius-sm: 2px;
+
+  /* --- Kretanje -------------------------------------------------------------- */
+
+  --dur-1: 120ms;
+  --dur-2: 220ms;
+  --dur-3: 420ms;
+  --dur-4: 700ms;
+
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* --- Layout -------------------------------------------------------------- */
+
+  --header-h: 4.5rem;
+
+  /* --- Teksture ------------------------------------------------------------ */
+  /* Zrno papira. SVG sum, jedan filter, bez ijednog bajta preuzimanja. */
+
+  --texture-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* --- Ikonice ------------------------------------------------------------- */
+  /* Strelica odlaznog linka. Stoji kao token da bi je .ext koristio kroz
+     mask-image i time nasledio currentColor. */
+
+  --icon-ext: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 11L11 5M11 5H6M11 5v5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Visina zaglavlja raste kada se pojavi desktop navigacija. Prag MORA da
+   prati onaj u css/layout.css (66rem) — inace bi na 960–1055px zaglavlje
+   bilo visoko, a u njemu i dalje samo burger. */
+@media (min-width: 66rem) {
+  :root {
+    --header-h: 5.25rem;
+  }
+}
+
+/* ==========================================================================
+   FONTOVI — self-host, subsetovano na srpsku latinicu
+   ==========================================================================
+   ZAMKA KOJU SMO IZBEGLI: Google Fonts drži Đ/đ (U+0110–0111) u VIETNAMESE
+   podskupu, ne u latin-ext. Pri self-hostu se subset MORA eksplicitno
+   proširiti na U+0110-0111, inače „đ" pada na sistemski fallback i vidno
+   odskače u rečima „predškolska", „đačka užina", „đuveč".
+   Vidi tools/build-fonts.py — subset uključuje latin + latin-ext + U+0110-0111.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/fraunces-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  /* opsz i WONK/SOFT su zapečeni pri subsetovanju: opsz 144, SOFT 0, WONK 0.
+     WONK unosi šum u tekst sa dijakriticima i gura ton ka dečjem — pogrešna
+     publika, jer odlučuje direktor ustanove. */
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../assets/fonts/fraunces-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../assets/fonts/archivo-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../assets/fonts/archivo-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../assets/fonts/plex-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  src: url('../assets/fonts/plex-mono-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback metrike — bez njih kvačice vidno poskoče pri font swapu. */
+
+@font-face {
+  font-family: 'Fraunces-fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 96%;
+  ascent-override: 92%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Archivo-fallback';
+  src: local('Segoe UI'), local('Helvetica Neue'), local('Arial');
+  size-adjust: 102%;
+  ascent-override: 94%;
+  descent-override: 26%;
+  line-gap-override: 0%;
+}
+
+/* ==========================================================================
+   BAZA — reset, tipografski ritam, layout primitivi
+   Tokeni (boje, fontovi, razmaci) definisani su iznad, u :root ovog fajla.
+   ========================================================================== */
+
+/* --- Reset ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+/* Atribut `hidden` MORA da pobedi.
+ *
+ * Browserov ugradjeni stil je `[hidden] { display: none }`, ali on zivi u
+ * user-agent sloju, koji gubi od BILO KOG autorskog pravila koje postavi
+ * `display` — bez obzira na specificnost. Zato je `.panel { display: flex }`
+ * cinio da se panel „Upit je poslat" i panel „Upit nije poslat" vide
+ * ISTOVREMENO, iako JavaScript uredno postavlja `el.hidden = true`.
+ *
+ * Isto je obaralo i uslovno polje „broj korisnika", koje je bilo vidljivo i
+ * kada usluga ne ukljucuje obroke.
+ *
+ * `!important` je ovde jedini ispravan alat: isto rade normalize.css,
+ * sanitize.css i Bootstrap. Alternativa bi bila zabrana `display` na svakoj
+ * komponenti koju JS ikada sakrije — pravilo koje se ne moze odrzati.
+ *
+ * Komponente kojima treba animirano skrivanje (npr. mobilni meni) NE koriste
+ * `hidden`, nego svoju klasu. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Odmak da sticky zaglavlje ne prekrije cilj #ankera. */
+  scroll-padding-top: calc(var(--header-h) + var(--space-6));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  min-height: 100svh;
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--c-ink);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  /* Sprečava horizontalni scroll od dekorativnih elemenata koji prelaze ivicu. */
+  overflow-x: clip;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--c-ink-strong);
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+:target {
+  scroll-margin-top: calc(var(--header-h) + var(--space-6));
+}
+
+/* --- Fokus ---------------------------------------------------------------- */
+/* Vidljiv fokus za tastaturu na svakoj interaktivnoj kontroli. Bez izuzetaka. */
+
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Miš ne dobija outline, tastatura ga uvek dobija. */
+:where(a, button, input, textarea, select, summary):focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- Preskoči na sadržaj -------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 200;
+  padding: var(--space-3) var(--space-5);
+  background: var(--c-ink-strong);
+  color: var(--c-on-ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transform: translateY(calc(-100% - var(--space-4)));
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* --- Samo za čitače ekrana ------------------------------------------------ */
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Layout primitivi ------------------------------------------------------ */
+
+.shell {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  max-width: var(--w-shell);
+}
+
+.shell--narrow {
+  max-width: var(--w-narrow);
+}
+
+.shell--wide {
+  max-width: var(--w-wide);
+}
+
+/* Vertikalni ritam sekcija. Jedna skala za ceo sajt. */
+.section {
+  padding-block: var(--space-section);
+}
+
+/* Partitura, ne metronom.
+   Svaka sekcija na svih 17 stranica disala je na istih 89.6px, a token koji
+   bi dao vise vazduha (--space-11, 192px) nije imao nijednu upotrebu u 5958
+   linija. Sajt koji svuda diset isto nema ni jedan trenutak koji se pamti.
+
+   `--air` se trosi najvise TRI puta po stranici: posle heroja, oko izloska
+   koji stranica dokazuje, i pred zatvaranje. */
+.section--air {
+  padding-block: var(--space-11);
+}
+
+.section--tight {
+  padding-block: var(--space-section-tight);
+}
+
+/* Merena širina teksta — čitljivost iznad svega. */
+.measure {
+  max-width: var(--w-measure);
+}
+
+.measure--wide {
+  max-width: var(--w-measure-wide);
+}
+
+/* Vertikalni razmak između dece, bez margin-collapse iznenađenja. */
+.stack > * + * {
+  margin-block-start: var(--stack-gap, var(--space-5));
+}
+
+.stack--sm {
+  --stack-gap: var(--space-3);
+}
+
+.stack--lg {
+  --stack-gap: var(--space-7);
+}
+
+/* --- Tipografske klase ----------------------------------------------------- */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-text);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--c-accent-ink);
+}
+
+.display-1 {
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tighter);
+}
+
+/* `.display-2` je sada glas SEKCIJE, ne glas stranice.
+   Ranije je nosio --text-3xl (do 64px) na svih 90 mesta. Sada nosi korak
+   nize; puna visina se dodeljuje namerno, klasom `--loud`, i to jednom po
+   stranici — onom naslovu koji nosi argument. Tako emfaza ponovo nesto znaci.
+
+   Napomena: dva `h1` na sajtu koriste ovu klasu (404 i politika privatnosti).
+   Oba su naslovi sluzbenih stranica kojima 44px odgovara bolje nego 64px, pa
+   je promena za njih dobitak, ne steta. */
+.display-2 {
+  font-size: var(--fs-section-head);
+  line-height: var(--leading-tight);
+}
+
+/* Jedan po stranici. Naslov koji nosi argument. */
+.display-2--loud {
+  font-size: var(--text-3xl);
+  letter-spacing: var(--tracking-tight);
+}
+
+.display-3 {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--c-ink-muted);
+}
+
+.small {
+  font-size: var(--text-sm);
+  color: var(--c-ink-muted);
+}
+
+/* --- Linkovi u tekstu ------------------------------------------------------ */
+
+.prose a,
+a.link {
+  color: var(--c-link);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklab, var(--c-link) 40%, transparent);
+  transition: text-decoration-color var(--dur-1) var(--ease-out);
+}
+
+.prose a:hover,
+a.link:hover {
+  text-decoration-color: currentColor;
+}

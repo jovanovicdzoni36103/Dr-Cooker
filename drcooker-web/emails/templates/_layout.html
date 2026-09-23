@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="sr-Latn" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>{{SUBJECT}}</title>
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<![endif]-->
+<style>
+  /* Email klijenti podržavaju malo CSS-a. Sve što je kritično je i inline.
+     Ovaj blok nosi samo ono što inline ne može: media query i pseudo-klase. */
+  body { margin:0 !important; padding:0 !important; width:100% !important; }
+  table { border-collapse:collapse !important; }
+  img { border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; }
+  a { text-decoration:none; }
+
+  /* Gmail i Outlook.com ume da podvuče i oboji telefone i adrese. Ovo to gasi. */
+  .x-auto a { color:inherit !important; text-decoration:none !important; }
+
+  @media only screen and (max-width:620px) {
+    .wrap { width:100% !important; }
+    .pad { padding-left:20px !important; padding-right:20px !important; }
+    .pad-y { padding-top:28px !important; padding-bottom:28px !important; }
+    .stack-col { display:block !important; width:100% !important; }
+    .stack-col + .stack-col { padding-top:14px !important; }
+    .btn-a { display:block !important; width:100% !important; text-align:center !important; }
+    .btn-td { display:block !important; width:100% !important; }
+    .btn-td + .btn-td { padding-top:10px !important; padding-left:0 !important; }
+    .h1 { font-size:26px !important; line-height:1.2 !important; }
+    .lbl { width:auto !important; display:block !important; padding-bottom:2px !important; }
+    .val { display:block !important; width:100% !important; padding-left:0 !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#F1EBE0;">
+
+<!-- Pretekst: prvi red u listi poruka, pre otvaranja. -->
+<div style="display:none;font-size:1px;color:#F1EBE0;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">{{PREHEADER}}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F1EBE0;">
+<tr>
+<td align="center" style="padding:24px 12px;">
+
+  <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#FAF7F2;border:1px solid #8C7E69;">
+
+    <!-- ZAGLAVLJE -->
+    <tr>
+      <td class="pad" style="background-color:#08221D;padding:26px 36px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td align="left" style="font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.1;font-weight:bold;color:#EFE9DE;letter-spacing:-0.01em;">
+              Dr Cooker
+              <div style="font-family:Consolas,'Courier New',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#A8BEB7;padding-top:6px;font-weight:normal;">Ketering servis</div>
+            </td>
+            <td align="right" style="font-family:Consolas,'Courier New',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#A8BEB7;">
+              {{HEADER_TAG}}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- SADRŽAJ -->
+    {{CONTENT}}
+
+    <!-- PODNOŽJE -->
+    <tr>
+      <td class="pad" style="background-color:#08221D;padding:28px 36px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.6;color:#A8BEB7;">
+              <div style="font-family:Consolas,'Courier New',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#A8BEB7;padding-bottom:10px;">Kontakt</div>
+              <div class="x-auto" style="color:#EFE9DE;">
+                {{COMPANY_ADDRESS}}<br>
+                <a href="tel:{{PHONE1_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE1_LABEL}}: {{PHONE1}}</a><br>
+                <a href="tel:{{PHONE2_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE2_LABEL}}: {{PHONE2}}</a><br>
+                <a href="mailto:{{COMPANY_EMAIL}}" style="color:#EFE9DE;text-decoration:underline;">{{COMPANY_EMAIL}}</a>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-top:20px;border-top:1px solid #64726A;margin-top:20px;">
+              <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;line-height:1.6;color:#A8BEB7;padding-top:18px;">
+                {{FOOTER_NOTE}}
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+  </table>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

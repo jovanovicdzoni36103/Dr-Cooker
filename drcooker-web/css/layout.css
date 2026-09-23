@@ -1,0 +1,435 @@
+/* ==========================================================================
+   ZAGLAVLJE, NAVIGACIJA, PODNOZJE
+   Dr Cooker — struktura stranice
+   ========================================================================== */
+
+/* ==========================================================================
+   ZAGLAVLJE, MOBILNA NAVIGACIJA, PODNOŽJE
+   ========================================================================== */
+
+/* --- Zaglavlje ------------------------------------------------------------ */
+
+.hdr {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 100;
+  background: var(--color-paper);
+  border-block-end: 1px solid var(--color-rule);
+  transition: border-color var(--dur-2) var(--ease-out);
+}
+
+/* Kada se odskroluje sa vrha, linija postaje jača — jedina promena.
+   Bez senke, bez promene visine (izbegava layout shift). */
+.hdr.is-stuck {
+  border-block-end-color: var(--color-rule-strong);
+}
+
+.hdr__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  min-block-size: var(--header-h);
+}
+
+.hdr__brand {
+  flex: none;
+  text-decoration: none;
+  margin-inline-end: auto;
+}
+
+.hdr__nav {
+  display: none;
+}
+
+.hdr__cta {
+  display: none;
+}
+
+@media (min-width: 66rem) {
+  .hdr__nav,
+  .hdr__cta {
+    display: block;
+  }
+}
+
+.hdr__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hdr__item {
+  position: relative;
+}
+
+.hdr__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.6em 0.7em;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  border-block-end: 2px solid transparent;
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.hdr__link:hover {
+  color: var(--color-accent);
+}
+
+/* Aktivna stavka nosi i liniju, ne samo boju (WCAG 1.4.1). */
+.hdr__link[aria-current='page'] {
+  color: var(--color-accent);
+  border-block-end-color: var(--color-accent);
+}
+
+/* Roditelj otvorene podstranice: prigušena oznaka, da se vidi gde se nalaziš
+   u navigaciji, ali da se ne takmiči sa stvarno aktivnom stavkom.
+   Atribut postavlja js/main.js. */
+.hdr__link[data-child-active] {
+  color: var(--color-accent);
+  border-block-end-color: color-mix(in oklab, var(--color-accent) 35%, transparent);
+}
+
+.hdr__chev {
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  transition: rotate var(--dur-2) var(--ease-out);
+}
+
+.hdr__item[data-open] .hdr__chev {
+  rotate: 180deg;
+}
+
+/* --- Podmeni -------------------------------------------------------------- */
+
+.hdr__sub {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  min-inline-size: 15rem;
+  margin: 0;
+  padding: var(--space-2);
+  list-style: none;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  /* Skriven, ali u DOM-u — pojavljuje se bez pomeranja layouta. */
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 -0.35rem;
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    translate var(--dur-2) var(--ease-out),
+    visibility var(--dur-2);
+}
+
+.hdr__item[data-open] .hdr__sub {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+}
+
+.hdr__sublink {
+  display: block;
+  padding: 0.6em 0.75em;
+  font-size: var(--fs-small);
+  color: var(--color-ink);
+  text-decoration: none;
+  border-inline-start: 2px solid transparent;
+}
+
+.hdr__sublink:hover {
+  background: var(--color-paper-alt);
+  border-inline-start-color: var(--color-accent);
+}
+
+.hdr__sublink[aria-current='page'] {
+  color: var(--color-accent);
+  border-inline-start-color: var(--color-accent);
+}
+
+/* --- Dugme za mobilni meni -------------------------------------------------- */
+
+.hdr__burger {
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  margin-inline-start: auto;
+  color: var(--color-ink);
+}
+
+/* Mora stajati POSLE pravila iznad. Media query ne nosi veću specifičnost,
+   pa bi ranije napisano sakrivanje bilo nadjačano kasnijim `display: grid`. */
+@media (min-width: 66rem) {
+  .hdr__burger {
+    display: none;
+  }
+}
+
+.hdr__burger-box {
+  display: grid;
+  gap: 6px;
+  inline-size: 1.4rem;
+}
+
+.hdr__burger-bar {
+  display: block;
+  block-size: 2px;
+  background: currentColor;
+  transition:
+    translate var(--dur-2) var(--ease-out),
+    rotate var(--dur-2) var(--ease-out);
+}
+
+[aria-expanded='true'] .hdr__burger-bar:first-child {
+  translate: 0 4px;
+  rotate: 45deg;
+}
+
+[aria-expanded='true'] .hdr__burger-bar:last-child {
+  translate: 0 -4px;
+  rotate: -45deg;
+}
+
+/* --- Mobilni panel ----------------------------------------------------------- */
+
+.mnav {
+  position: fixed;
+  inset: var(--header-h) 0 0;
+  z-index: 99;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-paper);
+  border-block-start: 1px solid var(--color-rule);
+}
+
+@media (min-width: 66rem) {
+  .mnav {
+    display: none;
+  }
+}
+
+.is-nav-open {
+  overflow: hidden;
+}
+
+.mnav__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-block: var(--space-6) var(--space-8);
+  min-block-size: 100%;
+}
+
+.mnav__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.mnav__item {
+  border-block-end: 1px solid var(--color-rule-strong);
+  padding-block: var(--space-4);
+}
+
+.mnav__link {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 700;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.mnav__link[aria-current='page'] {
+  color: var(--color-accent);
+}
+
+.mnav__sub {
+  display: grid;
+  gap: var(--space-1);
+  margin: var(--space-3) 0 0;
+  padding: 0 0 0 var(--space-4);
+  list-style: none;
+  border-inline-start: 1px solid var(--color-rule-strong);
+}
+
+.mnav__sublink {
+  display: block;
+  padding-block: var(--space-2);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  text-decoration: none;
+}
+
+.mnav__sublink[aria-current='page'] {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.mnav__foot {
+  margin-block-start: auto;
+}
+
+/* --- Podnožje ---------------------------------------------------------------- */
+
+.ftr {
+  background: var(--color-proof-deep);
+  color: var(--color-paper-on-dark);
+  padding-block: var(--space-9) var(--space-6);
+}
+
+/* `:not(.btn)` je obavezno: bez njega ovo pravilo ima veću specifičnost od
+   `.btn--accent` i preboji tekst dugmeta u boju podloge dugmeta — dugme
+   ostane vidljivo, ali mu tekst nestane. */
+.ftr a:not(.btn) {
+  color: var(--color-paper-on-dark);
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-mist) 70%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.ftr a:not(.btn):hover {
+  text-decoration-color: currentColor;
+}
+
+.ftr :focus-visible {
+  outline-color: var(--color-paper-on-dark);
+}
+
+.ftr__top {
+  display: grid;
+  gap: var(--space-8);
+  padding-block-end: var(--space-8);
+  border-block-end: 1px solid var(--color-rule-on-dark);
+}
+
+@media (min-width: 52rem) {
+  .ftr__top {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: var(--space-7);
+  }
+}
+
+.ftr__tagline {
+  color: var(--color-mist);
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+}
+
+.ftr__h {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-mist);
+  margin-block-end: var(--space-4);
+}
+
+.ftr__links,
+.ftr__sublinks,
+.ftr__phones,
+.ftr__social,
+.ftr__hours,
+.ftr__meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ftr__links > li + li {
+  margin-block-start: var(--space-3);
+}
+
+.ftr__links a {
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.ftr__sublinks {
+  margin-block-start: var(--space-2);
+  padding-inline-start: var(--space-4);
+  border-inline-start: 1px solid var(--color-rule-on-dark);
+}
+
+.ftr__sublinks li + li {
+  margin-block-start: var(--space-2);
+}
+
+.ftr__sublinks a {
+  font-size: var(--fs-small);
+  font-weight: 400;
+  color: var(--color-mist);
+}
+
+.ftr__address {
+  font-style: normal;
+  display: grid;
+  gap: var(--space-4);
+  font-size: var(--fs-small);
+}
+
+.ftr__phones {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.ftr__phlabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-mist);
+}
+
+.ftr__phone,
+.ftr__email {
+  /* inline-flex + min-height: telefon i mejl u podnožju su na mobilnom
+     najčešća akcija na celom sajtu, pa dobijaju punu metu za dodir. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Bez ovoga bi min-height od 44px razvukao razmak između redova. */
+.ftr__phones li {
+  display: grid;
+}
+
+.ftr__phlabel {
+  margin-block-end: calc(var(--space-1) * -1);
+}
+
+.ftr__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block-start: var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--color-mist);
+}
+
+.ftr__legal {
+  margin: 0;
+}
+
+.ftr__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}

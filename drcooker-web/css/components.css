@@ -1,0 +1,1596 @@
+/* ==========================================================================
+   KOMPONENTE
+   Dr Cooker — dugmad, forme, tabele, paneli, deljene sekcije
+   ========================================================================== */
+
+/* ==========================================================================
+   KOMPONENTE
+   Pravila sistema: radius 0 (osim 2px na poljima forme), bez box-shadow,
+   dubina se pravi linijom i tonom.
+   ========================================================================== */
+
+/* --- Dugmad --------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.85em 1.6em;
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+  /* Minimalna meta za prst — 44px po WCAG 2.5.5. */
+  min-height: 2.75rem;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-deep);
+}
+
+/* Fokus prsten NIKADA ne sme da padne na crveno dugme: ink na accent je
+   2.56:1. Zato prsten ide na papir, odvojen belim odstojnikom. */
+.btn--primary:focus-visible {
+  outline: 3px solid var(--color-proof);
+  outline-offset: 3px;
+}
+
+.btn--accent {
+  background: var(--color-paper-on-dark);
+  color: var(--color-proof-deep);
+}
+
+.btn--accent:hover {
+  background: var(--color-surface);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-rule-strong);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-ink);
+  background: var(--color-paper-alt);
+}
+
+/* Ghost dugme na tamnoj traci.
+ *
+ * `.btn--ghost` nosi `color: var(--color-ink)` — tamno mastilo. Na
+ * `--color-proof-deep` to je kontrast 1.10:1, dakle nevidljivo dugme.
+ * Ranije je bilo zakrpljeno po instanci (`.ctaband__tel`), pa je svako novo
+ * ghost dugme na tamnoj podlozi ponavljalo gresku. Sada je pravilo sistemsko
+ * i vazi svuda gde postoji `.on-dark`. */
+.on-dark .btn--ghost {
+  color: var(--color-paper-on-dark);
+  border-color: var(--color-rule-on-dark);
+}
+
+.on-dark .btn--ghost:hover {
+  background: transparent;
+  border-color: var(--color-paper-on-dark);
+}
+
+.btn--sm {
+  padding: 0.6em 1.15em;
+  font-size: var(--fs-small);
+  min-height: 2.5rem;
+}
+
+.btn--lg {
+  padding: 1em 2em;
+}
+
+.btn--block {
+  display: flex;
+  width: 100%;
+}
+
+.btn[disabled],
+.btn[aria-busy='true'] {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+/* Spinner se pojavljuje samo dok traje slanje. */
+.btn__spinner {
+  display: none;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 700ms linear infinite;
+}
+
+.btn[aria-busy='true'] .btn__spinner {
+  display: block;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn__spinner {
+    animation-duration: 2s;
+  }
+}
+
+/* --- Potpisni element: .normativ-row -------------------------------------- */
+/* Jedan red podatka: tick + mono labela + vrednost + donja hairline.
+   Ponavlja se kroz ceo sajt i nosi identitet umesto fotografije. */
+
+.normativ-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-4);
+  border-block-end: 1px solid var(--color-rule-strong);
+}
+
+/* Pozicija svakog deteta je EKSPLICITNA. Bez ovoga automatsko raspoređivanje
+   gura vrednost (treće dete) u prvu kolonu drugog reda; ta kolona je `auto`,
+   pa se razvuče na širinu celog teksta i red prelije van ekrana.
+   Mereno: na 375px grid je ispadao `394px 0px` umesto `auto 1fr`. */
+.normativ-row__tick {
+  grid-column: 1;
+}
+
+.normativ-row__label {
+  grid-column: 2;
+}
+
+.normativ-row__value {
+  /* Na mobilnom vrednost ide u svoj red, preko obe kolone. */
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 40rem) {
+  .normativ-row {
+    grid-template-columns: auto minmax(8.75rem, 12rem) minmax(0, 1fr);
+  }
+
+  .normativ-row__value {
+    grid-column: 3;
+  }
+}
+
+.normativ-row__tick {
+  inline-size: 1px;
+  block-size: 0.75rem;
+  background: var(--color-rule-strong);
+  align-self: center;
+}
+
+/* Tick postaje zelen kada red nosi merljiv podatak — hladni registar. */
+.normativ-row[data-proof] .normativ-row__tick {
+  background: var(--color-proof);
+  inline-size: 2px;
+}
+
+.normativ-row__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.normativ-row__value {
+  font-size: var(--fs-body);
+  color: var(--color-ink);
+  line-height: var(--leading-snug);
+}
+
+.normativ-row__value strong {
+  font-weight: 600;
+}
+
+.normativ-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+/* Na tamnoj podlozi linije idu u mist (5.16:1), ne u rule-on-dark. */
+.on-dark .normativ-row {
+  border-block-end-color: var(--color-rule-on-dark);
+}
+
+.on-dark .normativ-row__tick {
+  background: var(--color-mist);
+}
+
+.on-dark .normativ-row__label {
+  color: var(--color-mist);
+}
+
+.on-dark .normativ-row__value {
+  color: var(--color-paper-on-dark);
+}
+
+/* --- Tamne trake ----------------------------------------------------------- */
+/* Budžet: najviše DVE po stranici, plus podnožje. */
+
+.on-dark {
+  background: var(--color-proof-deep);
+  color: var(--color-paper-on-dark);
+}
+
+.on-dark h1,
+.on-dark h2,
+.on-dark h3,
+.on-dark h4 {
+  color: var(--color-paper-on-dark);
+}
+
+.on-dark .eyebrow {
+  color: var(--color-mist);
+}
+
+.on-dark .lead,
+.on-dark .small {
+  color: var(--color-mist);
+}
+
+/* Crvena se NE koristi na tamnoj površini (2.08:1). Interaktivnost se
+   signalizira podvlakom, ne promenom boje teksta. */
+.on-dark a:not(.btn) {
+  color: var(--color-paper-on-dark);
+  text-decoration-color: var(--color-mist);
+}
+
+.on-dark a:not(.btn):hover {
+  text-decoration-color: currentColor;
+}
+
+.on-dark :focus-visible {
+  outline-color: var(--color-paper-on-dark);
+}
+
+/* --- Paneli (stanja forme, napomene) --------------------------------------- */
+
+.panel {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  padding: var(--space-5);
+  margin-block-start: var(--space-5);
+  border: 1px solid var(--color-rule-strong);
+  background: var(--color-surface);
+}
+
+.panel__icon {
+  flex: none;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+}
+
+.panel__title {
+  font-weight: 600;
+  font-size: var(--fs-lead);
+  color: var(--color-ink);
+}
+
+/* Broj upita. Cita se naglas preko telefona i prekucava u mejl, pa ide u
+   mono font: tamo se 0 i O, 1 i l ne mesaju. */
+.panel__ref {
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+.panel__ref strong {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1em;
+  color: var(--color-ink);
+  letter-spacing: 0.02em;
+  /* Broj se bira dvoklikom kao celina. */
+  user-select: all;
+}
+
+.panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-2);
+}
+
+.panel--ok {
+  background: var(--color-proof-tint);
+  border-color: var(--color-proof);
+}
+
+.panel--ok .panel__icon {
+  color: var(--color-proof);
+}
+
+.panel--err {
+  background: var(--color-surface);
+  /* Greška se NE signalizira samo bojom (WCAG 1.4.1): ima i ikonicu,
+     i naslov, i tekst objašnjenja. */
+  border-color: var(--color-accent);
+  border-inline-start-width: 4px;
+}
+
+.panel--err .panel__icon {
+  color: var(--color-accent);
+}
+
+.panel--info {
+  display: block;
+  background: var(--color-paper-alt);
+  border-color: var(--color-rule-strong);
+  color: var(--color-ink-soft);
+}
+
+.panel--info code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--color-surface);
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--color-rule);
+}
+
+/* --- Placeholder slot za buduću fotografiju --------------------------------- */
+/* Prazan dizajniran slot je bolji od loše fotografije telefonom.
+   Aspect-ratio je rezervisan od prvog dana — kada stigne prava fotografija,
+   layout se ne pomera. */
+
+.photo-slot {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-5);
+
+  /* `inline-size: 100%` je OBAVEZNO uz `aspect-ratio`.
+     Bez njega širina nije određena, pa je `aspect-ratio` računa IZ VISINE —
+     a visina dolazi iz teksta. Na uskom ekranu tekst se prelama u više
+     redova, kutija postane viša, odnos zahteva proporcionalno veću širinu i
+     slot izgura celu stranicu van ekrana.
+     Mereno: min-content slota je bio 410px u kontejneru od 343px. */
+  inline-size: 100%;
+  min-inline-size: 0;
+  aspect-ratio: var(--slot-ratio, 3 / 2);
+
+  /* Ako opis ipak ne staje u zadati odnos, kutija sme da poraste u visinu
+     umesto da iseče tekst. */
+  min-block-size: fit-content;
+
+  background: var(--color-proof-tint);
+  border: 1px solid var(--color-rule-strong);
+}
+
+.photo-slot::before {
+  content: '';
+  inline-size: 1.5rem;
+  block-size: 1px;
+  background: var(--color-proof);
+}
+
+.photo-slot__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+}
+
+/* --- Tabele podataka -------------------------------------------------------- */
+
+/* Tabela koju je nemoguce suziti ispod sirine ekrana.
+ *
+ * Celija sa recenicom ima svoju najmanju sirinu (najduza rec u njoj) i ispod
+ * nje ne ide. Tri takve kolone na 320px daju 366px — 62px preko ivice, pa se
+ * prelivala cela stranica.
+ *
+ * Resenje je da horizontalni pomeraj dobije TABELA, ne dokument. `tabindex`
+ * je obavezan: bez njega se region ne moze pomerati tastaturom (WCAG 2.1.1),
+ * a `role`/`aria-label` mu daju ime u citacu ekrana. */
+.table-scroll {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.table-scroll:focus-visible {
+  outline: 3px solid var(--color-proof);
+  outline-offset: 2px;
+}
+
+.data-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.data-table caption {
+  text-align: left;
+  padding-block-end: var(--space-3);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+.data-table th,
+.data-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-block-end: 1px solid var(--color-rule-strong);
+}
+
+.data-table thead th {
+  background: var(--color-proof);
+  color: var(--color-paper-on-dark);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  border-block-end: none;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: var(--color-proof-tint);
+}
+
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td {
+  border-block-end: none;
+}
+
+.data-table td[data-num],
+.data-table th[data-num] {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+}
+
+.data-table tfoot th,
+.data-table tfoot td {
+  background: var(--color-proof-tint);
+  font-weight: 600;
+  border-block-start: 2px solid var(--color-proof);
+}
+
+/* --- Polja forme ------------------------------------------------------------ */
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+  grid-column: span 12;
+}
+
+@media (min-width: 48rem) {
+  .field {
+    grid-column: span var(--span, 12);
+  }
+}
+
+.field__label {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.field__optional {
+  font-weight: 400;
+  color: var(--color-ink-soft);
+}
+
+.req {
+  color: var(--color-accent);
+  margin-inline-start: 0.15em;
+}
+
+.field input,
+.field textarea,
+.field select {
+  inline-size: 100%;
+  padding: 0.7em 0.85em;
+  font-size: var(--fs-body);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  /* Jedini radius na sajtu — bez njega input izgleda kao neaktivna površina. */
+  border-radius: var(--radius-sm);
+  transition: border-color var(--dur-1) var(--ease-out);
+  /* Sprečava iOS zoom pri fokusu: font mora biti >= 16px. */
+  min-height: 2.75rem;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 8rem;
+  line-height: var(--leading-relaxed);
+}
+
+.field input:hover,
+.field textarea:hover,
+.field select:hover {
+  border-color: var(--color-ink-soft);
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible,
+.field select:focus-visible {
+  border-color: var(--color-proof);
+  outline: 3px solid var(--color-proof);
+  outline-offset: 1px;
+}
+
+.field[data-invalid] input,
+.field[data-invalid] textarea,
+.field[data-invalid] select {
+  border-color: var(--color-accent);
+  border-inline-start-width: 3px;
+}
+
+.field__selectwrap {
+  position: relative;
+  display: grid;
+}
+
+.field__selectwrap select {
+  appearance: none;
+  padding-inline-end: 2.5rem;
+}
+
+.field__chev {
+  position: absolute;
+  inset-inline-end: 0.85rem;
+  inset-block-start: 50%;
+  translate: 0 -50%;
+  inline-size: 1rem;
+  block-size: 1rem;
+  color: var(--color-ink-soft);
+  pointer-events: none;
+}
+
+.field__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.field__hint {
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+.field__counter {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  color: var(--color-ink-soft);
+  margin-inline-start: auto;
+}
+
+.field__counter[data-near='true'] {
+  color: var(--color-accent);
+}
+
+/* Greška nosi i ikonicu i tekst — nikad samo boju. */
+.field__error {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-accent-deep);
+  margin: 0;
+}
+
+.field__error::before {
+  content: '!';
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 1.15em;
+  block-size: 1.15em;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--color-paper);
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+/* Čekboks */
+
+.field--check {
+  gap: var(--space-2);
+}
+
+.check {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.check input {
+  /* 1.5rem = 24px, minimum po WCAG 2.2 (2.5.8 Target Size). Labela je
+     klikabilna i dodatno širi metu, ali i sam kvadratić mora da prođe. */
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  min-height: 0;
+  margin-block-start: 0.15rem;
+  accent-color: var(--color-proof);
+  cursor: pointer;
+}
+
+.check label {
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+  cursor: pointer;
+}
+
+/* --- Forma: raspored -------------------------------------------------------- */
+
+.inquiry__form {
+  margin-block-start: var(--space-6);
+}
+
+.inquiry__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.inquiry__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block-start: var(--space-6);
+}
+
+.inquiry__note {
+  max-width: 42ch;
+  margin: 0;
+}
+
+/* Posle uspesnog slanja polja se sklanjaju.
+ *
+ * Bez ovoga ispod zelene potvrde ostaje prazna forma, pa korisnik ne zna da li
+ * treba da je popuni ponovo. Povratak na formu ide preko dugmeta
+ * „Posalji jos jedan upit" u panelu uspeha (data-form-again). */
+.inquiry__form[data-state='success'] .inquiry__grid,
+.inquiry__form[data-state='success'] .inquiry__actions {
+  display: none;
+}
+
+/* Honeypot: van ekrana, ali ne display:none — neki botovi preskaču skrivena
+   polja, a čitač ekrana ga ionako ne vidi zbog aria-hidden. */
+.inquiry__trap {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- Sekcija: naizmenična pozadina ------------------------------------------- */
+
+.section--alt {
+  background: var(--color-paper-alt);
+}
+
+/* Sekcije razdvaja hairline, ne boja — korak tona je namerno jedva vidljiv. */
+.section + .section:not(.section--alt):not(.on-dark) {
+  border-block-start: 1px solid var(--color-rule);
+}/* --- Samostalni linkovi kao akcija ------------------------------------------ */ /* Linkovi sa strelicom koji nose sekciju (npr. „Za obrazovne ustanove →") nisu linkovi u rečenici nego kontrola. Dobijaju punu metu za dodir od 44px,
+uz negativnu marginu da vizuelni ritam ostane isti. */ /* Sve stranice koriste isti obrazac: samostalan link sa strelicom koji nosi sekciju. Imena klasa se razlikuju po stranici,
+pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
+   dopiši njegovu klasu ovde. */
+.prec__link,
+.veza__link,
+.dalje__link,
+.pregled__link,
+.nf__link,
+.usl a.link,
+.chain__more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  /* Negativna margina drži vizuelni ritam istim uprkos većoj meti. */
+  margin-block: -0.5rem;
+}
+
+/* ==========================================================================
+   DELJENE KOMPONENTE
+   ========================================================================== */
+
+/* --- ControlChain ---------------------------------------------------- */
+.chain {
+    margin: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .chain__caption {
+    margin-block-end: var(--space-3);
+  }
+
+  /* --- Trake iznad i ispod --------------------------------------------- */
+
+  .chain__band {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    margin: 0;
+    background: var(--color-proof-tint);
+    border-inline-start: 3px solid var(--color-proof);
+  }
+
+  @media (min-width: 48rem) {
+    .chain__band {
+      grid-template-columns: 12rem minmax(0, 1fr);
+      gap: var(--space-5);
+      align-items: baseline;
+    }
+  }
+
+  .chain__bandlabel {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-proof);
+  }
+
+  .chain__bandtext {
+    font-size: var(--fs-small);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* --- Koraci ----------------------------------------------------------- */
+
+  .chain__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    border-block-start: 1px solid var(--color-rule-strong);
+  }
+
+  @media (min-width: 60rem) {
+    .chain__steps {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      border-block-start: none;
+    }
+  }
+
+  .chain__step {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+    padding: var(--space-5) 0;
+    border-block-end: 1px solid var(--color-rule-strong);
+  }
+
+  @media (min-width: 60rem) {
+    .chain__step {
+      padding: var(--space-5) var(--space-5) var(--space-5) 0;
+      /* Veza između koraka je horizontalna linija, ne strelica sa glavom. */
+      border-block-start: 2px solid var(--color-proof);
+      border-block-end: none;
+    }
+
+    .chain__step + .chain__step {
+      padding-inline-start: var(--space-5);
+      border-inline-start: 1px solid var(--color-rule-strong);
+    }
+  }
+
+  .chain__num {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-proof);
+  }
+
+  .chain__name {
+    font-family: var(--font-text);
+    font-size: var(--fs-body);
+    font-weight: 600;
+    line-height: var(--leading-snug);
+    letter-spacing: 0;
+    color: var(--color-ink);
+  }
+
+  .chain__detail {
+    font-size: var(--fs-small);
+    color: var(--color-ink-soft);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+/* --- CtaBand --------------------------------------------------------- */
+.ctaband__inner {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  @media (min-width: 60rem) {
+    .ctaband__inner {
+      grid-template-columns: 1.3fr auto;
+      align-items: center;
+      gap: var(--space-8);
+    }
+  }
+
+  .ctaband__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  /* Boju i ivicu na tamnom sada nosi `.on-dark .btn--ghost`. Ovde ostaje samo
+     ono sto je specificno za telefonski broj: mono cifre iste sirine. */
+  .ctaband__tel {
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+/* --- Logo ------------------------------------------------------------ */
+/* Klijentov postojeci logo, isti onaj koji stoji na dostavnim vozilima.
+   Ne dira se — ni boja, ni oblik, ni ispis. Sajt se prilagodjava njemu.
+
+   Prikazuje se manji nego sto je izvor (260x64), pa je na gustim ekranima
+   ostar. Ako stigne fajl vece rezolucije ili vektor, menja se samo putanja. */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.brand__img {
+  display: block;
+  inline-size: auto;
+  block-size: var(--brand-h, 2.5rem);
+}
+
+/* Na tamnoj traci logo dobija svetlu podlogu.
+   Logo je crven i plav; na --color-proof-deep bi crveno palo na 3.3:1 i
+   maskota bi se izgubila. Podloga je jedini nacin da ostane veran sebi. */
+.brand--light {
+  padding: 0.45rem 0.7rem;
+  background: var(--color-paper);
+  border-radius: 2px;
+}
+
+.brand--light .brand__img {
+  --brand-h: 2.25rem;
+}
+
+@media (min-width: 66rem) {
+  .brand__img {
+    --brand-h: 2.75rem;
+  }
+}
+
+/* --- Section --------------------------------------------------------- */
+.sechead {
+    display: grid;
+    gap: var(--space-4);
+    margin-block-end: var(--space-7);
+  }
+
+  .sechead--center .measure {
+    margin-inline: auto;
+  }
+
+/* --- WeeklyMenu ------------------------------------------------------ */
+.meni__head {
+    margin-block-end: var(--space-6);
+  }
+
+  /* --- Tabela ------------------------------------------------------------ */
+
+  .meni__scroll {
+    display: none;
+  }
+
+  /* Tabela se pojavljuje tek na 75rem (1200px), gde šest kolona staje bez
+     gužve. Ispod toga vidiš kartice. Namerno BEZ overflow-x: horizontalni
+     scroll u tabeli je nevidljiv delu korisnika i pola sadržaja nikad ne
+     otkriju. Radije prikazujemo drugi, čitljiv oblik istih podataka. */
+  @media (min-width: 75rem) {
+    .meni__scroll {
+      display: block;
+    }
+  }
+
+  .meni__table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: var(--text-sm);
+    background: var(--c-surface);
+    border: 1px solid var(--c-rule-strong);
+  }
+
+  .meni__table th,
+  .meni__table td {
+    padding: var(--space-4);
+    text-align: left;
+    vertical-align: top;
+    /* Linija koja razdvaja PODATKE ide u --c-rule-strong (3.71:1).
+       Dekorativna --c-rule je 1.49:1 i sme samo izmedju sekcija. */
+    border-block-end: 1px solid var(--c-rule-strong);
+  }
+
+  .meni__table thead th {
+    background: var(--c-forest);
+    color: var(--c-on-ink);
+    font-family: var(--font-mono, var(--font-text));
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    border-block-end: none;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .meni__table tbody tr:last-child th,
+  .meni__table tbody tr:last-child td {
+    border-block-end: none;
+  }
+
+  .meni__table tbody tr:nth-child(even) {
+    background: var(--c-paper-alt);
+  }
+
+  .meni__dancol {
+    white-space: nowrap;
+    font-family: var(--font-mono, var(--font-text));
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--c-ink-strong);
+    border-inline-end: 1px solid var(--c-rule-strong);
+  }
+
+  .meni__stavke {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35em;
+  }
+
+  .meni__stavke li {
+    line-height: var(--leading-snug);
+  }
+
+  /* --- Kartice ----------------------------------------------------------- */
+
+  .meni__cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  /* Skrivanje kartica MORA da stoji ispod baznog pravila.
+     Medija upit ne nosi specificnost — samo redosled. Dok je ovo pravilo
+     stajalo iznad (u @media bloku uz .meni__scroll), bazno `display: grid`
+     ga je pobedjivalo i desktop je dobijao i tabelu i kartice: 4897 px istih
+     pet dana dvaput, 37% stranice. */
+  @media (min-width: 75rem) {
+    .meni__cards {
+      display: none;
+    }
+  }
+
+  .dan {
+    background: var(--c-surface);
+    border: 1px solid var(--c-rule-strong);
+    padding: var(--space-5);
+  }
+
+  .dan__naslov {
+    font-family: var(--font-mono, var(--font-text));
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--c-accent-ink);
+    padding-block-end: var(--space-3);
+    margin-block-end: var(--space-4);
+    border-block-end: 1px solid var(--c-rule-strong);
+  }
+
+  .dan__lista {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+  }
+
+  .dan__red {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .dan__red dt {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--c-ink-muted);
+  }
+
+  .dan__red dd {
+    margin: 0;
+  }
+
+  .dan__red dd ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.2em;
+  }
+
+  .dan__red dd li {
+    line-height: var(--leading-snug);
+  }
+
+/* ==========================================================================
+   DELJENE SEKCIJE STRANICA
+   Pravila koja su bila potpuno identicna na 2+ stranica.
+   Ranije prekucana u svakoj stranici; sada stoje jednom.
+   ========================================================================== */
+
+.citat blockquote {
+  margin: 0;
+}
+
+.citat__izvor {
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-relaxed);
+  max-width: 52ch;
+  padding-inline-start: var(--space-5);
+  border-inline-start: 2px solid var(--color-accent);
+}
+
+.citat__text {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-m);
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+/* --- Hero --------------------------------------------------------------- */
+.hero .shell {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-block-start: var(--space-2);
+}
+
+.hero__h1 em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.hero__text {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.hero__uvod {
+  display: grid;
+  gap: var(--space-5);
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-accent);
+}
+
+.lista {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid var(--color-rule-strong);
+  padding-block-start: var(--space-4);
+}
+
+.lista li {
+  position: relative;
+  padding-inline-start: var(--space-5);
+  font-size: var(--fs-small);
+}
+
+.lista li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.62em;
+  inline-size: 0.75rem;
+  block-size: 1px;
+  background: var(--color-proof);
+}
+
+.prec__link {
+  font-weight: 600;
+  justify-self: start;
+}
+
+.prec__naslov {
+  max-width: 18ch;
+}
+
+.prec__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent);
+}
+
+/* --- Precice --------------------------------------------------------------- */
+.precice {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.ref__broj {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  font-weight: 400;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  max-width: 20ch;
+  margin: 0;
+}
+
+.ref__broj strong {
+  font-weight: 700;
+}
+
+.ref__text {
+  color: var(--color-mist);
+}
+
+.uvod__h1 em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.uvod__text {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 40rem) {
+  .slotovi {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (min-width: 52rem) {
+  .faq__item {
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .precice {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+
+}
+
+/* --- Odlazni link ----------------------------------------------------------- */
+/* Strelica se crta maskom, ne znakom: fontovi su subsetovani, pa U+2197 u
+   njima ne postoji i pao bi na sistemski font. Maska nasledjuje currentColor,
+   pa radi i na tamnoj traci i na dugmetu.
+   Tekstualnu najavu („otvara se u novom prozoru") nosi .visually-hidden u
+   markupu — ikonica sama nije dostupna citacu ekrana. */
+
+/* Jedan element ima SAMO JEDAN `::after`. Na `a.btn.btn--primary.ext` bi se
+   ova strelica i hover panel dugmeta (`.btn--primary::after` u motion.css)
+   otimali o isti pseudo-element: iste specificnosti, pobedjuje kasniji fajl,
+   pa je strelica zavrsavala kao 11px maska prikucana u gornji levi ugao.
+   Zato strelica na dugmetu ide na `::before`, a `order: 1` je u flex
+   kontejneru (.btn je inline-flex) vraca IZA teksta. */
+.ext:not(.btn)::after,
+.btn.ext::before {
+  content: '';
+  display: inline-block;
+  inline-size: 0.62em;
+  block-size: 0.62em;
+  margin-inline-start: 0.42em;
+  vertical-align: 0.06em;
+  background: currentColor;
+  -webkit-mask-image: var(--icon-ext);
+  mask-image: var(--icon-ext);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.btn.ext::before {
+  order: 1;
+  flex: none;
+}
+
+.ext:not(.btn):hover::after,
+.ext:not(.btn):focus-visible::after,
+.btn.ext:hover::before,
+.btn.ext:focus-visible::before {
+  transform: translate(0.12em, -0.12em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ext:not(.btn)::after,
+  .btn.ext::before {
+    transition: none;
+  }
+
+  .ext:not(.btn):hover::after,
+  .ext:not(.btn):focus-visible::after,
+  .btn.ext:hover::before,
+  .btn.ext:focus-visible::before {
+    transform: none;
+  }
+}
+
+/* --- Mapa koja se ucitava na klik -------------------------------------------- */
+/* Google Maps iframe povlaci skripte sa Google-ovih servera i time im daje
+   IP adresu posetioca. Zato iframe NIJE u HTML-u: ubacuje ga js/main.js tek
+   kada posetilac pritisne dugme. Do tada se ne salje nijedan zahtev.
+   Politika privatnosti opisuje tacno ovo ponasanje. */
+
+.mapa {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--color-rule-strong);
+  background: var(--color-paper-alt);
+}
+
+.mapa__hold {
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-6);
+}
+
+.mapa__text {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--color-ink-soft);
+}
+
+/* Link stoji sam, nije unutar recenice, pa se na njega ne odnosi izuzetak
+   za „inline" mete iz WCAG 2.5.8. Mereno je bio 170x23px — jedan piksel
+   ispod minimuma 24x24. */
+.mapa__hold .link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 1.5rem;
+}
+
+.mapa iframe {
+  inline-size: 100%;
+  block-size: 100%;
+  border: 0;
+  display: block;
+}
+
+/* --- Izložak ---------------------------------------------------------- */
+/*
+   Najveća stvar na stranici NIJE naslov — nego ono što posetilac može da
+   proveri. Direktorka vrtića ne kupuje rečenicu „kvalitet i posvećenost";
+   ona sastavlja odbranu koju pokazuje upravnom odboru, roditelju ili
+   inspekciji. Njena valuta su gramature, jelovnik cele nedelje, nutritivna
+   matrica i ime zavoda koji uzima briseve.
+
+   Zato izložak sme ono što nijedna druga sekcija ne sme: da izađe iz shell-a,
+   da uzme pun ekran i da nadglasa naslov iznad sebe. Jedan po stranici.
+
+   Ceo je u HLADNOM registru — to je dokaz, ne reklama. Topli registar ovde
+   ne ulazi (vidi zakon boje na vrhu base.css). */
+
+.izlozak {
+  --izlozak-ivica: var(--color-proof);
+  position: relative;
+  margin-block: var(--space-8);
+}
+
+/* Linija koja se sama povlači ispod broja izloška.
+   Podvlačenje činjenice, ne ukras: kreće levo, staje desno, i ne ponavlja se.
+   Statično stanje je POVUČENA linija — tako u browseru bez scroll-driven
+   animacija i bez JS-a izložak izgleda gotovo, a ne nedovršeno. */
+.izlozak__linija {
+  display: block;
+  block-size: 2px;
+  background: var(--izlozak-ivica);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Traka sa rednim brojem i imenom izloška. Mono, jer se čita kao oznaka
+   eksponata, a ne kao naslov. */
+.izlozak__traka {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+}
+
+.izlozak__broj {
+  font-variant-numeric: tabular-nums;
+}
+
+.izlozak__sta {
+  color: var(--color-ink-soft);
+}
+
+/* Telo izloška. Ovde ulazi tabela, mreža nedelje ili niz brojeva. */
+.izlozak__telo {
+  border-block-start: 1px solid var(--color-rule-strong);
+  padding-block-start: var(--space-5);
+}
+
+/* Potpis ispod: šta ovaj izložak dokazuje. Jedna rečenica, ne pasus. */
+.izlozak__potpis {
+  margin-block-start: var(--space-4);
+  padding-block-start: var(--space-3);
+  border-block-start: 1px solid var(--color-rule);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  max-inline-size: 62ch;
+}
+
+/* Izlazak iz shell-a. Jedina sekcija kojoj je to dozvoljeno.
+   `margin-inline` u negativnom iznosu umesto `width: 100vw` — ovo drugo pravi
+   horizontalni preliv kada postoji scrollbar, što je greška u audit.py. */
+@media (min-width: 64rem) {
+  .izlozak--puni {
+    margin-inline: calc(-1 * var(--space-7));
+  }
+}
+
+/* --- Izložak: gramature po uzrastu ------------------------------------ */
+/*
+   Razlika je ovde najveća stvar na stranici, i to je cela poenta. Sajt već
+   objavljuje obe kolone; ono što niko ne objavljuje je oduzimanje. Dok je
+   čitalac morao sam da izvede „300 minus 250", podatak je bio tačan i nem.
+
+   Brojevi idu u mono sa tabularnim ciframa — u koloni moraju da se poklope
+   po širini, inače se ne čitaju kao merenje nego kao tekst. */
+
+.gram-delta {
+  inline-size: 100%;
+  border-collapse: collapse;
+}
+
+.gram-delta caption {
+  text-align: start;
+}
+
+.gram-delta th,
+.gram-delta td {
+  padding-block: var(--space-4);
+  padding-inline-end: var(--space-5);
+  border-block-end: 1px solid var(--color-rule);
+  text-align: start;
+  vertical-align: baseline;
+}
+
+/* Zaglavlje u hladnom registru: ovo je tabela podataka, ne reklama. */
+.gram-delta thead th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+  border-block-end-color: var(--color-proof);
+  padding-block-end: var(--space-3);
+}
+
+.gram-delta tbody th {
+  font-weight: 400;
+  font-size: var(--fs-body);
+  color: var(--color-ink);
+}
+
+.gram-delta td {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-body);
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+/* Kolona razlike. Jedino mesto na stranici gde podatak ide u display skalu —
+   izložak nadglasa naslov iznad sebe, a ne obrnuto. */
+/* Selektor je namerno `td.` — mora da nadjaca `.gram-delta td` iznad, a to se
+   resava specificnoscu, ne sa `!important`. */
+.gram-delta td.gram-delta__plus {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  /* Puna display visina — ista koju nosi `.display-2--loud`. Namerno VECA od
+     naslova iznad: izlozak nadglasa tvrdnju, a ne obrnuto. To je ceo potez. */
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-fresh);
+  white-space: nowrap;
+}
+
+/* Na uskom ekranu tabela sa četiri kolone ne staje. Prelazi u blokove:
+   svaki obrok je jedan red, razlika ostaje najveća.
+   BEZ overflow-x — horizontalni skrol u tabeli polovina korisnika nikad ne
+   otkrije, a audit.py ga i tretira kao grešku van `.table-scroll`. */
+@media (max-width: 47.99rem) {
+  .gram-delta thead {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .gram-delta tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-1) var(--space-4);
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--color-rule);
+  }
+
+  .gram-delta th,
+  .gram-delta td {
+    padding: 0;
+    border: 0;
+  }
+
+  .gram-delta tbody th {
+    grid-column: 1;
+  }
+
+  .gram-delta td.gram-delta__plus {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  /* Obe izvorne kolone u jednom redu, sa strelicom između. */
+  .gram-delta__od,
+  .gram-delta__do {
+    grid-column: 1;
+    font-size: var(--fs-small);
+  }
+
+  .gram-delta__od::after {
+    content: ' \2192 ';
+    color: var(--color-rule-strong);
+  }
+
+  .gram-delta__od,
+  .gram-delta__do {
+    display: inline;
+  }
+}
+
+/* --- Specimen kartica -------------------------------------------------- */
+/*
+   Prazan okvir sa natpisom „Centralna kuhinja" na sajtu o poverenju ne čita
+   se kao „fotografija stiže" nego kao „nešto krijemo". Četrdeset pet takvih
+   okvira je najglasniji signal nedovršenosti na celom sajtu.
+
+   Kartica zato prestaje da bude ram i postaje oznaka eksponata: nosi jednu
+   proverljivu činjenicu o svom predmetu.
+
+   Dva pravila drže ovo bezbednim:
+
+     1. Činjenica MORA već da stoji na istoj stranici. Zato se ništa ne
+        izmišlja, i zato skrivanje u štampi (print.css) ne gubi nijedan
+        podatak — isti se štampa u telu stranice.
+
+     2. `aspect-ratio` ostaje nepromenjen. Kada fotografija stigne, ulazi u
+        isti okvir i layout se ne pomera ni za piksel.
+*/
+
+.slot-spec {
+  justify-content: space-between;
+  background: var(--color-surface);
+  border-color: var(--color-rule);
+  border-block-start: 2px solid var(--color-proof);
+}
+
+/* Prazan ram je imao dijagonalni šrafira preko sebe; specimen kartica nema
+   šta da nagoveštava, pa ga gasi. */
+.slot-spec::before {
+  content: none;
+}
+
+.slot-spec__oznaka {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+}
+
+.slot-spec__cinjenica {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.slot-spec__izvor {
+  padding-block-start: var(--space-2);
+  border-block-start: 1px solid var(--color-rule);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  color: var(--color-ink-soft);
+}

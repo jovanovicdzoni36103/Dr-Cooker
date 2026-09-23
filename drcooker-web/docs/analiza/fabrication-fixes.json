@@ -1,0 +1,117 @@
+{
+ "nalazi": [
+  {
+   "gde": "/usluge/distribucija — h1 i sekcija \"uslovi\"; /usluge/transport — sekcija \"roba\"; /usluge — seo_description i sekcija \"uvod\"",
+   "sporna_tvrdnja": "\"Preko 7000 artikala, na istoj dostavi kao i obroci\" · \"Dostava ide zajedno sa dostavom obroka, ako koristite obe usluge.\" · \"Proizvodi iz distribucije stižu istom dostavom.\" · \"Jedna dostava, jedan sagovornik.\" · \"Kod nas to dolazi zajedno — na istoj dostavi...\"",
+   "zasto": "Izvor NIGDE ne kaže da roba putuje istom dostavom kao obroci. Doslovno stoji samo: \"Ukoliko od nas poručujete i sve ostale prehrambene ili neprehrambene namirnice i ovi proizvodi će u dogovoreno vreme biti dostavljeni na Vašu adresu sa pripadajućim dokumentom\" (pages-clean.txt, red 91) — dakle u dogovoreno vreme, bez ijedne reči o zajedničkoj turi. Gore od toga: tvrdnja je u direktnoj kontradikciji sa drugom tvrdnjom istog copy decka i istog izvora — \"Vozilo koje prevozi hranu je specijalizovano samo za transport hrane\" (red 89). Deterdžent, toalet papir i sredstva kućne hemije u vozilu namenjenom isključivo hrani je upravo ono što direktor vrtića ili sanitarni inspektor prvo primeti. Ovo je logistička tvrdnja koju firma nije dala i koja je sama sebi protivrečna. \"Jedan sagovornik\" je dodatno izmišljena tvrdnja o modelu vođenja naloga — izvor ne pominje nijednu osobu zaduženu za klijenta.",
+   "ozbiljnost": "kriticno",
+   "ispravka": "h1: \"Preko 7000 artikala, uz istog dobavljača kao i obroci\". Bullet u \"uslovi\": \"Roba se dostavlja u dogovoreno vreme, na vašu adresu, sa pripadajućim dokumentom.\" (obrisati bullet o zajedničkoj dostavi u celosti). /usluge/transport → \"roba\": \"Ako od nas poručujete i ostale prehrambene ili neprehrambene proizvode, oni se u dogovoreno vreme dostavljaju na vašu adresu, sa pripadajućim dokumentom.\" (obrisati naslov \"Proizvodi iz distribucije stižu istom dostavom\" → \"Ostala roba se dostavlja u dogovoreno vreme\"). seo_description /usluge: \"Tri usluge Dr Cooker-a: kuvani obroci, distribucija preko 7000 artikala i stručna podrška nutricioniste.\" /usluge → \"uvod\": \"Kod nas to dolazi od istog dobavljača, sa pripadajućom dokumentacijom.\" PLACEHOLDER — pitanje za klijenta: da li se roba iz distribucije vozi istim vozilom i u istoj turi kao obroci, ili odvojeno? Ako odvojeno, kojim vozilom?"
+  },
+  {
+   "gde": "/kontakt — sekcija \"lokacija\"",
+   "sporna_tvrdnja": "\"Kuhinja i kancelarija su na istoj adresi, na Voždovcu\" / \"Vojvode Prijezde 17, Beograd — opština Voždovac.\"",
+   "zasto": "Izvor nigde ne povezuje te dve stvari. Kaže odvojeno: kuhinja je \"u Beogradu na opštini Voždovac\" (pages-clean.txt, red 29), a \"Beograd, Vojvode Prijezde 17\" se pojavljuje isključivo u kontakt bloku, bez ijedne reči o tome šta je na toj adresi. Nigde ne piše ni da je Vojvode Prijezde 17 na Voždovcu. Tvrdnja o lokaciji proizvodnje hrane je tačno ono što B2B kupac proverava pre potpisa — ako je pogrešna, otkriva se prvom posetom ili prvim pogledom u APR.",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "\"Kancelarija: Vojvode Prijezde 17, Beograd. Kuhinja: opština Voždovac.\" Mapu ostaviti na koordinatama 44.78942, 20.47467 uz oznaku da je to kontakt adresa. PLACEHOLDER — pitanje za klijenta: na kojoj tačno adresi je centralna kuhinja i da li je to ista adresa kao kancelarija? Da li smemo objaviti adresu kuhinje?"
+  },
+  {
+   "gde": "/kvalitet — sekcija \"spoljasnja\", naslov",
+   "sporna_tvrdnja": "\"Gradski zavod za javno zdravlje uzima uzorke bez najave\"",
+   "zasto": "Izvor kaže \"periodično uzima briseve... i nasumične uzorke pripremljenog obroka\" (pages-clean.txt, red 189). \"Nasumičan uzorak\" znači slučajan izbor uzorka, a ne nenajavljenu posetu. \"Bez najave\" je izmišljen podatak o postupanju državne institucije — proverljiva tvrdnja koju firma ne kontroliše i za koju nema osnova. Telo sekcije, inače, korektno prenosi \"periodično\", pa naslov protivreči sopstvenom tekstu.",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "Naslov: \"Gradski zavod za javno zdravlje periodično uzima briseve i uzorke obroka\". Telo ostaviti nepromenjeno — ono je tačno."
+  },
+  {
+   "gde": "/ — sekcija \"kontrola\", naslov; /kvalitet — sekcija \"cta\"",
+   "sporna_tvrdnja": "\"Svaki korak ima kontrolu koja se može pokazati\" · \"Tražite dokumentaciju pre odluke — to je uredu\" / \"Ako vam za internu proceduru treba uvid u dokumentaciju ili odgovor na konkretno pitanje o kontroli, navedite to u upitu.\"",
+   "zasto": "Oba mesta implicitno obećavaju da firma stavlja dokumentaciju (ateste, izveštaje kontrole, HACCP dokumenta) na uvid potencijalnom klijentu. Izvor ne pominje nijedan oblik davanja dokumentacije na uvid — pominje samo da dokumentacija postoji i da je nutricionista proverava. Ovo je obećanje procesa prodaje koje firma nije dala i koje možda neće ispuniti. Sporedno: \"uredu\" je pravopisna greška, treba \"u redu\".",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "Naslov na /: \"Kontrola postoji na svakom koraku — od prijema sirovina do serviranja\". /kvalitet cta naslov: \"Imate pitanje o kontroli pre nego što odlučite?\" Telo: \"Ako imate konkretno pitanje o kontroli kvaliteta ili o postupcima u kuhinji, navedite ga u upitu.\" PLACEHOLDER — pitanje za klijenta: koju dokumentaciju ste spremni da pošaljete zainteresovanoj ustanovi pre potpisa (ateste, izveštaje Zavoda, HACCP plan)? Tek kad to potvrde, sme se pisati da se dokumentacija daje na uvid."
+  },
+  {
+   "gde": "/usluge/nutricionista — sekcija \"na-terenu\", drugi pasus",
+   "sporna_tvrdnja": "\"To znači da povratna informacija o tome šta deca zaista jedu, a šta ostaje u tanjiru, ulazi u sledeći jelovnik.\"",
+   "zasto": "Izvor kaže samo da nutricionista \"obilazi objekte za vreme obroka i razmenjuje informacije sa zaposlenima i decom\" (pages-clean.txt, red 115). Ne postoji nijedna reč o tome da se ta zapažanja vraćaju u izradu narednog jelovnika. To je izmišljena povratna petlja — konkretan operativni proces koji copy predstavlja kao postojeći.",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "Obrisati drugi pasus u celosti. Prvi pasus je tačan i dovoljan. Ako se želi zadržati poenta, PLACEHOLDER: pitati klijenta da li se zapažanja sa terena formalno uzimaju u obzir pri izradi sledećeg jelovnika i kako se to evidentira."
+  },
+  {
+   "gde": "/usluge/nutricionista — sekcija \"cta\"",
+   "sporna_tvrdnja": "\"Ako imate konkretno pitanje o normativima, jelovniku ili posebnim režimima ishrane, postavite ga u upitu — odgovor dobijate od nutricioniste.\"",
+   "zasto": "Izvor kaže da je \"Nutricionista Dr Cooker ketering servisa uvek spreman i raspoložen da odgovori na sva Vaša pitanja\" (pages-clean.txt, red 117) — to je izjava o raspoloživosti, ne obećanje da će upit sa sajta biti rutiran nutricionisti i da će odgovor stići od njega. Rok i kanal odgovora na upit su eksplicitno na zabranjenoj listi, a ovo je tvrdnja o kanalu odgovora.",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "\"Ako imate konkretno pitanje o normativima, jelovniku ili posebnim režimima ishrane, postavite ga u upitu — nutricionista Dr Cooker-a je na raspolaganju za pitanja klijenata.\" PLACEHOLDER — pitanje za klijenta: da li pitanja iz forme zaista stižu do nutricioniste i ko potpisuje odgovor?"
+  },
+  {
+   "gde": "/usluge/transport — sekcija \"dnevnik\"",
+   "sporna_tvrdnja": "\"...dokument koji pokazuje šta je, kada i u kakvom stanju preuzeto.\"",
+   "zasto": "Izvor kaže samo da vozači pomažu osoblju klijenta u popunjavanju dnevnika isporuke i da je taj dnevnik \"veza između našeg HACCP-a i Vaših internih higijenskih pravila\" (pages-clean.txt, red 90). Sadržaj dnevnika nigde nije opisan. Nabrajanje \"šta, kada i u kakvom stanju\" izmišlja polja dokumenta — a kupac koji čita ovo očekivaće evidenciju temperature i stanja pri preuzimanju i tražiće je na prvom sastanku.",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "\"Naši vozači pomažu vašem osoblju u popunjavanju dnevnika isporuke. Taj dnevnik je veza između HACCP-a Dr Cooker-a i internih higijenskih pravila vaše ustanove.\" PLACEHOLDER — pitanje za klijenta: koja se polja tačno upisuju u dnevnik isporuke (vreme, količina, temperatura, stanje ambalaže)? Ako se temperatura beleži, to je jak argument i vredi ga napisati — ali tek nakon potvrde."
+  },
+  {
+   "gde": "/ — h1, hero naslov i seo_description; /usluge/obroci — seo_title",
+   "sporna_tvrdnja": "\"Kuvani obroci za vrtiće, škole i kompanije u Beogradu\" · seo_description: \"...za vrtiće, škole, produžene boravke i kompanije u Beogradu\"",
+   "zasto": "Formulacija \"za ... kompanije u Beogradu\" čita se kao podrucje dostave, a podrucje dostave je eksplicitno na zabranjenoj listi i eksplicitno navedeno u §14 izvora kao nepoznanica (\"Područje dostave — samo Beograd? koje opštine?\"). Izvor potvrđuje samo da je kuhinja u Beogradu i da je ponuda \"jedinstvena na tržištu grada Beograda\" — ni jedno ni drugo ne definiše gde se dostavlja. Ustanova sa periferije ili iz okoline ovako ne zna da li je uopšte kandidat.",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "h1 i hero naslov: \"Kuvani obroci za vrtiće, škole i kompanije — iz kuhinje na Voždovcu\". seo_description: \"Kuvani obroci, distribucija proizvoda i nutritivna podrška za vrtiće, škole, produžene boravke i kompanije. Kuhinja u Beogradu, na Voždovcu. Zatražite ponudu.\" PLACEHOLDER (već postoji u decku pod \"Područje dostave\") — dopuniti napomenom da se do odgovora Beograd sme pominjati samo kao lokacija kuhinje, nikad kao zona dostave."
+  },
+  {
+   "gde": "/usluge/obroci — sekcija \"sta-je-na-meniju\"; /jelovnik — sekcija \"struktura\" i sekcije \"primer-1\"/\"primer-2\"; / — hero",
+   "sporna_tvrdnja": "Istovremeno: \"Doručak (jednom nedeljno na meniju kao topli slani/slatki doručak)\" i \"Dr Cooker svakog dana priprema doručak, ručak i užine\" i \"Svakodnevno pripremamo doručak, ručak i užine\" — dok objavljeni primeri nedeljnog menija prikazuju doručak svih pet dana.",
+   "zasto": "Izvor sadrži obe tvrdnje (red 11: \"svakodnevno priprema doručak, ručak, užine\"; red 124: \"Za doručak, jednom nedeljno, na meniju se nalaze jaja, pite i proje...\") i one se, ovako postavljene jedna pored druge, isključuju. Copy deck je uočio kontradikciju oko suhomesnatog (placeholder #13), ali je ovu propustio — a ona sedi na istoj stranici: sekcija kaže \"doručak jednom nedeljno\", a tabela odmah ispod prikazuje pet doručaka. Prvi čitalac koji uporedi, primetiće.",
+   "ozbiljnost": "ozbiljno",
+   "ispravka": "Do odgovora klijenta ukloniti kvalifikator \"jednom nedeljno\" iz obe sekcije i pisati neutralno: \"Doručak: jaja, pite i proje od različitih vrsta brašna, sladak doručak, suhomesnati proizvodi.\" Dodati NOVI PLACEHOLDER — pitanje za klijenta: da li se doručak isporučuje svakog dana, ili jednom nedeljno? Ako svakog dana, na šta se tačno odnosi formulacija \"za doručak, jednom nedeljno\" sa postojećeg sajta — na jednu vrstu doručka u rotaciji? Bez tog odgovora se ne sme objaviti nijedna od dve varijante."
+  },
+  {
+   "gde": "/ — sekcija \"referenca\", nadnaslov i naslov",
+   "sporna_tvrdnja": "nadnaslov \"Kapacitet u praksi\" · naslov \"Skoro 1000 mališana, 10 objekata, svaki radni dan\"",
+   "zasto": "Dve stvari. Prvo, \"Kapacitet\" implicira da je to mera onoga što firma može da proizvede — izvor ne govori ni reč o kapacitetu kuhinje, samo o tome koliko trenutno isporučuje. Veća ustanova će iz ovoga zaključiti nešto o gornjoj granici, a ta granica nigde nije data. Drugo, \"svaki radni dan\" nije formulacija izvora — izvor kaže \"iz dana u dan\" (red 36), što je opisna fraza, a ne raspored.",
+   "ozbiljnost": "sitno",
+   "ispravka": "nadnaslov: \"Referenca\". naslov: \"Skoro 1000 mališana, 10 objekata, iz dana u dan\". Telo ostaviti kako jeste — ono verno prenosi izvor. PLACEHOLDER (već postoji u decku kao pitanje o kapacitetu voznog parka) — proširiti i na kapacitet kuhinje: koliko obroka dnevno maksimalno možete proizvesti?"
+  },
+  {
+   "gde": "/ — sekcija \"ponuda-pregled\", naslov i telo",
+   "sporna_tvrdnja": "\"Tri usluge koje pokrivaju ceo dan u vašoj ustanovi\" — ispod čega stoje ČETIRI bullet-a (obroci, distribucija, nutricionista, transport). Telo: \"Pokrivamo i sve ostalo što vam za taj obrok treba.\"",
+   "zasto": "Numerička nekonzistentnost unutar iste sekcije (tri u naslovu, četiri u listi) — sitno, ali baš ta vrsta greške koju office manager primeti prvo i koja košta kredibilitet stranice koja se inače hvali preciznošću. \"Ceo dan\" i \"sve ostalo što vam treba\" su nemerljivi superlativi bez pokrića: izvor navodi konkretan, ograničen asortiman, ne \"sve\".",
+   "ozbiljnost": "sitno",
+   "ispravka": "naslov: \"Tri usluge i transport koji ih povezuje\" (ili zadržati \"tri\" i transport premestiti u podnožje sekcije kao napomenu, ne kao bullet). telo: \"Ne pokrivamo samo obrok. Pokrivamo i deo onoga što vam za rad ustanove treba, i osobu koja jelovnik stručno planira.\""
+  },
+  {
+   "gde": "/usluge — sekcija \"uvod\", prvi pasus",
+   "sporna_tvrdnja": "\"Većina ustanova ove tri stvari nabavlja odvojeno: nekoga ko kuva, nekoga ko doprema potrošni materijal i nekoga ko potvrdi da je jelovnik nutritivno ispravan.\"",
+   "zasto": "Tvrdnja o ponašanju tržišta koju ništa ne potkrepljuje — nema podatka, nema istraživanja, a \"većina\" je merljiva reč. Izvor dozvoljava samo poziciju \"spoj keteringa i snabdevanja čini ponudu jedinstvenom na tržištu grada Beograda\" (red 49), što je tvrdnja o sopstvenoj ponudi, ne statistika o tome kako ustanove nabavljaju.",
+   "ozbiljnost": "sitno",
+   "ispravka": "\"Kuvani obrok, potrošni materijal i stručno mišljenje o jelovniku obično dolaze iz tri odvojena ugovora. Spoj keteringa i snabdevanja je ono po čemu se Dr Cooker izdvaja na beogradskom tržištu.\" (Druga rečenica je doslovno pokrivena izvorom; prva je formulisana kao uobičajena praksa, bez merljivog \"većina\".)"
+  },
+  {
+   "gde": "/ — hero, telo",
+   "sporna_tvrdnja": "\"...priprema doručak, ručak i užine u sopstvenoj kuhinji na Voždovcu\"",
+   "zasto": "Izvor kaže \"Hrana se priprema u novoj, modernoj, profesionalno opremljenoj kuhinji koja se nalazi u Beogradu na opštini Voždovac\" (red 29). Reč \"sopstvena\" uvodi vlasništvo nad objektom — podatak koji izvor nigde ne daje (kuhinja može biti u zakupu). Sitno, ali je to tvrdnja koju kupac u B2B nabavci ume da proverava.",
+   "ozbiljnost": "sitno",
+   "ispravka": "\"...priprema doručak, ručak i užine u svojoj centralnoj kuhinji na Voždovcu\" — ili, još sigurnije: \"...u centralnoj kuhinji na Voždovcu\". PLACEHOLDER — pitanje za klijenta: da li je kuhinja u vlasništvu firme ili u zakupu?"
+  },
+  {
+   "gde": "/usluge/nutricionista — sekcija \"posebni-zahtevi\", druga rečenica",
+   "sporna_tvrdnja": "\"Nutricionista je na raspolaganju za pitanja vaših zaposlenih i roditelja.\"",
+   "zasto": "Izvor kaže: \"Nutricionista Dr Cooker ketering servisa je uvek spreman i raspoložen da odgovori na sva Vaša pitanja\" (red 117) — obraćanje je klijentu (ustanovi), ne roditeljima dece. Proširenje na roditelje je izmišljena usluga, i to ona koja može da generiše obim posla koji firma nije predvidela: vrtić sa 300 dece ima 500 roditelja.",
+   "ozbiljnost": "sitno",
+   "ispravka": "\"Nutricionista Dr Cooker-a je na raspolaganju za pitanja vaše ustanove.\" PLACEHOLDER — pitanje za klijenta: da li je nutricionista spreman da odgovara i roditeljima direktno, ili isključivo ustanovi kao klijentu?"
+  },
+  {
+   "gde": "/usluge/transport — sekcija \"termo-posude\", druga rečenica",
+   "sporna_tvrdnja": "\"Evidencija je jednostavna i vodi se pri svakoj isporuci.\"",
+   "zasto": "Izvor opisuje samo mehaniku zaduživanja i razduživanja termo posuda (red 90). Ne kaže da se vodi formalna evidencija, ni da se vodi pri svakoj isporuci, a \"jednostavna\" je subjektivna ocena bez pokrića. Ovo je tvrdnja o postojanju administrativnog procesa.",
+   "ozbiljnost": "sitno",
+   "ispravka": "Obrisati rečenicu. Prva rečenica sekcije (\"Korisnici naših usluga termo posude zadužuju prilikom dostave hrane, a razdužuju ih prilikom predaje praznih termosa\") verno prenosi izvor i sama je dovoljna."
+  },
+  {
+   "gde": "/usluge/nutricionista — sekcija \"nedeljni-jelovnici\", drugi pasus",
+   "sporna_tvrdnja": "\"Obroci pripremljeni po takvim jelovnicima vode ka ravnoteži između unosa energije i hranljivih materija i specifičnih potreba korisnika...\" — u sekciji koja se eksplicitno odnosi \"za decu i za odrasle\".",
+   "zasto": "Izvor tu tvrdnju vezuje isključivo za decu: \"...vode ka uspostavljanju ravnoteže između unosa energije i hranljivih materija sa specifičinim potrebama dece\" (red 109). Copy je zamenio \"dece\" sa \"korisnika\" i time proširio nutritivnu tvrdnju na odrasle i korporativne obroke, za koje izvor ne daje nikakvu nutritivnu potvrdu (za njih ne postoje ni objavljene gramature).",
+   "ozbiljnost": "sitno",
+   "ispravka": "\"Obroci pripremljeni po takvim jelovnicima vode ka ravnoteži između unosa energije i hranljivih materija i specifičnih potreba dece: proteina, masti, ugljenih hidrata, vitamina i minerala neophodnih za pravilan rast, razvoj i funkcionisanje organizma.\""
+  }
+ ],
+ "presuda": "COPY DECK NIJE ČIST. 16 nalaza: 1 kritičan, 8 ozbiljnih, 7 sitnih.\n\nŠTA JE PROŠLO PROVERU (provereno stavku po stavku, ne odokativno):\n— SVE brojke iz gramatura: svih 18 redova (doručak, voćna užina, ručak, meso, salate, užine), obe kolone JASLE/VRTIĆI I ŠKOLE, poklapaju se sa §8 izvora do grama. Nijedna izmišljena, nijedna prepisana pogrešno.\n— SVE nutritivne vrednosti: oba primera, svih 5 dana × 11 parametara, plus oba nedeljna proseka (4867 i 4844 kJ) — 132 broja, sve tačno.\n— Oba nedeljna menija: svih 50 stavki (5 dana × 5 obroka × 2 primera) verno prepisano.\n— HACCP je svuda tretiran ispravno. Nigde ne piše \"sertifikovani smo\". Svuda stoji \"poštuju se principi HACCP standarda\", a prostorije su \"građene prema HACCP sistemu\" — obe formulacije doslovno iz izvora. Ovo je urađeno disciplinovano.\n— Referenca: \"dugi niz godina\", 10 objekata, skoro 1000 mališana, \"najveća privatna predškolska ustanova u Srbiji\", ustanova NIJE imenovana, nema dodatih klijenata. Tačno.\n— SVIH 14 FAQ odgovora: proverio sam svaki citat u polju \"izvor\" protiv teksta izvora. Svi su verni, nijedan ne pripisuje izvoru nešto što izvor ne kaže. FAQ 11 (\"Postoje li gramature za kompanije? Ne.\") je posebno dobro urađen — odbija da izmisli tabelu koju sajt nema.\n— Nema cena, nema roka odgovora, nema radnog vremena, nema godina iskustva u brojkama, nema testimoniala, nema nagrada, nema sertifikata. Zabranjena lista je uglavnom ispoštovana.\n— Kontakt podaci, koordinate, adresa, telefoni, mejl: tačni.\n\nGDE JE PROBLEM:\nIzmišljanja nisu u brojkama — brojke su besprekorne. Izmišljanja su u OPERATIVNIM OBEĆANJIMA: šta se šalje kojom dostavom, šta piše u dnevniku isporuke, ko odgovara na upit, da li se dokumentacija daje na uvid, da li povratna informacija sa terena ulazi u sledeći jelovnik, da li Zavod dolazi bez najave. To su tvrdnje koje niko neće proveriti na sajtu — proveriće ih na prvom sastanku, i tada pucaju. Kupac je direktor vrtića koji mora da opravda izbor pred roditeljima i inspekcijom; svako od ovih obećanja je nešto što će on ponoviti svom kolektivu kao činjenicu.\n\nNajteži je nalaz #1: tvrdnja da roba iz distribucije stiže istom dostavom kao obroci ponavlja se na četiri mesta, nosi h1 cele stranice /usluge/distribucija, nema oslonca u izvoru — i direktno protivreči drugoj tvrdnji istog decka, da je vozilo \"specijalizovano samo za transport hrane\". Ta kontradikcija je u ovom poslu ozbiljna na sasvim drugi način od marketinške netačnosti.\n\nTRI PLACEHOLDERA KOJA U DECKU NEDOSTAJU:\nLista placeholdera je inače jaka — 19 stavki, i uočena je kontradikcija oko suhomesnatog (#13), što je bio pravi nalaz. Ali nedostaju:\n1. Adresa kuhinje — da li je Vojvode Prijezde 17 i kuhinja ili samo kancelarija, i da li je ta adresa na Voždovcu.\n2. Logistika distribucije — ide li roba istom turom i istim vozilom kao obroci.\n3. Učestalost doručka — izvor tvrdi i \"svakodnevno\" i \"jednom nedeljno\", a objavljeni meniji prikazuju pet doručaka. Ovo je ista klasa problema kao već uočena kontradikcija oko suhomesnatog, na istoj stranici, i mora ući u istu listu pitanja za klijenta.\n\nDo odgovora klijenta ništa od spornog ne sme na sajt. Sve ispravke predložene gore su formulisane tako da ostaju istinite bez ijednog novog podatka od klijenta."
+}

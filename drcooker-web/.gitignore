@@ -1,0 +1,10 @@
+# Artefakti alata iz tools/ — nisu deo sajta.
+__pycache__/
+*.pyc
+
+# Lokalni node_modules ako neko instalira sharp/fonttools pomocnike.
+node_modules/
+
+# OS smece
+Thumbs.db
+.DS_Store

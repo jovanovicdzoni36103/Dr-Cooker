@@ -1,0 +1,180 @@
+/* ==========================================================================
+   STAMPA
+   Dr Cooker — jelovnik i gramature na papiru
+   ========================================================================== */
+
+/* ==========================================================================
+   ŠTAMPA
+   ==========================================================================
+   „Direktor odštampa jelovnik i gramature i stavi pred upravni odbor" je
+   stvaran scenario kod vrtića i škola. Zato štampa nije naknadna misao.
+   ========================================================================== */
+
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  html {
+    font-size: 11pt;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  /* Interaktivno i navigaciono nema šta da traži na papiru. */
+  .hdr,
+  .mnav,
+  .ftr__nav,
+  .skip-link,
+  .btn,
+  .inquiry__form,
+  .photo-slot,
+  .ftr__meta,
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* Tamne trake postaju bele sa okvirom — inače progutaju pola tonera. */
+  .on-dark,
+  .ftr {
+    background: #fff !important;
+    color: #000 !important;
+    border: 1px solid #000;
+  }
+
+  .on-dark h1,
+  .on-dark h2,
+  .on-dark h3,
+  .on-dark .eyebrow,
+  .on-dark .lead,
+  .on-dark .normativ-row__label,
+  .on-dark .normativ-row__value,
+  .ftr,
+  .ftr a,
+  .ftr__h,
+  .ftr__tagline,
+  .ftr__phlabel,
+  .ftr__bottom {
+    color: #000 !important;
+  }
+
+  .data-table thead th,
+  .meni__table thead th {
+    background: #fff !important;
+    color: #000 !important;
+    border-block-end: 2px solid #000 !important;
+  }
+
+  .data-table,
+  .meni__table {
+    border-color: #000;
+  }
+
+  .data-table th,
+  .data-table td,
+  .meni__table th,
+  .meni__table td {
+    border-color: #666;
+  }
+
+  .data-table tbody tr:nth-child(even),
+  .meni__table tbody tr:nth-child(even) {
+    background: #f2f2f2 !important;
+  }
+
+  /* Tabela se ne lomi preko strane. */
+  table,
+  .dan,
+  .normativ-row,
+  figure {
+    break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Na papiru je adresa linka informacija, ne šum. Interni linkovi i
+     skok-linkovi se izostavljaju — samo bi zatrpali tekst. */
+  .prose a[href^='http']::after,
+  a.link[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  a[href^='tel:']::after,
+  a[href^='mailto:']::after,
+  a[href^='#']::after,
+  a[href^='/']::after {
+    content: '';
+  }
+
+  /* Mobilni prikaz kartica se ne štampa — tabela je čitljivija na A4. */
+  .meni__cards {
+    display: none !important;
+  }
+
+  .meni__scroll {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  /* Nutritivna matrica — dokument zbog koga ova datoteka i postoji.
+     Nije se štampala uopšte. `.page-nedeljni-meni .nutri__table` stoji na
+     `display: none` i vraća se tek unutar `@media (min-width: 56.25rem)`;
+     na papiru taj upit ne važi, pa je tabela nestajala baš u scenariju iz
+     zaglavlja ove datoteke. `!important` je ovde nužan: selektor koji je
+     sakriva ima specifičnost (0,2,0) i inače pobeđuje bez obzira na redosled. */
+  .nutri__table {
+    display: table !important;
+  }
+
+  .nutri__blokovi {
+    display: none !important;
+  }
+
+  /* Na ekranu naslov tabele nosi čitač ekrana, pa je skriven. Na papiru
+     dokument bez naslova ide pred upravni odbor kao neimenovan list —
+     zato se ovde vraća.
+     Svojstva prate `.visually-hidden` iz base.css jedno po jedno: ono koristi
+     `width`/`height` i `margin: -1px`, pa nije dovoljno poništiti samo
+     `position`. */
+  caption.visually-hidden {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 0 2mm !important;
+    overflow: visible !important;
+    clip-path: none !important;
+    white-space: normal !important;
+    font-weight: 600;
+    text-align: start;
+  }
+
+  /* Vazduh je odluka za ekran. Na A4 je izgubljen papir. */
+  .section--air {
+    padding-block: var(--space-5) !important;
+  }
+
+  .section {
+    padding-block: var(--space-5);
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    translate: none !important;
+  }
+}

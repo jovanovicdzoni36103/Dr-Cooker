@@ -1,0 +1,909 @@
+{
+ "glas": "Kompetentan, miran i konkretan — ton osobe koja odgovara za bezbednost hrane, a ne ton reklame. Svaka rečenica nosi činjenicu, proces ili broj; nema superlativa, uzvičnika ni emotivnog obraćanja „najslađim mališanima\". Kupac je direktor vrtića, office manager ili HR — piše se kao da čita nekoga ko će morati da opravda izbor pred roditeljima i inspekcijom, pa se obećanja zamenjuju proverljivim koracima (ko kontroliše, šta se meri, koliko grama, po kom pravilniku).",
+ "globalno": {
+  "nav": [
+   "O nama",
+   "Usluge",
+   "Jelovnik",
+   "Kvalitet i HACCP",
+   "Za koga radimo",
+   "Kontakt"
+  ],
+  "primarni_cta": "Zatražite ponudu",
+  "sekundarni_cta": "Pozovite: +381 60 0440458",
+  "footer_tagline": "Dr Cooker — kuvani obroci, distribucija proizvoda i nutritivna podrška za vrtiće, škole, produžene boravke i kompanije. Kuhinja: Beograd, Voždovac."
+ },
+ "stranice": [
+  {
+   "putanja": "/",
+   "seo_title": "Ketering za vrtiće, škole i kompanije | Dr Cooker",
+   "seo_description": "Kuvani obroci, distribucija proizvoda i nutritivna podrška za vrtiće, škole, produžene boravke i kompanije u Beogradu. Zatražite ponudu.",
+   "h1": "Kuvani obroci za vrtiće, škole i kompanije u Beogradu",
+   "sekcije": [
+    {
+     "id": "hero",
+     "nadnaslov": "Ketering servis · Beograd, Voždovac",
+     "naslov": "Kuvani obroci za vrtiće, škole i kompanije u Beogradu",
+     "telo": "Dr Cooker svakog dana priprema doručak, ručak i užine u sopstvenoj kuhinji na Voždovcu i dostavlja ih u dogovoreno vreme.\n\nJelovnike na nedeljnom nivou sastavlja nutricionista–dijetetičar, a proces pripreme prati principe HACCP standarda.",
+     "cta": "Zatražite ponudu"
+    },
+    {
+     "id": "ponuda-pregled",
+     "nadnaslov": "Šta radimo",
+     "naslov": "Tri usluge koje pokrivaju ceo dan u vašoj ustanovi",
+     "telo": "Ne pokrivamo samo obrok. Pokrivamo i sve ostalo što vam za taj obrok treba, i osobu koja ga stručno planira.",
+     "bullets": [
+      "Kuvani obroci — doručak, ručak i užine, pripremljeni u centralnoj kuhinji i dostavljeni u termo posudama.",
+      "Distribucija proizvoda — preko 7000 prehrambenih i neprehrambenih artikala, od hleba i mleka do kućne hemije i školskog pribora.",
+      "Stručna podrška nutricioniste — nedeljni jelovnici sa normativnim proračunima, pisana pravila za vašu ustanovu i obuke za vaše osoblje.",
+      "Transport — vozilo specijalizovano samo za prevoz hrane, sa termo izolacijom, i vozači pod stalnim sanitarnim nadzorom."
+     ],
+     "cta": "Pogledajte sve usluge"
+    },
+    {
+     "id": "referenca",
+     "nadnaslov": "Kapacitet u praksi",
+     "naslov": "Skoro 1000 mališana, 10 objekata, svaki radni dan",
+     "telo": "Dr Cooker već dugi niz godina svakodnevno proizvodi i isporučuje hranu za najveću privatnu predškolsku ustanovu u Srbiji. Snabdevamo 10 objekata te ustanove i svakodnevno kuvamo i serviramo hranu za skoro 1000 njihovih mališana.\n\nZa svoju ishranu su nam se opredelili i zaposleni u toj ustanovi."
+    },
+    {
+     "id": "kontrola",
+     "nadnaslov": "Bezbednost hrane",
+     "naslov": "Svaki korak ima kontrolu koja se može pokazati",
+     "telo": "U proizvodnom procesu poštuju se principi HACCP standarda — od nabavke sirovina, preko niza postupaka i procedura, do serviranja hrane.",
+     "bullets": [
+      "Sanitarnu kontrolu u kuhinji obavlja specijalista sanitarno-ekološki inženjer.",
+      "Unutrašnja kontrola: provera namirnica pri prijemu, atesta o zdravstvenoj bezbednosti i deklaracija, kontrola pripreme i distribucije.",
+      "Spoljašnju kontrolu vrši Gradski zavod za javno zdravlje — periodično uzima briseve radnih površina, ruku zaposlenih i termos boca, kao i nasumične uzorke obroka.",
+      "Uzorci idu na hemijsko-bromatološku analizu: energetska vrednost, belančevine, ugljeni hidrati i masti porede se sa vrednostima iz Pravilnika.",
+      "U kuhinji nema ukrštanja čistog i nečistog puta."
+     ],
+     "cta": "Kako kontrolišemo kvalitet"
+    },
+    {
+     "id": "sirovine",
+     "nadnaslov": "Sirovine",
+     "naslov": "Sastojci se poručuju svakog dana — bez lagera i dubokog zamrzavanja",
+     "telo": "Koristimo sirovine regionalnog i sezonskog karaktera, za koje posedujemo pripadajuće sertifikate, deklaracije i ateste o bezbednosti proizvoda.\n\nSastojci se poručuju na dnevnom nivou, tako da nema potrebe za lagerovanjem i dubokim zamrzavanjem sirovina."
+    },
+    {
+     "id": "publike",
+     "nadnaslov": "Za koga radimo",
+     "naslov": "Različite ustanove, različiti normativi",
+     "telo": "Jelovnik i gramatura nisu isti za jaslenu grupu, školarca i zaposlenog u kompaniji. Zato se razlikuju i u našoj ponudi.",
+     "bullets": [
+      "Dečji vrtići, uključujući jasle — posebne, manje gramature za najmlađe.",
+      "Škole — obroci usklađeni sa normativima ishrane dece školskog uzrasta.",
+      "Produženi boravci — doručak, ručak i užine u ritmu boravka.",
+      "Kompanije — obroci se planiraju u skladu sa zahtevima klijenta."
+     ],
+     "cta": "Za koga radimo"
+    },
+    {
+     "id": "jelovnik-uvid",
+     "nadnaslov": "Transparentnost",
+     "naslov": "Jelovnik možete pročitati pre nego što išta potpišete",
+     "telo": "Objavljujemo primere nedeljnog menija, pripadajuće energetske i nutritivne vrednosti po danu i gramature obroka po uzrastu — da biste znali šta tačno dobijate i kako se to meri.",
+     "cta": "Pogledajte jelovnik"
+    },
+    {
+     "id": "cta-zavrsni",
+     "naslov": "Recite nam koliko dece hranite i u koje vreme",
+     "telo": "Pošaljite osnovne podatke o ustanovi — broj korisnika, uzrast, koje obroke tražite i u koliko objekata. Na osnovu toga pravimo ponudu za vas.\n\nMožete i predložiti termin sastanka i rado ćemo doći kod vas.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/o-nama",
+   "seo_title": "O nama — ketering servis Dr Cooker, Beograd",
+   "seo_description": "Ketering servis sa kuhinjom na Voždovcu. Tim: nutricionista–dijetetičar, sanitarni inženjer, kuvari, pomoćni radnici i vozači.",
+   "h1": "Ketering servis sa jednom specijalnošću: svakodnevna ishrana u ustanovama",
+   "sekcije": [
+    {
+     "id": "uvod",
+     "naslov": "Uska specijalnost, ne širok spisak usluga",
+     "telo": "Uska specijalnost Dr Cooker ketering servisa je snabdevanje dečjih vrtića, škola, produženih boravaka i manjih i većih kompanija kuvanim jelima.\n\nPored pripreme i isporuke obroka, razvili smo i sistem snabdevanja klijenata ostalim prehrambenim i neprehrambenim proizvodima — od sredstava kućne hemije do kancelarijskog materijala i školskog pribora."
+    },
+    {
+     "id": "kuhinja",
+     "nadnaslov": "Kuhinja",
+     "naslov": "Nova, profesionalno opremljena kuhinja na Voždovcu",
+     "telo": "Hrana se priprema u novoj, modernoj, profesionalno opremljenoj kuhinji u Beogradu, na opštini Voždovac.\n\nProstorije centralne kuhinje građene su prema HACCP sistemu, tako da je omogućeno nesmetano čišćenje i dezinfekcija svih površina. Za pripremu koristimo savremene metode i profesionalnu opremu, radi očuvanja hranljivih vrednosti sastojaka."
+    },
+    {
+     "id": "tim",
+     "nadnaslov": "Tim",
+     "naslov": "Ko stoji iza svakog obroka",
+     "telo": "Poslovni tim Dr Cooker-a čine nutricionista–dijetetičar, sanitarni inženjer (specijalista sanitarno-ekološki inženjer), kuvari, pomoćni radnici i vozači.\n\nSva lica zadužena za pripremu i distribuciju hrane prošla su neophodne obuke i nalaze se pod redovnim sanitarnim nadzorom. Naši kuvari su i sami roditelji.",
+     "bullets": [
+      "Nutricionista–dijetetičar — nedeljni jelovnici, normativni proračuni i kontrola celog lanca ishrane.",
+      "Sanitarni inženjer — sanitarna kontrola u kuhinji.",
+      "Kuvari i pomoćni radnici — priprema obroka po odobrenim recepturama.",
+      "Vozači — transport i predaja obroka, uz pomoć oko dnevnika isporuke."
+     ]
+    },
+    {
+     "id": "misija",
+     "nadnaslov": "Zašto ovako radimo",
+     "naslov": "Čulo ukusa se pretežno formira do šeste godine",
+     "telo": "Nutritivne navike deca stiču u ranom periodu odrastanja — u porodici i u svom okruženju. Dečje čulo ukusa se pretežno formira do šeste godine, ali prihvatanje pojedinih ukusa je navika koja se stiče tokom celog života.\n\nAko mališanima u detinjstvu ponudimo pravilne kombinacije jela i ukusa, oni će taj model ishrane usvojiti kao životnu naviku. Uravnotežena, racionalna i raznovrsna ishrana utiče na ojačavanje imuniteta, smanjenje procenta gojaznosti i alergija i umanjuje rizik od raznih hroničnih oboljenja.\n\nNaša misija je da usklađenim odnosom cene i kvaliteta pokažemo da zdrava i pravilna ishrana nije privilegija, već životna potreba."
+    },
+    {
+     "id": "referenca",
+     "nadnaslov": "Referenca",
+     "naslov": "10 objekata jedne ustanove, skoro 1000 dece, iz dana u dan",
+     "telo": "Dr Cooker već dugi niz godina proizvodi i isporučuje hranu za najveću privatnu predškolsku ustanovu u Srbiji. Snabdevamo 10 objekata te ustanove i svakodnevno kuvamo i serviramo hranu za skoro 1000 njihovih mališana.\n\nZaposleni u toj predškolskoj ustanovi opredelili su se da i brigu o svojoj ishrani prepuste Dr Cooker timu."
+    },
+    {
+     "id": "cta",
+     "naslov": "Dođite da vidite kuhinju ili nam recite šta vam treba",
+     "telo": "Predložite termin sastanka — rado ćemo doći kod vas i napraviti ponudu u skladu sa potrebama vaše ustanove.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/usluge",
+   "seo_title": "Usluge — obroci, distribucija i nutricionista",
+   "seo_description": "Tri usluge Dr Cooker-a: kuvani obroci, distribucija preko 7000 artikala i stručna podrška nutricioniste. Jedna dostava, jedan sagovornik.",
+   "h1": "Tri usluge koje pokrivaju ishranu i snabdevanje vaše ustanove",
+   "sekcije": [
+    {
+     "id": "uvod",
+     "naslov": "Obrok, roba i stručno mišljenje — od istog dobavljača",
+     "telo": "Većina ustanova ove tri stvari nabavlja odvojeno: nekoga ko kuva, nekoga ko doprema potrošni materijal i nekoga ko potvrdi da je jelovnik nutritivno ispravan.\n\nKod nas to dolazi zajedno — na istoj dostavi, sa pripadajućom dokumentacijom i sa jednim sagovornikom."
+    },
+    {
+     "id": "obroci",
+     "nadnaslov": "Usluga 01",
+     "naslov": "Kuvani obroci — doručak, ručak i užine svakog dana",
+     "telo": "Svakodnevno pripremamo doručak, ručak i užine i u dogovoreno vreme ih dostavljamo krajnjim korisnicima: vrtićima, školama, produženim boravcima i manjim i većim kompanijama.\n\nZa vrtiće i škole objavljene su gramature obroka, odvojeno za jaslene grupe i za vrtiće i škole.",
+     "cta": "Detaljno o obrocima"
+    },
+    {
+     "id": "distribucija",
+     "nadnaslov": "Usluga 02",
+     "naslov": "Distribucija — preko 7000 prehrambenih i neprehrambenih artikala",
+     "telo": "Uz kuvane obroke dostavljamo i sve ostalo što je ustanovi potrebno za svakodnevni rad: hleb i peciva, mleko i mlečne proizvode, voće, salate i namaze, ali i sredstva za čišćenje, toalet papir, deterdžente, kancelarijski materijal i školski pribor.\n\nCene su niže od cena u redovnim prodavnicama, a minimalna količina je jedan komad svakog proizvoda.",
+     "cta": "Detaljno o distribuciji"
+    },
+    {
+     "id": "nutricionista",
+     "nadnaslov": "Usluga 03",
+     "naslov": "Nutricionista–dijetetičar — jelovnici, kontrola lanca i obuke",
+     "telo": "Nutricionista–dijetetičar na nedeljnom nivou formira jelovnike sa pripadajućim normativnim proračunima, sastavnicama i nutritivnim obračunima. Jelovnici za decu usklađeni su sa Pravilnikom o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi.\n\nOsim planiranja, nutricionista kontroliše ceo lanac — od kvaliteta dostavljenih namirnica do sanitarno-higijenskih uslova — i drži obuke vašem osoblju o čuvanju i serviranju hrane.",
+     "cta": "Detaljno o podršci nutricioniste"
+    },
+    {
+     "id": "transport",
+     "nadnaslov": "Uz sve tri usluge",
+     "naslov": "Transport u vozilu namenjenom isključivo za hranu",
+     "telo": "Obroke dostavljaju obučeni vozači pod stalnim sanitarnim nadzorom, vozilom koje je specijalizovano samo za transport hrane i poseduje termo izolaciju. Zahvaljujući termo posudama i kratkom vremenu dostave, obroci ostaju na sigurnoj temperaturi.",
+     "cta": "Detaljno o transportu"
+    },
+    {
+     "id": "cta",
+     "naslov": "Uzmite jednu uslugu ili sve tri",
+     "telo": "Recite nam šta vam je potrebno — broj korisnika, uzrast, koje obroke tražite i da li vam treba i snabdevanje proizvodima. Ponudu pravimo prema tome.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/usluge/obroci",
+   "seo_title": "Kuvani obroci za vrtiće, škole i kompanije",
+   "seo_description": "Doručak, ručak i užine za vrtiće, škole, produžene boravke i kompanije. Objavljene gramature za jasle i za vrtiće i škole.",
+   "h1": "Doručak, ručak i užine, pripremljeni u centralnoj kuhinji i dostavljeni u dogovoreno vreme",
+   "sekcije": [
+    {
+     "id": "uvod",
+     "naslov": "Jedan dan ishrane, u celini",
+     "telo": "Dr Cooker svakodnevno priprema doručak, ručak i užine i u dogovoreno vreme ih dostavlja krajnjim korisnicima — vrtićima, školama, produženim boravcima i korporativnim sistemima.\n\nSveže pripremljen i topao obrok doprema se u modernim termo posudama, uz kratko vreme dostave."
+    },
+    {
+     "id": "sta-je-na-meniju",
+     "nadnaslov": "Sadržaj obroka",
+     "naslov": "Šta ulazi u doručak, ručak i užinu",
+     "bullets": [
+      "Doručak (jednom nedeljno na meniju kao topli slani/slatki doručak): jaja, pite i proje od različitih vrsta brašna, sladak doručak, suhomesnati proizvodi.",
+      "Ručak, svakog dana: raznovrsne supe, čorbe i salate; kao glavni obrok kroz nedelju pečena i kuvana jela uz različite vrste povrća, mesa i ribe.",
+      "Užine: sezonsko voće, slatke poslastice, slani namazi, sezonske salate, orašasti plodovi, suvo voće, integralne pahuljice i šejkovi od voća i povrća."
+     ],
+     "cta": "Pogledajte ceo jelovnik"
+    },
+    {
+     "id": "gramature-uvod",
+     "nadnaslov": "Gramature",
+     "naslov": "Ponuda obroka za vrtiće i škole — tačne gramature po uzrastu",
+     "telo": "Za jaslene grupe i za vrtiće i škole važe različite gramature. Objavljujemo ih u celosti, da biste ih mogli uporediti sa svojim normativima pre nego što tražite ponudu."
+    },
+    {
+     "id": "gramature-dorucak-uzina",
+     "naslov": "Doručak i voćna užina",
+     "bullets": [
+      "Slane pite i kiflice — jasle 60 g · vrtići i škole 70 g",
+      "Namazi — jasle 15 g · vrtići i škole 20 g",
+      "Sezonsko voće (voćna užina) — jasle 100 g · vrtići i škole 120 g"
+     ]
+    },
+    {
+     "id": "gramature-rucak",
+     "naslov": "Ručak",
+     "bullets": [
+      "Sezonsko voće — jasle 100 g · vrtići i škole 150 g",
+      "Varivo sa mesom — jasle 250 g · vrtići i škole 300 g",
+      "Musake od povrća sa mesom — jasle 250 g · vrtići i škole 300 g",
+      "Zapečena testenina — jasle 250 g · vrtići i škole 300 g",
+      "Sosevi sa mesom i prilozima — jasle 250 g · vrtići i škole 300 g",
+      "Prilozi — jasle 200 g · vrtići i škole 250 g"
+     ]
+    },
+    {
+     "id": "gramature-meso",
+     "naslov": "Meso",
+     "bullets": [
+      "Komadno meso — jasle 50 g · vrtići i škole 60 g",
+      "Meso u varivu — jasle 40 g · vrtići i škole 50 g",
+      "Faširano meso — jasle 50 g · vrtići i škole 60 g",
+      "Piletina — jasle 60 g · vrtići i škole 70 g",
+      "Panirana riba — jasle 50 g · vrtići i škole 60 g"
+     ]
+    },
+    {
+     "id": "gramature-salate-uzine",
+     "naslov": "Salate i užine",
+     "bullets": [
+      "Sveže salate — jasle 40 g · vrtići i škole 50 g",
+      "Konzervisane salate — jasle 30 g · vrtići i škole 40 g",
+      "Tople užine — jasle 160 g · vrtići i škole 180 g",
+      "Kolači i peciva — jasle 50 g · vrtići i škole 60 g"
+     ]
+    },
+    {
+     "id": "korporativni",
+     "nadnaslov": "Kompanije",
+     "naslov": "Obroci za korporativne sisteme planiraju se po dogovoru",
+     "telo": "Za korporativne sisteme ne objavljujemo unapred definisane gramature — obroci se planiraju u skladu sa zahtevima klijenta.\n\nJelovnici za odrasle se po kvalitativnoj vrednosti ne razlikuju mnogo od dečjih, ali se razlikuju u sastavu i načinu pripreme: sadrže više soli i aromatičnih i pikantnih začina, u nutritivno propisanim količinama.",
+     "cta": "Zatražite ponudu za kompaniju"
+    },
+    {
+     "id": "posebni-zahtevi",
+     "naslov": "Posebni nutritivni zahtevi i režimi ishrane",
+     "telo": "Izlazimo u susret klijentima sa posebnim nutritivnim zahtevima i posebnim režimom ishrane. Recite nam koje zahteve imate u svojoj grupi korisnika i uključićemo ih u planiranje jelovnika."
+    },
+    {
+     "id": "cta",
+     "naslov": "Pošaljite broj korisnika i uzrast",
+     "telo": "Na osnovu broja korisnika, uzrasta i obroka koje tražite pravimo ponudu za vašu ustanovu.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/usluge/distribucija",
+   "seo_title": "Distribucija proizvoda — preko 7000 artikala",
+   "seo_description": "Preko 7000 prehrambenih i neprehrambenih artikala uz istu dostavu kao i obroci. Minimalna količina je jedan komad svakog proizvoda.",
+   "h1": "Preko 7000 artikala, na istoj dostavi kao i obroci",
+   "sekcije": [
+    {
+     "id": "uvod",
+     "naslov": "Jedan dobavljač za obrok i za sve ostalo",
+     "telo": "Pored pripreme i isporuke obroka, razvili smo sistem snabdevanja klijenata ostalim prehrambenim i neprehrambenim proizvodima neophodnim za svakodnevni rad ustanove ili kompanije.\n\nAsortiman obuhvata preko 7000 artikala, a roba se dostavlja u dogovoreno vreme, sa pripadajućim dokumentom."
+    },
+    {
+     "id": "asortiman-hrana",
+     "nadnaslov": "Asortiman",
+     "naslov": "Prehrambeni proizvodi",
+     "bullets": [
+      "Hleb i peciva",
+      "Mleko i mlečni proizvodi",
+      "Suhomesnati proizvodi",
+      "Voće",
+      "Konzervisano povrće",
+      "Salate",
+      "Namazi",
+      "Keks"
+     ]
+    },
+    {
+     "id": "asortiman-neprehrambeno",
+     "naslov": "Neprehrambeni proizvodi",
+     "bullets": [
+      "Proizvodi za čišćenje prostora",
+      "Sredstva za pranje sudova",
+      "Deterdženti za pranje veša",
+      "Sredstva kućne hemije",
+      "Toalet papir i salvete",
+      "Kancelarijski materijal i papir za štampu",
+      "Školski pribor, bojice i olovke"
+     ]
+    },
+    {
+     "id": "uslovi",
+     "nadnaslov": "Uslovi",
+     "naslov": "Cene niže nego u prodavnici, minimalna količina jedan komad",
+     "bullets": [
+      "Cene po kojima isporučujemo ovu vrstu robe niže su od cena u redovnim prodavnicama.",
+      "Minimalna količina je jedan komad svakog proizvoda — ne morate poručivati pakovanje ili paletu.",
+      "Roba se dostavlja u dogovoreno vreme, na vašu adresu, sa pripadajućim dokumentom.",
+      "Dostava ide zajedno sa dostavom obroka, ako koristite obe usluge."
+     ]
+    },
+    {
+     "id": "cta",
+     "naslov": "Pošaljite spisak onoga što redovno trošite",
+     "telo": "Ako nam pošaljete listu artikala koje mesečno nabavljate, možemo da je uporedimo sa svojim asortimanom i da vam napravimo ponudu.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/usluge/nutricionista",
+   "seo_title": "Stručna podrška nutricioniste — jelovnici i obuke",
+   "seo_description": "Nutricionista–dijetetičar nedeljno sastavlja jelovnike, kontroliše ceo lanac ishrane i drži obuke o čuvanju i serviranju hrane.",
+   "h1": "Nutricionista–dijetetičar koji je u kuhinji, a ne samo na papiru",
+   "sekcije": [
+    {
+     "id": "nedeljni-jelovnici",
+     "nadnaslov": "Planiranje",
+     "naslov": "Jelovnici se prave svake nedelje, sa proračunima",
+     "telo": "Nutricionista–dijetetičar na nedeljnom nivou formira jelovnike i pripadajuće normativne proračune, sastavnice i nutritivne obračune — za decu i za odrasle.\n\nObroci pripremljeni po takvim jelovnicima vode ka ravnoteži između unosa energije i hranljivih materija i specifičnih potreba korisnika: proteina, masti, ugljenih hidrata, vitamina i minerala neophodnih za pravilan rast, razvoj i funkcionisanje organizma."
+    },
+    {
+     "id": "pravilnik",
+     "nadnaslov": "Propisi",
+     "naslov": "Dečji jelovnici se rade po Pravilniku",
+     "telo": "Pri izradi jelovnika za decu nutricionista se pridržava odredbi propisanih Pravilnikom o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi. Jelovnici zadovoljavaju principe pravilne ishrane i normative za predškolski i školski uzrast.",
+     "bullets": [
+      "Iz dečjih jelovnika su u potpunosti isključene suhomesnate prerađevine.",
+      "Obroci se pripremaju bez previše soli, masti, šećera i začina.",
+      "Koristi se polubeli, crni i integralni hleb.",
+      "Konditorski proizvodi se ne koriste."
+     ]
+    },
+    {
+     "id": "kontrola-lanca",
+     "nadnaslov": "Kontrola",
+     "naslov": "Nutricionista kontroliše ceo lanac ishrane",
+     "telo": "Kontrola ne počinje u tanjiru. Počinje na prijemu namirnica i traje do trenutka kada se obrok servira detetu.",
+     "bullets": [
+      "Kvalitet dostavljenih namirnica i bezbednost sirovina.",
+      "Prateća dokumentacija — atesti i deklaracije.",
+      "Nabavka najkvalitetnijih namirnica i organizacija kuhinjskog osoblja.",
+      "Priprema i distribucija hrane.",
+      "Sanitarno-higijenski uslovi pripreme i distribucije."
+     ]
+    },
+    {
+     "id": "u-kuhinji",
+     "nadnaslov": "U kuhinji",
+     "naslov": "Prisutan tokom pripreme, ukuse proverava lično",
+     "telo": "Nutricionista–dijetetičar je prisutan u kuhinji tokom procesa pripreme hrane. Sve ukuse i recepture lično proverava i nadgleda način slanja hrane."
+    },
+    {
+     "id": "na-terenu",
+     "nadnaslov": "Kod vas",
+     "naslov": "Obilazi objekte za vreme obroka",
+     "telo": "Nutricionista prati i kontroliše realizaciju procesa ishrane na licu mesta: obilazi objekte za vreme obroka i razmenjuje informacije sa zaposlenima i sa decom u ustanovi u kojoj se služe naša jela.\n\nTo znači da povratna informacija o tome šta deca zaista jedu, a šta ostaje u tanjiru, ulazi u sledeći jelovnik."
+    },
+    {
+     "id": "pravila-i-obuke",
+     "nadnaslov": "Posle dostave",
+     "naslov": "Pisana pravila i obuke za vaše osoblje",
+     "telo": "Za svaku vaspitno-obrazovnu ustanovu i kompaniju sa kojom sarađujemo nutricionista priprema pisani set pravila o načinu čuvanja, skladištenja i serviranja obroka nakon dostave.\n\nUz to držimo i obuke o higijenskim standardima čuvanja i serviranja hrane kod klijenta. Cilj je da hrana do krajnjeg korisnika stigne sa maksimalno očuvanom hranljivom i biološkom vrednošću i da se higijenski ispravno servira."
+    },
+    {
+     "id": "posebni-zahtevi",
+     "naslov": "Posebni nutritivni zahtevi",
+     "telo": "Izlazimo u susret klijentima sa posebnim nutritivnim zahtevima i posebnim režimom ishrane. Nutricionista je na raspolaganju za pitanja vaših zaposlenih i roditelja."
+    },
+    {
+     "id": "cta",
+     "naslov": "Pitajte nutricionistu pre nego što tražite ponudu",
+     "telo": "Ako imate konkretno pitanje o normativima, jelovniku ili posebnim režimima ishrane, postavite ga u upitu — odgovor dobijate od nutricioniste.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/usluge/transport",
+   "seo_title": "Transport i dostava hrane u termo posudama",
+   "seo_description": "Obučeni vozači pod sanitarnim nadzorom, vozilo namenjeno samo za hranu i termo posude. Dnevnik isporuke uz svaku dostavu.",
+   "h1": "Dostava u vozilu koje prevozi isključivo hranu",
+   "sekcije": [
+    {
+     "id": "vozilo",
+     "nadnaslov": "Vozilo",
+     "naslov": "Specijalizovano samo za transport hrane, sa termo izolacijom",
+     "telo": "Vozilo kojim prevozimo obroke namenjeno je isključivo transportu hrane i poseduje termo izolaciju. U kombinaciji sa termo posudama i kratkim vremenom dostave, obroci ostaju na sigurnoj temperaturi do predaje u vašu kuhinju."
+    },
+    {
+     "id": "vozaci",
+     "nadnaslov": "Vozači",
+     "naslov": "Obučeni i pod stalnim sanitarnim nadzorom",
+     "telo": "Sveže obroke dostavljaju obučeni vozači Dr Cooker ketering servisa, koji su pod stalnim sanitarnim nadzorom, kao i sva lica zadužena za pripremu i distribuciju hrane."
+    },
+    {
+     "id": "termo-posude",
+     "nadnaslov": "Ambalaža",
+     "naslov": "Termo posude se zadužuju i razdužuju",
+     "telo": "Korisnici naših usluga termo posude zadužuju prilikom dostave hrane, a razdužuju ih prilikom predaje praznih termosa. Evidencija je jednostavna i vodi se pri svakoj isporuci."
+    },
+    {
+     "id": "dnevnik",
+     "nadnaslov": "Dokumentacija",
+     "naslov": "Dnevnik isporuke povezuje naš HACCP sa vašim pravilima",
+     "telo": "Naši vozači pomažu vašem osoblju u popunjavanju dnevnika isporuke. Taj dnevnik je veza između HACCP-a Dr Cooker-a i internih higijenskih pravila vaše ustanove — dokument koji pokazuje šta je, kada i u kakvom stanju preuzeto."
+    },
+    {
+     "id": "roba",
+     "nadnaslov": "Ostala roba",
+     "naslov": "Proizvodi iz distribucije stižu istom dostavom",
+     "telo": "Ako od nas poručujete i ostale prehrambene ili neprehrambene proizvode, i oni se u dogovoreno vreme dostavljaju na vašu adresu, sa pripadajućim dokumentom."
+    },
+    {
+     "id": "cta",
+     "naslov": "Dogovorite vreme dostave koje odgovara vašem rasporedu",
+     "telo": "Recite nam u koliko sati vam treba doručak, ručak i užina i u koliko objekata — uskladićemo raspored dostave.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/jelovnik",
+   "seo_title": "Jelovnik i nedeljni meni — Dr Cooker",
+   "seo_description": "Struktura jelovnika, primeri nedeljnog menija i energetske i nutritivne vrednosti po danu. Sve grupe namirnica iz piramide ishrane.",
+   "h1": "Jelovnik: šta je na stolu i koliko to vredi nutritivno",
+   "sekcije": [
+    {
+     "id": "uvod",
+     "naslov": "Domaća jela i kombinacije stranih recepata, po originalnoj recepturi",
+     "telo": "Na našem meniju nalaze se domaća jela, ali i kombinacije stranih recepata. Recepture pravimo po nutritivnim normativima, ali vodimo računa i o karakteristikama čula ukusa, željama i potrebama korisnika.\n\nSvi koji konzumiraju naše obroke svakodnevno dobijaju poznate ukuse kuvane hrane, ali i priliku da upoznaju nove."
+    },
+    {
+     "id": "struktura",
+     "nadnaslov": "Struktura nedelje",
+     "naslov": "Kako izgleda nedelja na jelovniku",
+     "bullets": [
+      "Doručak, jednom nedeljno: jaja, pite i proje od različitih vrsta brašna, sladak doručak, suhomesnati proizvodi (slanina, pečenica, čvarci).",
+      "Ručak, svakog dana: raznovrsne supe, čorbe i salate; kao glavni obrok kroz nedelju pečena i kuvana jela uz različite vrste povrća, mesa i ribe.",
+      "Užine: sezonsko voće, slatke poslastice, slani namazi, sezonske salate, orašasti plodovi, suvo voće, integralne pahuljice i zdravi šejkovi od voća i povrća."
+     ]
+    },
+    {
+     "id": "piramida",
+     "nadnaslov": "Sastav dnevnog obroka",
+     "naslov": "Sedam grupa namirnica u svakom danu",
+     "telo": "Kroz nedeljni meni pratimo pravila piramide ishrane. U sastav dnevnog obroka ulaze sledeće grupe namirnica:",
+     "bullets": [
+      "I — žitarice i proizvodi od žita",
+      "II — meso, riba, jaja i prerađevine od mesa",
+      "III — mleko i mlečni proizvodi",
+      "IV — biljne i životinjske masti, maslac",
+      "V — povrće",
+      "VI — voće",
+      "VII — ostale namirnice (začinsko bilje i drugo)"
+     ]
+    },
+    {
+     "id": "pravila-za-decu",
+     "nadnaslov": "Dečji jelovnici",
+     "naslov": "Šta u dečjim jelovnicima ne postoji",
+     "bullets": [
+      "Suhomesnate prerađevine — u potpunosti isključene.",
+      "Previše soli, masti, šećera i začina — obroci se pripremaju bez toga.",
+      "Konditorski proizvodi — ne koriste se.",
+      "Hleb: polubeli, crni i integralni."
+     ]
+    },
+    {
+     "id": "primer-1",
+     "nadnaslov": "Primer nedeljnog menija 01",
+     "naslov": "Pet dana, pet obroka dnevno",
+     "bullets": [
+      "Ponedeljak — Doručak: jaje na oko, feta sir, hleb, kiselo mleko · Užina I: jabuka · Ručak: goveđa supa, gulaš sa junećim mesom, makarone, salata · Užina II: tortilja sa nadevom od cvekle i pavlake · Užina III: plazma šejk sa kockicama crne čokolade",
+      "Utorak — Doručak: uštipci sa džemom, voćni čaj · Užina I: pomorandža · Ručak: čorba sa prosom, svinjska šnicla u natur sosu, šareni rizi-bizi, salata, hleb · Užina II: jaffa kolač · Užina III: cezar salata",
+      "Sreda — Doručak: pita sa spanaćem od heljdinih kora, jogurt · Užina I: banana · Ručak: supa sa povrćem, sarma, pire krompir, salata, hleb · Užina II: sutlijaš · Užina III: kompot od suvih šljiva sa limunom",
+      "Četvrtak — Doručak: duvan čvarci sa pavlakom na integralnom hlebu, kiselo mleko · Užina I: kruška · Ručak: supa sa šargarepom i celerom, pasulj sa suvom kolenicom, salata, hleb · Užina II: krem sir sa maslinama na tostu · Užina III: veseli ražnjići od voća",
+      "Petak — Doručak: sendvič sa namazom ruske salate, čaj · Užina I: kivi · Ručak: čorba od blitve, kremasti fusili sa tunom, povrćem i pavlakom, salata · Užina II: bakin kolač sa nadevom od višanja · Užina III: smuti od brokolija i jabuke"
+     ]
+    },
+    {
+     "id": "nutritivne-1",
+     "nadnaslov": "Uz primer 01",
+     "naslov": "Energetska i nutritivna vrednost po danu",
+     "telo": "Prosek nedelje: 4867 kJ · 41 g proteina · 43 g masti · 152 g ugljenih hidrata · Ca 504 mg · Fe 7 mg · A 586 µg · B1 1,1 mg · B2 1,2 mg · C 81 mg · PP 8 mg.",
+     "bullets": [
+      "Ponedeljak — 5638 kJ · proteini 49 g · masti 62 g · UH 148 g · Ca 670 mg · Fe 8 mg · A 498 µg · B1 1,4 mg · B2 1,5 mg · C 19 mg · PP 11 mg",
+      "Utorak — 4922 kJ · proteini 28 g · masti 46 g · UH 161 g · Ca 252 mg · Fe 6 mg · A 725 µg · B1 0,5 mg · B2 0,5 mg · C 130 mg · PP 7 mg",
+      "Sreda — 5417 kJ · proteini 42 g · masti 53 g · UH 162 g · Ca 725 mg · Fe 7 mg · A 564 µg · B1 1,6 mg · B2 1,8 mg · C 72 mg · PP 8 mg",
+      "Četvrtak — 4111 kJ · proteini 44 g · masti 26 g · UH 141 g · Ca 544 mg · Fe 9 mg · A 569 µg · B1 1,4 mg · B2 1,4 mg · C 54 mg · PP 4 mg",
+      "Petak — 4247 kJ · proteini 40 g · masti 28 g · UH 148 g · Ca 328 mg · Fe 6 mg · A 576 µg · B1 0,4 mg · B2 0,6 mg · C 132 mg · PP 10 mg"
+     ]
+    },
+    {
+     "id": "primer-2",
+     "nadnaslov": "Primer nedeljnog menija 02",
+     "naslov": "Druga nedelja, druga rotacija",
+     "bullets": [
+      "Ponedeljak — Doručak: kajgana sa slaninicom, jogurt, hleb · Užina I: jabuka · Ručak: kokošija supa, špagete u bolonjez sosu, pavlaka / salata · Užina II: čupava pita sa jabukama i cimetom · Užina III: vitaminska salata od svežeg povrća",
+      "Utorak — Doručak: med sa maslacem na toplom tostu, voćni čaj · Užina I: mandarina · Ručak: krem čorba od povrća, grilovani pileći file u sosu od četiri vrste sira, bareni pirinač, salata, hleb · Užina II: kanapei sa ribljim namazom · Užina III: kaša od ovsenih pahuljica sa šumskim voćem",
+      "Sreda — Doručak: kačamak sa kajmakom, kiselo mleko · Užina I: kivi · Ručak: juneća supa, musaka od krompira i šargarepe, pavlaka / salata · Užina II: čokoladni mus sa suvom brusnicom · Užina III: ajvar sa mladim sirom na kukuruznom hlebu",
+      "Četvrtak — Doručak: rolnica sa suvim mesom, zdenkom i zelenom salatom, čaj · Užina I: pomorandža · Ručak: supa sa knedlama, grašak-paprikaš sa junećim mesom, salata, hleb · Užina II: voćni kup sa medom · Užina III: sirni namaz sa rukolom na baget hlebu",
+      "Petak — Doručak: pita sa mesom, jogurt · Užina I: banana · Ručak: paradajz čorba, filet oslića, kukuruz šećerac sa brokolijem i pirinčem, salata, hleb · Užina II: heljdine palačinke sa čokoladnim namazom i bananama · Užina III: zalogajčići sa rendanom šargarepom i krem sirom"
+     ]
+    },
+    {
+     "id": "nutritivne-2",
+     "nadnaslov": "Uz primer 02",
+     "naslov": "Energetska i nutritivna vrednost po danu",
+     "telo": "Prosek nedelje: 4844 kJ · 44 g proteina · 40 g masti · 153 g ugljenih hidrata · Ca 513 mg · Fe 7 mg · A 568 µg · B1 1,1 mg · B2 1,2 mg · C 103 mg · PP 7 mg.",
+     "bullets": [
+      "Ponedeljak — 4442 kJ · proteini 37 g · masti 48 g · UH 120 g · Ca 390 mg · Fe 6 mg · A 612 µg · B1 1,1 mg · B2 1,2 mg · C 65 mg · PP 6 mg",
+      "Utorak — 5026 kJ · proteini 45 g · masti 38 g · UH 168 g · Ca 383 mg · Fe 7 mg · A 560 µg · B1 0,6 mg · B2 0,6 mg · C 98 mg · PP 8 mg",
+      "Sreda — 5515 kJ · proteini 45 g · masti 49 g · UH 173 g · Ca 768 mg · Fe 7 mg · A 441 µg · B1 1,2 mg · B2 1,5 mg · C 119 mg · PP 6 mg",
+      "Četvrtak — 4197 kJ · proteini 51 g · masti 28 g · UH 135 g · Ca 595 mg · Fe 7 mg · A 928 µg · B1 1,5 mg · B2 1,5 mg · C 128 mg · PP 9 mg",
+      "Petak — 5042 kJ · proteini 41 g · masti 40 g · UH 169 g · Ca 431 mg · Fe 6 mg · A 302 µg · B1 1,06 mg · B2 1,1 mg · C 109 mg · PP 7 mg"
+     ]
+    },
+    {
+     "id": "gramature-link",
+     "naslov": "Gramature po uzrastu su objavljene uz uslugu obroka",
+     "telo": "Ako vam za poređenje sa normativima trebaju tačne gramature po jelu — odvojeno za jasle i za vrtiće i škole — nalaze se na stranici o kuvanim obrocima.",
+     "cta": "Pogledajte gramature"
+    },
+    {
+     "id": "cta",
+     "naslov": "Tražite jelovnik za svoju grupu korisnika",
+     "telo": "Pošaljite nam uzrast i broj korisnika, pa ćemo jelovnik prilagoditi vašim normativima i posebnim zahtevima.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/kvalitet",
+   "seo_title": "Kvalitet hrane i primena HACCP principa",
+   "seo_description": "Sirovine se poručuju dnevno, bez lagerovanja i dubokog zamrzavanja. Poštuju se principi HACCP standarda, uz unutrašnju i spoljašnju kontrolu.",
+   "h1": "Kvalitet i HACCP: kontrola od prijema namirnica do serviranja",
+   "sekcije": [
+    {
+     "id": "sirovine",
+     "nadnaslov": "Sirovine",
+     "naslov": "Poručuju se svakog dana — nema lagerovanja ni dubokog zamrzavanja",
+     "telo": "Koristimo najkvalitetnije sirovine regionalnog i sezonskog karaktera koje se mogu naći na tržištu. Za njih posedujemo pripadajuće sertifikate, deklaracije i ateste o bezbednosti proizvoda.\n\nPotrebni sastojci i proizvodi za pripremu jela poručuju se na dnevnom nivou, tako da nema potrebe za lagerovanjem i dubokim zamrzavanjem sirovina."
+    },
+    {
+     "id": "oprema",
+     "nadnaslov": "Priprema",
+     "naslov": "Savremene metode i profesionalna oprema",
+     "telo": "Za kuvanje i pripremu obroka primenjujemo savremene metode i tehnologije, uz profesionalnu opremu — radi visokog kvaliteta pripreme i očuvanja hranljivih vrednosti sastojaka.\n\nPri izradi receptura vodimo se nutritivnim normativima, ali i karakteristikama čula ukusa, željama i potrebama korisnika."
+    },
+    {
+     "id": "haccp-principi",
+     "nadnaslov": "HACCP",
+     "naslov": "U proizvodnom procesu poštuju se principi HACCP standarda",
+     "telo": "HACCP (Hazard Analysis and Critical Control Points) podrazumeva striktnu kontrolu procesa proizvodnje, koja počinje nabavkom sirovina, a kroz niz postupaka i procedura završava se serviranjem hrane. Reč je o preventivnom konceptu koji obezbeđuje higijensku, toksikološku i svaku drugu bezbednost namirnica.\n\nProstorije centralne kuhinje, u kojoj se vrši priprema i distribucija hrane, građene su prema HACCP sistemu, tako da je omogućeno nesmetano čišćenje i dezinfekcija svih površina. Sanitarnu kontrolu obavlja specijalista sanitarno-ekološki inženjer."
+    },
+    {
+     "id": "higijena",
+     "nadnaslov": "Higijena",
+     "naslov": "Nema ukrštanja čistog i nečistog puta",
+     "telo": "Odvojenost čistog i nečistog puta je osnovna higijenska procedura za zdravstvenu bezbednost gotovog obroka i u našoj kuhinji se dosledno sprovodi.\n\nRadni prostor i posuđe redovno se održavaju sredstvima za dezinfekciju koja nisu štetna za zdravlje i u skladu su sa zakonskim propisima. Izveštaj o biološkoj ispravnosti tih sredstava izradila je laboratorija VMA."
+    },
+    {
+     "id": "mere-kontrole",
+     "nadnaslov": "Dnevne mere",
+     "naslov": "Šta se proverava svakog dana u kuhinji",
+     "bullets": [
+      "Provera temperature na minusnim i rashladnim komorama.",
+      "Provera datuma na pakovanju.",
+      "Sprečavanje unakrsne kontaminacije."
+     ]
+    },
+    {
+     "id": "unutrasnja",
+     "nadnaslov": "Unutrašnja kontrola",
+     "naslov": "Provera pre nego što sirovina uđe u kuhinju",
+     "bullets": [
+      "Provera namirnica prilikom prijema.",
+      "Provera dokumentacije — atesta o zdravstvenoj bezbednosti i deklaracija dostavljenih namirnica.",
+      "Kontrola pripreme hrane.",
+      "Kontrola distribucije hrane."
+     ]
+    },
+    {
+     "id": "spoljasnja",
+     "nadnaslov": "Spoljašnja kontrola",
+     "naslov": "Gradski zavod za javno zdravlje uzima uzorke bez najave",
+     "telo": "Pored unutrašnje, redovno se sprovodi i spoljašnja kontrola koju vrši „Gradski zavod za javno zdravlje\". Stručno lice Zavoda periodično uzima briseve radnih površina, ruku zaposlenih u kuhinji i briseve termos boca, kao i nasumične uzorke pripremljenog obroka.\n\nUzorci obroka odlaze na hemijsko-bromatološku analizu: utvrđuju se energetska vrednost i sadržaj belančevina, ugljenih hidrata i masti, radi provere usklađenosti sa vrednostima koje propisuje Pravilnik o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi.\n\nSpoljašnja kontrola, dakle, proverava i kvalitet obroka i sanitarno-higijenske uslove pripreme i distribucije hrane."
+    },
+    {
+     "id": "ljudi",
+     "nadnaslov": "Ljudi",
+     "naslov": "Svi koji dodiruju hranu su obučeni i pod sanitarnim nadzorom",
+     "telo": "Sva lica u keteringu zadužena za pripremu i distribuciju hrane prošla su sve neophodne obuke i nalaze se pod redovnim sanitarnim nadzorom."
+    },
+    {
+     "id": "cta",
+     "naslov": "Tražite dokumentaciju pre odluke — to je uredu",
+     "telo": "Ako vam za internu proceduru treba uvid u dokumentaciju ili odgovor na konkretno pitanje o kontroli, navedite to u upitu.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/za-koga",
+   "seo_title": "Za koga radimo — vrtići, škole, kompanije",
+   "seo_description": "Vrtići i jasle, škole, produženi boravci i kompanije. Različite gramature i jelovnici prilagođeni uzrastu i normativima ustanove.",
+   "h1": "Vrtići, škole, produženi boravci i kompanije — svako sa svojim normativom",
+   "sekcije": [
+    {
+     "id": "uvod",
+     "naslov": "Ista kuhinja, četiri različita zahteva",
+     "telo": "Jaslena grupa, školarac i zaposleni u kompaniji nemaju iste potrebe — ni po gramaturi, ni po sastavu obroka, ni po rasporedu dostave. Zato ponudu pravimo po tipu korisnika, a ne po jednom univerzalnom paketu."
+    },
+    {
+     "id": "vrtici",
+     "nadnaslov": "01",
+     "naslov": "Dečji vrtići, uključujući jaslene grupe",
+     "telo": "Jelovnici se rade po Pravilniku o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi. Za jaslene grupe važe posebne, manje gramature, objavljene odvojeno od gramatura za vrtiće i škole.\n\nIz dečjih jelovnika su u potpunosti isključene suhomesnate prerađevine i konditorski proizvodi; koristi se polubeli, crni i integralni hleb.",
+     "bullets": [
+      "Nedeljni jelovnik sa normativnim proračunima i nutritivnim obračunima.",
+      "Posebne gramature za jasle (npr. varivo sa mesom 250 g, komadno meso 50 g).",
+      "Nutricionista obilazi objekte za vreme obroka i razmenjuje informacije sa zaposlenima i decom.",
+      "Pisani set pravila o čuvanju, skladištenju i serviranju obroka nakon dostave."
+     ],
+     "cta": "Zatražite ponudu za vrtić"
+    },
+    {
+     "id": "skole",
+     "nadnaslov": "02",
+     "naslov": "Škole",
+     "telo": "Za vrtiće i škole važe iste, veće gramature u odnosu na jasle — na primer, varivo sa mesom 300 g, komadno meso 60 g, sveže salate 50 g, tople užine 180 g.\n\nJelovnici zadovoljavaju principe pravilne ishrane i normative za školski uzrast, a kroz nedelju prate sve grupe namirnica iz piramide ishrane.",
+     "cta": "Zatražite ponudu za školu"
+    },
+    {
+     "id": "produzeni-boravci",
+     "nadnaslov": "03",
+     "naslov": "Produženi boravci",
+     "telo": "Za produžene boravke pokrivamo doručak, ručak i užine, dostavljene u dogovoreno vreme, u termo posudama. Uz obroke može ići i snabdevanje školskim priborom, papirom i sredstvima za čišćenje iz našeg asortimana.",
+     "cta": "Zatražite ponudu za boravak"
+    },
+    {
+     "id": "kompanije",
+     "nadnaslov": "04",
+     "naslov": "Kompanije — manje i veće",
+     "telo": "Za korporativne sisteme obroci se planiraju u skladu sa zahtevima klijenta; unapred definisane gramature ne objavljujemo.\n\nJelovnici za odrasle po kvalitativnoj vrednosti ne razlikuju se mnogo od dečjih, ali se razlikuju u sastavu i načinu pripreme — sadrže više soli i aromatičnih i pikantnih začina, u nutritivno propisanim količinama. Uz obroke isporučujemo i prehrambene i neprehrambene proizvode potrebne za svakodnevno poslovanje.",
+     "cta": "Zatražite ponudu za kompaniju"
+    },
+    {
+     "id": "zaposleni",
+     "nadnaslov": "Uz ustanovu",
+     "naslov": "I zaposleni u ustanovi mogu koristiti istu uslugu",
+     "telo": "U predškolskoj ustanovi koju snabdevamo, i zaposleni su se opredelili da brigu o svojoj ishrani prepuste Dr Cooker timu. Ako u vašoj ustanovi postoji interes za obroke za osoblje, uključite i to u upit."
+    },
+    {
+     "id": "cta",
+     "naslov": "Koja ste od ove četiri situacije?",
+     "telo": "Recite nam tip ustanove, broj korisnika, uzrast i koje obroke tražite — dobijate ponudu prilagođenu tome.",
+     "cta": "Zatražite ponudu"
+    }
+   ]
+  },
+  {
+   "putanja": "/kontakt",
+   "seo_title": "Kontakt i zahtev za ponudu | Dr Cooker",
+   "seo_description": "Vojvode Prijezde 17, Beograd. Telefon +381 60 0440458, office@drcooker.rs. Pošaljite upit i dobićete ponudu za svoju ustanovu.",
+   "h1": "Zatražite ponudu za svoju ustanovu",
+   "sekcije": [
+    {
+     "id": "uvod",
+     "naslov": "Za ponudu nam treba pet podataka",
+     "telo": "Da bismo napravili konkretnu ponudu umesto uopštenog cenovnika, potrebno je da znamo osnovne parametre vaše ustanove.",
+     "bullets": [
+      "Tip ustanove — vrtić, jasle, škola, produženi boravak ili kompanija.",
+      "Broj korisnika i njihov uzrast.",
+      "Koje obroke tražite — doručak, ručak, užine ili kombinaciju.",
+      "Broj objekata i željeno vreme dostave.",
+      "Da li vam je pored obroka potrebno i snabdevanje prehrambenim i neprehrambenim proizvodima."
+     ]
+    },
+    {
+     "id": "forma",
+     "nadnaslov": "Upit",
+     "naslov": "Pošaljite upit",
+     "telo": "Polja forme: Ime i prezime · Naziv ustanove · Tip ustanove (izbor: vrtić / jasle / škola / produženi boravak / kompanija) · Broj korisnika · Broj objekata · Obroci koji vas zanimaju (višestruki izbor: doručak / ručak / užina) · Da li vam treba i distribucija proizvoda (da / ne) · Telefon · Email · Poruka (posebni nutritivni zahtevi, pitanja za nutricionistu, željeno vreme dostave) · Saglasnost za obradu podataka.\n\nPoruka posle slanja: „Hvala. Vaš upit je poslat. Javićemo vam se na ostavljeni telefon ili email.\"",
+     "cta": "Pošaljite upit"
+    },
+    {
+     "id": "podaci",
+     "nadnaslov": "Direktan kontakt",
+     "naslov": "Ako vam je brže telefonom",
+     "bullets": [
+      "Telefon direktora: +381 64 1101521",
+      "Telefon komercijaliste: +381 60 0440458",
+      "Email: office@drcooker.rs",
+      "Adresa: Beograd, Vojvode Prijezde 17"
+     ]
+    },
+    {
+     "id": "lokacija",
+     "nadnaslov": "Lokacija",
+     "naslov": "Kuhinja i kancelarija su na istoj adresi, na Voždovcu",
+     "telo": "Vojvode Prijezde 17, Beograd — opština Voždovac. Mapa je na koordinatama 44.78942, 20.47467."
+    },
+    {
+     "id": "sastanak",
+     "naslov": "Možemo i da dođemo kod vas",
+     "telo": "Predložite termin sastanka i rado ćemo vas posetiti, pa ćemo ponudu napraviti u skladu sa potrebama vaše ustanove.",
+     "cta": "Predložite termin"
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "pitanje": "Koje obroke pripremate i kada ih dostavljate?",
+   "odgovor": "Svakodnevno pripremamo doručak, ručak i užine i dostavljamo ih u dogovoreno vreme krajnjim korisnicima — vrtićima, školama, produženim boravcima i manjim i većim kompanijama.",
+   "izvor": "SOURCE-BRIEF §2, Osnovna delatnost: „Svakodnevno priprema doručak, ručak i užine i u dogovoreno vreme dostavlja krajnjim korisnicima.\""
+  },
+  {
+   "pitanje": "Ko sastavlja jelovnike i koliko često?",
+   "odgovor": "Jelovnike na nedeljnom nivou formira nutricionista–dijetetičar, zajedno sa pripadajućim normativnim proračunima, sastavnicama i nutritivnim obračunima.",
+   "izvor": "SOURCE-BRIEF §2, Treća delatnost: „Nutricionista–dijetetičar na nedeljnom nivou formira jelovnike + pripadajuće normativne proračune, sastavnice i nutritivne obračune.\""
+  },
+  {
+   "pitanje": "Po kom propisu se rade jelovnici za decu?",
+   "odgovor": "Jelovnici za decu usklađeni su sa Pravilnikom o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi.",
+   "izvor": "SOURCE-BRIEF §2: „Jelovnici za decu su u skladu sa Pravilnikom o bližim uslovima i načinu ostvarivanja ishrane dece u predškolskoj ustanovi.\""
+  },
+  {
+   "pitanje": "Da li se sirovine drže na lageru ili duboko zamrzavaju?",
+   "odgovor": "Ne. Sastojci se poručuju na dnevnom nivou, tako da nema potrebe za lagerovanjem i dubokim zamrzavanjem sirovina. Sirovine su regionalnog i sezonskog karaktera, sa pripadajućim sertifikatima, deklaracijama i atestima o bezbednosti.",
+   "izvor": "SOURCE-BRIEF §6: „Sastojci se poručuju na dnevnom nivou — nema lagerovanja i dubokog zamrzavanja sirovina.\""
+  },
+  {
+   "pitanje": "Kako se kontroliše bezbednost hrane u vašoj kuhinji?",
+   "odgovor": "U proizvodnom procesu poštuju se principi HACCP standarda. Prostorije centralne kuhinje građene su prema HACCP sistemu, sanitarnu kontrolu obavlja specijalista sanitarno-ekološki inženjer, nema ukrštanja čistog i nečistog puta, a svakodnevno se proverava temperatura na minusnim i rashladnim komorama, datum na pakovanju i sprečava se unakrsna kontaminacija.",
+   "izvor": "SOURCE-BRIEF §5: „Poštuju se principi HACCP standarda… Prostorije centralne kuhinje građene prema HACCP sistemu… Nema ukrštanja čistog i nečistog puta… Osnovne mere kontrole: provera temperature… provera datuma na pakovanju, sprečavanje unakrsne kontaminacije.\""
+  },
+  {
+   "pitanje": "Ko vrši spoljašnju kontrolu i šta tačno proverava?",
+   "odgovor": "Spoljašnju kontrolu vrši „Gradski zavod za javno zdravlje\". Periodično uzima briseve radnih površina, ruku zaposlenih i termos boca, kao i nasumične uzorke obroka. Uzorci idu na hemijsko-bromatološku analizu kojom se utvrđuju energetske vrednosti i sadržaj belančevina, ugljenih hidrata i masti, radi provere usklađenosti sa Pravilnikom.",
+   "izvor": "SOURCE-BRIEF §5: „Spoljašnja kontrola: vrši je „Gradski zavod za javno zdravlje\"… Uzorci idu na hemijsko-bromatološku analizu — utvrđuju se energetske vrednosti, sadržaj belančevina, ugljenih hidrata i masti.\""
+  },
+  {
+   "pitanje": "Kako se hrana transportuje do naše ustanove?",
+   "odgovor": "Vozilom koje je specijalizovano samo za transport hrane i poseduje termo izolaciju, u termo posudama, uz kratko vreme dostave — tako obroci ostaju na sigurnoj temperaturi. Dostavljaju ih obučeni vozači pod stalnim sanitarnim nadzorom.",
+   "izvor": "SOURCE-BRIEF §2, Četvrta delatnost: „Obučeni vozači pod stalnim sanitarnim nadzorom. Vozilo specijalizovano samo za transport hrane, sa termo izolacijom… Kratko vreme dostave, hrana ostaje na sigurnoj temperaturi.\""
+  },
+  {
+   "pitanje": "Kako funkcioniše evidencija termo posuda i dostave?",
+   "odgovor": "Korisnici termo posude zadužuju prilikom dostave hrane, a razdužuju ih prilikom predaje praznih. Naši vozači pomažu vašem osoblju u popunjavanju dnevnika isporuke, koji je veza između našeg HACCP-a i vaših internih higijenskih pravila.",
+   "izvor": "SOURCE-BRIEF §2: „Termo posude — korisnici ih zadužuju pri dostavi, razdužuju pri predaji praznih… Vozači pomažu osoblju u popunjavanju dnevnika isporuke — veza između Dr Cooker HACCP-a i internih higijenskih pravila klijenta.\""
+  },
+  {
+   "pitanje": "Da li isporučujete i proizvode koji nisu hrana?",
+   "odgovor": "Da. Asortiman ima preko 7000 prehrambenih i neprehrambenih artikala — od hleba, mleka, voća i namaza do sredstava za čišćenje, toalet papira, deterdženata, kancelarijskog materijala i školskog pribora. Cene su niže od cena u redovnim prodavnicama, a minimalna količina je jedan komad svakog proizvoda.",
+   "izvor": "SOURCE-BRIEF §2, Druga delatnost: „Asortiman preko 7000 artikala… Cene niže od cena u redovnim prodavnicama. Minimalna količina: jedan komad svakog proizvoda.\""
+  },
+  {
+   "pitanje": "Koje su gramature obroka za jasle, a koje za vrtiće i škole?",
+   "odgovor": "Razlikuju se po uzrastu. Na primer: varivo sa mesom 250 g za jasle i 300 g za vrtiće i škole; komadno meso 50 g i 60 g; sveže salate 40 g i 50 g; tople užine 160 g i 180 g; sezonsko voće uz voćnu užinu 100 g i 120 g. Kompletna tabela objavljena je na stranici o kuvanim obrocima.",
+   "izvor": "SOURCE-BRIEF §8, GRAMATURE — „PONUDA OBROKA ZA VRTIĆE I ŠKOLE\", kolone JASLE i VRTIĆI I ŠKOLE."
+  },
+  {
+   "pitanje": "Postoje li objavljene gramature za kompanije?",
+   "odgovor": "Ne. Za korporativne sisteme ne postoje unapred objavljene gramature — obroci se planiraju u skladu sa zahtevima klijenta.",
+   "izvor": "SOURCE-BRIEF §8: „Za korporativne sisteme NE postoje objavljene gramature\"; tekst sa sajta: „Svi obroci biće planirani u skladu sa Vašim željama.\""
+  },
+  {
+   "pitanje": "Da li izlazite u susret posebnim nutritivnim zahtevima i režimima ishrane?",
+   "odgovor": "Da. Izlazimo u susret klijentima sa posebnim nutritivnim zahtevima i posebnim režimom ishrane; te zahteve nutricionista uključuje u planiranje jelovnika.",
+   "izvor": "SOURCE-BRIEF §2, Treća delatnost: „Izlaze u susret klijentima sa posebnim nutritivnim zahtevima i režimom ishrane.\""
+  },
+  {
+   "pitanje": "Šta se ne nalazi u jelovnicima za decu?",
+   "odgovor": "Iz dečjih jelovnika su u potpunosti isključene suhomesnate prerađevine, ne koriste se konditorski proizvodi, a obroci se pripremaju bez previše soli, masti, šećera i začina. Koristi se polubeli, crni i integralni hleb.",
+   "izvor": "SOURCE-BRIEF §7, Pravila za dečje jelovnike."
+  },
+  {
+   "pitanje": "Da li nutricionista dolazi i u našu ustanovu ili samo planira jelovnike?",
+   "odgovor": "Dolazi. Nutricionista obilazi objekte za vreme obroka i razmenjuje informacije sa zaposlenima i decom, priprema pisani set pravila o čuvanju, skladištenju i serviranju obroka nakon dostave i drži obuke o higijenskim standardima kod klijenta.",
+   "izvor": "SOURCE-BRIEF §2, Treća delatnost: „Obilazi objekte za vreme obroka… Priprema pisane setove pravila za svaku ustanovu/kompaniju… Drži obuke o higijenskim standardima čuvanja i serviranja hrane kod klijenta.\""
+  }
+ ],
+ "placeholderi": [
+  {
+   "gde": "Sve stranice — hero slotovi, sekcija o kuhinji, sekcija o timu, stranica transporta",
+   "sta_nedostaje": "Ne postoji nijedna prava fotografija Dr Cooker hrane, kuhinje, tima, vozila, termo posuda ni dostave. Dizajn je zato tipografski i radi bez fotografija, ali su slotovi predviđeni.",
+   "pitanje_za_klijenta": "Možete li organizovati jedno profesionalno fotografisanje: 8–12 kadrova gotovih obroka, 4–6 kadrova kuhinje u radu, grupna i pojedinačne fotografije tima (posebno nutricioniste), vozilo spolja i iznutra, termo posude pri predaji? Do tada ostaju dizajnirani placeholderi."
+  },
+  {
+   "gde": "/o-nama — sekcija „Uska specijalnost\", eventualni broj „X godina iskustva\"",
+   "sta_nedostaje": "Godina osnivanja. Izvor kaže samo „dugi niz godina\" i ta formulacija je jedina koju smemo koristiti.",
+   "pitanje_za_klijenta": "Koje godine je firma osnovana i od koje godine snabdevate predškolske ustanove? Da li smemo objaviti taj broj?"
+  },
+  {
+   "gde": "Podnožje sajta (footer) i stranica /kontakt",
+   "sta_nedostaje": "Pun pravni naziv firme, PIB i matični broj. Obavezni su za poslovni sajt i za ozbiljnost u B2B nabavci.",
+   "pitanje_za_klijenta": "Koji je pun pravni naziv pravnog lica, PIB i matični broj, i koja je zvanična adresa sedišta (ako se razlikuje od Vojvode Prijezde 17)?"
+  },
+  {
+   "gde": "/kontakt — sekcija „Direktan kontakt\"",
+   "sta_nedostaje": "Radno vreme kancelarije i vreme u kom se primaju porudžbine/izmene.",
+   "pitanje_za_klijenta": "Koje je radno vreme kancelarije? Do kog sata se prima izmena porudžbine za sledeći dan?"
+  },
+  {
+   "gde": "/kontakt — potvrdna poruka posle slanja forme i tekst uz CTA",
+   "sta_nedostaje": "Rok za odgovor na upit. Trenutno piše samo „Javićemo vam se\" — bez roka, jer izvor ne daje nijedan.",
+   "pitanje_za_klijenta": "U kom roku realno odgovarate na upit — isti radni dan, 24h, 48h? Šta smemo obećati da biste to sigurno ispunili?"
+  },
+  {
+   "gde": "/ i /o-nama — sekcija sa referencom",
+   "sta_nedostaje": "Ime predškolske ustanove sa 10 objekata i skoro 1000 dece. Trenutno je opisana samo kao „najveća privatna predškolska ustanova u Srbiji\".",
+   "pitanje_za_klijenta": "Smemo li imenovati tu ustanovu i objaviti njen logo, ili postoji ugovorna zabrana? Ako smemo — možete li tražiti kratku pisanu preporuku (2–3 rečenice, ime i funkcija potpisnika)?"
+  },
+  {
+   "gde": "/kvalitet — sekcija o HACCP-u, eventualna trust-traka sa sertifikatima",
+   "sta_nedostaje": "Da li firma poseduje HACCP sertifikat ili samo primenjuje principe. Ceo copy je namerno napisan kao „poštuju se principi HACCP standarda\" jer izvor ne tvrdi posedovanje sertifikata.",
+   "pitanje_za_klijenta": "Da li imate uveden i sertifikovan HACCP sistem (i po kom standardu, npr. ISO 22000), ili primenjujete principe bez sertifikacije? Ako sertifikat postoji — ko ga je izdao, koji je broj i kad ističe?"
+  },
+  {
+   "gde": "/usluge/obroci, /za-koga, /kontakt",
+   "sta_nedostaje": "Cene, opseg cena ili model naplate (po obroku, po korisniku, mesečno). Izvor kaže samo „pristupačna cena\" i „usklađen odnos cene i kvaliteta\".",
+   "pitanje_za_klijenta": "Da li želite da se cene uopšte pominju? Ako ne — želite li bar orijentacioni raspon („od X RSD po obroku\") ili ostaje isključivo „ponuda na upit\"?"
+  },
+  {
+   "gde": "/za-koga i /kontakt — kvalifikacija upita",
+   "sta_nedostaje": "Minimalni broj korisnika ili minimalna vrednost ugovora.",
+   "pitanje_za_klijenta": "Postoji li minimalan broj obroka dnevno ispod kog ne ugovarate saradnju? Ako postoji, bolje je da piše na sajtu — štedi vreme i vama i njima."
+  },
+  {
+   "gde": "/usluge/transport i /kontakt",
+   "sta_nedostaje": "Područje dostave. Sajt ne kaže da li pokrivate ceo Beograd, koje opštine ili i okolinu.",
+   "pitanje_za_klijenta": "Koje područje pokrivate dostavom — ceo Beograd, određene opštine, i da li izlazite van grada? Da li postoji razlika u uslovima po zoni?"
+  },
+  {
+   "gde": "Podnožje sajta",
+   "sta_nedostaje": "Društvene mreže. Izvor ne navodi nijedan profil.",
+   "pitanje_za_klijenta": "Imate li Instagram, Facebook ili LinkedIn profil koji da povežemo? Ako nemate, preporuka je da se ikonice ne stavljaju uopšte."
+  },
+  {
+   "gde": "/kontakt — forma, i nova stranica /politika-privatnosti",
+   "sta_nedostaje": "Politika privatnosti i tekst saglasnosti za obradu podataka. Obavezno zbog kontakt forme.",
+   "pitanje_za_klijenta": "Ko je kod vas lice za zaštitu podataka ili kontakt za privatnost, koliko dugo čuvate podatke iz upita i da li ih prosleđujete trećim licima? Potrebno je za tekst politike privatnosti."
+  },
+  {
+   "gde": "/jelovnik i /usluge/nutricionista — kontradikcija u izvoru",
+   "sta_nedostaje": "Izvor na jednom mestu tvrdi da su iz dečjih jelovnika „u potpunosti isključene suhomesnate prerađevine\", a u primerima nedeljnog menija se pojavljuju duvan čvarci, slaninica, suvo meso i pečenica. Copy trenutno obe tvrdnje drži razdvojene, ali to je rizik ako roditelj uporedi.",
+   "pitanje_za_klijenta": "Koja tvrdnja važi — da li su ti nedeljni meniji primeri za odrasle/zaposlene, a dečji jelovnik zaista bez suhomesnatog? Treba nam tačna formulacija pre objave, jer je ovo pitanje koje roditelji postavljaju prvo."
+  },
+  {
+   "gde": "/jelovnik — sekcije sa primerima menija",
+   "sta_nedostaje": "Da li će nedeljni meni biti živ sadržaj (ažurira se svake nedelje) ili ostaje statični primer iz 2019.",
+   "pitanje_za_klijenta": "Da li možete svake nedelje slati aktuelni jelovnik da ga objavljujemo (jak argument za poverenje), ili ostajemo na dva primera? Ako da — u kom formatu ga nutricionista već pravi?"
+  },
+  {
+   "gde": "/usluge/obroci — sekcija za korporativne sisteme",
+   "sta_nedostaje": "Gramature i struktura obroka za kompanije. Postojeći sajt ima naslov „Ponuda obroka za korporativne sisteme\" bez ijedne tabele.",
+   "pitanje_za_klijenta": "Možete li dati tipične gramature korporativnog obroka (glavno jelo, prilog, salata, supa)? Bez toga korporativni kupac nema šta da uporedi i stranica ostaje slabija od dečje."
+  },
+  {
+   "gde": "/usluge/obroci i /usluge/nutricionista — posebni zahtevi",
+   "sta_nedostaje": "Kako se konkretno tretiraju alergeni. Izvor pominje samo „posebne nutritivne zahteve i režim ishrane\", bez ijednog detalja o alergenima.",
+   "pitanje_za_klijenta": "Kako postupate sa decom koja imaju alergije (npr. na gluten, mleko, orašaste plodove)? Da li pravite odvojene obroke, deklarišete alergene na jelovniku i kako se to evidentira? Ovo je čest uslov u tenderima vrtića."
+  },
+  {
+   "gde": "/usluge/transport",
+   "sta_nedostaje": "Broj vozila i kapacitet voznog parka. Izvor govori o vozilu u jednini.",
+   "pitanje_za_klijenta": "Koliko vozila imate i koliko objekata možete opslužiti u jednom jutarnjem terminu? Kapacitet je argument za veće ustanove."
+  },
+  {
+   "gde": "/kontakt — konverzija",
+   "sta_nedostaje": "Da li postoji probni period, degustacija ili probni dan pre potpisivanja ugovora. Izvor nudi samo „predložite termin sastanka\".",
+   "pitanje_za_klijenta": "Da li nudite probni dan ili degustaciju za zainteresovanu ustanovu? Ako da, to bi bio najjači sekundarni CTA na celom sajtu."
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+<!-- SADRŽAJ: obaveštenje firmi o novom upitu.
+     Cilj: u prvih pet sekundi znati ko je, šta traži i kako mu se javiti.
+     Zato su POZOVI i ODGOVORI odmah ispod zaglavlja, pre svih detalja. -->
+
+<tr>
+  <td class="pad pad-y" style="padding:36px 36px 24px;">
+
+    <div style="font-family:Consolas,'Courier New',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#A32A2E;padding-bottom:12px;">
+      Novi upit sa sajta
+    </div>
+
+    <h1 class="h1" style="margin:0 0 8px;font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.15;font-weight:bold;color:#17140F;letter-spacing:-0.02em;">
+      {{USTANOVA}}
+    </h1>
+
+    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#4A4238;">
+      {{IME}} &middot; {{USLUGA}}
+    </p>
+
+  </td>
+</tr>
+
+<!-- BRZE AKCIJE -->
+<tr>
+  <td class="pad" style="padding:0 36px 32px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+      <tr>
+        <td class="btn-td" style="padding-right:10px;">
+          <a class="btn-a" href="tel:{{TELEFON_TEL}}"
+             style="display:inline-block;background-color:#A32A2E;color:#FAF7F2;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;line-height:1.2;padding:14px 26px;border:1px solid #A32A2E;">
+            Pozovi {{TELEFON}}
+          </a>
+        </td>
+        <td class="btn-td">
+          <a class="btn-a" href="mailto:{{EMAIL}}?subject={{REPLY_SUBJECT}}"
+             style="display:inline-block;background-color:#FAF7F2;color:#17140F;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;line-height:1.2;padding:14px 26px;border:1px solid #8C7E69;">
+            Odgovori na email
+          </a>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
+
+<!-- PODACI IZ FORME -->
+<tr>
+  <td class="pad" style="padding:0 36px 8px;">
+    <div style="border-top:2px solid #124A3F;padding-top:20px;">
+      <div style="font-family:Consolas,'Courier New',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#124A3F;padding-bottom:4px;">
+        Podaci iz upita
+      </div>
+    </div>
+  </td>
+</tr>
+
+<tr>
+  <td class="pad" style="padding:0 36px 12px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      {{ROWS}}
+    </table>
+  </td>
+</tr>
+
+<!-- PORUKA -->
+<tr>
+  <td class="pad" style="padding:12px 36px 36px;">
+    <div style="font-family:Consolas,'Courier New',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#124A3F;padding-bottom:10px;">
+      Poruka
+    </div>
+    <div style="background-color:#E6EDE8;border-left:3px solid #124A3F;padding:18px 20px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.65;color:#17140F;">
+      {{PORUKA}}
+    </div>
+  </td>
+</tr>
+
+<!-- META -->
+<tr>
+  <td class="pad" style="padding:0 36px 36px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #D5CCBE;">
+      <tr>
+        <td style="padding-top:16px;font-family:Consolas,'Courier New',monospace;font-size:11px;line-height:1.7;color:#4A4238;">
+          Broj upita: {{REFERENCE}}<br>
+          Primljeno: {{PRIMLJENO}}<br>
+          Stranica: {{IZVOR}}
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>

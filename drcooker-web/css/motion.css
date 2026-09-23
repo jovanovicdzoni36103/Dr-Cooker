@@ -1,0 +1,646 @@
+/* ==========================================================================
+   KRETANJE
+   Dr Cooker — hero koreografija, scroll animacije, ticker, mikrointerakcije
+   ==========================================================================
+
+   PRAVILA SISTEMA
+
+   1. Animira se SAMO transform i opacity. Ništa što okida layout.
+   2. Sadržaj u CSS-u startuje VIDLJIV. Klasu `js-on`, koja tek omogućava
+      sakrivanje, dodaje JavaScript. Da je obrnuto, pad skripte bi ostavio
+      praznu stranicu.
+   3. `prefers-reduced-motion` gasi sve i postavlja finalno stanje.
+   4. Scroll animacije idu kroz `animation-timeline` gde browser to podržava;
+      gde ne podržava, isti efekat daje IntersectionObserver iz js/main.js.
+      Nema duplog izvršavanja — CSS varijanta se gasi kroz @supports.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. Prelaz između stranica
+   Jedna linija. Chrome i Edge rade meki prelaz pri svakoj navigaciji,
+   ostali browseri je ignorišu bez ikakve štete.
+   -------------------------------------------------------------------------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: vt-out 260ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 420ms cubic-bezier(0.16, 1, 0.3, 1) 60ms backwards;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Zaglavlje se ne pomera pri prelazu — ostaje fiksna tačka. */
+.hdr {
+  view-transition-name: hdr;
+}
+
+/* --------------------------------------------------------------------------
+   1. Traka napretka čitanja
+   -------------------------------------------------------------------------- */
+
+.progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 120;
+  block-size: 2px;
+  inline-size: 100%;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-fresh));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* Gde postoji scroll-driven animacija, traka ide bez ijedne linije JS-a. */
+@supports (animation-timeline: scroll()) {
+  .progress {
+    animation: progress-grow linear;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes progress-grow {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Hero — koreografija ulaska
+
+   PRAVILO: heroj se animira CISTIM CSS-om, bez ijedne JS klase.
+
+   Ranije je ulazak visio o lancu:
+     document.fonts.ready -> whenVisible -> 2x rAF -> klasa .js-on
+     -> 2x rAF -> klasa .is-in -> tek tada 900ms tranzicija
+   Naslov je postajao citljiv tek posle ~1,5 s, a pre toga se video pa se
+   SAKRIO kada stigne `.js-on` — dakle treperenje, i los LCP, jer je h1
+   najveci tekst na stranici.
+
+   Sada: `animation` sa `backwards`. „from" stanje vazi samo dok traje
+   kasnjenje; kada animacija zavrsi, element se vraca na svoje prirodne
+   stilove. Ako CSS animacija iz bilo kog razloga ne krene, tekst je vidljiv.
+   Nema stanja u kome je heroj prazan.
+
+   Ukupno trajanje ulaska: 0,64 s za naslov, ceo heroj slegne do ~1,0 s.
+   -------------------------------------------------------------------------- */
+
+/* NASLOV SE NE ANIMIRA. Namerno.
+ *
+ * Svaka animacija koja otkriva tekst mora da krene od stanja u kome tekst
+ * NIJE vidljiv. To je prihvatljivo za ukras, ali ne za h1: on je LCP element
+ * i jedina recenica zbog koje je stranica otvorena. Ako bi vremenska linija
+ * animacije stala (skrivena kartica, ugasena kompozicija, greska u browseru),
+ * ostao bi prazan naslov — tacno ono na sta se klijent i zalio.
+ *
+ * Zato naslov stoji od prvog iscrtavanja, a koreografija se desava OKO njega:
+ * linija se iscrtava, ostali delovi ulaze, traka sa jelima krece. Sve to je
+ * ukras — ako stane, stranica izgleda mirno, nikad prazno. */
+
+/* Ostali delovi ulaze posle naslova. Kasnjenja su ispisana po klasi, a ne
+   preko JS brojaca: heroj ne sme da ceka da se JS izvrsi. */
+.js-on .hero [data-in],
+.js-on .hero__drugi,
+.js-on .hero .kmsg {
+  animation: rise-in 560ms cubic-bezier(0.16, 1, 0.3, 1) 240ms backwards;
+}
+
+.js-on .hero .eyebrow[data-in] {
+  animation-delay: 60ms;
+}
+
+.js-on .hero .lead[data-in],
+.js-on .hero .hero__lead[data-in] {
+  animation-delay: 200ms;
+}
+
+.js-on .hero .hero__actions[data-in] {
+  animation-delay: 300ms;
+}
+
+.js-on .hero__drugi {
+  animation-delay: 360ms;
+}
+
+.js-on .hero .kmsg {
+  animation-duration: 700ms;
+  animation-delay: 280ms;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+/* POTPIS HEROJA: linija koja se iscrta preko cele sirine, ispod naslova.
+   Cist ukras — ako ne krene, heroj je i dalje kompletan. */
+.js-on .hero__text::after {
+  content: '';
+  display: block;
+  block-size: 2px;
+  inline-size: 100%;
+  margin-block-start: var(--space-5);
+  background: linear-gradient(
+    to right,
+    var(--color-fresh) 0,
+    var(--color-fresh) 38%,
+    var(--color-rule-strong) 38%,
+    var(--color-rule-strong) 100%
+  );
+  transform-origin: 0 50%;
+  animation: rule-draw 1000ms cubic-bezier(0.16, 1, 0.3, 1) 240ms backwards;
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Redovi kartice sa jelovnikom pale se jedan po jedan. Oni JESU susedi,
+   pa stagger ide kroz :nth-child i ne trazi JS. */
+.js-on .hero .kmsg__row {
+  animation: rise-in 480ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.js-on .hero .kmsg__row:nth-child(1) { animation-delay: 500ms; }
+.js-on .hero .kmsg__row:nth-child(2) { animation-delay: 580ms; }
+.js-on .hero .kmsg__row:nth-child(3) { animation-delay: 660ms; }
+.js-on .hero .kmsg__row:nth-child(4) { animation-delay: 740ms; }
+.js-on .hero .kmsg__row:nth-child(n + 5) { animation-delay: 810ms; }
+
+/* Tanka linija koja se iscrta ispod oznake obroka — potpis heroja. */
+.kmsg__head {
+  position: relative;
+}
+
+.js-on .hero .kmsg__head::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -2px;
+  block-size: 2px;
+  background: var(--color-fresh);
+  transform-origin: 0 50%;
+  animation: rule-draw 820ms cubic-bezier(0.16, 1, 0.3, 1) 560ms backwards;
+}
+
+/* SIGURNOSNA MREZA ZA HEROJ.
+ *
+ * Klasu `is-shown` dodaje js/motion.js posle 3 sekunde, bezuslovno. Ako je
+ * animacija do tada zavrsila, ovo ne menja nista — krajnje stanje je isto.
+ * Ako vremenska linija stoji, ovo je jedino sto heroj izvlaci iz nevidljivog.
+ *
+ * Pseudo-element linije se ne moze dohvatiti inline stilom, pa mora ovako. */
+.js-on .hero.is-shown [data-in],
+.js-on .hero.is-shown .kmsg,
+.js-on .hero.is-shown .kmsg__row,
+.js-on .hero.is-shown .hero__drugi,
+.js-on .hero.is-shown ~ * .hero__drugi {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.js-on .hero.is-shown .hero__text::after,
+.js-on .hero.is-shown .kmsg__head::after {
+  animation: none;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Otkrivanje pri skrolu
+   -------------------------------------------------------------------------- */
+
+.js-on [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.js-on [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-on [data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.js-on [data-reveal-group].is-visible > * {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 640ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-on [data-reveal-group].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.js-on [data-reveal-group].is-visible > *:nth-child(2) { transition-delay: 70ms; }
+.js-on [data-reveal-group].is-visible > *:nth-child(3) { transition-delay: 140ms; }
+.js-on [data-reveal-group].is-visible > *:nth-child(4) { transition-delay: 210ms; }
+.js-on [data-reveal-group].is-visible > *:nth-child(5) { transition-delay: 280ms; }
+.js-on [data-reveal-group].is-visible > *:nth-child(6) { transition-delay: 350ms; }
+.js-on [data-reveal-group].is-visible > *:nth-child(7) { transition-delay: 420ms; }
+.js-on [data-reveal-group].is-visible > *:nth-child(n + 8) { transition-delay: 480ms; }
+
+/* Naslovi sekcija se otkrivaju red po red.
+ *
+ * Za razliku od heroja, ovde JS SME da ucestvuje: ovi naslovi su ispod
+ * preloma ekrana, nisu LCP element i pojavljuju se tek pri skrolu — do tada
+ * su fontovi odavno ucitani, pa merenje preloma redova daje tacne maske.
+ *
+ * Maska: red klizi odozdo iza nevidljive ivice. */
+.line {
+  display: block;
+  overflow: hidden;
+}
+
+.line__in {
+  display: block;
+}
+
+.js-on [data-split] .line__in {
+  transform: translateY(105%);
+  will-change: transform;
+}
+
+.js-on [data-split].is-in .line__in {
+  transform: translateY(0);
+  transition: transform 820ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 75ms);
+}
+
+/* --------------------------------------------------------------------------
+   5. Ticker — imena jela u beskonačnoj traci
+   Ovo je zamena za fotografije hrane koje ne postoje: stvarna jela iz
+   objavljenog jelovnika, postavljena kao vizual.
+   -------------------------------------------------------------------------- */
+
+.ticker {
+  --ticker-duration: 52s;
+  overflow: hidden;
+  padding-block: var(--space-6);
+  border-block: 1px solid var(--color-rule-strong);
+  background: var(--color-paper-alt);
+  /* Krajevi se stapaju sa pozadinom umesto da se seku. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ticker__track {
+  display: flex;
+  inline-size: max-content;
+  gap: 0;
+  animation: ticker-run var(--ticker-duration) linear infinite;
+}
+
+.ticker:hover .ticker__track,
+.ticker:focus-within .ticker__track,
+.ticker.is-stopped .ticker__track {
+  animation-play-state: paused;
+}
+
+/* Dugme za zaustavljanje. Malo i po strani dok se ne dotakne, ali PRAVO
+   dugme: fokusabilno, sa imenom i sa `aria-pressed`. */
+.ticker {
+  position: relative;
+}
+
+.ticker__stop {
+  position: absolute;
+  inset-block-end: var(--space-2);
+  inset-inline-end: var(--space-4);
+  z-index: 2;
+  padding: 0.45em 0.9em;
+  min-block-size: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  /* BEZ `opacity`. Providnost kompozituje i tekst i ivicu preko podloge
+     trake: izmereno 2.87:1 za natpis, ispod AA praga 4.5:1 za 13px tekst.
+     Sporednost se postize bojom — ink-soft na podlozi trake je 8.32:1. */
+  color: var(--color-ink-soft);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule-strong);
+  border-radius: var(--radius-none);
+  cursor: pointer;
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.ticker:hover .ticker__stop,
+.ticker__stop:hover,
+.ticker__stop:focus-visible,
+.ticker.is-stopped .ticker__stop {
+  color: var(--color-ink);
+}
+
+.ticker__stop:focus-visible {
+  outline: 3px solid var(--color-proof);
+  outline-offset: 2px;
+}
+
+.ticker__group {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+.ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding-inline: var(--space-5);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.6vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+/* Traka stane kada mis udje u nju (pravilo iznad). Da bi se videlo da je to
+   namerno, jelo pod kursorom se i oboji. Bez pomeranja: stavka nije link i ne
+   sme da obecava klik. */
+.ticker__item {
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.ticker:hover .ticker__item:hover {
+  color: var(--color-fresh-deep);
+}
+
+/* Tačka između jela. Nosi svežu boju — jedini ukras u traci. */
+.ticker__item::after {
+  content: '';
+  inline-size: 7px;
+  block-size: 7px;
+  border-radius: 50%;
+  background: var(--color-fresh);
+  flex: none;
+}
+
+@keyframes ticker-run {
+  to {
+    /* Tačno jedna grupa — druga je njen duplikat, pa je petlja neprimetna. */
+    transform: translateX(-50%);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Brojevi koji se odbrojavaju
+   -------------------------------------------------------------------------- */
+
+.count {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-ink);
+}
+
+.on-dark .count {
+  color: var(--color-paper-on-dark);
+}
+
+.count__unit {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-fresh);
+  display: block;
+  margin-block-start: var(--space-2);
+}
+
+.on-dark .count__unit {
+  color: var(--color-mist);
+}
+
+/* --------------------------------------------------------------------------
+   7. Mikrointerakcije
+   -------------------------------------------------------------------------- */
+
+/* Dugme se blago povlači ka kursoru. Pomeraj računa js/main.js, ali samo na
+   uređajima sa mišem — na dodir nema hovera pa ni smisla. */
+.btn {
+  position: relative;
+  /* Bez `isolation` bi `::after` ispod morao da ima z-index >= 0, a takav
+     pozicionirani pseudo-element se slika IZNAD golog tekstualnog cvora.
+     Vecina CTA dugmadi je oblika <a class="btn btn--primary">Zatrazi ponudu</a>
+     — tekst bez ijednog elementa oko sebe — pa bi ih hover potpuno prekrio.
+     Sa `isolation: isolate` pseudo sa z-index -1 stoji IZNAD pozadine dugmeta
+     a ISPOD njegovog sadrzaja, bez obzira na to da li je sadrzaj u elementu. */
+  isolation: isolate;
+  transform: translate3d(var(--mx, 0), var(--my, 0), 0);
+  transition:
+    transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent-deep);
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn--primary:hover::after {
+  transform: scaleY(1);
+  transform-origin: 50% 0;
+}
+
+/* Link sa strelicom: strelica krene napred, podvlaka se izvuče. */
+.link {
+  position: relative;
+}
+
+.link:hover .arr {
+  transform: translateX(5px);
+}
+
+/* Redovi podataka: sveža tačka se pali pri prelazu. */
+.normativ-row {
+  transition: background-color 300ms var(--ease-out);
+}
+
+@media (hover: hover) {
+  .normativ-list .normativ-row:hover {
+    background: color-mix(in oklab, var(--color-fresh) 7%, transparent);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Linija izloška
+   Podvlačenje činjenice. Kreće levo kada izložak ulazi u ekran, staje desno,
+   i ne ponavlja se.
+
+   Statično stanje u components.css je POVUČENA linija (scaleX(1)). To je
+   namerno i to je pravilo za svaku scroll-driven animaciju na ovom sajtu:
+   browser koji ne podržava `animation-timeline` — danas Firefox i Safari —
+   mora da vidi ZAVRŠENO stanje, nikad početno. Obrnuto bi im ostavilo
+   nevidljivu liniju zauvek.
+
+   Zato animacija živi isključivo unutar @supports, i isključivo pod `.js-on`.
+   -------------------------------------------------------------------------- */
+
+@supports (animation-timeline: view()) {
+  .js-on .izlozak__linija {
+    animation: izlozak-linija linear both;
+    animation-timeline: view();
+    /* Povuče se dok izložak ulazi; gotova je pre nego što se pročita. */
+    animation-range: entry 5% entry 85%;
+  }
+}
+
+@keyframes izlozak-linija {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Paralaksa
+   Vrlo suzdržana — 6% visine elementa. Više od toga se čita kao kvar.
+   -------------------------------------------------------------------------- */
+
+@supports (animation-timeline: view()) {
+  .js-on [data-parallax] {
+    animation: parallax-shift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@keyframes parallax-shift {
+  from {
+    transform: translateY(var(--parallax-from, 3%));
+  }
+  to {
+    transform: translateY(var(--parallax-to, -3%));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. Suzdržano kretanje — gasi sve
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
+  .js-on [data-reveal],
+  .js-on [data-reveal-group] > *,
+  .js-on [data-parallax],
+  .js-on [data-split] .line__in,
+  .hero [data-in],
+  .hero__drugi,
+  .hero .kmsg,
+  .hero .kmsg__row {
+    opacity: 1 !important;
+    clip-path: none !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .hero__text::after,
+  .hero .kmsg__head::after {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+
+  .ticker__track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Traka vec stoji, pa dugme nema sta da zaustavi. */
+  .ticker__stop {
+    display: none;
+  }
+
+  .progress {
+    display: none;
+  }
+
+  /* Deny lista je nabrojana PO IMENU, nije paušalna — svaki novi animirani
+     selektor mora ovde, inače procuri pored prekidača. */
+  .izlozak__linija {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+
+  .btn {
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Zrno papira
+
+   Sajt nema nijednu fotografiju, pa su sve povrsine ravne. Jedva vidljivo
+   zrno daje im gustinu stampanog papira umesto ekranske praznine.
+
+   Cist ukras: `pointer-events: none`, ispod svega sto se klikce, bez
+   `mix-blend-mode` (on na slabijim uredjajima tera ceo dokument u zaseban
+   sloj). Ako se slika ne ucita, ne desava se nista.
+   -------------------------------------------------------------------------- */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  /* Preko svega, kao sto se zrno i ponasa na stampi. Na 3% neprimetno je kao
+     povrsina a vidi se kao gustina. `pointer-events: none` znaci da ne dira
+     nijedan klik, fokus ni hover. */
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: var(--texture-grain);
+  background-size: 180px 180px;
+}
+
+@media print {
+  body::after {
+    display: none;
+  }
+}

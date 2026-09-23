@@ -1,0 +1,2530 @@
+/* ==========================================================================
+   SEKCIJE POJEDINACNIH STRANICA
+   Dr Cooker — samo ono sto je specificno za jednu stranicu
+   ========================================================================== */
+
+
+/* Svako pravilo je ograniceno na svoju stranicu preko klase na <body>,
+   npr. <body class="page-jelovnik">. Tako iste klase (.hero, .veza...)
+   mogu imati razlicite vrednosti po stranici bez sudaranja.
+
+   Ako nesto vazi za SVE stranice, ne pise se ovde nego u components.css. */
+
+
+/* --- 404 ----------------------------------------------------------- */
+.page-nije-pronadjena .nf {
+  padding-block-start: var(--space-8);
+}
+
+.page-nije-pronadjena .nf__h {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-4);
+  padding-block-end: var(--space-3);
+  border-block-end: 1px solid var(--color-rule-strong);
+}
+
+.page-nije-pronadjena .nf__lista {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.page-nije-pronadjena .nf__link {
+  font-weight: 600;
+}
+
+.page-nije-pronadjena .nf__tel {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+/* Dugme nosi labelu i broj u dva reda — centriranje iz .btn se poništava. */
+.page-nije-pronadjena .nf__dugme {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-1);
+  text-align: start;
+  padding-block: 0.8em;
+}
+
+.page-nije-pronadjena .nf__labela {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.page-nije-pronadjena .nf__broj {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-lead);
+  letter-spacing: var(--tracking-tight);
+}
+
+.page-nije-pronadjena .nf__akcije {
+  margin-block-start: var(--space-5);
+}
+
+@media (min-width: 40rem) {
+  .page-nije-pronadjena .nf__lista {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3) var(--space-6);
+  }
+
+  .page-nije-pronadjena .nf__tel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* --- index --------------------------------------------------------- */
+/* --- Hero ------------------------------------------------------------- */
+.page-pocetna .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-pocetna .hero__grid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.page-pocetna .hero__h1 {
+  /* Mera po redu, umesto text-wrap: balance koje na display veličinama
+  pravi nepredvidive lomove. */
+  max-width: 15ch;
+}
+
+.page-pocetna .hero__lead {
+  max-width: 46ch;
+}
+
+/* --- Kuhinjska poruka (isečak jelovnika) ------------------------------- */
+.page-pocetna .kmsg {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  padding: var(--space-5);
+}
+
+.page-pocetna .kmsg__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block-end: var(--space-4);
+  margin-block-end: var(--space-4);
+  border-block-end: 2px solid var(--color-proof);
+}
+
+.page-pocetna .kmsg__tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+}
+
+.page-pocetna .kmsg__naslov {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.page-pocetna .kmsg__list {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.page-pocetna .kmsg__row {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.page-pocetna .kmsg__row dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.page-pocetna .kmsg__row dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 400;
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+}
+
+.page-pocetna .kmsg__foot {
+  margin-block-start: var(--space-5);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-rule);
+  font-size: var(--fs-small);
+}
+
+/* --- Publike ----------------------------------------------------------- */
+.page-pocetna .publike {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* --- Usluge ------------------------------------------------------------ */
+.page-pocetna .usluge {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-pocetna .usl {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.page-pocetna .usl p {
+  color: var(--color-ink-soft);
+  max-width: 46ch;
+}
+
+.page-pocetna .usl__lista {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid var(--color-rule-strong);
+  padding-block-start: var(--space-4);
+}
+
+.page-pocetna .usl__lista li {
+  position: relative;
+  padding-inline-start: var(--space-5);
+  font-size: var(--fs-small);
+}
+
+.page-pocetna .usl__lista li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.62em;
+  inline-size: 0.75rem;
+  block-size: 1px;
+  background: var(--color-proof);
+}
+
+/* --- Referenca ---------------------------------------------------------- */
+.page-pocetna .ref {
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* --- Citat -------------------------------------------------------------- */
+.page-pocetna .citat {
+  margin: 0 0 var(--space-8);
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* --- Slotovi za fotografije --------------------------------------------- */
+.page-pocetna .slotovi {
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* --- Kontakt ------------------------------------------------------------- */
+.page-pocetna .kont {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-pocetna .kont__tel {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.page-pocetna .sredina {
+  margin-block-start: var(--space-7);
+}
+
+@media (min-width: 64rem) {
+  .page-pocetna .hero__grid {
+    grid-template-columns: 1.25fr 1fr;
+    gap: var(--space-9);
+  }
+
+}
+
+@media (min-width: 52rem) {
+  .page-pocetna .publike {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+
+  .page-pocetna .usluge {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+}
+
+
+/* Treca kartica (online prodavnica) bi na dve kolone ostala sama u drugom
+   redu, na pola sirine. Od 76rem idu sve tri u red. */
+@media (min-width: 76rem) {
+  .page-pocetna .usluge {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
+  }
+}
+
+@media (min-width: 60rem) {
+  .page-pocetna .kont {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+}
+
+
+/* --- jelovnik/gramature -------------------------------------------- */
+/* --- Uvod --------------------------------------------------------------- */
+.page-gramature .uvod {
+  padding-block-start: var(--space-8);
+}
+
+.page-gramature .uvod__grid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.page-gramature .uvod__h1 {
+  max-width: 16ch;
+}
+
+.page-gramature .uvod__lead {
+  max-width: 46ch;
+}
+
+.page-gramature .uvod__text-2 {
+  max-width: 52ch;
+  color: var(--color-ink-soft);
+}
+
+/* --- Zaglavlje tabela ------------------------------------------------------ */
+.page-gramature .gram__head {
+  display: grid;
+  gap: var(--space-4);
+  margin-block-end: var(--space-6);
+}
+
+.page-gramature .gram__h2 {
+  max-width: 22ch;
+}
+
+/* --- Prekidač kolona --------------------------------------------------------- */
+/* Vidi se samo kada JS ukloni `hidden` I kada je ekran uži od 720px. */
+.page-gramature .gram__switch {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  margin-block-end: var(--space-5);
+}
+
+.page-gramature .gram__switch-lab {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.page-gramature .gram__seg {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--color-proof);
+}
+
+.page-gramature .gram__segbtn {
+  appearance: none;
+  flex: 1 1 auto;
+  padding: 0.7em 1em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+  background: transparent;
+  border: 0;
+  /* Prozirna linija stoji i u nepritisnutom stanju, da prebacivanje ne
+  pomera layout. */
+  border-block-end: 3px solid transparent;
+  cursor: pointer;
+}
+
+.page-gramature .gram__segbtn + .gram__segbtn {
+  border-inline-start: 1px solid var(--color-proof);
+}
+
+/* Stanje se ne signalizira samo bojom: pritisnuto dugme je i puna površina
+     i deblja donja linija (WCAG 1.4.1). */
+.page-gramature .gram__segbtn[aria-pressed='true'] {
+  color: var(--color-paper-on-dark);
+  background: var(--color-proof);
+  border-block-end-color: var(--color-paper-on-dark);
+}
+
+.page-gramature .gram__segbtn[aria-pressed='false']:hover {
+  background: var(--color-proof-tint);
+}
+
+/* --- Tabele gramatura --------------------------------------------------------- */
+.page-gramature .gram__grupe {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-gramature .gram__table {
+  /* Fiksni layout: širine kolona ne zavise od najduže reči, pa tabela nikada
+  ne prekorači kontejner i nema horizontalnog skrolovanja. */
+  table-layout: fixed;
+}
+
+.page-gramature .gram__cap {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+  padding-block-end: var(--space-3);
+}
+
+.page-gramature .gram__table th, .page-gramature .gram__table td {
+  padding: var(--space-3);
+  overflow-wrap: break-word;
+}
+
+.page-gramature .gram__stavka {
+  inline-size: 52%;
+  text-align: left;
+  font-weight: 400;
+  color: var(--color-ink);
+}
+
+.page-gramature .gram__table thead .gram__stavka {
+  color: var(--color-paper-on-dark);
+  font-weight: 600;
+}
+
+.page-gramature .gram__vred {
+  inline-size: 24%;
+}
+
+.page-gramature .gram__nota {
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-rule-strong);
+  color: var(--color-ink-soft);
+  max-width: var(--w-measure);
+}
+
+/* --- Korporativni sistemi ------------------------------------------------------ */
+.page-gramature .korp {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.page-gramature .korp p {
+  max-width: var(--w-measure);
+  color: var(--color-ink-soft);
+}
+
+/* --- Veze --------------------------------------------------------------------- */
+.page-gramature .gram__slot {
+  margin-block-end: var(--space-7);
+  max-inline-size: 38rem;
+}
+
+.page-gramature .veze {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.page-gramature .veza {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-accent);
+}
+
+.page-gramature .veza__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent);
+}
+
+.page-gramature .veza__naslov {
+  max-width: 20ch;
+}
+
+.page-gramature .veza__text {
+  color: var(--color-ink-soft);
+  max-width: 44ch;
+}
+
+.page-gramature .veza__link {
+  font-weight: 600;
+  justify-self: start;
+}
+
+@media (min-width: 45rem) {
+  .page-gramature .gram__switch {
+    display: none;
+  }
+
+}
+
+@media (min-width: 60rem) {
+  .page-gramature .gram__grupe {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7) var(--space-6);
+    align-items: start;
+  }
+
+}
+
+@media (max-width: 44.99rem) {
+  .page-gramature .gram__table [data-col][data-skriveno] {
+    display: none;
+  }
+
+  .page-gramature .gram__table th, .page-gramature .gram__table td {
+    padding: var(--space-3) var(--space-2);
+  }
+
+}
+
+@media (min-width: 52rem) {
+  .page-gramature .veze {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+
+}
+
+
+/* --- jelovnik/index ------------------------------------------------ */
+/* --- Hero ------------------------------------------------------------- */
+.page-jelovnik .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-jelovnik .hero__grid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.page-jelovnik .hero__h1 {
+  max-width: 17ch;
+}
+
+.page-jelovnik .hero__lead {
+  max-width: 46ch;
+}
+
+.page-jelovnik .hero__text-2 {
+  max-width: 48ch;
+  color: var(--color-ink-soft);
+}
+
+/* --- Kategorije obroka -------------------------------------------------- */
+.page-jelovnik .kategorije {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-jelovnik .kat {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-proof);
+}
+
+.page-jelovnik .kat__naslov {
+  margin: 0;
+}
+
+.page-jelovnik .kat__opis {
+  color: var(--color-ink-soft);
+  max-width: 42ch;
+}
+
+.page-jelovnik .kat__lista {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid var(--color-rule-strong);
+  padding-block-start: var(--space-4);
+}
+
+.page-jelovnik .kat__lista li {
+  position: relative;
+  padding-inline-start: var(--space-5);
+  font-size: var(--fs-small);
+}
+
+.page-jelovnik .kat__lista li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.62em;
+  inline-size: 0.75rem;
+  block-size: 1px;
+  background: var(--color-proof);
+}
+
+.page-jelovnik .kat__pravila {
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+}
+
+.page-jelovnik .kat__pravila-nas {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+  margin-block-end: var(--space-3);
+}
+
+.page-jelovnik .obroci__slot {
+  margin-block-start: var(--space-7);
+  max-inline-size: 38rem;
+}
+
+.page-jelovnik .kat__pravila ul {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Sedam grupa namirnica ---------------------------------------------- */
+/* Sporedna informacija: rimski broj ide do --fs-display-l (max 64px), ne
+     preko toga. Broj je redni — topli registar, po pravilu sistema. */
+.page-jelovnik .grupe {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-jelovnik .grupa {
+  display: grid;
+  grid-template-columns: minmax(2.5rem, auto) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-block-end: 1px solid var(--color-rule);
+}
+
+.page-jelovnik .grupa__oznaka {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  font-weight: 400;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-accent);
+}
+
+.page-jelovnik .grupa__naziv {
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink);
+}
+
+/* --- Deca vs. odrasli (tamna traka) -------------------------------------- */
+.page-jelovnik .razlika__head {
+  display: grid;
+  gap: var(--space-4);
+  margin-block-end: var(--space-7);
+}
+
+.page-jelovnik .razlika__h2 {
+  max-width: 22ch;
+}
+
+.page-jelovnik .razlika {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-jelovnik .razlika__kol {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.page-jelovnik .razlika__naslov {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin: 0;
+  padding-block-end: var(--space-4);
+  border-block-end: 1px solid var(--color-rule-on-dark);
+}
+
+.page-jelovnik .razlika__lista {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-jelovnik .razlika__lista li {
+  position: relative;
+  padding-inline-start: var(--space-5);
+  line-height: var(--leading-relaxed);
+  color: var(--color-paper-on-dark);
+}
+
+/* Linija umesto tačke — isti jezik kao .normativ-row tick, samo na tamnom. */
+.page-jelovnik .razlika__lista li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.7em;
+  inline-size: 0.75rem;
+  block-size: 1px;
+  background: var(--color-mist);
+}
+
+/* --- Posebni zahtevi ------------------------------------------------------ */
+.page-jelovnik .zahtevi {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.page-jelovnik .zahtevi p {
+  max-width: var(--w-measure);
+  color: var(--color-ink-soft);
+}
+
+.page-jelovnik .prec {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-accent);
+}
+
+.page-jelovnik .prec__text {
+  color: var(--color-ink-soft);
+  max-width: 44ch;
+}
+
+@media (min-width: 52rem) {
+  .page-jelovnik .kategorije {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .page-jelovnik .razlika {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+}
+
+@media (min-width: 40rem) {
+  .page-jelovnik .grupe {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-7);
+  }
+
+}
+
+@media (min-width: 72rem) {
+  .page-jelovnik .grupe {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+}
+
+
+/* --- jelovnik/nedeljni-meni ---------------------------------------- */
+/* --- Uvod --------------------------------------------------------------- */
+.page-nedeljni-meni .uvod {
+  padding-block-start: var(--space-8);
+}
+
+.page-nedeljni-meni .uvod__grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.page-nedeljni-meni .uvod__h1 {
+  max-width: 17ch;
+}
+
+.page-nedeljni-meni .uvod__lead {
+  max-width: 48ch;
+}
+
+.page-nedeljni-meni .uvod__nota {
+  margin-block-start: 0;
+}
+
+.page-nedeljni-meni .uvod__nota-nas {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+  margin-block-end: var(--space-3);
+}
+
+.page-nedeljni-meni .uvod__nota p:last-child {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Zaglavlje primera ---------------------------------------------------- */
+/* Reč PRIMER stoji uz svaki jelovnik i u oznaci i u naslovu — ne može da
+     nestane jednom izmenom sadržaja. */
+.page-nedeljni-meni .primer__head {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  margin-block-end: var(--space-6);
+}
+
+.page-nedeljni-meni .primer__tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding: 0.3em 0.7em;
+  border: 1px solid var(--color-accent);
+}
+
+.page-nedeljni-meni .primer__h2 {
+  max-width: 24ch;
+}
+
+/* --- Nutritivna tabela ------------------------------------------------------ */
+.page-nedeljni-meni .nutri {
+  margin-block-start: var(--space-8);
+  padding-block-start: var(--space-6);
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-nedeljni-meni .nutri__h3 {
+  margin-block-end: var(--space-5);
+  max-width: 30ch;
+}
+
+/* Ispod 900px tabela se ne prikazuje — sadržaj nose blokovi po danu.
+     Bez overflow-x: jedanaest kolona se na telefonu ne skroluje, nego prelama. */
+.page-nedeljni-meni .nutri__table {
+  display: none;
+}
+
+/* Uzak raspon 900–1200px: padding se steže da se „Ugljeni hidrati" prelomi
+     između reči, a ne usred reči. Preko 1200px se vraća puni ritam. */
+.page-nedeljni-meni .nutri__table th, .page-nedeljni-meni .nutri__table td {
+  padding: var(--space-3) 0.35rem;
+  overflow-wrap: break-word;
+}
+
+.page-nedeljni-meni .nutri__table thead th {
+  vertical-align: bottom;
+}
+
+.page-nedeljni-meni .nutri__dan {
+  inline-size: 12%;
+  white-space: normal;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  /* Uska razmaknutost umesto --tracking-wide: sa njom se „Ponedeljak" na
+  900px ne uklapa u kolonu i lomi se usred reči. */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--color-ink);
+}
+
+.page-nedeljni-meni .nutri__table thead .nutri__dan {
+  color: var(--color-paper-on-dark);
+}
+
+.page-nedeljni-meni .nutri__lab {
+  display: block;
+  /* Bez široke mono razmaknutosti — inače se „Ugljeni hidrati" na 900px lomi
+  usred reči umesto između njih. */
+  letter-spacing: 0;
+}
+
+.page-nedeljni-meni .nutri__unit {
+  display: block;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-mist);
+}
+
+/* --- Blokovi po danu (ispod 900px) ------------------------------------------ */
+.page-nedeljni-meni .nutri__blokovi {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-nedeljni-meni .nblok {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  padding: var(--space-5);
+}
+
+.page-nedeljni-meni .nblok--prosek {
+  background: var(--color-proof-tint);
+  border-color: var(--color-proof);
+}
+
+.page-nedeljni-meni .nblok__dan {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+  margin: 0 0 var(--space-4);
+  padding-block-end: var(--space-3);
+  border-block-end: 2px solid var(--color-proof);
+}
+
+.page-nedeljni-meni .nblok__lista {
+  margin: 0;
+  display: grid;
+  gap: 0;
+}
+
+.page-nedeljni-meni .nblok__red {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  border-block-end: 1px solid var(--color-rule);
+}
+
+.page-nedeljni-meni .nblok__red:last-child {
+  border-block-end: none;
+}
+
+.page-nedeljni-meni .nblok__red dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.page-nedeljni-meni .nblok__unit {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.page-nedeljni-meni .nblok__red dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--color-ink);
+  text-align: right;
+}
+
+/* --- Kako citati ------------------------------------------------------------- */
+.page-nedeljni-meni .citanje {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.page-nedeljni-meni .citanje__nota {
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Ko pravi jelovnik --------------------------------------------------------- */
+.page-nedeljni-meni .autor {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.page-nedeljni-meni .autor__text {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.page-nedeljni-meni .autor__text p {
+  max-width: var(--w-measure);
+  color: var(--color-ink-soft);
+}
+
+/* --- Veza ka gramaturama --------------------------------------------------------- */
+.page-nedeljni-meni .veza {
+  margin: 0;
+}
+
+@media (min-width: 64rem) {
+  .page-nedeljni-meni .uvod__grid {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-9);
+  }
+
+}
+
+@media (min-width: 56.25rem) {
+  .page-nedeljni-meni .nutri__table {
+    display: table;
+    /* Fiksni layout + prelom reči: tabela nikada ne može da prekorači shell. */
+    table-layout: fixed;
+  }
+
+  .page-nedeljni-meni .nutri__blokovi {
+    display: none;
+  }
+
+}
+
+@media (min-width: 75rem) {
+  .page-nedeljni-meni .nutri__table th, .page-nedeljni-meni .nutri__table td {
+    padding: var(--space-3);
+  }
+
+}
+
+/* U ovom pojasu tabela ima sedam kolona u uskom shell-u, pa je zaglavlje
+   ranije bilo spusteno na 11px. Ispod 12px se tekst na ekranu vise ne cita
+   udobno, a tabela je `table-layout: fixed` — sme da se prelomi u dva reda
+   umesto da se smanjuje. Visina je jeftinija od citljivosti. */
+@media (min-width: 56.25rem) and (max-width: 74.99rem) {
+  .page-nedeljni-meni .nutri__table thead th {
+    font-size: 0.75rem;
+    letter-spacing: 0.01em;
+    padding-inline: var(--space-2);
+  }
+
+}
+
+@media (min-width: 60rem) {
+  .page-nedeljni-meni .autor {
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-8);
+  }
+
+}
+
+
+/* --- kako-radimo/bezbednost-hrane ---------------------------------- */
+/* --- Hero ------------------------------------------------------------- */
+.page-bezbednost-hrane .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-bezbednost-hrane .hero__h1 {
+  max-width: 18ch;
+}
+
+.page-bezbednost-hrane .hero__lead {
+  max-width: 58ch;
+}
+
+/* --- Slotovi za fotografije ------------------------------------------- */
+.page-bezbednost-hrane .slotovi {
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* --- Čist i nečist put (tamna traka) ----------------------------------- */
+.page-bezbednost-hrane .put {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.page-bezbednost-hrane .put__naslov {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  font-weight: 700;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  max-width: 16ch;
+  margin: 0;
+}
+
+.page-bezbednost-hrane .put__text {
+  color: var(--color-mist);
+}
+
+/* --- Dve vrste kontrole ------------------------------------------------ */
+.page-bezbednost-hrane .kontrole {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-bezbednost-hrane .kontrola {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-proof);
+}
+
+.page-bezbednost-hrane .kontrola__text {
+  color: var(--color-ink-soft);
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* --- Česta pitanja ----------------------------------------------------- */
+.page-bezbednost-hrane .faq {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.page-bezbednost-hrane .faq__item {
+  display: grid;
+  gap: var(--space-3);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-bezbednost-hrane .faq__q {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.page-bezbednost-hrane .faq__a {
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+/* --- Veza ka pilar stranici -------------------------------------------- */
+.page-bezbednost-hrane .dalje {
+  margin-block-start: var(--space-7);
+}
+
+@media (min-width: 52rem) {
+  .page-bezbednost-hrane .kontrole {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+}
+
+
+/* --- kako-radimo/dostava ------------------------------------------- */
+/* --- Hero ------------------------------------------------------------- */
+.page-dostava .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-dostava .hero__h1 {
+  max-width: 16ch;
+}
+
+.page-dostava .hero__lead {
+  max-width: 52ch;
+}
+
+/* --- Par kartica (vozači / vozilo) ------------------------------------- */
+.page-dostava .par {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-dostava .par__stavka {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-proof);
+}
+
+.page-dostava .par__text {
+  color: var(--color-ink-soft);
+  max-width: 46ch;
+  margin: 0;
+}
+
+/* --- Veza ka drugoj stranici ------------------------------------------- */
+/* Section već nosi donji razmak, pa link ide bez dodatne margine. */
+.page-dostava .veza {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* --- Slotovi za fotografije -------------------------------------------- */
+.page-dostava .slotovi {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 52rem) {
+  .page-dostava .par {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+}
+
+
+/* --- kako-radimo/index --------------------------------------------- */
+.page-kako-radimo .hero__h1 {
+  max-width: 17ch;
+}
+
+.page-kako-radimo .hero__lead {
+  margin-block-start: var(--space-2);
+}
+
+/* --- Pregled lanca (tamna traka) ---------------------------------------- */
+.page-kako-radimo .pregled__naslov {
+  margin-block-end: var(--space-7);
+  max-width: 20ch;
+}
+
+.page-kako-radimo .pregled {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  /* minmax(0,…) svuda: podrazumevani `auto` daje stavci min-content širinu,
+  a to je ono što iz jedne kolone napravi horizontalni scroll. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+
+.page-kako-radimo .pregled__item {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+  padding-block: var(--space-5);
+  border-block-end: 1px solid var(--color-rule-on-dark);
+}
+
+.page-kako-radimo .pregled__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-mist);
+}
+
+.page-kako-radimo .pregled__link {
+  font-family: var(--font-text);
+  font-size: var(--fs-lead);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.page-kako-radimo .pregled__kratko {
+  font-size: var(--fs-small);
+  color: var(--color-mist);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Koraci -------------------------------------------------------------- */
+.page-kako-radimo .korak {
+  display: grid;
+  /* PhotoSlot nosi aspect-ratio; kao grid stavka sa podrazumevanim
+  min-width: auto raširio bi kolonu na svoju min-content visinu × 4/3
+  i odgurao celu stranicu u horizontalni scroll. Otud minmax(0, 1fr). */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+}
+
+.page-kako-radimo .korak__veze {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
+  margin-block-start: var(--space-7);
+  font-weight: 600;
+}
+
+/* --- Slotovi ------------------------------------------------------------- */
+.page-kako-radimo .slotovi {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+}
+
+/* --- Tim ----------------------------------------------------------------- */
+.page-kako-radimo .tim {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+}
+
+.page-kako-radimo .tim__karta {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding-block-start: var(--space-4);
+  border-block-start: 2px solid var(--color-proof);
+}
+
+.page-kako-radimo .tim__uloga {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  letter-spacing: 0;
+  color: var(--color-ink);
+}
+
+.page-kako-radimo .tim__posao {
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .page-kako-radimo .pregled {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-6);
+  }
+
+}
+
+@media (min-width: 68rem) {
+  .page-kako-radimo .pregled {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: var(--space-5);
+  }
+
+  .page-kako-radimo .pregled__item {
+    /* Veza između koraka je linija na vrhu, ista logika kao u dijagramu. */
+    padding-block: var(--space-5) 0;
+    border-block-start: 2px solid var(--color-mist);
+    border-block-end: none;
+  }
+
+}
+
+@media (min-width: 60rem) {
+  .page-kako-radimo .korak--media {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .page-kako-radimo .korak--dve {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+}
+
+@media (min-width: 48rem) {
+  .page-kako-radimo .tim {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6) var(--space-7);
+  }
+
+}
+
+@media (min-width: 72rem) {
+  .page-kako-radimo .tim {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+
+/* --- kako-radimo/nutricionista ------------------------------------- */
+.page-nutricionista .hero__h1 {
+  max-width: 18ch;
+}
+
+.page-nutricionista .hero__lead {
+  margin-block-start: var(--space-2);
+}
+
+/* --- Dve kolone ---------------------------------------------------------- */
+.page-nutricionista .dvoje {
+  display: grid;
+  /* minmax(0,…) i u jednoj koloni: podrazumevani `auto` daje stavci
+  min-content širinu, a to je najčešći uzrok horizontalnog scrolla. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+}
+
+/* --- Veze na dnu sekcije --------------------------------------------------- */
+.page-nutricionista .veze {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
+  margin-block-start: var(--space-7);
+  font-weight: 600;
+}
+
+/* --- Lanac kontrole (tamna traka) ------------------------------------------ */
+.page-nutricionista .lanac__uvod {
+  display: grid;
+  gap: var(--space-4);
+  margin-block-end: var(--space-7);
+}
+
+.page-nutricionista .lanac__naslov {
+  max-width: 24ch;
+}
+
+/* --- Blok sa podnaslovom ---------------------------------------------------- */
+.page-nutricionista .blok {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding-block-start: var(--space-4);
+  border-block-start: 2px solid var(--color-proof);
+}
+
+.page-nutricionista .blok__naslov {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  letter-spacing: 0;
+  color: var(--color-ink);
+}
+
+.page-nutricionista .blok__text {
+  color: var(--color-ink-soft);
+  max-width: 48ch;
+  margin: 0;
+}
+
+/* --- U kuhinji i na terenu --------------------------------------------------- */
+.page-nutricionista .teren {
+  display: grid;
+  /* PhotoSlot nosi aspect-ratio — bez minmax(0,…) bi kao grid stavka
+  raširio kolonu preko širine ekrana. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+}
+
+.page-nutricionista .teren__tekst {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+}
+
+@media (min-width: 60rem) {
+  .page-nutricionista .dvoje {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  .page-nutricionista .dvoje--ravno {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .page-nutricionista .teren {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+}
+
+
+/* --- kontakt ------------------------------------------------------- */
+/* --- Hero ------------------------------------------------------------- */
+.page-kontakt .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-kontakt .hero__grid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.page-kontakt .hero__h1 {
+  max-width: 16ch;
+}
+
+.page-kontakt .hero__lead {
+  max-width: 46ch;
+}
+
+/* --- Veza: telefoni i email --------------------------------------------- */
+.page-kontakt .veza {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  padding: var(--space-5);
+}
+
+.page-kontakt .veza__naslov {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-5);
+  padding-block-end: var(--space-4);
+  border-block-end: 2px solid var(--color-proof);
+}
+
+.page-kontakt .veza__lista {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+}
+
+.page-kontakt .veza__stavka {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.page-kontakt .veza__labela {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Puno dugme, ne sitan tekst. Prst pogađa ceo red. */
+.page-kontakt .veza__dugme {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-lead);
+  letter-spacing: var(--tracking-tight);
+}
+
+.page-kontakt .veza__dugme--mail {
+  /* Email je duži od broja — na uskim ekranima sme da se prelomi
+  umesto da izbaci stranicu u horizontalni scroll. */
+  font-size: var(--fs-body);
+  overflow-wrap: anywhere;
+}
+
+.page-kontakt .veza__sati {
+  display: grid;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 0;
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-rule);
+  font-size: var(--fs-small);
+}
+
+/* --- Lokacija ----------------------------------------------------------- */
+.page-kontakt .lokacija {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-kontakt .lokacija__podaci {
+  margin: 0;
+}
+
+/* --- Dalje --------------------------------------------------------------- */
+.page-kontakt .dalje {
+  display: grid;
+  gap: var(--space-5);
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-accent);
+}
+
+.page-kontakt .dalje__akcije {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.page-kontakt .dalje__link {
+  font-weight: 600;
+}
+
+@media (min-width: 60rem) {
+  .page-kontakt .hero__grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-9);
+  }
+
+  .page-kontakt .lokacija {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+}
+
+@media (min-width: 52rem) {
+  .page-kontakt .dalje {
+    grid-template-columns: 1.4fr auto;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+}
+
+
+/* --- o-nama -------------------------------------------------------- */
+/* --- Hero ------------------------------------------------------------- */
+.page-o-nama .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-o-nama .hero__grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: end;
+}
+
+.page-o-nama .hero__h1 {
+  max-width: 18ch;
+}
+
+.page-o-nama .hero__uvod .lead {
+  max-width: 48ch;
+}
+
+.page-o-nama .hero__drugi {
+  max-width: 48ch;
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+}
+
+/* --- Zajedničko: red ispod liste --------------------------------------- */
+.page-o-nama .posle-liste {
+  margin-block-start: var(--space-6);
+  font-weight: 600;
+}
+
+/* --- Misija ------------------------------------------------------------- */
+.page-o-nama .citat {
+  margin: 0 0 var(--space-7);
+  display: grid;
+  gap: var(--space-5);
+}
+
+.page-o-nama .misija__tekst p {
+  color: var(--color-ink-soft);
+}
+
+.page-o-nama .misija__tekst p:last-child {
+  color: var(--color-ink);
+  font-size: var(--fs-lead);
+  line-height: var(--leading-relaxed);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+/* --- Citat na tamnoj traci ---------------------------------------------- */
+.page-o-nama .ljudi {
+  margin: 0;
+  display: grid;
+  gap: var(--space-5);
+}
+
+.page-o-nama .ljudi blockquote {
+  margin: 0;
+}
+
+.page-o-nama .ljudi__text {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  font-weight: 400;
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tight);
+  max-width: 18ch;
+  margin: 0;
+}
+
+.page-o-nama .ljudi__izvor {
+  color: var(--color-mist);
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Logotip ------------------------------------------------------------- */
+.page-o-nama .znak {
+  margin: 0;
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  max-width: 260px;
+}
+
+.page-o-nama .znak__opis {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-rule-strong);
+  width: 100%;
+}
+
+/* --- Referenca ------------------------------------------------------------ */
+.page-o-nama .ref {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.page-o-nama .ref__tekst p {
+  color: var(--color-ink-soft);
+  max-width: 46ch;
+}
+
+/* --- Slotovi za fotografije ------------------------------------------------ */
+.page-o-nama .slotovi {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 64rem) {
+  .page-o-nama .hero__grid {
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--space-9);
+  }
+
+}
+
+@media (min-width: 60rem) {
+  .page-o-nama .ref {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+}
+
+
+/* --- politika-privatnosti ------------------------------------------ */
+.page-politika-privatnosti .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-politika-privatnosti .hero__h1 {
+  max-width: 18ch;
+}
+
+/* Pravne sekcije dišu istim ritmom: naslov iz <Section>, pa blokovi teksta.
+     Razmak nosi globalni .stack, da se ne oslanja na lokalni stil sekcije. */
+.page-politika-privatnosti .pravni {
+  --stack-gap: var(--space-5);
+}
+
+/* Vidljiva oznaka rupe. Ne koristi <mark> jer žuti highlight iz pregledača
+     ne pripada paleti; ovo je isti mono registar kao ostale labele. */
+.page-politika-privatnosti .flag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border-block-end: 2px solid var(--color-accent);
+  padding-block-end: 1px;
+  margin-inline-end: var(--space-1);
+}
+
+.page-politika-privatnosti .tiho {
+  color: var(--color-ink-soft);
+}
+
+.page-politika-privatnosti .povratak {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+}
+
+@media (min-width: 46rem) {
+  .page-politika-privatnosti .povratak {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--space-7);
+  }
+
+}
+
+
+/* --- snabdevanje --------------------------------------------------- */
+/* --- Hero ------------------------------------------------------------- */
+.page-snabdevanje .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-snabdevanje .hero__grid,
+.page-sinko .hero__grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: end;
+}
+
+.page-snabdevanje .hero__h1,
+.page-snabdevanje .hero__uvod .lead,
+.page-sinko .hero__uvod .lead {
+  max-width: 46ch;
+}
+
+.page-snabdevanje .hero__drugi,
+.page-sinko .hero__drugi {
+  max-width: 46ch;
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+}
+
+/* --- Grupe artikala ----------------------------------------------------- */
+.page-snabdevanje .grupe,
+.page-sinko .grupe {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-snabdevanje .grupa,
+.page-sinko .grupa {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding-block-start: var(--space-5);
+  border-block-start: 2px solid var(--color-accent);
+}
+
+.page-snabdevanje .grupa__num,
+.page-sinko .grupa__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent);
+}
+
+.page-snabdevanje .grupa__naslov,
+.page-sinko .grupa__naslov {
+  max-width: 16ch;
+}
+
+.page-snabdevanje .grupa__lista,
+.page-sinko .grupa__lista {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid var(--color-rule-strong);
+  padding-block-start: var(--space-4);
+}
+
+.page-snabdevanje .grupa__lista li,
+.page-sinko .grupa__lista li {
+  position: relative;
+  padding-inline-start: var(--space-5);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+.page-snabdevanje .grupa__lista li::before,
+.page-sinko .grupa__lista li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.62em;
+  inline-size: 0.75rem;
+  block-size: 1px;
+  background: var(--color-proof);
+}
+
+/* --- Isporuka ------------------------------------------------------------ */
+.page-snabdevanje .isporuka__tekst {
+  max-width: 58ch;
+}
+
+.page-snabdevanje .isporuka__tekst p:first-child {
+  font-size: var(--fs-lead);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink);
+}
+
+.page-snabdevanje .prec,
+.page-sinko .prec {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-snabdevanje .prec__text,
+.page-sinko .prec__text {
+  color: var(--color-ink-soft);
+  max-width: 44ch;
+  font-size: var(--fs-small);
+}
+
+/* --- Česta pitanja --------------------------------------------------------- */
+.page-snabdevanje .pitanja {
+  margin: 0;
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-snabdevanje .pitanje {
+  padding-block: var(--space-5);
+  border-block-end: 1px solid var(--color-rule-strong);
+}
+
+.page-snabdevanje .pitanje__q {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+}
+
+.page-snabdevanje .pitanje__a {
+  margin: var(--space-3) 0 0;
+  color: var(--color-ink-soft);
+}
+
+@media (min-width: 64rem) {
+  .page-snabdevanje .hero__grid,
+  .page-sinko .hero__grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-9);
+  }
+
+}
+
+@media (min-width: 52rem) {
+  .page-snabdevanje .grupe,
+  .page-sinko .grupe {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+}
+
+/* --- za-vrtice-i-skole --------------------------------------------- */
+/* --- Hero --------------------------------------------------------------- */
+.page-za-vrtice-i-skole .hero {
+  padding-block-start: var(--space-8);
+  display: grid;
+}
+
+.page-za-vrtice-i-skole .hero__h1 {
+  max-width: 18ch;
+}
+
+.page-za-vrtice-i-skole .hero__lead {
+  max-width: 52ch;
+}
+
+/* --- Šta dobijate -------------------------------------------------------- */
+.page-za-vrtice-i-skole .obroci {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.page-za-vrtice-i-skole .obrok {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding-block-start: var(--space-4);
+  border-block-start: 2px solid var(--color-accent);
+}
+
+.page-za-vrtice-i-skole .obrok__naslov {
+  font-size: var(--fs-display-s);
+}
+
+.page-za-vrtice-i-skole .obrok__text {
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Propis -------------------------------------------------------------- */
+.page-za-vrtice-i-skole .propis {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.page-za-vrtice-i-skole .propis__text {
+  color: var(--color-ink-soft);
+  max-width: 58ch;
+}
+
+/* Hladni registar: ovo je dokaz, ne glas firme. */
+.page-za-vrtice-i-skole .propis__nota {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-proof-tint);
+  border-inline-start: 3px solid var(--color-proof);
+}
+
+.page-za-vrtice-i-skole .propis__notalabel {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+}
+
+.page-za-vrtice-i-skole .propis__notatext {
+  margin: 0;
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+  color: var(--color-ink-soft);
+}
+
+/* --- Gramature ----------------------------------------------------------- */
+/* Tri uske tabele jedna pored druge na širokom ekranu, jedna ispod druge na
+     telefonu. Tri kolone se prelamaju u ćelijama — nema overflow-x. */
+.page-za-vrtice-i-skole .gram {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Namerno `auto`, ne `fixed`: auto raspored daje prvoj koloni onoliko
+     širine koliko joj treba, a kolonama sa gramažom samo „250 g". Najduža
+     reč u izvodu je devet znakova, pa min-content cele tabele staje i na
+     320px — bez overflow-x. */
+.page-za-vrtice-i-skole .gram__tabela {
+  table-layout: auto;
+}
+
+.page-za-vrtice-i-skole .gram__tabela caption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+}
+
+.page-za-vrtice-i-skole .gram__stavka {
+  font-weight: 400;
+  font-size: var(--fs-small);
+  line-height: var(--leading-snug);
+  hyphens: auto;
+}
+
+/* --- Nutricionista -------------------------------------------------------- */
+.page-za-vrtice-i-skole .nutri {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.page-za-vrtice-i-skole .nutri__stavka {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-za-vrtice-i-skole .nutri__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent);
+}
+
+.page-za-vrtice-i-skole .nutri__naslov {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+}
+
+.page-za-vrtice-i-skole .nutri__text {
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+  max-width: 48ch;
+}
+
+/* --- Dostava --------------------------------------------------------------- */
+.page-za-vrtice-i-skole .dostava {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.page-za-vrtice-i-skole .dostava__slotovi {
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* --- Referenca -------------------------------------------------------------- */
+.page-za-vrtice-i-skole .ref {
+  display: grid;
+  gap: var(--space-5);
+}
+
+/* --- Česta pitanja ---------------------------------------------------------- */
+.page-za-vrtice-i-skole .faq {
+  display: grid;
+  gap: 0;
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-za-vrtice-i-skole .faq__item {
+  display: grid;
+  gap: var(--space-3);
+  padding-block: var(--space-5);
+  border-block-end: 1px solid var(--color-rule-strong);
+}
+
+.page-za-vrtice-i-skole .faq__q {
+  font-family: var(--font-text);
+  font-size: var(--fs-body);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-ink);
+}
+
+.page-za-vrtice-i-skole .faq__a {
+  margin: 0;
+  color: var(--color-ink-soft);
+  font-size: var(--fs-small);
+  line-height: var(--leading-relaxed);
+}
+
+/* --- Zajedničko -------------------------------------------------------------- */
+.page-za-vrtice-i-skole .dalje {
+  margin-block-start: var(--space-7);
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+}
+
+@media (min-width: 52rem) {
+  .page-za-vrtice-i-skole .obroci {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-7);
+  }
+
+}
+
+@media (min-width: 60rem) {
+  .page-za-vrtice-i-skole .propis {
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .page-za-vrtice-i-skole .gram {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+}
+
+@media (max-width: 29.99rem) {
+  .page-za-vrtice-i-skole .gram__tabela th, .page-za-vrtice-i-skole .gram__tabela td {
+    padding: var(--space-2) var(--space-3);
+  }
+
+}
+
+@media (min-width: 48rem) {
+  .page-za-vrtice-i-skole .nutri {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+
+}
+
+@media (min-width: 64rem) {
+  .page-za-vrtice-i-skole .dostava {
+    grid-template-columns: 1.25fr 1fr;
+    gap: var(--space-8);
+  }
+
+}
+
+@media (min-width: 40rem) and (max-width: 63.99rem) {
+  .page-za-vrtice-i-skole .dostava__slotovi {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* --- zatrazi-ponudu ------------------------------------------------ */
+/* --- Hero ------------------------------------------------------------- */
+.page-zatrazi-ponudu .hero {
+  padding-block-start: var(--space-8);
+}
+
+.page-zatrazi-ponudu .hero__grid {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.page-zatrazi-ponudu .hero__h1 {
+  max-width: 15ch;
+}
+
+.page-zatrazi-ponudu .hero__lead {
+  max-width: 48ch;
+}
+
+.page-zatrazi-ponudu .hero__skok {
+  margin-block-start: var(--space-2);
+}
+
+/* --- Koraci posle slanja ------------------------------------------------ */
+.page-zatrazi-ponudu .koraci {
+  margin-block-start: var(--space-2);
+  border-block-start: 1px solid var(--color-rule-strong);
+  padding-block-start: var(--space-5);
+}
+
+.page-zatrazi-ponudu .koraci__naslov {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  /* Mono labela je u toplom registru — pravilo 1 iz ugovora. */
+  color: var(--color-accent);
+  margin: 0 0 var(--space-5);
+}
+
+.page-zatrazi-ponudu .koraci__lista {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-zatrazi-ponudu .korak {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.page-zatrazi-ponudu .korak__broj {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent);
+  padding-block-start: 0.25em;
+}
+
+.page-zatrazi-ponudu .korak__telo {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.page-zatrazi-ponudu .korak__naslov {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.page-zatrazi-ponudu .korak__text {
+  font-size: var(--fs-small);
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+}
+
+/* --- Šta pomaže ---------------------------------------------------------- */
+.page-zatrazi-ponudu .pomoc {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  padding: var(--space-5);
+}
+
+.page-zatrazi-ponudu .pomoc__naslov {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-5);
+  padding-block-end: var(--space-4);
+  border-block-end: 2px solid var(--color-proof);
+}
+
+.page-zatrazi-ponudu .pomoc__lista {
+  margin: 0;
+}
+
+.page-zatrazi-ponudu .pomoc__foot {
+  margin-block-start: var(--space-5);
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-rule);
+  color: var(--color-ink-soft);
+}
+
+/* --- Ispod forme ---------------------------------------------------------- */
+.page-zatrazi-ponudu .privatnost {
+  margin-block-start: var(--space-6);
+  color: var(--color-ink-soft);
+}
+
+/* --- Alternativa telefonom ------------------------------------------------ */
+.page-zatrazi-ponudu .tel {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.page-zatrazi-ponudu .tel__lista {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+/* Dugme nosi dva reda: labelu i broj. Zato se .btn centriranje poništava. */
+.page-zatrazi-ponudu .tel__dugme {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-1);
+  text-align: start;
+  padding-block: 0.8em;
+}
+
+.page-zatrazi-ponudu .tel__labela {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.page-zatrazi-ponudu .tel__broj {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fs-lead);
+  letter-spacing: var(--tracking-tight);
+}
+
+.page-zatrazi-ponudu .tel__mail {
+  padding-block-start: var(--space-3);
+  border-block-start: 1px solid var(--color-rule-on-dark);
+  font-size: var(--fs-small);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 64rem) {
+  .page-zatrazi-ponudu .hero__grid {
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-9);
+  }
+
+}
+
+@media (min-width: 60rem) {
+  .page-zatrazi-ponudu .tel {
+    grid-template-columns: 1.3fr minmax(18rem, 22rem);
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+}
+
+
+/* --- naslovna: brojke u referentnoj traci ---------------------------- */
+/* Tri broja jedan pored drugog; na mobilnom jedan ispod drugog.
+   `.ref__broj` je zamenjen ovim — brojevi su isti, samo se sada odbrojavaju. */
+
+.page-pocetna .brojke {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .page-pocetna .brojke {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-7);
+  }
+}
+
+.page-pocetna .brojke__stavka {
+  padding-block-start: var(--space-4);
+  border-block-start: 2px solid var(--color-mist);
+}
+
+/* ==========================================================================
+   SINKO — ONLINE PRODAVNICA
+   ========================================================================== */
+
+/* Katalog kategorija. Firma nema nijednu fotografiju proizvoda, pa ovde rade
+   sama imena kategorija: gusta tipografska mreza umesto mreze praznih slotova.
+   `auto-fill` a ne `auto-fit`: sa `auto-fit` bi se na sirokom ekranu poslednji
+   red razvukao preko cele sirine i razbio ritam kolona. */
+.page-sinko .kat {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-block-start: 1px solid var(--color-rule-strong);
+}
+
+.page-sinko .kat__i {
+  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+  border-block-end: 1px solid var(--color-rule-strong);
+  border-inline-start: 1px solid var(--color-rule);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  position: relative;
+}
+
+/* Hairline ispred svake stavke, u istom „svezem" registru kao pokretni
+   elementi — ne u crvenom glasu firme i ne u zelenom registru dokaza. */
+.page-sinko .kat__i::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: 50% auto;
+  inline-size: 2px;
+  block-size: 0.75rem;
+  translate: 0 -50%;
+  background: var(--color-fresh);
+}
+
+/* Kartica koja vodi van sajta. Registar boje je jedini signal — nema okvira,
+   nema senke; sistem ih ne koristi. */
+.page-pocetna .usl--ext {
+  padding-inline-start: var(--space-5);
+  border-inline-start: 2px solid var(--color-fresh);
+}
+
+/* ==========================================================================
+   GALERIJA
+   ========================================================================== */
+
+/* Mreza po masonry principu, bez JS-a: kolone pustaju slike da zadrze svoj
+   odnos stranica. Portret i pejzaz mogu da stoje jedno pored drugog bez
+   secenja — `break-inside` sprecava da se slika prelomi preko dve kolone. */
+.page-galerija .gal {
+  columns: 1;
+  column-gap: var(--space-5);
+}
+
+.page-galerija .gal > * {
+  break-inside: avoid;
+  margin: 0 0 var(--space-5);
+}
+
+@media (min-width: 40rem) {
+  .page-galerija .gal {
+    columns: 2;
+  }
+}
+
+@media (min-width: 64rem) {
+  .page-galerija .gal {
+    columns: 3;
+  }
+}
+
+.page-galerija .gal__item img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border: 1px solid var(--color-rule-strong);
+  background: var(--color-paper-alt);
+}
+
+.page-galerija .gal__opis {
+  margin-block-start: var(--space-2);
+  color: var(--color-ink-soft);
+}
+
+/* Rezervisan okvir, dok prave fotografije ne stignu. */
+.page-galerija .gal__mesto {
+  margin-block-end: var(--space-5);
+}
+
+.page-galerija .hero__h1 {
+  max-width: 14ch;
+}

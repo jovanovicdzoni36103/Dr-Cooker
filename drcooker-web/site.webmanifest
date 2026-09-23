@@ -1,0 +1,28 @@
+{
+  "name": "Dr Cooker — ketering servis",
+  "short_name": "Dr Cooker",
+  "description": "Kuvani obroci za vrtiće, škole, boravke za decu i kompanije. Kuhinja u Beogradu, na Voždovcu.",
+  "lang": "sr-Latn-RS",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FAF7F2",
+  "theme_color": "#08221D",
+  "icons": [
+    {
+      "src": "/assets/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
