@@ -109,7 +109,7 @@
   max-width: 46ch;
 }
 
-/* --- Kuhinjska poruka (isečak jelovnika) ------------------------------- */
+/* --- Isečak jelovnika (isečak jelovnika) ------------------------------- */
 .page-pocetna .kmsg {
   background: var(--color-surface);
   border: 1px solid var(--color-rule-strong);
@@ -303,52 +303,52 @@
 }
 
 
-/* --- jelovnik/gramature -------------------------------------------- */
+/* --- jelovnik/normativi -------------------------------------------- */
 /* --- Uvod --------------------------------------------------------------- */
-.page-gramature .uvod {
+.page-normativi .uvod {
   padding-block-start: var(--space-8);
 }
 
-.page-gramature .uvod__grid {
+.page-normativi .uvod__grid {
   display: grid;
   gap: var(--space-8);
   align-items: start;
 }
 
-.page-gramature .uvod__h1 {
+.page-normativi .uvod__h1 {
   max-width: 16ch;
 }
 
-.page-gramature .uvod__lead {
+.page-normativi .uvod__lead {
   max-width: 46ch;
 }
 
-.page-gramature .uvod__text-2 {
+.page-normativi .uvod__text-2 {
   max-width: 52ch;
   color: var(--color-ink-soft);
 }
 
 /* --- Zaglavlje tabela ------------------------------------------------------ */
-.page-gramature .gram__head {
+.page-normativi .gram__head {
   display: grid;
   gap: var(--space-4);
   margin-block-end: var(--space-6);
 }
 
-.page-gramature .gram__h2 {
+.page-normativi .gram__h2 {
   max-width: 22ch;
 }
 
 /* --- Prekidač kolona --------------------------------------------------------- */
 /* Vidi se samo kada JS ukloni `hidden` I kada je ekran uži od 720px. */
-.page-gramature .gram__switch {
+.page-normativi .gram__switch {
   display: grid;
   gap: var(--space-3);
   justify-items: start;
   margin-block-end: var(--space-5);
 }
 
-.page-gramature .gram__switch-lab {
+.page-normativi .gram__switch-lab {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: 600;
@@ -357,13 +357,13 @@
   color: var(--color-ink-soft);
 }
 
-.page-gramature .gram__seg {
+.page-normativi .gram__seg {
   display: flex;
   flex-wrap: wrap;
   border: 1px solid var(--color-proof);
 }
 
-.page-gramature .gram__segbtn {
+.page-normativi .gram__segbtn {
   appearance: none;
   flex: 1 1 auto;
   padding: 0.7em 1em;
@@ -381,35 +381,35 @@
   cursor: pointer;
 }
 
-.page-gramature .gram__segbtn + .gram__segbtn {
+.page-normativi .gram__segbtn + .gram__segbtn {
   border-inline-start: 1px solid var(--color-proof);
 }
 
 /* Stanje se ne signalizira samo bojom: pritisnuto dugme je i puna površina
      i deblja donja linija (WCAG 1.4.1). */
-.page-gramature .gram__segbtn[aria-pressed='true'] {
+.page-normativi .gram__segbtn[aria-pressed='true'] {
   color: var(--color-paper-on-dark);
   background: var(--color-proof);
   border-block-end-color: var(--color-paper-on-dark);
 }
 
-.page-gramature .gram__segbtn[aria-pressed='false']:hover {
+.page-normativi .gram__segbtn[aria-pressed='false']:hover {
   background: var(--color-proof-tint);
 }
 
-/* --- Tabele gramatura --------------------------------------------------------- */
-.page-gramature .gram__grupe {
+/* --- Tabele normativa --------------------------------------------------------- */
+.page-normativi .gram__grupe {
   display: grid;
   gap: var(--space-7);
 }
 
-.page-gramature .gram__table {
+.page-normativi .gram__table {
   /* Fiksni layout: širine kolona ne zavise od najduže reči, pa tabela nikada
   ne prekorači kontejner i nema horizontalnog skrolovanja. */
   table-layout: fixed;
 }
 
-.page-gramature .gram__cap {
+.page-normativi .gram__cap {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: 600;
@@ -419,28 +419,28 @@
   padding-block-end: var(--space-3);
 }
 
-.page-gramature .gram__table th, .page-gramature .gram__table td {
+.page-normativi .gram__table th, .page-normativi .gram__table td {
   padding: var(--space-3);
   overflow-wrap: break-word;
 }
 
-.page-gramature .gram__stavka {
+.page-normativi .gram__stavka {
   inline-size: 52%;
   text-align: left;
   font-weight: 400;
   color: var(--color-ink);
 }
 
-.page-gramature .gram__table thead .gram__stavka {
+.page-normativi .gram__table thead .gram__stavka {
   color: var(--color-paper-on-dark);
   font-weight: 600;
 }
 
-.page-gramature .gram__vred {
+.page-normativi .gram__vred {
   inline-size: 24%;
 }
 
-.page-gramature .gram__nota {
+.page-normativi .gram__nota {
   margin-block-start: var(--space-6);
   padding-block-start: var(--space-4);
   border-block-start: 1px solid var(--color-rule-strong);
@@ -449,28 +449,28 @@
 }
 
 /* --- Korporativni sistemi ------------------------------------------------------ */
-.page-gramature .korp {
+.page-normativi .korp {
   display: grid;
   gap: var(--space-5);
 }
 
-.page-gramature .korp p {
+.page-normativi .korp p {
   max-width: var(--w-measure);
   color: var(--color-ink-soft);
 }
 
 /* --- Veze --------------------------------------------------------------------- */
-.page-gramature .gram__slot {
+.page-normativi .gram__slot {
   margin-block-end: var(--space-7);
   max-inline-size: 38rem;
 }
 
-.page-gramature .veze {
+.page-normativi .veze {
   display: grid;
   gap: var(--space-6);
 }
 
-.page-gramature .veza {
+.page-normativi .veza {
   display: grid;
   gap: var(--space-4);
   align-content: start;
@@ -478,7 +478,7 @@
   border-block-start: 2px solid var(--color-accent);
 }
 
-.page-gramature .veza__num {
+.page-normativi .veza__num {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: 600;
@@ -486,29 +486,29 @@
   color: var(--color-accent);
 }
 
-.page-gramature .veza__naslov {
+.page-normativi .veza__naslov {
   max-width: 20ch;
 }
 
-.page-gramature .veza__text {
+.page-normativi .veza__text {
   color: var(--color-ink-soft);
   max-width: 44ch;
 }
 
-.page-gramature .veza__link {
+.page-normativi .veza__link {
   font-weight: 600;
   justify-self: start;
 }
 
 @media (min-width: 45rem) {
-  .page-gramature .gram__switch {
+  .page-normativi .gram__switch {
     display: none;
   }
 
 }
 
 @media (min-width: 60rem) {
-  .page-gramature .gram__grupe {
+  .page-normativi .gram__grupe {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-7) var(--space-6);
     align-items: start;
@@ -517,18 +517,18 @@
 }
 
 @media (max-width: 44.99rem) {
-  .page-gramature .gram__table [data-col][data-skriveno] {
+  .page-normativi .gram__table [data-col][data-skriveno] {
     display: none;
   }
 
-  .page-gramature .gram__table th, .page-gramature .gram__table td {
+  .page-normativi .gram__table th, .page-normativi .gram__table td {
     padding: var(--space-3) var(--space-2);
   }
 
 }
 
 @media (min-width: 52rem) {
-  .page-gramature .veze {
+  .page-normativi .veze {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-7);
   }
@@ -794,29 +794,29 @@
 
 /* --- jelovnik/nedeljni-meni ---------------------------------------- */
 /* --- Uvod --------------------------------------------------------------- */
-.page-nedeljni-meni .uvod {
+.page-nedeljni-jelovnik .uvod {
   padding-block-start: var(--space-8);
 }
 
-.page-nedeljni-meni .uvod__grid {
+.page-nedeljni-jelovnik .uvod__grid {
   display: grid;
   gap: var(--space-7);
   align-items: start;
 }
 
-.page-nedeljni-meni .uvod__h1 {
+.page-nedeljni-jelovnik .uvod__h1 {
   max-width: 17ch;
 }
 
-.page-nedeljni-meni .uvod__lead {
+.page-nedeljni-jelovnik .uvod__lead {
   max-width: 48ch;
 }
 
-.page-nedeljni-meni .uvod__nota {
+.page-nedeljni-jelovnik .uvod__nota {
   margin-block-start: 0;
 }
 
-.page-nedeljni-meni .uvod__nota-nas {
+.page-nedeljni-jelovnik .uvod__nota-nas {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: 600;
@@ -826,7 +826,7 @@
   margin-block-end: var(--space-3);
 }
 
-.page-nedeljni-meni .uvod__nota p:last-child {
+.page-nedeljni-jelovnik .uvod__nota p:last-child {
   margin: 0;
   font-size: var(--fs-small);
   line-height: var(--leading-relaxed);
@@ -835,14 +835,14 @@
 /* --- Zaglavlje primera ---------------------------------------------------- */
 /* Reč PRIMER stoji uz svaki jelovnik i u oznaci i u naslovu — ne može da
      nestane jednom izmenom sadržaja. */
-.page-nedeljni-meni .primer__head {
+.page-nedeljni-jelovnik .primer__head {
   display: grid;
   gap: var(--space-4);
   justify-items: start;
   margin-block-end: var(--space-6);
 }
 
-.page-nedeljni-meni .primer__tag {
+.page-nedeljni-jelovnik .primer__tag {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: 600;
@@ -853,40 +853,40 @@
   border: 1px solid var(--color-accent);
 }
 
-.page-nedeljni-meni .primer__h2 {
+.page-nedeljni-jelovnik .primer__h2 {
   max-width: 24ch;
 }
 
 /* --- Nutritivna tabela ------------------------------------------------------ */
-.page-nedeljni-meni .nutri {
+.page-nedeljni-jelovnik .nutri {
   margin-block-start: var(--space-8);
   padding-block-start: var(--space-6);
   border-block-start: 1px solid var(--color-rule-strong);
 }
 
-.page-nedeljni-meni .nutri__h3 {
+.page-nedeljni-jelovnik .nutri__h3 {
   margin-block-end: var(--space-5);
   max-width: 30ch;
 }
 
 /* Ispod 900px tabela se ne prikazuje — sadržaj nose blokovi po danu.
      Bez overflow-x: jedanaest kolona se na telefonu ne skroluje, nego prelama. */
-.page-nedeljni-meni .nutri__table {
+.page-nedeljni-jelovnik .nutri__table {
   display: none;
 }
 
 /* Uzak raspon 900–1200px: padding se steže da se „Ugljeni hidrati" prelomi
      između reči, a ne usred reči. Preko 1200px se vraća puni ritam. */
-.page-nedeljni-meni .nutri__table th, .page-nedeljni-meni .nutri__table td {
+.page-nedeljni-jelovnik .nutri__table th, .page-nedeljni-jelovnik .nutri__table td {
   padding: var(--space-3) 0.35rem;
   overflow-wrap: break-word;
 }
 
-.page-nedeljni-meni .nutri__table thead th {
+.page-nedeljni-jelovnik .nutri__table thead th {
   vertical-align: bottom;
 }
 
-.page-nedeljni-meni .nutri__dan {
+.page-nedeljni-jelovnik .nutri__dan {
   inline-size: 12%;
   white-space: normal;
   font-family: var(--font-mono);
@@ -900,18 +900,18 @@
   color: var(--color-ink);
 }
 
-.page-nedeljni-meni .nutri__table thead .nutri__dan {
+.page-nedeljni-jelovnik .nutri__table thead .nutri__dan {
   color: var(--color-paper-on-dark);
 }
 
-.page-nedeljni-meni .nutri__lab {
+.page-nedeljni-jelovnik .nutri__lab {
   display: block;
   /* Bez široke mono razmaknutosti — inače se „Ugljeni hidrati" na 900px lomi
   usred reči umesto između njih. */
   letter-spacing: 0;
 }
 
-.page-nedeljni-meni .nutri__unit {
+.page-nedeljni-jelovnik .nutri__unit {
   display: block;
   font-weight: 400;
   text-transform: none;
@@ -920,7 +920,7 @@
 }
 
 /* --- Blokovi po danu (ispod 900px) ------------------------------------------ */
-.page-nedeljni-meni .nutri__blokovi {
+.page-nedeljni-jelovnik .nutri__blokovi {
   display: grid;
   gap: var(--space-5);
   margin: 0;
@@ -928,18 +928,18 @@
   list-style: none;
 }
 
-.page-nedeljni-meni .nblok {
+.page-nedeljni-jelovnik .nblok {
   background: var(--color-surface);
   border: 1px solid var(--color-rule-strong);
   padding: var(--space-5);
 }
 
-.page-nedeljni-meni .nblok--prosek {
+.page-nedeljni-jelovnik .nblok--prosek {
   background: var(--color-proof-tint);
   border-color: var(--color-proof);
 }
 
-.page-nedeljni-meni .nblok__dan {
+.page-nedeljni-jelovnik .nblok__dan {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   font-weight: 600;
@@ -951,13 +951,13 @@
   border-block-end: 2px solid var(--color-proof);
 }
 
-.page-nedeljni-meni .nblok__lista {
+.page-nedeljni-jelovnik .nblok__lista {
   margin: 0;
   display: grid;
   gap: 0;
 }
 
-.page-nedeljni-meni .nblok__red {
+.page-nedeljni-jelovnik .nblok__red {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
@@ -966,11 +966,11 @@
   border-block-end: 1px solid var(--color-rule);
 }
 
-.page-nedeljni-meni .nblok__red:last-child {
+.page-nedeljni-jelovnik .nblok__red:last-child {
   border-block-end: none;
 }
 
-.page-nedeljni-meni .nblok__red dt {
+.page-nedeljni-jelovnik .nblok__red dt {
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   letter-spacing: var(--tracking-wide);
@@ -978,12 +978,12 @@
   color: var(--color-ink-soft);
 }
 
-.page-nedeljni-meni .nblok__unit {
+.page-nedeljni-jelovnik .nblok__unit {
   text-transform: none;
   letter-spacing: 0;
 }
 
-.page-nedeljni-meni .nblok__red dd {
+.page-nedeljni-jelovnik .nblok__red dd {
   margin: 0;
   font-family: var(--font-mono);
   font-size: var(--fs-body);
@@ -993,41 +993,41 @@
 }
 
 /* --- Kako citati ------------------------------------------------------------- */
-.page-nedeljni-meni .citanje {
+.page-nedeljni-jelovnik .citanje {
   display: grid;
   gap: var(--space-6);
 }
 
-.page-nedeljni-meni .citanje__nota {
+.page-nedeljni-jelovnik .citanje__nota {
   font-size: var(--fs-small);
   color: var(--color-ink-soft);
   line-height: var(--leading-relaxed);
 }
 
 /* --- Ko pravi jelovnik --------------------------------------------------------- */
-.page-nedeljni-meni .autor {
+.page-nedeljni-jelovnik .autor {
   display: grid;
   gap: var(--space-7);
   align-items: start;
 }
 
-.page-nedeljni-meni .autor__text {
+.page-nedeljni-jelovnik .autor__text {
   display: grid;
   gap: var(--space-5);
 }
 
-.page-nedeljni-meni .autor__text p {
+.page-nedeljni-jelovnik .autor__text p {
   max-width: var(--w-measure);
   color: var(--color-ink-soft);
 }
 
-/* --- Veza ka gramaturama --------------------------------------------------------- */
-.page-nedeljni-meni .veza {
+/* --- Veza ka normativima --------------------------------------------------------- */
+.page-nedeljni-jelovnik .veza {
   margin: 0;
 }
 
 @media (min-width: 64rem) {
-  .page-nedeljni-meni .uvod__grid {
+  .page-nedeljni-jelovnik .uvod__grid {
     grid-template-columns: 1.4fr 1fr;
     gap: var(--space-9);
   }
@@ -1035,20 +1035,20 @@
 }
 
 @media (min-width: 56.25rem) {
-  .page-nedeljni-meni .nutri__table {
+  .page-nedeljni-jelovnik .nutri__table {
     display: table;
     /* Fiksni layout + prelom reči: tabela nikada ne može da prekorači shell. */
     table-layout: fixed;
   }
 
-  .page-nedeljni-meni .nutri__blokovi {
+  .page-nedeljni-jelovnik .nutri__blokovi {
     display: none;
   }
 
 }
 
 @media (min-width: 75rem) {
-  .page-nedeljni-meni .nutri__table th, .page-nedeljni-meni .nutri__table td {
+  .page-nedeljni-jelovnik .nutri__table th, .page-nedeljni-jelovnik .nutri__table td {
     padding: var(--space-3);
   }
 
@@ -1059,7 +1059,7 @@
    udobno, a tabela je `table-layout: fixed` — sme da se prelomi u dva reda
    umesto da se smanjuje. Visina je jeftinija od citljivosti. */
 @media (min-width: 56.25rem) and (max-width: 74.99rem) {
-  .page-nedeljni-meni .nutri__table thead th {
+  .page-nedeljni-jelovnik .nutri__table thead th {
     font-size: 0.75rem;
     letter-spacing: 0.01em;
     padding-inline: var(--space-2);
@@ -1068,7 +1068,7 @@
 }
 
 @media (min-width: 60rem) {
-  .page-nedeljni-meni .autor {
+  .page-nedeljni-jelovnik .autor {
     grid-template-columns: 1.3fr 1fr;
     gap: var(--space-8);
   }
@@ -1463,7 +1463,7 @@
   margin: 0;
 }
 
-/* --- U kuhinji i na terenu --------------------------------------------------- */
+/* --- U proizvodnji i na terenu --------------------------------------------------- */
 .page-nutricionista .teren {
   display: grid;
   /* PhotoSlot nosi aspect-ratio — bez minmax(0,…) bi kao grid stavka
@@ -2046,7 +2046,7 @@
   color: var(--color-ink-soft);
 }
 
-/* --- Gramature ----------------------------------------------------------- */
+/* --- Normativi ----------------------------------------------------------- */
 /* Tri uske tabele jedna pored druge na širokom ekranu, jedna ispod druge na
      telefonu. Tri kolone se prelamaju u ćelijama — nema overflow-x. */
 .page-za-vrtice-i-skole .gram {
@@ -2527,4 +2527,68 @@
 
 .page-galerija .hero__h1 {
   max-width: 14ch;
+}
+
+/* --- Galerija: tretman fotografije ------------------------------------- */
+/*
+   Mreža ostaje `columns` — to je pravi alat za masonry sa nepoznatim odnosima
+   stranica, radi bez JS-a i ne lomi se kada slika stigne u portretu umesto u
+   pejzažu. Ono što je nedostajalo je tretman same slike.
+
+   Kadar se seče u zadati odnos, a slika unutar njega ima blagi zum na hover.
+   Okvir ostaje miran — pomera se sadržaj, ne kutija, pa red ne poskakuje.
+
+   Sve je iza `@media (hover: hover)`: na telefonu hover stanje ume da se
+   zaglavi posle dodira i ostane zalepljeno dok se ne klikne drugde. */
+
+.page-galerija .gal__item {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-paper-alt);
+  border: 1px solid var(--color-rule-strong);
+}
+
+.page-galerija .gal__item img {
+  border: 0;
+  transition: transform 600ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .page-galerija .gal__item:hover img,
+  .page-galerija .gal__item:focus-within img {
+    transform: scale(1.04);
+  }
+}
+
+/* Opis prelazi u traku preko dna slike. Podloga je puna, ne providna —
+   tekst na fotografiji nepoznate svetline inače ume da padne ispod praga
+   čitljivosti, a to se ne može unapred izmeriti. */
+.page-galerija .gal__opis {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-proof-deep);
+  color: var(--color-paper-on-dark);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--tracking-wide);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-galerija .gal__item img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Primer jednog dana na naslovnoj. Kartica je nasleđena iz heroja, gde je
+   ranije stajala; ovde dobija svoju sekciju i ograničenu širinu, da se pet
+   redova ne razvuče preko celog ekrana i ne izgubi čitljivost. */
+.page-pocetna .primer-dan {
+  max-inline-size: 44rem;
+}
+
+.page-pocetna .primer-dan .kmsg {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  padding: var(--space-6);
 }

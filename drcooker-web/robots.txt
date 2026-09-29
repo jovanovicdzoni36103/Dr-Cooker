@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Politika privatnosti se NE zabranjuje ovde. Ona nosi noindex u head-u,
-# a robot koji ne sme da je obidje nikada taj noindex ne procita — pa bi
+# a robot koji ne sme da je obidje nikada taj noindex ne procita, pa bi
 # Google indeksirao goli URL bez opisa. Obilazak dozvoljen + noindex je
 # jedina kombinacija koja stvarno izbacuje stranicu iz indeksa.
 

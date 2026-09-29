@@ -1336,7 +1336,7 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
    Najveća stvar na stranici NIJE naslov — nego ono što posetilac može da
    proveri. Direktorka vrtića ne kupuje rečenicu „kvalitet i posvećenost";
    ona sastavlja odbranu koju pokazuje upravnom odboru, roditelju ili
-   inspekciji. Njena valuta su gramature, jelovnik cele nedelje, nutritivna
+   inspekciji. Njena valuta su normativi, jelovnik cele nedelje, nutritivna
    matrica i ime zavoda koji uzima briseve.
 
    Zato izložak sme ono što nijedna druga sekcija ne sme: da izađe iz shell-a,
@@ -1413,7 +1413,7 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
   }
 }
 
-/* --- Izložak: gramature po uzrastu ------------------------------------ */
+/* --- Izložak: normativi po uzrastu ------------------------------------ */
 /*
    Razlika je ovde najveća stvar na stranici, i to je cela poenta. Sajt već
    objavljuje obe kolone; ono što niko ne objavljuje je oduzimanje. Dok je
@@ -1539,7 +1539,7 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
 
 /* --- Specimen kartica -------------------------------------------------- */
 /*
-   Prazan okvir sa natpisom „Centralna kuhinja" na sajtu o poverenju ne čita
+   Prazan okvir sa natpisom „Proizvodnja" na sajtu o poverenju ne čita
    se kao „fotografija stiže" nego kao „nešto krijemo". Četrdeset pet takvih
    okvira je najglasniji signal nedovršenosti na celom sajtu.
 
@@ -1593,4 +1593,296 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
   font-family: var(--font-mono);
   font-size: var(--fs-label);
   color: var(--color-ink-soft);
+}
+
+/* Oznaka iznad adrese u podnožju. Lokacija se zove proizvodnja, ne kuhinja. */
+.ftr__adrlabel {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-mist);
+  margin-block-end: var(--space-2);
+}
+
+/* Potpis izrađivača. Diskretan po definiciji — stoji uz pravne linkove,
+   istom veličinom, bez isticanja. */
+.ftr__by a {
+  opacity: 0.72;
+}
+
+.ftr__by a:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   OBROCI ZA DECU — komponente uvedene po brifu klijenta 29.09.2026
+   ========================================================================== */
+
+/* --- Traka kategorija obroka ------------------------------------------- */
+/*
+   Doručak · ručak · užina · voće. Četiri reči koje odmah kažu šta se kupuje.
+   Stoje odmah ispod H1, pre svakog objašnjenja — posetilac ne treba da čita
+   pasus da bi saznao šta firma isporučuje.
+
+   Bez ikonica: ikonica hrane bez fotografije je kliše, a sajt nema nijednu
+   fotografiju. Reč je ovde jača od simbola. */
+
+.obroci-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.obroci-strip li {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+/* Tačka između stavki. Na `::before` prve se ne crta. */
+.obroci-strip li + li::before {
+  content: '·';
+  margin-inline-end: var(--space-4);
+  color: var(--color-rule-strong);
+}
+
+/* --- Benefiti u heroju -------------------------------------------------- */
+/*
+   Četiri obećanja, svako u svom redu, sa hairline-om kao i ostatak sistema.
+   Namerno bez kartica: kartica bi ih izjednačila sa uslugama niže na stranici,
+   a ovo su razlozi da se čita dalje, ne stavke u ponudi. */
+
+.hero-benefits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-block-start: 1px solid var(--color-rule);
+}
+
+.hero-benefits li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  border-block-end: 1px solid var(--color-rule);
+  font-size: var(--fs-body);
+  color: var(--color-ink);
+}
+
+/* Kvačica je 2px linija u hladnom registru — isti znak kao na `.normativ-row`,
+   pa se čita kao deo istog sistema, a ne kao nova ikonografija. */
+.hero-benefits li::before {
+  content: '';
+  inline-size: 0.875rem;
+  block-size: 2px;
+  background: var(--color-proof);
+  align-self: center;
+}
+
+.hero-benefits strong {
+  font-weight: 600;
+}
+
+/* --- Logo kompozicija u heroju ------------------------------------------ */
+/*
+   Klijentov logo ne sme da se menja (stoji na dostavnim vozilima), pa se
+   tretira KOMPOZICIJOM oko njega, a ne redizajnom. Logo dobija svetlu ploču
+   i prsten, kao pečat — to je ono što vizuelna referenca radi, a ne kopija
+   njenog layouta.
+
+   Ploča je nužna i tehnički: logo je crveno/plav, a bez nje bi na svakoj
+   drugoj podlozi vibrirao ili padao ispod praga kontrasta. */
+
+.logo-lockup {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-5);
+  padding: var(--space-7) var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  position: relative;
+}
+
+/* Prsten. Jedna linija u hladnom registru, uvučena od ivice — daje dubinu
+   bez senke (senke su u ovom sistemu zabranjene i audit ih prijavljuje). */
+.logo-lockup::before {
+  content: '';
+  position: absolute;
+  inset: var(--space-3);
+  border: 1px solid var(--color-proof-tint);
+  pointer-events: none;
+}
+
+.logo-lockup__img {
+  inline-size: min(17rem, 78%);
+  block-size: auto;
+  position: relative;
+}
+
+.logo-lockup__potpis {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-proof);
+  text-align: center;
+  position: relative;
+}
+
+/* --- Promo značka: besplatan prvi mesec --------------------------------- */
+/*
+   Najjači prodajni argument na sajtu, pa ide u TOPLI registar — to je ponuda
+   firme, nije podatak. Po zakonu boje toplo i hladno se nikad ne dodiruju,
+   zato značka stoji odvojeno od logo ploče. */
+
+.promo-badge {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--color-accent);
+  color: var(--color-paper);
+  border: 1px solid var(--color-accent-deep);
+}
+
+.promo-badge__oznaka {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.promo-badge__tekst {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-s);
+  line-height: var(--leading-snug);
+  margin: 0;
+}
+
+/* --- Traka brojeva ------------------------------------------------------ */
+/*
+   1500 obroka dnevno · 120+ posebnih obroka · individualni jelovnik.
+   Ovo je DOKAZ kapaciteta, pa ide u hladni registar i u mono cifre sa
+   tabularnim brojevima — u nizu se moraju poklopiti po širini, inače se čitaju
+   kao tekst, a ne kao merenje. */
+
+.stats-strip {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 48rem) {
+  .stats-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-7);
+  }
+}
+
+.stats-strip li {
+  display: grid;
+  gap: var(--space-2);
+  padding-block-start: var(--space-4);
+  border-block-start: 2px solid var(--color-proof);
+}
+
+.stats-strip__broj {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-proof);
+  letter-spacing: -0.045em;
+}
+
+/* Kada stavka nema broj nego reč, veličina ostaje ista da red ne poskoči. */
+.stats-strip__broj--rec {
+  font-family: var(--font-display);
+  font-size: var(--fs-section-head);
+}
+
+.stats-strip__tekst {
+  font-size: var(--fs-body);
+  color: var(--color-ink);
+  line-height: var(--leading-snug);
+  max-inline-size: 34ch;
+}
+
+/* --- Online supermarket ------------------------------------------------- */
+/*
+   Klijent traži da supermarket bude vidljiv na naslovnoj, ne sakriven u
+   podnožju. Traka je puna širina, u hladnom registru, sa četiri pogodnosti
+   i jednim izlaznim dugmetom. */
+
+.supermarket__pogodnosti {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 40rem) {
+  .supermarket__pogodnosti {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-7);
+  }
+}
+
+.supermarket__pogodnosti li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  border-block-end: 1px solid var(--color-rule);
+  font-size: var(--fs-body);
+}
+
+.supermarket__pogodnosti li::before {
+  content: '+';
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-proof);
+}
+
+.supermarket__broj {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-proof);
+  display: block;
+  letter-spacing: -0.045em;
+}
+
+/* Traka supermarketa. Hladni tint umesto tamne trake: naslovna vec trosi svoj
+   budzet od dve tamne povrsine, a i sadrzajno je tacnije — prodavnica je
+   zaseban posao (sinko.rs), ne Dr Cooker-ov obrok. */
+.supermarket {
+  background: var(--color-proof-tint);
+  border-block: 2px solid var(--color-proof);
+}
+
+/* Na traci supermarketa sve je u hladnom registru — podloga je proof-tint, a
+   topli akcent na njoj krsi zakon boje sa vrha base.css (crveno na zelenom je
+   1.41:1 i klasican crveno-zeleni problem). */
+.supermarket .eyebrow {
+  color: var(--color-proof);
 }

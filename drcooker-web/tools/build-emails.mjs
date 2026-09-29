@@ -40,8 +40,7 @@ const userFull = compose(userBody);
 // ---------------------------------------------------------------------------
 
 const PHONES = [
-  { label: 'Direktor', display: '+381 64 1101521', tel: '+381641101521' },
-  { label: 'Komercijala', display: '+381 60 0440458', tel: '+381600440458' },
+  { label: '', display: '064 110 1521', tel: '+381641101521' },
 ];
 
 const COMMON_VARS = {
@@ -50,9 +49,6 @@ const COMMON_VARS = {
   PHONE1_LABEL: PHONES[0].label,
   PHONE1: PHONES[0].display,
   PHONE1_TEL: PHONES[0].tel,
-  PHONE2_LABEL: PHONES[1].label,
-  PHONE2: PHONES[1].display,
-  PHONE2_TEL: PHONES[1].tel,
   SITE_URL: 'https://drcooker.rs',
 };
 
@@ -69,14 +65,14 @@ const sampleAdminRows = [
   row('Ustanova', 'Predškolska ustanova „Primer“'),
   row('Email', '<a href="mailto:jelena@primer.rs" style="color:#A32A2E;text-decoration:underline;">jelena@primer.rs</a>'),
   row('Telefon', '<a href="tel:+381601234567" style="color:#A32A2E;text-decoration:underline;">060 123 4567</a>'),
-  row('Usluga', 'Kuvani obroci — vrtić / jaslice'),
+  row('Usluga', 'Kuvani obroci za vrtić ili jaslice'),
   row('Broj korisnika', '120'),
   row('Željeni početak', '01.10.2026.'),
 ].join('\n      ');
 
 const sampleUserRows = [
   row('Ustanova', 'Predškolska ustanova „Primer“'),
-  row('Usluga', 'Kuvani obroci — vrtić / jaslice'),
+  row('Usluga', 'Kuvani obroci za vrtić ili jaslice'),
   row('Broj korisnika', '120'),
   row('Željeni početak', '01.10.2026.'),
 ].join('\n      ');
@@ -94,16 +90,16 @@ writeFileSync(
   join(PREVIEW, 'admin.html'),
   fill(adminFull, {
     ...COMMON_VARS,
-    SUBJECT: '[UPIT] Predškolska ustanova „Primer“ — Kuvani obroci',
+    SUBJECT: '[UPIT] Predškolska ustanova „Primer“ · Kuvani obroci',
     PREHEADER: 'Jelena Marković, 120 korisnika, željeni početak 01.10.2026.',
     HEADER_TAG: 'Upit sa sajta',
     USTANOVA: 'Predškolska ustanova „Primer“',
     IME: 'Jelena Marković',
-    USLUGA: 'Kuvani obroci — vrtić / jaslice',
+    USLUGA: 'Kuvani obroci za vrtić ili jaslice',
     TELEFON: '060 123 4567',
     TELEFON_TEL: '+381601234567',
     EMAIL: 'jelena@primer.rs',
-    REPLY_SUBJECT: 'Odgovor%20na%20Va%C5%A1%20upit%20%E2%80%94%20Dr%20COOKER',
+    REPLY_SUBJECT: 'Odgovor%20na%20Va%C5%A1%20upit%20%C2%B7%20Dr%20Cooker',
     ROWS: sampleAdminRows,
     PORUKA:
       'Dobar dan, zanima nas ponuda za doručak, ručak i dve užine za tri objekta.<br>Ukupno oko 120 dece uzrasta od 1 do 6 godina. Imamo i troje dece sa alergijom na gluten.',
@@ -120,7 +116,7 @@ writeFileSync(
   join(PREVIEW, 'user.html'),
   fill(userFull, {
     ...COMMON_VARS,
-    SUBJECT: 'Primili smo Vaš upit — Dr Cooker',
+    SUBJECT: 'Primili smo Vaš upit | Dr Cooker',
     PREHEADER: 'Vaš upit je stigao. Javićemo Vam se na ostavljene kontakt podatke.',
     HEADER_TAG: 'Potvrda',
     IME: 'Jelena Marković',
@@ -258,7 +254,7 @@ function renderAdminEmail(clean, reference, company) {
   vars.TELEFON = esc_(clean.telefon);
   vars.TELEFON_TEL = esc_(telHref_(clean.telefon));
   vars.EMAIL = esc_(clean.email);
-  vars.REPLY_SUBJECT = encodeURIComponent('Odgovor na Vaš upit — Dr Cooker');
+  vars.REPLY_SUBJECT = encodeURIComponent('Odgovor na Vaš upit | Dr Cooker');
   vars.ROWS = rows.join('');
   vars.PORUKA = esc_(clean.poruka).replace(/\\r?\\n/g, '<br>');
   vars.REFERENCE = esc_(reference);
@@ -282,7 +278,7 @@ function renderUserEmail(clean, reference, company) {
   rows.push(tplRow_('Broj upita', esc_(reference)));
 
   var vars = commonVars_(company);
-  vars.SUBJECT = 'Primili smo Vaš upit — Dr Cooker';
+  vars.SUBJECT = 'Primili smo Vaš upit | Dr Cooker';
   vars.PREHEADER = 'Vaš upit je stigao. Javićemo Vam se na ostavljene kontakt podatke.';
   vars.HEADER_TAG = 'Potvrda';
   vars.IME = esc_(clean.ime);

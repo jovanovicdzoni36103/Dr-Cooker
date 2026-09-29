@@ -42,7 +42,7 @@ const CONFIG = {
    */
   RECIPIENT_EMAIL: '',
 
-  /** TODO(klijent): opciono, kopija upita (npr. komercijala). */
+  /** TODO(klijent): opciono, kopija upita (npr. druga adresa u firmi). */
   CC_EMAIL: '',
 
   /** Posle koliko milisekundi se prekida zahtev i prijavljuje greška. */
@@ -59,7 +59,8 @@ const CONFIG = {
   SITE_URL: 'https://drcooker.rs',
 
   SITE_NAME: 'Dr Cooker',
-  LEGAL_NAME: 'Dr Cooker ketering servis',
+  // LEGAL_NAME namerno izostavljen: registrovani naziv nije potvrdjen,
+  // a schema.org `legalName` tvrdi bas njega. Bolje nista nego pogresno.
 
   // ==========================================================================
   //  3. KONTAKT — izvor za sve telefone i mejlove na sajtu
@@ -70,15 +71,17 @@ const CONFIG = {
     email: 'office@drcooker.rs',
 
     phones: [
-      { label: 'Direktor', display: '+381 64 1101521', tel: '+381641101521' },
-      { label: 'Komercijala', display: '+381 60 0440458', tel: '+381600440458' },
+      // Jedan broj. Komercijalin broj vise ne postoji (klijent, 29.09.2026),
+      // a uz jedan broj i labela 'Direktor' je suvisna — posetilac zove firmu,
+      // ne funkciju.
+      { label: '', display: '064 110 1521', tel: '+381641101521' },
     ],
 
     address: {
       street: 'Vojvode Prijezde 17',
       city: 'Beograd',
       postalCode: '11000',
-      /** Kuhinja je na opštini Voždovac. Izvor nigde ne kaže da je na istoj
+      /** Proizvodnja je na opštini Voždovac. Izvor nigde ne kaže da je na istoj
        *  adresi kao kancelarija — TODO(klijent): potvrditi. */
       municipality: 'Voždovac',
       lat: 44.789423,

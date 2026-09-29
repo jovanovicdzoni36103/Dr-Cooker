@@ -83,7 +83,7 @@ Objašnjenje svake stavke: [`docs/DELIVERY.md`](docs/DELIVERY.md).
 | Telefon, adresa (koje koristi JavaScript) | `js/config.js` → `CONTACT` |
 | Stavke u navigaciji | `tools/partials/header.html`, pa sync |
 | Tekst neke stranice | taj `.html` fajl u `pages/` |
-| Jelovnik, gramature, cena | direktno u `pages/nedeljni-meni.html`, `pages/gramature.html` |
+| Jelovnik, gramature, cena | direktno u `pages/nedeljni-jelovnik.html`, `pages/normativi.html` |
 | Boje, fontovi, razmaci | `css/base.css`, sekcija `:root` |
 | Izgled dugmadi, formi, tabela | `css/components.css` |
 | Nešto na jednoj jedinoj stranici | `css/pages.css`, pod `.page-<ime>` |

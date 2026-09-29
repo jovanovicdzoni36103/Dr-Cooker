@@ -18,13 +18,13 @@ Redosled je po važnosti onako kako slotovi stoje na stranicama.
 | `bezbednost-hrane.html` | Rashladne i minusne komore | Zatvorena vrata komore sa vidljivim termometrom ili displejem temperature. Dokaz mere koja se opisuje u tekstu. |
 | `dostava.html` | Vozilo za dostavu | Vozilo spolja, sa strane, u punoj dužini. Poželjno pri utovaru, sa otvorenim zadnjim vratima i vidljivim termo delom. |
 | `dostava.html` | Termo posude | Zatvorene termo posude spremne za utovar, na čistoj radnoj površini. Dokaz ambalaže koja se opisuje u tekstu. |
-| `gramature.html` | Izmerena porcija | Porcija ručka za vrtićki uzrast na kuhinjskoj vagi, snimljena odozgo. Kadar koji pokazuje da je gramatura merena, a ne procenjena. |
+| `normativi.html` | Izmerena porcija | Porcija ručka za vrtićki uzrast na kuhinjskoj vagi, snimljena odozgo. Kadar koji pokazuje da je gramatura merena, a ne procenjena. |
 | `jelovnik.html` | Serviran obrok iz jelovnika | Tanjir sa stvarnim ručkom iz objavljenog jelovnika, snimljen odozgo na jednobojnoj podlozi, bez rekvizita. |
 | `kako-radimo.html` | Prijem robe | Prijem namirnica na ulazu u kuhinju: gajbice, vaga, papiri u ruci. Kadar koji pokazuje da prijem postoji kao korak. |
 | `kako-radimo.html` | Priprema | Radna površina tokom pripreme obroka: ruke, nož, povrće. Bez lica, bez postavke — pravi radni trenutak. |
 | `kako-radimo.html` | Pakovanje | Punjenje termo posuda pred izlazak iz kuhinje. Pokazuje korak između tiganja i vozila. |
 | `kako-radimo.html` | Utovar | Utovar termo posuda u vozilo. Poslednji kadar lanca pre nego što obrok napusti kuhinju. |
-| `nedeljni-meni.html` | Nutricionista u kuhinji | Nutricionista–dijetetičar tokom provere obroka u kuhinji. Kadar iz profila, bez poziranja u kameru. |
+| `nedeljni-jelovnik.html` | Nutricionista u kuhinji | Nutricionista–dijetetičar tokom provere obroka u kuhinji. Kadar iz profila, bez poziranja u kameru. |
 | `nutricionista.html` | Nutricionista u kuhinji | Nutricionista za radnom površinom tokom pripreme ili u objektu za vreme obroka. Kadar koji pokazuje da je zaista tamo. |
 | `o-nama.html` | Tim u kuhinji | Grupna fotografija tima u radnoj odeći, u kuhinji, tokom smene. Bez poziranja ispred zida — ljudi u poslu. |
 | `o-nama.html` | Centralna kuhinja | Širi kadar kuhinje tokom pripreme obroka: radne površine, oprema, čist prostor. Najvažnija fotografija koju klijent može da napravi. |

@@ -36,7 +36,7 @@
   /** Osnovna pozadina. Topao off-white, referentna podloga za sve kontraste. */
   --color-paper: #faf7f2;
 
-  /** Alternirajuća sekcija i zebra u tabeli gramatura.
+  /** Alternirajuća sekcija i zebra u tabeli normativa.
       Korak prema papiru je 1.11:1 — namerno jedva vidljiv; sekcije razdvaja
       hairline, ne boja. NIKADA direktno uz --color-proof-tint (skoro ista
       svetlina, različit ton — čita se kao greška u renderu). */

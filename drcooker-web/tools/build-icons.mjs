@@ -111,11 +111,11 @@ const ogSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"
 
   <!-- wordmark -->
   <text x="152" y="104" class="h" font-size="34">Dr Cooker</text>
-  <text x="153" y="126" class="m" font-size="14" fill="${C.mist}">Ketering servis</text>
+  <text x="153" y="126" class="m" font-size="14" fill="${C.mist}">Obroci za decu</text>
 
   <!-- naslov -->
-  <text x="80" y="300" class="h" font-size="76">Kuvani obroci za vrtiće,</text>
-  <text x="80" y="386" class="h" font-size="76">škole i kompanije</text>
+  <text x="80" y="300" class="h" font-size="86">Obroci za decu</text>
+  <text x="80" y="386" class="h" font-size="52">vrtići · boravci · škole</text>
 
   <!-- linija -->
   <rect x="80" y="440" width="120" height="3" fill="${C.accent}"/>
@@ -180,10 +180,10 @@ writeFileSync(
   join(ROOT, 'site.webmanifest'),
   JSON.stringify(
     {
-      name: 'Dr Cooker — ketering servis',
+      name: 'Dr Cooker, obroci za decu',
       short_name: 'Dr Cooker',
       description:
-        'Kuvani obroci za vrtiće, škole, produžene boravke i kompanije. Kuhinja u Beogradu, na Voždovcu.',
+        'Kuvani obroci za vrtiće, škole, produžene boravke. Kuhinja u Beogradu, na Voždovcu.',
       lang: 'sr-Latn-RS',
       start_url: '/',
       display: 'browser',

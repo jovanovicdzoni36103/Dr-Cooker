@@ -85,8 +85,8 @@ Nema nijednog fajla na root nivou koji tu ne pripada, nema duplikata
 | `pages/za-vrtice-i-skole.html` | glavna prodajna stranica za ustanove |
 | `pages/galerija.html` | fotografije kuhinje (v2, vidi 10d) |
 | `pages/jelovnik.html` | kategorije obroka, grupe namirnica |
-| `pages/nedeljni-meni.html` | dva nedeljna jelovnika + nutritivne vrednosti |
-| `pages/gramature.html` | tabela gramatura, jaslice vs. vrtići i škole |
+| `pages/nedeljni-jelovnik.html` | dva nedeljna jelovnika + nutritivne vrednosti |
+| `pages/normativi.html` | tabela gramatura, jaslice vs. vrtići i škole |
 | `pages/snabdevanje.html` | 7000 artikala, uslovi, isporuka |
 | `pages/kako-radimo.html` | proces u 5 koraka |
 | `pages/nutricionista.html` | šta nutricionista konkretno radi |
@@ -713,7 +713,7 @@ Popravljeno tokom ovog kruga:
 | Stvar | Zašto |
 |---|---|
 | Učitavanje zaglavlja JavaScriptom | Ne radi kada se stranica otvori dvoklikom (`file://` blokira `fetch`), pomera layout i sakriva navigaciju od pretraživača. Umesto toga: partial fajlovi + `tools/sync-partials.mjs`. |
-| Jelovnik iz JSON-a, renderovan JavaScriptom | Isti razlog, plus gubitak SEO-a na najvrednijem sadržaju. Tabele su sada običan HTML. Menjaju se direktno u `pages/nedeljni-meni.html`. |
+| Jelovnik iz JSON-a, renderovan JavaScriptom | Isti razlog, plus gubitak SEO-a na najvrednijem sadržaju. Tabele su sada običan HTML. Menjaju se direktno u `pages/nedeljni-jelovnik.html`. |
 | `responsive.css` kao zaseban fajl | Media query stoji uz pravilo koje menja, pa se jedna komponenta menja na jednom mestu umesto u dva fajla. |
 | Minifikacija CSS-a i JS-a | Zahtevala bi build korak. Razlika je ~25 KB pre gzip-a; hosting gzip-uje sam. |
 | Cenovnik, blog | Nema sadržaja. |
@@ -848,3 +848,156 @@ velocity efekte. Nijedan nije ušao:
   traži `sharp`, nije instaliran, nema `package.json`.
 - Dve preostale stranice galerije bez pokrića za specimen karticu.
 - Izlošci na ostalim stranicama — naslovna ima svoj, ostale još ne.
+
+---
+
+## 10f. v4 — repozicioniranje po brifu klijenta (29.09.2026)
+
+Sajt prestaje da se predstavlja kao ketering i postaje **obroci za decu**.
+
+### Terminologija — 246 pojava, sve uklonjene
+
+| Bilo | Sada | Pojava |
+|---|---|---|
+| kuhinja / centralna kuhinja | **proizvodnja** | 110 |
+| gramature | **normativi** | 64 |
+| ketering | **obroci za decu** | 47 |
+| komercijala | uklonjeno, jedan direktan kontakt | 9 |
+| Nedeljni meni | **Nedeljni jelovnik** | 26 |
+| Sinko kao naslov | **Online supermarket** | 26 |
+
+Zamena nije bila mehanička: „tim u kuhinji" postaje „tim u proizvodnji", ali
+`Kuhinja ustanove` u Sinko katalogu postaje **Napitci, higijena i domaćinstvo**
+— jer ta kategorija sadrži kafu, vodu, sredstva za pranje i papirnu
+konfekciju, pa staro ime nije bilo samo zabranjeno nego i netačno.
+
+Preimenovane su i stranice, sa svim referencama:
+
+```
+pages/gramature.html      -> pages/normativi.html         70 linkova + 39 klasa
+pages/nedeljni-meni.html  -> pages/nedeljni-jelovnik.html 76 linkova + 45 klasa
+```
+
+Preostale dve pojave u kodu su komentari koji **objašnjavaju zašto je pojam
+uklonjen** — ostavljeni namerno, da naredni čitalac ne vrati staro.
+
+### Telefon — 101 pojava komercijalinog broja
+
+`060 0440458` više ne postoji. Uklonjen je iz: `js/config.js`, `Code.gs`,
+partiala podnožja, strukturiranih podataka (ceo `contactPoint` objekat),
+meta opisa, CTA dugmadi na 11 stranica, mejl šablona i generatora mejlova.
+
+Uz jedan broj i labela „Direktor" postaje šum, pa je i ona uklonjena —
+posetilac zove firmu, ne funkciju. Prikaz je `064 110 1521`, a `tel:` href
+ostaje `+381641101521` jer taj oblik radi i iz inostranstva.
+
+### Navigacija
+
+Regenerisana iz **jedne** definicije (`hdr__list` i `mnav__list` su se ranije
+održavale ručno i mogle su se raziđi):
+
+```
+Obroci za vrtiće i škole
+Nedeljni jelovnik  ▸ Jelovnik · Normativi
+Online supermarket ▸ Asortiman za ustanove
+Kako radimo        ▸ Nutricionista · Bezbednost hrane · Dostava
+Galerija · O nama · Kontakt
+```
+
+### Naslovna
+
+| Sekcija | Šta nosi |
+|---|---|
+| **Heroj** | H1 „Obroci za decu", traka `Doručak · Ručak · Užina · Voće`, tri benefita, desno kompozicija oko klijentovog logotipa + crvena značka za besplatan prvi mesec |
+| **Brojevi** | 1.500 obroka dnevno · 120+ posebnih obroka · besplatan individualni jelovnik |
+| **Posebni obroci** | jedini glasan naslov na stranici — klijentova glavna prednost |
+| **Ovako izgleda jedan dan** | primer ponedeljka, pet obroka imenom |
+| **Online supermarket** | 7.000+ artikala, četiri pogodnosti, izlaz na sinko.rs |
+| **Proizvodnja** | Vojvode Prijezde 17 — o pogonu, ne o tome koji se obrok tu sprema |
+
+### Dve odluke koje odstupaju od doslovnog brifa
+
+**1. Besplatna dostava je kvalifikovana.** Brief kaže „besplatna dostava" bez
+uslova. Proveren izvor (`docs/SOURCE-BRIEF.md:403`, čitano sa sinko.rs) kaže
+da je besplatna **preko praga porudžbine** — 4.999 RSD do 3 km, 7.999 RSD od
+3 do 10 km. Bezuslovna tvrdnja na sajtu je obećanje koje prodavnica ne daje,
+pa stoji: *„Besplatna dostava u zoni do 10 km, preko praga porudžbine."*
+
+**2. Link ka prodavnici ide na `https://www.sinko.rs/`, ne na `https://sinko.rs/`.**
+Mereno: goli domen vraća `301 → http://www.sinko.rs/`, dakle **skida korisnika
+sa HTTPS-a**. `www` oblik vraća 200 direktno.
+
+### Šta je uklonjeno iz strukturiranih podataka
+
+`legalName: "Dr Cooker ketering servis"` je **obrisan**, ne prepravljen.
+`schema.org/legalName` tvrdi registrovani naziv firme; taj naziv nije potvrđen,
+a nosio je zabranjenu reč. Bolje izostaviti tvrdnju nego je zameniti pogađanjem.
+
+### Provereno
+
+| | |
+|---|---|
+| `tools/audit.py` | 0 grešaka, 0 upozorenja, 17 stranica |
+| Responsive 17 × 8 širina (320→1920) | 136/136 bez preliva i horizontalnog skrola |
+| Interni linkovi | 844 provereno, 0 pokvarenih |
+| Resursi protiv servera | 36, svi 200 |
+| Hijerarhija naslova | 17 stranica, jedan `h1`, jedan glasan `h2` po stranici |
+| Forma protiv mock backenda | jedan panel, referentni broj, 0 grešaka |
+| `tel:` na stranicama | samo `+381641101521` (izuzev Sinkovih brojeva za dogovor o isporuci) |
+| Zaostala stara terminologija | 0 |
+
+### Ostaje
+
+- **OG slika** (`assets/images/og-default.png`) i dalje nosi stari tekst.
+  Generator `tools/build-icons.mjs` je **ispravljen**, ali ne može da se
+  pokrene: traži `sharp`, koji nije instaliran i nema `package.json`.
+- Klijent (Dule) piše finalni tekst za „Obroci za vrtiće i škole" — struktura
+  je spremna, tekst nije izmišljan.
+- Dve kartice u galeriji bez pokrića za činjenicu (vidi 10e).
+
+### 10f.1 Crta uklonjena iz celog teksta
+
+Klijent ne želi crtu „—" nigde u tekstu. To nije zamena znaka nego prepisivanje
+interpunkcije: brisanje crte ostavlja polomljenu rečenicu, a zamena običnom
+crticom je ista greška manjim znakom.
+
+Primenjeno pravilo po funkciji crte u rečenici:
+
+| Šta crta radi | Zamena | Primer |
+|---|---|---|
+| nabraja ili precizira | dvotačka | „22 kategorije: hrana, higijena, papir" |
+| dodaje, nastavlja misao | zarez | „na dnevnom nivou, bez lagerovanja" |
+| uvodi novu tvrdnju | tačka | „…Gradski zavod. Periodično uzima briseve" |
+| umetnuta misao | dva zareza | |
+
+Obuhvaćeno je i ono što obične provere promaše:
+
+- **atributi** `alt`, `aria-label`, `title`, `placeholder`, `data-mapa-title` —
+  regex koji skida HTML tagove briše i njihov sadržaj, pa crta u njima ostaje
+  nevidljiva za merenje, a čitač ekrana je pročita
+- **URL-enkodirana crta** `%E2%80%94` u `mailto:` predmetu (tu se krila i stara
+  verzija imena, `Dr%20COOKER`)
+- **predmet mejla** koji stiže klijentu
+- **`site.webmanifest`**, `robots.txt`, `_redirects` i generatori koji ih prave
+- **polusloženica** `nutricionista–dijetetičar`: en dash zamenjen crticom, što
+  je u srpskom i ispravno za polusloženicu
+
+Naslovi stranica su svedeni na jedan obrazac: `Tema: pojašnjenje | Dr Cooker`.
+
+**Provera:** `innerText` svih 17 stranica, iscrtanih u browseru na 8 širina —
+**0 crta**. Merena je iscrtana stranica, ne izvorni kod.
+
+**Šta je nezavisna provera uhvatila posle prvog prolaza.** Brojanje crta je
+pokazalo nulu, ali nula crta ne znači ispravan tekst. Provera je našla:
+
+| Nalaz | Popravka |
+|---|---|
+| Crta zamenjena uspravnom crtom `\|` u zaglavlju tabele i u naslovu sekcije | „Kuvani obroci (Dr Cooker)", „Kontrolu sprovode dve strane:" — uspravna crta u tekućem tekstu je ista greška drugim znakom |
+| `<li>Dostava</li>` — rečenica odsečena umesto prepisana | Vraćeno „Dostava istog dana za porudžbine do 12 časova" (tvrdnja već stoji na istoj stranici i na Sinko stranici) |
+| Hero lead rasečen na dve rečenice, pa se uzročna veza pomerila na pogrešnu prethodnicu | Spojeno nazad u jednu rečenicu |
+| „Svaki korak ima proveru: i unutrašnju i spoljašnju" | Dvotačka pred korelativom „i… i…" je greška; zamenjena zarezom |
+| „Koliko grama nosi svako od ovih jela, objavljeno u celosti" | Particip ostao bez slaganja pošto je crta pala; umetnuta kopula: „objavljeno **je** u celosti" |
+| **Opcija u formi** „za privatni vrtić **i** jaslice" | Bila je „vrtić / jaslice", dakle ILI. Veznik „i" sužava opciju na ustanove koje imaju oboje, pa bi ustanova samo sa jaslicama oklevala. Vraćeno na „ili", i usklađeno sa `SERVICE_LABELS` u `Code.gs` i generatoru mejlova |
+
+Poslednji red je bio moja greška, nastala kad sam labele usluga menjao
+mehanički, bez čitanja šta razdvojnik „/" znači u toj rečenici.

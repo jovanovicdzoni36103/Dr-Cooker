@@ -1,12 +1,12 @@
 /* ==========================================================================
    STAMPA
-   Dr Cooker — jelovnik i gramature na papiru
+   Dr Cooker — jelovnik i normativi na papiru
    ========================================================================== */
 
 /* ==========================================================================
    ŠTAMPA
    ==========================================================================
-   „Direktor odštampa jelovnik i gramature i stavi pred upravni odbor" je
+   „Direktor odštampa jelovnik i normative i stavi pred upravni odbor" je
    stvaran scenario kod vrtića i škola. Zato štampa nije naknadna misao.
    ========================================================================== */
 
@@ -130,7 +130,7 @@
   }
 
   /* Nutritivna matrica — dokument zbog koga ova datoteka i postoji.
-     Nije se štampala uopšte. `.page-nedeljni-meni .nutri__table` stoji na
+     Nije se štampala uopšte. `.page-nedeljni-jelovnik .nutri__table` stoji na
      `display: none` i vraća se tek unutar `@media (min-width: 56.25rem)`;
      na papiru taj upit ne važi, pa je tabela nestajala baš u scenariju iz
      zaglavlja ove datoteke. `!important` je ovde nužan: selektor koji je

@@ -1,6 +1,6 @@
 """Gradi traku sa imenima jela i ubacuje je u naslovnu.
 
-Imena se citaju iz pages/nedeljni-meni.html — dakle iz objavljenog jelovnika,
+Imena se citaju iz pages/nedeljni-jelovnik.html — dakle iz objavljenog jelovnika,
 ne iz izmisljene liste. Ako se jelovnik promeni, pokrene se ova skripta ponovo.
 
 Traka postoji zato sto firma nema nijednu pravu fotografiju hrane. Stvarna
@@ -42,7 +42,7 @@ def usable(name: str) -> bool:
     return True
 
 
-src = (ROOT / "pages/nedeljni-meni.html").read_text(encoding="utf-8")
+src = (ROOT / "pages/nedeljni-jelovnik.html").read_text(encoding="utf-8")
 raw = [H.unescape(x).strip() for x in re.findall(r"<li>([^<]{4,70})</li>", src)]
 
 seen: set[str] = set()

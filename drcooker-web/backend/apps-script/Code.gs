@@ -58,7 +58,7 @@ var CONFIG = {
   ADMIN_SUBJECT_PREFIX: '[UPIT]',
 
   /** Subject potvrde koja ide korisniku. */
-  USER_SUBJECT: 'Primili smo Vaš upit — Dr Cooker',
+  USER_SUBJECT: 'Primili smo Vaš upit | Dr Cooker',
 
   /**
    * TODO(klijent): stvaran rok za odgovor na upit.
@@ -78,12 +78,11 @@ var CONFIG = {
   /** Kontakt podaci koji se prikazuju u mejlovima. */
   COMPANY: {
     name: 'Dr Cooker',
-    tagline: 'Ketering servis',
+    tagline: 'Obroci za decu',
     address: 'Vojvode Prijezde 17, Beograd',
     email: 'office@drcooker.rs',
     phones: [
-      { label: 'Direktor', display: '+381 64 1101521', tel: '+381641101521' },
-      { label: 'Komercijala', display: '+381 60 0440458', tel: '+381600440458' }
+      { label: '', display: '064 110 1521', tel: '+381641101521' }
     ],
     site: 'https://drcooker.rs'
   },
@@ -121,9 +120,9 @@ var FIELD_ORDER = [
 
 /** Čitljive labele za vrednosti selecta. Prati opcije selecta `usluga` u pages/zatrazi-ponudu.html. */
 var SERVICE_LABELS = {
-  'obroci-vrtic': 'Kuvani obroci — privatni vrtić / jaslice',
-  'obroci-skola': 'Kuvani obroci — privatna škola',
-  'obroci-boravak': 'Kuvani obroci — boravak za decu',
+  'obroci-vrtic': 'Kuvani obroci za privatni vrtić ili jaslice',
+  'obroci-skola': 'Kuvani obroci za privatnu školu',
+  'obroci-boravak': 'Kuvani obroci za boravak za decu',
   distribucija: 'Distribucija prehrambenih i neprehrambenih proizvoda',
   nutricionista: 'Stručna podrška nutricioniste',
   kombinovano: 'Kombinacija više usluga',
@@ -369,7 +368,7 @@ function writeHeaders_(sheet) {
  *
  * PAZI GDE SE ZOVE: samo na redu koji ide u Sheet, u `appendRow_`.
  * NE u `sanitize_` — objekat `clean` koriste i mejlovi, a srpski brojevi se
- * pišu `+381 64 1101521`, pa bi svaki legitiman upit stizao firmi sa
+ * pišu `064 110 1521`, pa bi svaki legitiman upit stizao firmi sa
  * apostrofom ispred broja.
  */
 function cellSafe_(value) {
@@ -411,7 +410,7 @@ function recipient_() {
 function sendAdminEmail_(clean, reference, sumnjivoRazlog) {
   var subject =
     (sumnjivoRazlog ? '[SUMNJIVO] ' : '') +
-    CONFIG.ADMIN_SUBJECT_PREFIX + ' ' + clean.ustanova + ' — ' + clean._uslugaLabel;
+    CONFIG.ADMIN_SUBJECT_PREFIX + ' ' + clean.ustanova + ' · ' + clean._uslugaLabel;
 
   var html = renderAdminEmail(clean, reference, CONFIG.COMPANY);
 

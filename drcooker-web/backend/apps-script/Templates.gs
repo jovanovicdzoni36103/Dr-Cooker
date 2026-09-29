@@ -9,7 +9,7 @@
  *  Ako ovde nešto izmeniš, izmena nestaje pri sledećem generisanju.
  *  Menjaj .html fajlove pa pokreni generator.
  *
- *  Generisano: 2026-09-22
+ *  Generisano: 2026-09-29
  * ============================================================================
  */
 
@@ -69,7 +69,7 @@ var TPL_ADMIN = '<!doctype html>\n' +
   '          <tr>\n' +
   '            <td align="left" style="font-family:Georgia,\'Times New Roman\',serif;font-size:22px;line-height:1.1;font-weight:bold;color:#EFE9DE;letter-spacing:-0.01em;">\n' +
   '              Dr Cooker\n' +
-  '              <div style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#A8BEB7;padding-top:6px;font-weight:normal;">Ketering servis</div>\n' +
+  '              <div style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#A8BEB7;padding-top:6px;font-weight:normal;">Obroci za decu</div>\n' +
   '            </td>\n' +
   '            <td align="right" style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#A8BEB7;">\n' +
   '              {{HEADER_TAG}}\n' +
@@ -180,8 +180,7 @@ var TPL_ADMIN = '<!doctype html>\n' +
   '              <div style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#A8BEB7;padding-bottom:10px;">Kontakt</div>\n' +
   '              <div class="x-auto" style="color:#EFE9DE;">\n' +
   '                {{COMPANY_ADDRESS}}<br>\n' +
-  '                <a href="tel:{{PHONE1_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE1_LABEL}}: {{PHONE1}}</a><br>\n' +
-  '                <a href="tel:{{PHONE2_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE2_LABEL}}: {{PHONE2}}</a><br>\n' +
+  '                <a href="tel:{{PHONE1_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE1}}</a><br>\n' +
   '                <a href="mailto:{{COMPANY_EMAIL}}" style="color:#EFE9DE;text-decoration:underline;">{{COMPANY_EMAIL}}</a>\n' +
   '              </div>\n' +
   '            </td>\n' +
@@ -263,7 +262,7 @@ var TPL_USER = '<!doctype html>\n' +
   '          <tr>\n' +
   '            <td align="left" style="font-family:Georgia,\'Times New Roman\',serif;font-size:22px;line-height:1.1;font-weight:bold;color:#EFE9DE;letter-spacing:-0.01em;">\n' +
   '              Dr Cooker\n' +
-  '              <div style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#A8BEB7;padding-top:6px;font-weight:normal;">Ketering servis</div>\n' +
+  '              <div style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#A8BEB7;padding-top:6px;font-weight:normal;">Obroci za decu</div>\n' +
   '            </td>\n' +
   '            <td align="right" style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#A8BEB7;">\n' +
   '              {{HEADER_TAG}}\n' +
@@ -296,7 +295,7 @@ var TPL_USER = '<!doctype html>\n' +
   '    </p>\n' +
   '\n' +
   '    <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.65;color:#4A4238;">\n' +
-  '      hvala što ste se obratili Dr Cooker ketering servisu. Vaš upit je stigao i\n' +
+  '      hvala što ste se obratili Dr Cooker-u. Vaš upit je stigao i\n' +
   '      prosleđen je našem timu. Javićemo Vam se na kontakt podatke koje ste\n' +
   '      ostavili, predložiti termin sastanka i pripremiti ponudu prema potrebama\n' +
   '      Vaše ustanove.{{ROK_BLOK}}\n' +
@@ -330,7 +329,7 @@ var TPL_USER = '<!doctype html>\n' +
   '    <div style="background-color:#E6EDE8;border-left:3px solid #124A3F;padding:18px 20px;">\n' +
   '      <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.65;color:#17140F;">\n' +
   '        Ako neki podatak nije tačan ili želite nešto da dodate, odgovorite\n' +
-  '        direktno na ovaj email — poruka stiže istom timu.\n' +
+  '        direktno na ovaj email; poruka stiže istom timu.\n' +
   '      </p>\n' +
   '    </div>\n' +
   '  </td>\n' +
@@ -345,9 +344,9 @@ var TPL_USER = '<!doctype html>\n' +
   '    <table role="presentation" cellpadding="0" cellspacing="0" border="0">\n' +
   '      <tr>\n' +
   '        <td class="btn-td" style="padding-right:10px;">\n' +
-  '          <a class="btn-a" href="tel:{{PHONE2_TEL}}"\n' +
+  '          <a class="btn-a" href="tel:{{PHONE1_TEL}}"\n' +
   '             style="display:inline-block;background-color:#A32A2E;color:#FAF7F2;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;line-height:1.2;padding:14px 26px;border:1px solid #A32A2E;">\n' +
-  '            Pozovite {{PHONE2}}\n' +
+  '            Pozovite {{PHONE1}}\n' +
   '          </a>\n' +
   '        </td>\n' +
   '        <td class="btn-td">\n' +
@@ -371,8 +370,7 @@ var TPL_USER = '<!doctype html>\n' +
   '              <div style="font-family:Consolas,\'Courier New\',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#A8BEB7;padding-bottom:10px;">Kontakt</div>\n' +
   '              <div class="x-auto" style="color:#EFE9DE;">\n' +
   '                {{COMPANY_ADDRESS}}<br>\n' +
-  '                <a href="tel:{{PHONE1_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE1_LABEL}}: {{PHONE1}}</a><br>\n' +
-  '                <a href="tel:{{PHONE2_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE2_LABEL}}: {{PHONE2}}</a><br>\n' +
+  '                <a href="tel:{{PHONE1_TEL}}" style="color:#EFE9DE;text-decoration:none;">{{PHONE1}}</a><br>\n' +
   '                <a href="mailto:{{COMPANY_EMAIL}}" style="color:#EFE9DE;text-decoration:underline;">{{COMPANY_EMAIL}}</a>\n' +
   '              </div>\n' +
   '            </td>\n' +
@@ -488,7 +486,7 @@ function renderAdminEmail(clean, reference, company) {
   vars.TELEFON = esc_(clean.telefon);
   vars.TELEFON_TEL = esc_(telHref_(clean.telefon));
   vars.EMAIL = esc_(clean.email);
-  vars.REPLY_SUBJECT = encodeURIComponent('Odgovor na Vaš upit — Dr Cooker');
+  vars.REPLY_SUBJECT = encodeURIComponent('Odgovor na Vaš upit | Dr Cooker');
   vars.ROWS = rows.join('');
   vars.PORUKA = esc_(clean.poruka).replace(/\r?\n/g, '<br>');
   vars.REFERENCE = esc_(reference);
@@ -512,7 +510,7 @@ function renderUserEmail(clean, reference, company) {
   rows.push(tplRow_('Broj upita', esc_(reference)));
 
   var vars = commonVars_(company);
-  vars.SUBJECT = 'Primili smo Vaš upit — Dr Cooker';
+  vars.SUBJECT = 'Primili smo Vaš upit | Dr Cooker';
   vars.PREHEADER = 'Vaš upit je stigao. Javićemo Vam se na ostavljene kontakt podatke.';
   vars.HEADER_TAG = 'Potvrda';
   vars.IME = esc_(clean.ime);

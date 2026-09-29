@@ -68,7 +68,7 @@ writeFileSync(
 Allow: /
 
 # Politika privatnosti se NE zabranjuje ovde. Ona nosi noindex u head-u,
-# a robot koji ne sme da je obidje nikada taj noindex ne procita — pa bi
+# a robot koji ne sme da je obidje nikada taj noindex ne procita, pa bi
 # Google indeksirao goli URL bez opisa. Obilazak dozvoljen + noindex je
 # jedina kombinacija koja stvarno izbacuje stranicu iz indeksa.
 
@@ -91,7 +91,7 @@ const LEGACY = [
   ['/o-nama/nasa-misija', '/pages/o-nama.html#misija'],
   ['/o-nama', '/pages/o-nama.html'],
   ['/jelovnik/kvalitet-hrane', '/pages/kako-radimo.html#kvalitet-sirovina'],
-  ['/jelovnik/nedeljni-meni', '/pages/nedeljni-meni.html'],
+  ['/jelovnik/nedeljni-meni', '/pages/nedeljni-jelovnik.html'],
   ['/jelovnik', '/pages/jelovnik.html'],
   ['/haccp', '/pages/bezbednost-hrane.html'],
   ['/kontakt', '/pages/kontakt.html'],
@@ -99,7 +99,7 @@ const LEGACY = [
 
 const lines = [
   '# Preusmerenja sa starog sajta keteringservis.rs.',
-  '# Generisano: node tools/build-seo-files.mjs — ne menjati ručno.',
+  '# Generisano: node tools/build-seo-files.mjs, ne menjati ručno.',
   '',
 ];
 for (const [from, to] of LEGACY) {

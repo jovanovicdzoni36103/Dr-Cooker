@@ -71,7 +71,7 @@ RewriteRule ^ponuda/?$                               /pages/snabdevanje.html    
 RewriteRule ^o-nama/nasa-misija/?$                   /pages/o-nama.html#misija                [R=301,L]
 RewriteRule ^o-nama/?$                               /pages/o-nama.html                       [R=301,L]
 RewriteRule ^jelovnik/kvalitet-hrane/?$              /pages/kako-radimo.html#kvalitet-sirovina [R=301,L]
-RewriteRule ^jelovnik/nedeljni-meni/?$               /pages/nedeljni-meni.html                [R=301,L]
+RewriteRule ^jelovnik/nedeljni-meni/?$               /pages/nedeljni-jelovnik.html                [R=301,L]
 RewriteRule ^jelovnik/?$                             /pages/jelovnik.html                     [R=301,L]
 RewriteRule ^haccp/?$                                /pages/bezbednost-hrane.html             [R=301,L]
 RewriteRule ^kontakt/?$                              /pages/kontakt.html                      [R=301,L]
@@ -178,7 +178,7 @@ i Open Graph pokazuju na pogrešno mesto.
 | Apps Script URL, email primaoca | `js/config.js` |
 | Zaglavlje ili podnožje (sve stranice) | `tools/partials/`, pa `node tools/sync-partials.mjs` |
 | Tekst jedne stranice | taj `.html` u `pages/` |
-| Jelovnik, gramature | `pages/nedeljni-meni.html`, `pages/gramature.html` |
+| Jelovnik, gramature | `pages/nedeljni-jelovnik.html`, `pages/normativi.html` |
 | Boje, fontovi, razmaci | `css/base.css`, sekcija `:root` |
 | Dugmad, forme, tabele | `css/components.css` |
 | Nešto na jednoj stranici | `css/pages.css`, pod `.page-<ime>` |
