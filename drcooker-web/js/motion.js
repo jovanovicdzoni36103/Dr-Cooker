@@ -155,23 +155,58 @@
   function pustiMrezu() {
     if (!mrezaTik()) return;
 
-    let tikova = 0;
-    const id = setInterval(function () {
-      tikova++;
-      if (!mrezaTik() || tikova >= 20) clearInterval(id);
-    }, 1000);
+    // Prolazi na sat, sa popustanjem ritma. Prvo gusto, jer se tada i otvara
+    // stranica, pa sve rede. Staje cim nema sta da otkrije.
+    //
+    // Ritam ne sme da se zavrsi dok ima skrivenog sadrzaja. Izmereno u
+    // okruzenju u kome ne rade ni IntersectionObserver, ni rAF, ni skrol
+    // dogadjaji: tamo je ovaj sat jedino sto otkriva sadrzaj, pa je prethodna
+    // granica od 20 prolaza znacila da posetilac koji procita prvi ekran duze
+    // od dvadeset sekundi dalje ne vidi nista.
+    //
+    // ponytail: gornja granica je ~3 min; posle toga ostaje samo cuvar na
+    // skrolu. Ako se nekad pojavi okruzenje u kome i to padne, granica ide gore.
+    let proteklo = 0;
+    let id = 0;
+    const prolaz = function () {
+      const pauza = proteklo < 20000 ? 1000 : 5000;
+      proteklo += pauza;
+      if (!mrezaTik() || proteklo > 180000) {
+        clearTimeout(id);
+        return;
+      }
+      id = setTimeout(prolaz, pauza);
+    };
+    id = setTimeout(prolaz, 1000);
 
     // Posle tog prozora ostaje jeftin cuvar na skrolu: ako posmatrac zaista ne
     // radi, posetilac koji nastavi da skroluje i dalje vidi sadrzaj. Cuvar se
     // sam skida cim vise nema sta da otkrije.
-    let zakazan = false;
+    // Ogranicavanje ide na sat, NE na `requestAnimationFrame`. rAF je vezan za
+    // iscrtavanje, a mreza postoji upravo za stranicu koja se ne iscrtava: tamo
+    // bi posao unutar rAF-a cekao okvir koji nikada ne dodje, pa bi cuvar bio
+    // mrtav bas u jedinom slucaju zbog koga je napisan. Izmereno u okruzenju u
+    // kome ni IntersectionObserver ni rAF ne okidaju: posetilac je proskrolovao
+    // celu stranicu i nijedan element se nije pojavio.
+    // Ogranicavanje hvata i PRVI i POSLEDNJI skrol u nizu. Samo prva ivica ne
+    // bi bila dovoljna: poslednji potez, onaj koji zaustavlja stranicu na
+    // konacnom mestu, pada unutar intervala i bio bi odbacen, pa bi sadrzaj
+    // tacno tamo gde je posetilac stao ostao nevidljiv.
+    let zadnji = 0;
+    let rep = 0;
     const naSkrol = function () {
-      if (zakazan) return;
-      zakazan = true;
-      requestAnimationFrame(function () {
-        zakazan = false;
-        if (!mrezaTik()) window.removeEventListener('scroll', naSkrol);
-      });
+      const sada = Date.now();
+      const ostalo = 100 - (sada - zadnji);
+      if (ostalo > 0) {
+        if (!rep) rep = setTimeout(naSkrol, ostalo);
+        return;
+      }
+      clearTimeout(rep);
+      rep = 0;
+      zadnji = sada;
+      if (!mrezaTik()) {
+        window.removeEventListener('scroll', naSkrol);
+      }
     };
     window.addEventListener('scroll', naSkrol, { passive: true });
   }
