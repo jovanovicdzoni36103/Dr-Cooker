@@ -1863,3 +1863,92 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
   inline-size: 100%;
   margin-block-start: var(--space-4);
 }
+
+/* --- Zone isporuke: obaveštenje pred odlazak na sinko.rs ----------------- */
+/*
+   Otvara se na klik ka sinko.rs, ne samo od sebe. Posetilac ga je time sam
+   pozvao, pa se ne čita kao reklama, a baš to je zamerka zbog koje je stara
+   crvena značka skinuta sa početne.
+
+   Bez `box-shadow`: sistem dubinu pravi linijom i tonom, a audit senku
+   prijavljuje. Bez `opacity` za skrivanje: print.css gasi prozirnost sa
+   `!important` na svemu, pa bi ovako sakriven panel bio odštampan na svakoj
+   stranici. Skriva se atributom `hidden`, koji je `display: none`. */
+
+.zone {
+  position: fixed;
+  inset: 0;
+  z-index: 300; /* iznad .hdr 100, .progress 120 i .skip-link 200 */
+  display: grid;
+  /* Na uskom ekranu panel seda uz donju ivicu, nadohvat palca. */
+  place-items: end center;
+  padding: var(--space-3);
+  background: color-mix(in oklab, var(--color-ink) 58%, transparent);
+}
+
+@media (min-width: 40rem) {
+  .zone {
+    place-items: center;
+    padding: var(--space-5);
+  }
+}
+
+.zone__panel {
+  inline-size: min(34rem, 100%);
+  /* `dvh` zbog trake browsera na telefonu: sa `vh` panel ume da bude viši
+     od vidljivog dela, pa dugmad na dnu ostanu ispod ivice ekrana. */
+  max-block-size: min(calc(100dvh - var(--space-6)), 44rem);
+  overflow-y: auto;
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule-strong);
+}
+
+.zone__head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.zone__x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Ikonično dugme nema tekst koji bi napravio metu, pa je pravi min-size. */
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  margin-block-start: calc(var(--space-2) * -1);
+  margin-inline-end: calc(var(--space-2) * -1);
+  color: var(--color-ink);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.zone__x svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+/* Na telefonu panel skroluje, pa bi dugmad ostala ispod preloma i „Nastavi"
+   bi zavisilo od skrola unutar dijaloga. Zato se red prikiva za dno.
+   Negativna margina i donji padding produžavaju podlogu preko padding-a
+   panela, inače bi se tekst video kako prolazi ispod dugmadi.
+   Kada sadržaj stane, sticky nema šta da radi i red stoji normalno. */
+.zone__akcije {
+  position: sticky;
+  inset-block-end: calc(var(--space-5) * -1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-block-end: var(--space-5);
+  margin-block-end: calc(var(--space-5) * -1);
+  background: var(--color-paper);
+}
+
+.zone__akcije .btn {
+  flex: 1 1 12rem;
+}

@@ -93,7 +93,7 @@
     });
 
     // Ako se prozor proširi na desktop dok je meni otvoren, zatvori ga.
-    const desktop = window.matchMedia('(min-width: 60rem)');
+    const desktop = window.matchMedia('(min-width: 77rem)');
     const onChange = function (e) {
       if (e.matches && open) setOpen(false);
     };
@@ -239,12 +239,124 @@
   //  Start
   // =========================================================================
 
+  // =========================================================================
+  //  6. Zone isporuke: obaveštenje pred odlazak na sinko.rs
+  // =========================================================================
+
+  /**
+   * Presreće odlazak na sinko.rs i prvo pokaže dokle se isporučuje.
+   *
+   * Vlasnik je opisao tačan trenutak kada nastaje problem: kupac poruči robu
+   * za mesto koje je predaleko i čeka isporuku koje nema. Taj trenutak nije
+   * dolazak na našu stranicu nego odlazak na prodavnicu, pa se obaveštenje
+   * otvara na klik, a ne samo od sebe. Posetilac ga je time sam pozvao, pa ne
+   * može da se pročita kao reklama.
+   *
+   * Progressive enhancement: bez JavaScripta linkovi rade kao i pre, a
+   * dijalog ostaje `hidden` i nikome ne smeta.
+   */
+  function initZoneIsporuke() {
+    const dijalog = document.querySelector('[data-zone]');
+    if (!dijalog) return;
+
+    const panel = dijalog.querySelector('[role="dialog"]');
+    const dalje = dijalog.querySelector('[data-zone-dalje]');
+    const glavni = document.querySelector('main');
+    if (!panel || !dalje || !glavni) return;
+
+    // Linkovi u samom dijalogu se ne presreću, inače se otvara sam sebe.
+    const okidaci = Array.prototype.filter.call(
+      glavni.querySelectorAll('a[href*="sinko.rs"]'),
+      function (a) {
+        return !dijalog.contains(a);
+      }
+    );
+    if (!okidaci.length) return;
+
+    let otvoren = false;
+    let pozvao = null;
+
+    function postavi(next) {
+      otvoren = next;
+      dijalog.hidden = !next;
+      document.documentElement.classList.toggle('is-zone-open', next);
+
+      if (next) {
+        const prvi = panel.querySelector(FOCUSABLE);
+        if (prvi) prvi.focus();
+      } else if (pozvao) {
+        // Fokus se vraća tamo odakle je posetilac krenuo.
+        pozvao.focus();
+        pozvao = null;
+      }
+    }
+
+    okidaci.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        // Srednji klik, Ctrl i Cmd otvaraju u novoj kartici: to je namera
+        // posetioca i ne presreće se.
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+        e.preventDefault();
+        pozvao = a;
+        if (a.href) dalje.href = a.href;
+        postavi(true);
+      });
+    });
+
+    dijalog.addEventListener('click', function (e) {
+      // Klik na podlogu pored panela zatvara, klik unutar panela ne.
+      if (e.target === dijalog || e.target.closest('[data-zone-close]')) {
+        postavi(false);
+      }
+    });
+
+    // Odlazak na prodavnicu zatvara dijalog iza sebe, da se posetilac ne
+    // vrati na zaključanu stranicu sa otvorenim panelom.
+    dalje.addEventListener('click', function () {
+      postavi(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!otvoren) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        postavi(false);
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const stavke = Array.prototype.filter.call(
+          panel.querySelectorAll(FOCUSABLE),
+          function (el) {
+            return el.offsetParent !== null;
+          }
+        );
+        if (!stavke.length) return;
+
+        const prvi = stavke[0];
+        const zadnji = stavke[stavke.length - 1];
+        const aktivan = document.activeElement;
+
+        // Fokus ostaje u dijalogu dok je otvoren.
+        if (e.shiftKey && aktivan === prvi) {
+          e.preventDefault();
+          zadnji.focus();
+        } else if (!e.shiftKey && aktivan === zadnji) {
+          e.preventDefault();
+          prvi.focus();
+        }
+      }
+    });
+  }
+
   function init() {
     initMobileNav();
     initSubmenus();
     initScrollState();
     initActiveNav();
     initMaps();
+    initZoneIsporuke();
   }
 
   if (document.readyState === 'loading') {
