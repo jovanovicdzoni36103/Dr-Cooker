@@ -36,9 +36,15 @@ function loadPartial(name) {
 const HEADER = loadPartial('header.html');
 const FOOTER = loadPartial('footer.html');
 
+const ZONE = loadPartial('zone.html');
+
 const REGIONS = [
   { name: 'header', html: HEADER },
   { name: 'footer', html: FOOTER },
+  // Obaveštenje o zonama isporuke stoji samo na stranicama koje vode na
+  // sinko.rs, pa je region opcion: stranica bez markera se preskače bez
+  // greške. Zaglavlje i podnožje su obavezni i tu markeri moraju postojati.
+  { name: 'zone', html: ZONE, optional: true },
 ];
 
 const pages = [
@@ -74,7 +80,13 @@ for (const file of pages) {
     const j = html.indexOf(end);
 
     if (i === -1 || j === -1) {
-      problems.push(`${rel}: nema markere za "${region.name}"`);
+      // Opcion region se preskače bez greške: ne pripada svakoj stranici.
+      // Ali jedan marker bez drugog je uvek greška, i na opcionom regionu.
+      if (!region.optional) {
+        problems.push(`${rel}: nema markere za "${region.name}"`);
+      } else if (i !== -1 || j !== -1) {
+        problems.push(`${rel}: "${region.name}" ima samo jedan marker`);
+      }
       continue;
     }
     if (j < i) {

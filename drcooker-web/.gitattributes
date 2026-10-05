@@ -1,0 +1,14 @@
+# Prelomi redova se normalizuju u repozitorijumu.
+#
+# Bez ovoga `node tools/sync-partials.mjs` na Windows checkout-u nikada ne
+# moze da prijavi „bez izmene" iz cistog stanja: Git ispise CRLF, skripta
+# upise LF, pa svaka stranica izgleda izmenjeno. Time se gubi jedina provera
+# koja hvata stranicu menjanu mimo partiala.
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.png binary
+*.jpg binary
+*.webp binary
+*.woff2 binary
+*.docx binary
+*.doc binary

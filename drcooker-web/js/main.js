@@ -93,7 +93,7 @@
     });
 
     // Ako se prozor proširi na desktop dok je meni otvoren, zatvori ga.
-    const desktop = window.matchMedia('(min-width: 77rem)');
+    const desktop = window.matchMedia('(min-width: 84rem)');
     const onChange = function (e) {
       if (e.matches && open) setOpen(false);
     };
@@ -273,6 +273,16 @@
     );
     if (!okidaci.length) return;
 
+    // Pozadina se sklanja iz stabla pristupačnosti sa `inert`. `main` ne može
+    // da se isključi u celini jer dijalog živi u njemu, pa se isključuju
+    // njegova deca pored dijaloga, plus zaglavlje i podnožje.
+    const pozadina = [].concat(
+      Array.prototype.slice.call(document.querySelectorAll('body > header, body > footer')),
+      Array.prototype.filter.call(glavni.children, function (el) {
+        return el !== dijalog;
+      })
+    );
+
     let otvoren = false;
     let pozvao = null;
 
@@ -280,6 +290,12 @@
       otvoren = next;
       dijalog.hidden = !next;
       document.documentElement.classList.toggle('is-zone-open', next);
+      pozadina.forEach(function (el) {
+        el.inert = next;
+      });
+      okidaci.forEach(function (a) {
+        a.setAttribute('aria-expanded', String(next));
+      });
 
       if (next) {
         const prvi = panel.querySelector(FOCUSABLE);
@@ -292,6 +308,16 @@
     }
 
     okidaci.forEach(function (a) {
+      // Link vodi na prodavnicu i bez JavaScripta, pa najava „otvara se u
+      // novom prozoru" u izvoru stoji s razlogom. Čim JavaScript preuzme
+      // klik, ona prestaje da bude tačna: otvara se dijalog u istoj
+      // stranici. Zato se skida ovde, a ne u HTML-u.
+      const najava = a.querySelector('.visually-hidden');
+      if (najava) najava.remove();
+      a.setAttribute('aria-haspopup', 'dialog');
+      a.setAttribute('aria-expanded', 'false');
+      a.setAttribute('aria-controls', dijalog.id);
+
       a.addEventListener('click', function (e) {
         // Srednji klik, Ctrl i Cmd otvaraju u novoj kartici: to je namera
         // posetioca i ne presreće se.
@@ -339,7 +365,16 @@
         const aktivan = document.activeElement;
 
         // Fokus ostaje u dijalogu dok je otvoren.
-        if (e.shiftKey && aktivan === prvi) {
+        //
+        // Prva grana je zbog klika mišem na običan tekst u panelu: fokus
+        // tada ode na `main`, koji nosi `tabindex="-1"` zbog skip-linka i
+        // predak je dijaloga. Provera „je li aktivan prvi ili poslednji"
+        // tada nije tačna ni za jedan, pa bi sledeći Tab odveo posetioca na
+        // linkove iza zatamnjenja dok je dijalog još otvoren. Izmereno.
+        if (!panel.contains(aktivan)) {
+          e.preventDefault();
+          (e.shiftKey ? zadnji : prvi).focus();
+        } else if (e.shiftKey && aktivan === prvi) {
           e.preventDefault();
           zadnji.focus();
         } else if (!e.shiftKey && aktivan === zadnji) {
