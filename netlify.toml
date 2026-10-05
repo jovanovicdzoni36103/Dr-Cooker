@@ -1,0 +1,32 @@
+# Netlify, za pregled sajta pre objave na pravom domenu.
+#
+# Netlify, a ne Vercel: `drcooker-web/_redirects` je već napisan u Netlify
+# formatu i nosi 25 preusmerenja sa starog sajta keteringservis.rs. Na
+# Vercelu bi sve to moralo ponovo, u `vercel.json`.
+
+[build]
+  # Sajt je statički, bez build koraka. Repozitorijum je koren foldera
+  # „Dr Cooker", a sam sajt je jedan nivo niže.
+  publish = "drcooker-web"
+
+# ---------------------------------------------------------------------------
+# NE INDEKSIRAJ
+#
+# Ovo je adresa za pregled, ne pravi sajt. Dva razloga zašto mora noindex:
+#
+#   1. `canonical` na svakoj stranici pokazuje na https://drcooker.rs, pa bi
+#      indeksiranje ove adrese napravilo dve kopije istog sadržaja.
+#   2. Sadržaj još čeka klijentove odgovore (docs/OTVORENO.md), pa tvrdnje
+#      koje nisu potvrđene ne smeju u pretragu.
+#
+# `X-Robots-Tag` kao zaglavlje jače je od `robots.txt` i od meta oznake:
+# važi za svaki odgovor, uključujući slike i PDF. `robots.txt` se namerno NE
+# menja, jer on samo zabranjuje obilazak, a robot koji ne obiđe stranicu ne
+# pročita ni noindex.
+#
+# Pre objave na pravom domenu OVAJ BLOK SE BRIŠE.
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
