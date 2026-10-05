@@ -897,7 +897,7 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
   --brand-h: 2.25rem;
 }
 
-@media (min-width: 66rem) {
+@media (min-width: 77rem) {
   .brand__img {
     --brand-h: 2.75rem;
   }

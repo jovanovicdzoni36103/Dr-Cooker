@@ -264,9 +264,18 @@
 }
 
 /* Visina zaglavlja raste kada se pojavi desktop navigacija. Prag MORA da
-   prati onaj u css/layout.css (66rem) — inace bi na 960–1055px zaglavlje
-   bilo visoko, a u njemu i dalje samo burger. */
-@media (min-width: 66rem) {
+   prati onaj u css/layout.css (77rem) — inace bi zaglavlje bilo visoko, a u
+   njemu i dalje samo burger.
+
+   Prag je 05.10.2026. podignut sa 66rem na 77rem. Na 66rem (1056px) desktop
+   zaglavlje se palilo iako mu sadrzaj ne staje: izmereno na 1100px treba mu
+   1213px (40 + logo 179 + 24 + navigacija 818 + 24 + CTA 88 + 40), pa je
+   glavni CTA „Zatrazi ponudu" bio izguran izvan ljuske i NEKLIKABILAN u
+   celom pojasu 1056-1219px. `body { overflow-x: clip }` je gutao skrol-traku,
+   pa se greska nije videla ni oku ni proveri koja trazi horizontalni skrol.
+   Ko menja ovaj prag, mora da promeni svih pet pojava: ovde, u
+   css/components.css (velicina logotipa) i tri u css/layout.css. */
+@media (min-width: 77rem) {
   :root {
     --header-h: 5.25rem;
   }
