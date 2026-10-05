@@ -1162,3 +1162,96 @@ legitimne pojave reči „kuhinja", jedno je „ketering" iz njegovog teksta.
 stvari koje čekaju njegovu reč. Najvažnije: adresa (jedan podatak ili dva),
 „jedina delatnost" naspram dve stranice o snabdevanju, i to što su posle
 njegovih brisanja četiri stranice ostale pod 230 reči.
+
+---
+
+## 10h. Četiri zahteva od 05.10.2026, i šta je provera oborila
+
+Klijent je tražio četiri stvari: skloniti promotivnu značku iz heroja,
+staviti diskretno dugme ka sinko.rs na njeno mesto, dodati mreže u podnožje i
+napraviti popup o zonama isporuke.
+
+### Prilozi nisu nosili nov sadržaj
+
+Tri priložena dokumenta su po hešu bila identična već obrađenima: dokument za
+reviziju je isti onaj iz koga je 02.10. izvučeno 87 primedbi (diff po
+sekcijama: 87 = 87, nula razlike u oba smera), a oba jelovnika su bajt
+identična onima koji već stoje na sajtu.
+
+Zato jedan deo zahteva nije mogao da se izvrši kako je napisan: tražio je da
+se sadržaj popupa uzme iz „drugog dokumenta", a takav dokument nije priložen.
+Sadržaj nije izmišljen; uzet je iz tabele koja već stoji na sajtu.
+
+### Zahtevi 1 i 2 su bili urađeni, ali neokomitovani
+
+Oba su odrađena 02.10. Formulacija koju traži stajala je reč u reč. Ali
+`git log -S` za „supermarket-cta" i za „promotivnog perioda" davao je **nula
+komitova**: jedan `git checkout` bi ih obrisao. Prvi potez je bio komit.
+
+### Šta je protivnička provera oborila
+
+Posle implementacije je pušteno pet nezavisnih napada plus presuda koja je
+svaki nalaz proveravala u fajlu. Potvrđeno je sedamnaest, od toga dva koja su
+značila da zahtev **nije** ispunjen:
+
+| Nalaz | Zašto je bio promašaj |
+|---|---|
+| Dijalog samo na 1 od 4 stranice koje vode u prodavnicu | Četiri korisnička odlaska, uključujući oba sa početne, prolazila su bez obaveštenja. Zahtev 4 je promašivao baš trenutak zbog kog je tražen |
+| Dugme u heroju nije bilo manje nego **najveće** | `inline-size: 100%` ga je činio 2,3× do 3,2× po površini od glavnog CTA, i to na mestu gde je stajala značka koju je nazvao prevarom. Komentar iznad pravila tvrdio je suprotno od onoga što pravilo radi |
+
+Ostali potvrđeni nalazi, svi popravljeni: fokus je bežao iz dijaloga (klik na
+običan tekst stavlja fokus na `main`, koji nosi `tabindex="-1"` i predak je
+dijaloga, pa ni „prvi" ni „poslednji" nije važilo); tabela u dijalogu je na
+telefonu sekla poslednji red i kolonu sa cenom; rečenica je ispustila reč
+„besplatna" i ogradu „kako su objavljeni na sinko.rs"; poslednja rečenica je
+bila operativno obećanje bez izvora; granica zona se preklapala na tačno 3 km;
+okidači su i dalje najavljivali „otvara se u novom prozoru" iako otvaraju
+dijalog; prag zaglavlja je bio pogrešan dva puta zaredom.
+
+### Prag zaglavlja: tri pokušaja, i zašto
+
+Zatečeno stanje: desktop zaglavlje se palilo na 66rem (1056px) iako mu red ne
+staje. Izmereno na 1100px treba mu 1213px, pa je glavni CTA bio **izguran van
+ljuske i neklikabilan** u celom pojasu 1056 do 1219px. Ništa to nije
+pokazivalo: `body { overflow-x: clip }` guta skrol traku, pa `scrollX` ostaje
+0 i svaka provera koja pita „ima li horizontalnog skrola" prolazi. Raniji
+prolaz je prijavio nula prelivanja jer je uzorkovao 1024 i 1280 i nikad
+između.
+
+Prvi pokušaj 77rem: natpis se i dalje lomio u dva reda. Drugi 82rem: isto.
+Tek merenje u koracima od 10px, sa visinom dugmeta kao signalom (40px je jedan
+red, 56px dva), dalo je pravu granicu: **1330px**. Prag je zato 84rem.
+
+Nauk: prag se ne pogađa iz širine sadržaja na jednoj tački, nego se meri po
+opsegu, i meri se ono što se lomi, ne ono što se preliva.
+
+### Zatečeno, nije iz ovih zahteva
+
+Traka sa brojevima na tamnoj sekciji početne imala je kontrast **1,10:1** za
+tekst i **1,65:1** za broj: tamno mastilo na tamnozelenom. Ceo blok „Koliko
+dece hranimo", sa njegovim referentnim brojevima, bio je nečitljiv. Boje su
+bile pisane samo za svetlu podlogu.
+
+### Stanje provera
+
+```
+python tools/audit.py                 17 stranica, 0 grešaka, 0 upozorenja
+python tools/provera-copy.py          0 grešaka, 8 upozorenja
+python tools/provera-copy.py --test   0 padova
+node tools/sync-partials.mjs          0 ažurirano, 17 bez izmene
+```
+
+`sync-partials` sada može da prijavi „bez izmene" jer `.gitattributes`
+normalizuje prelome redova. Bez toga je na Windows checkout-u svaka stranica
+izgledala izmenjeno i jedina provera koja hvata stranicu menjanu mimo
+partiala bila je beskorisna. Uz to: `audit.py` tu proveru **nema**, uprkos
+svom docstringu, pa je zaboravljen sync i dalje tiha greška.
+
+### Mereno u browseru
+
+| Provera | Rezultat |
+|---|---|
+| 73 širine od 320 do 1700px | 0 prelivanja, 0 odsečenih CTA, 0 prelomljenih natpisa |
+| 17 stranica × 3 širine | 0 prelivanja, mreže svuda, kontrast svuda ≥ 4,5:1 |
+| Dijalog na 10 veličina ekrana | panel u ekranu, obe akcije dohvatljive, meta ≥ 44px |
+| Dugme u heroju naspram glavnog CTA | 0,59 do 0,69 površine, na svim širinama |

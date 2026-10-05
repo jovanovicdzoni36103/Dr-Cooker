@@ -205,6 +205,49 @@ Nijedna nije pogađana.
 
 ---
 
+## G. Novo, od 05.10.2026
+
+### G1. Jesu li Sinkovi pragovi i dalje ovi
+Dijalog o zonama ponavlja tri reda iz tabele koja već stoji na stranici
+Online supermarket, sa izvorom sinko.rs: do 3 km uz račun od 4.999 RSD, preko
+3 do 10 km uz 7.999 RSD, preko 10 km se ne isporučuje.
+
+**Pitanje:** jesu li ti iznosi i dalje tačni? Sada stoje na dva mesta, pa
+zastarela cifra putuje dvostruko.
+
+### G2. Porudžbina za mesto van Sinkove zone
+U dijalogu je stajala rečenica „Ako je Vaše mesto izvan tog kruga, pozovite
+nas pre porudžbine na 064 110 1521". **Uklonjena je**, jer je to operativno
+obećanje bez izvora: broj je Dr Cooker-ov, a porudžbina je Sinkova, i Sinko
+je po tekstu na istoj stranici zaseban privredni subjekat.
+
+**Pitanje:** da li Dr Cooker preuzima takve porudžbine? Ako da, rečenica se
+vraća. Ako ne, dijalog ostaje kakav je i kupac prosto vidi da se ne isporučuje.
+
+### G3. Zaglavlje prelazi na burger ispod 1344px
+Da glavni CTA „Zatraži ponudu" ne bi bio odsečen ili prelomljen, desktop
+zaglavlje se sada pali tek od 1344px. Izmereno je da natpis staje u jedan red
+od 1330px. Posledica: laptop od 1280px dobija burger meni, iako je ekran
+širok.
+
+**Pitanje:** da li je to u redu, ili da se natpis u zaglavlju skrati (na
+primer na „Ponuda") pa da desktop zaglavlje krene ranije? Natpis je Vaš, pa
+ga ne menjam bez reči.
+
+### G4. LinkedIn
+Dali ste Facebook i Instagram. U starom upitniku je stajalo i pitanje o
+LinkedIn profilu, bez odgovora.
+
+**Pitanje:** postoji li LinkedIn, da ide uz ostale dve.
+
+### G5. Zatečeno, popravljeno bez pitanja
+Traka sa brojevima na tamnoj sekciji početne bila je nečitljiva: kontrast
+1,10:1, tamno na tamnom. Blok „Koliko dece hranimo" sa Vašim referentnim
+brojevima niko nije mogao da pročita. Popravljeno.
+
+Glavni CTA u zaglavlju bio je neklikabilan na širinama oko 1100px, a to se
+nije videlo jer sajt skriva horizontalnu skrol traku. Popravljeno.
+
 ## F. Pitanja od ranije, još bez odgovora
 
 - 40 ili 38 objekata. Na sajtu stoji 38, iz njegovog dokumenta.
