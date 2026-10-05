@@ -216,11 +216,7 @@
   }
 }
 
-.is-nav-open,
-/* Dijalog o zonama isporuke zaključava skrol istim mehanizmom, ali
-   svojom klasom: dve odvojene stvari ne smeju da dele prekidač, inače
-   zatvaranje jedne otključa stranicu dok je druga još otvorena. */
-.is-zone-open {
+.is-nav-open {
   overflow: hidden;
 }
 

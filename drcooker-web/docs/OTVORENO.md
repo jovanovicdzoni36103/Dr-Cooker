@@ -248,6 +248,37 @@ brojevima niko nije mogao da pročita. Popravljeno.
 Glavni CTA u zaglavlju bio je neklikabilan na širinama oko 1100px, a to se
 nije videlo jer sajt skriva horizontalnu skrol traku. Popravljeno.
 
+### G6. Novi znak se na početnoj vidi dva puta
+Zajednički znak Sinko i Dr Cooker sada stoji u zaglavlju svake stranice. Na
+početnoj isti znak stoji i u ploči desno u heroju, oko 300px ispod zaglavlja,
+sa potpisom „Dušanovac, opština Voždovac".
+
+**Pitanje:** da li ploča u heroju ostaje, ili se sklanja sada kada znak stoji
+u zaglavlju?
+
+### G7. Znak je rasterski
+Poslali ste PNG 450×160, u kome je sam crtež 326×81. Na sajtu se prikazuje do
+177px širine, što daje gustinu oko 2×, dakle oštar je. Ali svaki logotip je
+izvorno vektorski.
+
+**Pitanje:** ako imate **SVG**, znak bi bio oštar na svakom ekranu i fajl bi
+bio manji. Takođe: ako postoji verzija sa **belim** Dr Cooker natpisom, mogla
+bi da se koristi direktno na tamnoj podlozi. Sada na tamnom podnožju znak
+stoji na krem pločici, jer je crn natpis na tamnozelenom nečitljiv.
+
+### G8. Napomena o dometu isporuke je sada hover
+Popup je uklonjen. Umesto njega, na glavnom linku ka prodavnici stoji kratka
+napomena koja se pojavi kada miš stane na link, ili kada se do njega dođe
+tastaturom: „Sinko isporučuje do 10 km od prodavnice."
+
+**Napomena:** na telefonu nema prelaska mišem, pa se ta napomena tamo ne
+pojavljuje. To nije problem jer cela tabela zona i dalje stoji kao vidljiv
+tekst na stranici Online supermarket, gde je i bila.
+
+Napomena ne stoji na stranici „Zatražite ponudu": tamošnji pomen prodavnice
+je unutar poruke koja se vidi tek pošto se upit uspešno pošalje, pa je tamo
+niko ne bi video.
+
 ## F. Pitanja od ranije, još bez odgovora
 
 - 40 ili 38 objekata. Na sajtu stoji 38, iz njegovog dokumenta.

@@ -1828,33 +1828,6 @@
   align-items: end;
 }
 
-/* Zajednički logotip Sinko i Dr Cooker, koji je klijent poslao 05.10.2026.
-   Ide u istu ploču kao logotip na početnoj, ali užu: slika je u odnosu
-   450x160, pa bi preko cele širine heroja nastala ploča od ~1200px sa
-   logotipom od 272px nasred nje.
-
-   Ploča je `--color-surface`, dakle bela. To je OBAVEZNO: polovina sa
-   Dr Cooker znakom je crna linija i crn natpis, pa na tamnoj podlozi
-   praktično nestaje. Ovaj logotip ne sme u podnožje ni u `on-dark`. */
-.page-sinko .hero .logo-lockup {
-  inline-size: min(26rem, 100%);
-  justify-self: start;
-  /* Padding ploče je podešen za uspravan logotip na početnoj. Ovaj je u
-     odnosu 450x160, pa bi sa istim razmakom ploča ostala poluprazna. */
-  padding-block: var(--space-5);
-}
-
-.page-sinko .hero .logo-lockup__img {
-  inline-size: min(20rem, 86%);
-}
-
-@media (min-width: 52rem) {
-  .page-sinko .hero__grid {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-  }
-}
-
 .page-snabdevanje .hero__h1,
 .page-snabdevanje .hero__uvod .lead,
 .page-sinko .hero__uvod .lead {

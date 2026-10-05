@@ -1882,105 +1882,63 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
   margin-block-start: var(--space-4);
 }
 
-/* --- Zone isporuke: obaveštenje pred odlazak na sinko.rs ----------------- */
+/* --- Nagoveštaj na prelazu ----------------------------------------------- */
 /*
-   Otvara se na klik ka sinko.rs, ne samo od sebe. Posetilac ga je time sam
-   pozvao, pa se ne čita kao reklama, a baš to je zamerka zbog koje je stara
-   crvena značka skinuta sa početne.
+   Kratka napomena koja se pokaže kada miš stane na link ka prodavnici, ili
+   kada se do njega dođe tastaturom. Zamenila je dijalog koji je iskakao:
+   vlasnik je rekao da popup pripada sajtu prodavnice, a ne ovome.
 
-   Bez `box-shadow`: sistem dubinu pravi linijom i tonom, a audit senku
-   prijavljuje. Bez `opacity` za skrivanje: print.css gasi prozirnost sa
-   `!important` na svemu, pa bi ovako sakriven panel bio odštampan na svakoj
-   stranici. Skriva se atributom `hidden`, koji je `display: none`. */
+   Skriva se `visibility`, ne samo prozirnošću. css/print.css gasi prozirnost
+   sa `!important` na svemu, pa bi napomena skrivena samo `opacity: 0` bila
+   odštampana preko sadržaja. `visibility` to preživljava.
 
-.zone {
-  position: fixed;
-  inset: 0;
-  z-index: 300; /* iznad .hdr 100, .progress 120 i .skip-link 200 */
-  display: grid;
-  /* Na uskom ekranu panel seda uz donju ivicu, nadohvat palca. */
-  place-items: end center;
-  padding: var(--space-3);
-  background: color-mix(in oklab, var(--color-ink) 58%, transparent);
-}
+   Bez prelaza: svaki nov animirani selektor mora i u deny listu za
+   `prefers-reduced-motion`, a napomeni animacija ništa ne donosi. */
 
-@media (min-width: 40rem) {
-  .zone {
-    place-items: center;
-    padding: var(--space-5);
-  }
-}
-
-/* Vrh i akcije stoje, samo telo skroluje. Lepljiva traka je ranije pokrivala
-   poslednji red tabele („Preko 10 km, ne isporučuje se") i tako krila baš
-   podatak zbog koga dijalog postoji. Mreža od tri reda to rešava bez
-   preklapanja: `minmax(0, 1fr)` je obavezno, sa golim `1fr` telo odbija da
-   se smanji ispod sadržaja i panel preraste ekran. */
-.zone__panel {
-  inline-size: min(34rem, 100%);
-  /* `dvh` zbog trake browsera na telefonu: sa `vh` panel ume da bude viši
-     od vidljivog dela, pa dugmad na dnu ostanu ispod ivice ekrana. */
-  max-block-size: min(calc(100dvh - var(--space-6)), 44rem);
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  background: var(--color-paper);
-  border: 1px solid var(--color-rule-strong);
-}
-
-@media (min-width: 30rem) {
-  .zone__panel {
-    padding: var(--space-5);
-  }
-}
-
-.zone__telo {
-  display: grid;
-  gap: var(--space-4);
-  align-content: start;
-  overflow-y: auto;
-  /* Prostor za prsten fokusa na tabeli, koji bi inače bio odsečen ivicom
-     oblasti koja skroluje. */
-  padding: 2px;
-  margin: -2px;
-}
-
-.zone__head {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: var(--space-3);
-}
-
-.zone__x {
+.nagovestaj {
+  position: relative;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  /* Ikonično dugme nema tekst koji bi napravio metu, pa je pravi min-size. */
-  min-inline-size: 2.75rem;
-  min-block-size: 2.75rem;
-  margin-block-start: calc(var(--space-2) * -1);
-  margin-inline-end: calc(var(--space-2) * -1);
-  color: var(--color-ink);
-  background: transparent;
-  border: 0;
-  cursor: pointer;
 }
 
-.zone__x svg {
-  inline-size: 1rem;
-  block-size: 1rem;
+.nagovestaj__balon {
+  /* `display: none`, ne `visibility: hidden`. Apsolutno pozicioniran element
+     i dok je nevidljiv zauzima prostor i ulazi u `scrollWidth`: izmereno je
+     da je balon tako prelivao početnu stranicu za 235px, a `overflow-x: clip`
+     na `body` to sakriva od oka pa se ne primeti.
+     `aria-describedby` i dalje radi, čitač ekrana čita tekst i iz elementa
+     koji nije prikazan. */
+  display: none;
+  position: absolute;
+  /* Ispod linka, ne iznad: glavni CTA ume da stoji pri vrhu stranice, pa bi
+     balon iznad njega završio ispod lepljivog zaglavlja. */
+  inset-block-start: calc(100% + var(--space-2));
+  /* Sredina linka, pa pomeraj za pola svoje širine: link ume da stoji i uz
+     levu i uz desnu ivicu, pa nijedno vezivanje za jednu stranu ne radi na
+     oba mesta. */
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  z-index: 10;
+  inline-size: max-content;
+  max-inline-size: min(16rem, 70vw);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-ink);
+  color: var(--color-paper-on-dark);
+  font-size: var(--fs-small);
+  line-height: var(--leading-snug);
+  pointer-events: none;
 }
 
-/* Akcije su treći red mreže, pa stoje same od sebe: ni lepljivost ni
-   podloga preko sadržaja nisu potrebne. */
-.zone__akcije {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
+.nagovestaj:hover .nagovestaj__balon,
+.nagovestaj:focus-within .nagovestaj__balon {
+  display: block;
 }
 
-.zone__akcije .btn {
-  flex: 1 1 12rem;
+/* Na uskom ekranu je raspored jednostupčan i link stoji uz levu marginu, pa
+   centriran balon viri preko ivice stranice: izmereno 18 do 20px na 360 i
+   375px. Tu se vezuje za levu ivicu linka, koja je uvek unutar stupca. */
+@media (max-width: 64rem) {
+  .nagovestaj__balon {
+    inset-inline-start: 0;
+    translate: none;
+  }
 }
