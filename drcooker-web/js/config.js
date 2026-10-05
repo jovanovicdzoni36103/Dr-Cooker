@@ -59,12 +59,16 @@ const CONFIG = {
   SITE_URL: 'https://drcooker.rs',
 
   SITE_NAME: 'Dr Cooker',
-  // LEGAL_NAME namerno izostavljen: registrovani naziv nije potvrdjen,
-  // a schema.org `legalName` tvrdi bas njega. Bolje nista nego pogresno.
+  // LEGAL_NAME je potvrdjen 02.10.2026. iz klijentovog dokumenta i stoji
+  // kao schema.org `legalName` u JSON-LD svih 17 stranica:
+  // DR COOKER PREMIUM D.O.O. Ovde ga nema jer graf nije u partialu.
 
   // ==========================================================================
-  //  3. KONTAKT — izvor za sve telefone i mejlove na sajtu
-  //     (podnožje i kontakt stranica ih čitaju odavde preko js/main.js)
+  //  3. KONTAKT — namenjen da bude izvor za telefone i mejlove
+  //
+  //     PAZNJA: niko ovo jos ne cita. Telefon, mejl i adresa su zakucani
+  //     u tools/partials/footer.html i na stranici Kontakt. Upis ovde ne
+  //     menja nista na sajtu dok se to ne poveze.
   // ==========================================================================
 
   CONTACT: {
@@ -93,8 +97,16 @@ const CONFIG = {
     /** TODO(klijent): radno vreme. Prazno = blok se ne prikazuje. */
     openingHours: [],
 
-    /** TODO(klijent): društvene mreže. Prazno = blok se ne prikazuje. */
-    social: [],
+    /**
+     * Profili na mrežama. Klijent ih je dao 05.10.2026.
+     * Prikazuju se iz tools/partials/footer.html, ne odavde; ovde stoje
+     * da budu na jednom mestu sa ostalim kontaktom. Isti par je upisan
+     * i kao schema.org `sameAs` u JSON-LD svih stranica.
+     */
+    social: [
+      'https://www.facebook.com/DrCookerketering/',
+      'https://www.instagram.com/drcookerpremium.ketering/',
+    ],
 
     /** TODO(klijent): potrebno za podnožje i politiku privatnosti. */
     pib: '',

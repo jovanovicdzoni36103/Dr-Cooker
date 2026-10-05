@@ -414,6 +414,46 @@
   margin-block-end: calc(var(--space-1) * -1);
 }
 
+/* --- Društvene mreže ------------------------------------------------------ */
+
+/* Blok stoji izvan `<address>`, pa ne hvata njegov `gap` i razmak mora sam. */
+.ftr__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-start: var(--space-4);
+}
+
+/* Link nema vidljiv tekst, samo znak mreže, pa metu za dodir ne može da
+   napravi sadržaj — pravi je `min-*-size`. Izmereno: bez ovoga je meta
+   24px visoka, a provera u `qa-in-page.js` je ne prijavljuje jer izuzima
+   svaki `<a>` unutar `<li>`. Prolazi provera nije isto što i dostupno je.
+
+   Selektor mora da nosi i `.ftr` i element `a`: `.ftr a:not(.btn)` iznad
+   (linija 294) ima specifičnost (0,2,1), pa bi samu `.ftr__social-link`
+   (0,1,0) pregazio. Izmereno pre ispravke: podvlačenje je ostalo, a boja je
+   bila `paper` umesto `mist`. Izjednačena specifičnost plus kasniji red u
+   fajlu rešava oboje, bez `!important` koji audit prijavljuje. */
+.ftr a.ftr__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  color: var(--color-mist);
+  text-decoration: none;
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.ftr a.ftr__social-link:hover {
+  color: var(--color-paper-on-dark);
+}
+
+.ftr__social-ikona {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+}
+
 .ftr__bottom {
   display: flex;
   flex-wrap: wrap;

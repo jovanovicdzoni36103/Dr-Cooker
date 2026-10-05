@@ -1655,7 +1655,7 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
 
 /* --- Benefiti u heroju -------------------------------------------------- */
 /*
-   Četiri obećanja, svako u svom redu, sa hairline-om kao i ostatak sistema.
+   Pet obećanja, svako u svom redu, sa hairline-om kao i ostatak sistema.
    Namerno bez kartica: kartica bi ih izjednačila sa uslugama niže na stranici,
    a ovo su razlozi da se čita dalje, ne stavke u ponudi. */
 
@@ -1738,37 +1738,6 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
   color: var(--color-proof);
   text-align: center;
   position: relative;
-}
-
-/* --- Promo značka: besplatan prvi mesec --------------------------------- */
-/*
-   Najjači prodajni argument na sajtu, pa ide u TOPLI registar — to je ponuda
-   firme, nije podatak. Po zakonu boje toplo i hladno se nikad ne dodiruju,
-   zato značka stoji odvojeno od logo ploče. */
-
-.promo-badge {
-  display: grid;
-  gap: var(--space-2);
-  padding: var(--space-5);
-  background: var(--color-accent);
-  color: var(--color-paper);
-  border: 1px solid var(--color-accent-deep);
-}
-
-.promo-badge__oznaka {
-  font-family: var(--font-mono);
-  font-size: var(--fs-label);
-  font-weight: 600;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  opacity: 0.9;
-}
-
-.promo-badge__tekst {
-  font-family: var(--font-display);
-  font-size: var(--fs-display-s);
-  line-height: var(--leading-snug);
-  margin: 0;
 }
 
 /* --- Traka brojeva ------------------------------------------------------ */

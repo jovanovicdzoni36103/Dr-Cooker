@@ -224,7 +224,7 @@ Pregled: `node tools/build-emails.mjs`, pa otvori `emails/preview/*.html`.
 | `PENDING.foundedYear` | koristi se „dugi niz godina" |
 | `PENDING.haccpCertified` | piše „poštuju se principi" |
 | `CONTACT.openingHours` | blok se ne prikazuje |
-| `CONTACT.social` | blok se ne prikazuje |
+| `CONTACT.social` | popunjeno 05.10.2026, prikazuje se iz podnožja |
 | `ANALYTICS_ID` | nema analitike i nema kolačića |
 
 ### Pitanja za klijenta
