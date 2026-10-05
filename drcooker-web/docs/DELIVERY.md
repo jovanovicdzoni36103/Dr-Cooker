@@ -1001,3 +1001,164 @@ pokazalo nulu, ali nula crta ne znači ispravan tekst. Provera je našla:
 
 Poslednji red je bio moja greška, nastala kad sam labele usluga menjao
 mehanički, bez čitanja šta razdvojnik „/" znači u toj rečenici.
+
+---
+
+## 10g. Primena 87 primedbi klijenta (02.10.2026)
+
+Vlasnik je prošao sajt stranicu po stranicu i upisao 87 primedbi, uz dva
+mejla i dva ažurna nedeljna jelovnika. Ovo je zapis šta je od toga primenjeno,
+šta je odbijeno kao netačno, i šta je ostalo da čeka njegovu reč.
+
+### Šta su njegovi dokumenti rešili od starih otvorenih pitanja
+
+Nekoliko stvari koje su do tada bile pretpostavke sada su potvrđene, i to
+njegovom rukom:
+
+| Podatak | Bilo na sajtu | Po njegovim dokumentima |
+|---|---|---|
+| Artikli u supermarketu | 7.000 | **5.000** |
+| Pravno ime | nije stajalo | **DR COOKER PREMIUM D.O.O.** |
+| Lokacija proizvodnje | Beograd, Voždovac | **Dušanovac, opština Voždovac** |
+| Referenca | „skoro 1.000 mališana u 10 objekata" + ime ustanove | **1.500 mališana u 38 objekata**, bez imena |
+| Besplatna dostava | preko praga porudžbine | **njihovim kupcima bez praga** |
+
+Ime referentne ustanove je uklonjeno u potpunosti, na njegov izričit zahtev.
+
+### Najozbiljnija ispravka: popravio sam pogrešnu stranu protivrečnosti
+
+Sajt je na šest mesta tvrdio da su **suhomesnate prerađevine u potpunosti
+isključene** iz dečjeg jelovnika, a kartica doručka je istovremeno nudila
+slaninu, pečenicu i čvarke. U prethodnom prolazu sam tu protivrečnost rešio
+tako što sam **uklonio karticu, a ostavio pravilo**.
+
+Pogrešno. Vlasnik: *„Ovo ukini. Ima suhomesnatih proizvoda u jelovniku"*, a
+njegovi jelovnici to i pokazuju (`Makarone sa sirom i slaninicom`, `Čorbasto
+sočivo sa suvim mesom`). Pravilo je bilo netačna tvrdnja koju sam ja branio.
+
+Uklonjeno sa svih šest mesta, uključujući četiri instance u strukturiranim
+podacima, i cela sekcija `#pravila-jelovnika` je obrisana.
+
+**Nauk:** kada se dve tvrdnje na sajtu sudaraju, pitanje nije koja je lepša
+nego koja je tačna. Proveriti u izvoru, ne birati po doslednosti teksta.
+
+### Obim
+
+| | |
+|---|---|
+| Primedbi primenjeno | 87 |
+| Stranica menjano | 14 |
+| Celih sekcija uklonjeno | 30 |
+| Jelovnika ugrađeno iz njegovih Word fajlova | 2, po 5 dana × 4 obroka |
+| Novih alata | `tools/build-jelovnik.py`, `tools/provera-copy.py` |
+
+Svaka stranica je išla kroz jednog agenta koji je dobio **samo svoje primedbe,
+doslovno kako ih je vlasnik napisao**, bez mog prepričavanja. Agenti koji nisu
+razumeli primedbu imali su nalog da ne pogađaju nego da prijave; tako je
+nastao `docs/OTVORENO.md`.
+
+### `tools/provera-copy.py`
+
+`audit.py` čuva strukturu, reference i SEO, ali ne i tekst. Novi alat čuva
+redakcijska pravila: crte, veliko `I` kao veznik, jedan glasan naslov po
+stranici, saglasnost četiri kopije meta opisa, izbačene termine i jedan
+telefon.
+
+Dva pravila su morala da budu ispravljena jer su lagala:
+
+- **`kuhinja` i `ketering`** su prvo bili greška. Oba se legitimno javljaju:
+  „Vaša eventualna interna kuhinja" govori o kuhinji **kod klijenta**, a
+  „ketering za decu" je napisao sam vlasnik u novom uvodu stranice O nama.
+  Prebačeni su u upozorenje, jer traže ljudsko oko a ne pravilo.
+- **veliko `I` kao veznik** je dva puta prijavilo rimski broj u „Užina I".
+  Prvo zato što je gledalo samo razmake, pa zato što je ispred „I" u „Užina I"
+  ionako malo slovo `a`. Razlikovni znak je da li **iza** veznika sledi reč u
+  istom tekstualnom čvoru. Spljoštena stranica ne vredi za takva pravila:
+  granica elementa postaje razmak, pa se „jogurt" iz jedne ćelije tabele nađe
+  neposredno pred „Užina I" iz sledeće. Zato alat gradi dva teksta, jedan
+  spljošten za traženje reči i jedan po čvorovima za pravila o susedstvu.
+
+Test je ostao u alatu, `python tools/provera-copy.py --test`, sa oba slučaja
+koja su ga obarala.
+
+### Greška u sigurnosnoj mreži za animacije
+
+Provera u browseru je otkrila stranicu na kojoj posetilac proskroluje sve, a
+sadržaj se ne pojavi. Merenje je pokazalo zašto: u tom okruženju
+`IntersectionObserver` ne isporučuje **ni jedan** poziv, iako specifikacija
+nalaže početni poziv za svaku metu. Dakle posmatrač je mrtav, i sve je palo na
+sigurnosnu mrežu.
+
+Mreža je imala tri greške, od kojih su dve moje iz prethodnog prolaza:
+
+1. **Čuvar na skrolu je radio posao unutar `requestAnimationFrame`.** Komentar
+   iznad mreže kaže da mreža postoji za stranicu koja se nikad ne iscrta, gde
+   rAF ne okida nijednom. Zatim sam jedini poziv `mrezaTik()` stavio u rAF.
+   Ograničavanje je prebačeno na sat.
+2. **Ograničavanje je hvatalo samo prvu ivicu.** Poslednji potez, onaj koji
+   zaustavlja stranicu na konačnom mestu, pada unutar intervala i bio bi
+   odbačen, pa bi sadržaj tačno tamo gde je posetilac stao ostao nevidljiv.
+   Dodata zadnja ivica.
+3. **Prolazi na sat su stajali posle 20 sekundi.** U okruženju gde ne rade ni
+   posmatrač, ni rAF, ni skrol događaji, taj sat je jedino što otkriva
+   sadržaj. Posetilac koji prvi ekran čita duže od dvadeset sekundi dalje ne
+   bi video ništa. Ritam sada popušta: sekunda do 20 s, pa pet sekundi, stop
+   na ~3 min.
+
+**Kako je izmereno.** Prvo nekoliko merenja je bilo neupotrebljivo jer je
+lokalni server dozvoljavao keš, pa je browser servirao **staru** verziju
+`motion.js` (21.402 B naspram 23.234 B). Zato su rezultati bili nestabilni i
+delovalo je da popravka radi na dve stranice a ne na trećoj. Posle prelaska na
+server sa `no-cache`:
+
+| Provera | Rezultat |
+|---|---|
+| 17 stranica, pun skrol, okruženje bez IO / rAF / skrol događaja | **0 skrivenih** elemenata, 0 neprelomljenih naslova |
+| Najgori slučaj: 25 s čitanja prvog ekrana pa skrol | 29 → 20 → **0** |
+| Vodoravno prelivanje, 17 stranica × 7 širina (360 do 1440) | 119 mera, **0 prelivanja** |
+
+Okruženje u kome posmatrač ne radi pokazalo se kao najkorisniji test koji sam
+imao: to je tačno onaj slučaj zbog koga mreža i postoji, a nijedna provera
+zasnovana na ispravnom browseru ga ne bi dotakla.
+
+### Naslovi koji su obećavali obrisano
+
+Posle njegovih brisanja dva naslova u pretraživaču su reklamirali sekcije
+kojih više nema. Prepisani su iz teksta koji je ostao, na sva četiri mesta:
+
+- `Nutricionista: jelovnici, normativi i obuke` → `Nutricionista: dečji
+  jelovnici po Pravilniku` (normativi i obuke su obrisani)
+- `Jelovnik: doručak, ručak i užine` → `Jelovnik: domaća hrana po našoj
+  recepturi` (njegova sopstvena rečenica iz novog `h1`)
+
+### Stanje provera
+
+```
+python tools/audit.py          17 stranica, 0 grešaka, 0 upozorenja
+python tools/provera-copy.py   0 grešaka, 8 upozorenja (sva proverena)
+python tools/provera-copy.py --test   0 padova
+em/en dash na celom sajtu      0
+```
+
+Osam upozorenja su svesno ostavljena: tri su Sinkovi telefoni, četiri su
+legitimne pojave reči „kuhinja", jedno je „ketering" iz njegovog teksta.
+
+### Šta nije moglo da se završi
+
+- **Logo Sinko** — traži ga u uvodu stranice supermarketa, u projektu ne
+  postoji nijedan Sinko fajl. Putanja se ne izmišlja.
+- **Fotografije proizvodnje** — galerija ostaje sa praznim okvirima, što je i
+  sam odložio: „sređujemo kada dobijemo fotografije".
+- **Spisak 22 kategorije** za stranicu Snabdevanje — traži tabelu koje tamo
+  nema.
+- **OG slike** — regeneracija traži `sharp`, nije instaliran, nema
+  `package.json`.
+- **Nema staging adrese**, pa klijent ne može da pregleda sajt u browseru.
+  Dokument `docs/Dr-Cooker-revizija.docx` je zato jedini način da komentariše.
+
+### Otvoreno
+
+`docs/OTVORENO.md` i tabela odluka u `docs/Dr-Cooker-revizija.docx` nose 13
+stvari koje čekaju njegovu reč. Najvažnije: adresa (jedan podatak ili dva),
+„jedina delatnost" naspram dve stranice o snabdevanju, i to što su posle
+njegovih brisanja četiri stranice ostale pod 230 reči.

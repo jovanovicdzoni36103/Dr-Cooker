@@ -1886,3 +1886,11 @@ pa su ovde nabrojana. Kada dodaješ novu stranicu sa takvim linkom,
 .supermarket .eyebrow {
   color: var(--color-proof);
 }
+
+/* Dugme ka prodavnici u heroju. Klijent je crvenu značku nazvao „bombonom"
+   i rekao da liči na prevaru, pa ovde ide mirno dugme, manje od CTA-a levo:
+   prodavnica je sporedna ponuda, ne glavna. */
+.supermarket-cta {
+  inline-size: 100%;
+  margin-block-start: var(--space-4);
+}
