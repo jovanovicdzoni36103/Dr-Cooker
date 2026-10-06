@@ -1,32 +1,37 @@
 # Netlify, za pregled sajta pre objave na pravom domenu.
 #
-# Netlify, a ne Vercel: `drcooker-web/_redirects` je već napisan u Netlify
-# formatu i nosi 25 preusmerenja sa starog sajta keteringservis.rs. Na
-# Vercelu bi sve to moralo ponovo, u `vercel.json`.
+# Netlify, a ne Vercel: `_redirects` je već napisan u Netlify formatu i nosi
+# 25 preusmerenja sa starog sajta keteringservis.rs.
 
 [build]
-  # Sajt je statički, bez build koraka. Repozitorijum je koren foldera
-  # „Dr Cooker", a sam sajt je jedan nivo niže.
-  publish = "drcooker-web"
+  # Objavljuje se GOTOV otisak iz `drcooker-web/dist`, ne radni folder.
+  #
+  # Radni folder se NE SME objaviti. U njemu stoje, između ostalog:
+  #   docs/OTVORENO.md        interne beleške o protivrečnostima u klijentovim
+  #                           tvrdnjama
+  #   docs/DELIVERY.md        ceo dnevnik rada
+  #   docs/*.docx             klijentov popunjen dokument za reviziju
+  #   backend/apps-script/    izvor Apps Script aplikacije
+  #   emails/, tools/, .claude/, README.md, start.cmd
+  # Sve to bi na `publish = "drcooker-web"` bilo javno dostupno preko URL-a.
+  #
+  # `tools/build-dist.py` kopira po beloj listi i posle toga proveri da svaka
+  # referenca iz HTML-a pokazuje unutar dist-a, pa bela lista ne može tiho da
+  # ispusti fajl i polomi sajt.
+  command = "cd drcooker-web && python3 tools/build-dist.py"
+  publish = "drcooker-web/dist"
 
 # ---------------------------------------------------------------------------
 # NE INDEKSIRAJ
 #
-# Ovo je adresa za pregled, ne pravi sajt. Dva razloga zašto mora noindex:
+# Build upisuje `dist/_headers` sa `X-Robots-Tag: noindex, nofollow`.
+# Razlog: `canonical` na svakoj stranici pokazuje na https://drcooker.rs, pa
+# bi indeksiranje adrese za pregled napravilo drugu kopiju istog sadržaja, a
+# sadržaj još čeka klijentove odgovore iz docs/OTVORENO.md.
 #
-#   1. `canonical` na svakoj stranici pokazuje na https://drcooker.rs, pa bi
-#      indeksiranje ove adrese napravilo dve kopije istog sadržaja.
-#   2. Sadržaj još čeka klijentove odgovore (docs/OTVORENO.md), pa tvrdnje
-#      koje nisu potvrđene ne smeju u pretragu.
-#
-# `X-Robots-Tag` kao zaglavlje jače je od `robots.txt` i od meta oznake:
-# važi za svaki odgovor, uključujući slike i PDF. `robots.txt` se namerno NE
-# menja, jer on samo zabranjuje obilazak, a robot koji ne obiđe stranicu ne
+# Zaglavlje je jače od `robots.txt` i od meta oznake. `robots.txt` se namerno
+# NE menja: on samo zabranjuje obilazak, a robot koji ne obiđe stranicu ne
 # pročita ni noindex.
 #
-# Pre objave na pravom domenu OVAJ BLOK SE BRIŠE.
+# Pre objave na pravom domenu taj red se briše iz tools/build-dist.py.
 # ---------------------------------------------------------------------------
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"

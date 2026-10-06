@@ -8,3 +8,6 @@ node_modules/
 # OS smece
 Thumbs.db
 .DS_Store
+
+# Otisak za objavu: pravi ga tools/build-dist.py pri svakom deployu.
+dist/
